@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Webservice_Occitane" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://loccitanewechat.abc-myclub.com/Webservice_Occitane.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://loccitanewechat.abc-myclub.com/Webservice_Occitane.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://loccitanewechat.abc-myclub.com/Webservice_Occitane.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Accentiv.Spark.WebSite.MemberWebsite" />
+      <xsd:import schemaLocation="http://loccitanewechat.abc-myclub.com/Webservice_Occitane.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Accentiv.Spark.FidesProject.Service.Model" />
+      <xsd:import schemaLocation="http://loccitanewechat.abc-myclub.com/Webservice_Occitane.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/Accentiv.Spark.WebSite.MemberWebsite.Models" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IWebservice_Occitane_GetAccessTokenService_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAccessTokenService" />
+  </wsdl:message>
+  <wsdl:message name="IWebservice_Occitane_GetAccessTokenService_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAccessTokenServiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWebservice_Occitane_GetMemberInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMemberInfo" />
+  </wsdl:message>
+  <wsdl:message name="IWebservice_Occitane_GetMemberInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMemberInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWebservice_Occitane_GetMemberInfoByOpenId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMemberInfoByOpenId" />
+  </wsdl:message>
+  <wsdl:message name="IWebservice_Occitane_GetMemberInfoByOpenId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMemberInfoByOpenIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWebservice_Occitane_RegisterService_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterService" />
+  </wsdl:message>
+  <wsdl:message name="IWebservice_Occitane_RegisterService_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterServiceResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IWebservice_Occitane">
+    <wsdl:operation name="GetAccessTokenService">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWebservice_Occitane/GetAccessTokenService" message="tns:IWebservice_Occitane_GetAccessTokenService_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWebservice_Occitane/GetAccessTokenServiceResponse" message="tns:IWebservice_Occitane_GetAccessTokenService_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMemberInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWebservice_Occitane/GetMemberInfo" message="tns:IWebservice_Occitane_GetMemberInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWebservice_Occitane/GetMemberInfoResponse" message="tns:IWebservice_Occitane_GetMemberInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMemberInfoByOpenId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWebservice_Occitane/GetMemberInfoByOpenId" message="tns:IWebservice_Occitane_GetMemberInfoByOpenId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWebservice_Occitane/GetMemberInfoByOpenIdResponse" message="tns:IWebservice_Occitane_GetMemberInfoByOpenId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RegisterService">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWebservice_Occitane/RegisterService" message="tns:IWebservice_Occitane_RegisterService_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWebservice_Occitane/RegisterServiceResponse" message="tns:IWebservice_Occitane_RegisterService_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IWebservice_Occitane" type="tns:IWebservice_Occitane">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAccessTokenService">
+      <soap:operation soapAction="http://tempuri.org/IWebservice_Occitane/GetAccessTokenService" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMemberInfo">
+      <soap:operation soapAction="http://tempuri.org/IWebservice_Occitane/GetMemberInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMemberInfoByOpenId">
+      <soap:operation soapAction="http://tempuri.org/IWebservice_Occitane/GetMemberInfoByOpenId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterService">
+      <soap:operation soapAction="http://tempuri.org/IWebservice_Occitane/RegisterService" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Webservice_Occitane">
+    <wsdl:port name="BasicHttpBinding_IWebservice_Occitane" binding="tns:BasicHttpBinding_IWebservice_Occitane">
+      <soap:address location="http://loccitanewechat.abc-myclub.com/Webservice_Occitane.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

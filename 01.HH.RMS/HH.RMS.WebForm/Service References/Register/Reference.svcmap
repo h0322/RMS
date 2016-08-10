@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="8c3e086d-5240-4300-af9b-a5ca56b4cd84" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://loccitanewechat.abc-myclub.com/Webservice_Occitane.svc?wsdl/RegisterService" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="Webservice_Occitane.xsd" MetadataType="Schema" ID="5877b678-560f-4259-85cd-f10678c0b8e6" SourceId="1" SourceUrl="http://loccitanewechat.abc-myclub.com/Webservice_Occitane.svc?xsd=xsd1" />
+    <MetadataFile FileName="Webservice_Occitane.disco" MetadataType="Disco" ID="0977ea23-1b3f-4580-9a7f-8f437054f668" SourceId="1" SourceUrl="http://loccitanewechat.abc-myclub.com/Webservice_Occitane.svc?disco" />
+    <MetadataFile FileName="Webservice_Occitane1.xsd" MetadataType="Schema" ID="c5ea6073-8998-4dbe-bf49-e6a6e5622125" SourceId="1" SourceUrl="http://loccitanewechat.abc-myclub.com/Webservice_Occitane.svc?xsd=xsd3" />
+    <MetadataFile FileName="Webservice_Occitane.wsdl" MetadataType="Wsdl" ID="ab42ed1a-9dc4-4c81-a64e-8453df390ff3" SourceId="1" SourceUrl="http://loccitanewechat.abc-myclub.com/Webservice_Occitane.svc?wsdl" />
+    <MetadataFile FileName="Webservice_Occitane2.xsd" MetadataType="Schema" ID="6d14f36c-c6c4-41e8-9919-cd9ced06aee2" SourceId="1" SourceUrl="http://loccitanewechat.abc-myclub.com/Webservice_Occitane.svc?xsd=xsd0" />
+    <MetadataFile FileName="Webservice_Occitane3.xsd" MetadataType="Schema" ID="b962466a-8170-4e48-abb9-27a1a4dbd3ac" SourceId="1" SourceUrl="http://loccitanewechat.abc-myclub.com/Webservice_Occitane.svc?xsd=xsd2" />
+    <MetadataFile FileName="Webservice_Occitane4.xsd" MetadataType="Schema" ID="f4da0b34-2a96-4f93-a204-06c0c1bab01a" SourceId="1" SourceUrl="http://loccitanewechat.abc-myclub.com/Webservice_Occitane.svc?xsd=xsd4" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

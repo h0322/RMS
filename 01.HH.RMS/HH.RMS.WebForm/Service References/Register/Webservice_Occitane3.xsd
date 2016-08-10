@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Accentiv.Spark.WebSite.MemberWebsite" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Accentiv.Spark.WebSite.MemberWebsite" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://loccitanewechat.abc-myclub.com/Webservice_Occitane.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Accentiv.Spark.FidesProject.Service.Model" />
+  <xs:import schemaLocation="http://loccitanewechat.abc-myclub.com/Webservice_Occitane.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/Accentiv.Spark.WebSite.MemberWebsite.Models" />
+  <xs:complexType name="TokenRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AppID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RandomString" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SecurityKey" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Signature" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TokenRequest" nillable="true" type="tns:TokenRequest" />
+  <xs:complexType name="TokenResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="randomString" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="result" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="resultCode" type="xs:int" />
+      <xs:element minOccurs="0" name="resultMsg" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="signature" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TokenResult" nillable="true" type="tns:TokenResult" />
+  <xs:complexType name="Request">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AppID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RandomString" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RequestCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SecurityKey" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Signature" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Request" nillable="true" type="tns:Request" />
+  <xs:complexType name="Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="randomString" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Accentiv.Spark.FidesProject.Service.Model" minOccurs="0" name="result" nillable="true" type="q1:Member" />
+      <xs:element minOccurs="0" name="resultCode" type="xs:int" />
+      <xs:element minOccurs="0" name="resultMsg" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="signature" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Result" nillable="true" type="tns:Result" />
+  <xs:complexType name="RequestByOpenId">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AppID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OpenID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RandomString" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RequestCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SecurityKey" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Signature" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RequestByOpenId" nillable="true" type="tns:RequestByOpenId" />
+  <xs:complexType name="RegisterRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AppID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RandomString" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SecurityKey" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Signature" nillable="true" type="xs:string" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Accentiv.Spark.WebSite.MemberWebsite.Models" minOccurs="0" name="UserInfo" nillable="true" type="q2:RegisterUserInfoModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RegisterRequest" nillable="true" type="tns:RegisterRequest" />
+  <xs:complexType name="RegisterResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="randomString" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="resultCode" type="xs:int" />
+      <xs:element minOccurs="0" name="resultMsg" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="signature" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RegisterResult" nillable="true" type="tns:RegisterResult" />
+</xs:schema>

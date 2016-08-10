@@ -1,0 +1,36 @@
+D:\My Program\HH.RMS\HH.RMS\HH.RMS.Model\bin\Debug\HH.RMS.Model.dll
+D:\My Program\HH.RMS\HH.RMS\HH.RMS.Model\bin\Debug\HH.RMS.Model.pdb
+D:\My Program\HH.RMS\HH.RMS\HH.RMS.Model\bin\Debug\HH.RMS.Common.dll
+D:\My Program\HH.RMS\HH.RMS\HH.RMS.Model\bin\Debug\Newtonsoft.Json.dll
+D:\My Program\HH.RMS\HH.RMS\HH.RMS.Model\bin\Debug\HH.RMS.Common.pdb
+D:\My Program\HH.RMS\HH.RMS\HH.RMS.Model\bin\Debug\Newtonsoft.Json.xml
+D:\My Program\HH.RMS\HH.RMS\HH.RMS.Model\obj\Debug\HH.RMS.Model.csprojResolveAssemblyReference.cache
+D:\My Program\HH.RMS\HH.RMS\HH.RMS.Model\obj\Debug\HH.RMS.Model.dll
+D:\My Program\HH.RMS\HH.RMS\HH.RMS.Model\obj\Debug\HH.RMS.Model.pdb
+E:\Programs\HH.RMS\HH.RMS\HH.RMS.Model\bin\Debug\HH.RMS.Model.dll
+E:\Programs\HH.RMS\HH.RMS\HH.RMS.Model\bin\Debug\HH.RMS.Model.pdb
+E:\Programs\HH.RMS\HH.RMS\HH.RMS.Model\bin\Debug\HH.RMS.Common.dll
+E:\Programs\HH.RMS\HH.RMS\HH.RMS.Model\bin\Debug\Newtonsoft.Json.dll
+E:\Programs\HH.RMS\HH.RMS\HH.RMS.Model\bin\Debug\HH.RMS.Common.pdb
+E:\Programs\HH.RMS\HH.RMS\HH.RMS.Model\bin\Debug\Newtonsoft.Json.xml
+E:\Programs\HH.RMS\HH.RMS\HH.RMS.Model\obj\Debug\HH.RMS.Model.csprojResolveAssemblyReference.cache
+E:\Programs\HH.RMS\HH.RMS\HH.RMS.Model\obj\Debug\HH.RMS.Model.dll
+E:\Programs\HH.RMS\HH.RMS\HH.RMS.Model\obj\Debug\HH.RMS.Model.pdb
+E:\Programs\HH.RMS\HH.RMS\01.HH.RMS\HH.RMS.Model\bin\Debug\HH.RMS.Model.dll
+E:\Programs\HH.RMS\HH.RMS\01.HH.RMS\HH.RMS.Model\bin\Debug\HH.RMS.Model.pdb
+E:\Programs\HH.RMS\HH.RMS\01.HH.RMS\HH.RMS.Model\bin\Debug\HH.RMS.Common.dll
+E:\Programs\HH.RMS\HH.RMS\01.HH.RMS\HH.RMS.Model\bin\Debug\Newtonsoft.Json.dll
+E:\Programs\HH.RMS\HH.RMS\01.HH.RMS\HH.RMS.Model\bin\Debug\HH.RMS.Common.pdb
+E:\Programs\HH.RMS\HH.RMS\01.HH.RMS\HH.RMS.Model\bin\Debug\Newtonsoft.Json.xml
+E:\Programs\HH.RMS\HH.RMS\01.HH.RMS\HH.RMS.Model\obj\Debug\HH.RMS.Model.csprojResolveAssemblyReference.cache
+E:\Programs\HH.RMS\HH.RMS\01.HH.RMS\HH.RMS.Model\obj\Debug\HH.RMS.Model.dll
+E:\Programs\HH.RMS\HH.RMS\01.HH.RMS\HH.RMS.Model\obj\Debug\HH.RMS.Model.pdb
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Model\bin\Debug\HH.RMS.Model.dll
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Model\bin\Debug\HH.RMS.Model.pdb
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Model\bin\Debug\HH.RMS.Common.dll
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Model\bin\Debug\Newtonsoft.Json.dll
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Model\bin\Debug\HH.RMS.Common.pdb
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Model\bin\Debug\Newtonsoft.Json.xml
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Model\obj\Debug\HH.RMS.Model.csprojResolveAssemblyReference.cache
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Model\obj\Debug\HH.RMS.Model.dll
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Model\obj\Debug\HH.RMS.Model.pdb

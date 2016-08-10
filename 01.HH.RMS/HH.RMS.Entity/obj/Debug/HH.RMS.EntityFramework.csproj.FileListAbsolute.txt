@@ -1,0 +1,42 @@
+D:\My Program\HH.RMS\HH.RMS\HH.RMS.EntityFramework\bin\Debug\HH.RMS.EntityFramework.dll
+D:\My Program\HH.RMS\HH.RMS\HH.RMS.EntityFramework\bin\Debug\HH.RMS.EntityFramework.pdb
+D:\My Program\HH.RMS\HH.RMS\HH.RMS.EntityFramework\obj\Debug\HH.RMS.EntityFramework.csprojResolveAssemblyReference.cache
+D:\My Program\HH.RMS\HH.RMS\HH.RMS.EntityFramework\obj\Debug\HH.RMS.EntityFramework.dll
+D:\My Program\HH.RMS\HH.RMS\HH.RMS.EntityFramework\obj\Debug\HH.RMS.EntityFramework.pdb
+D:\My Program\HH.RMS\HH.RMS\HH.RMS.EntityFramework\bin\Debug\HH.RMS.EntityFramework.dll.config
+D:\My Program\HH.RMS\HH.RMS\HH.RMS.EntityFramework\bin\Debug\EntityFramework.dll
+D:\My Program\HH.RMS\HH.RMS\HH.RMS.EntityFramework\bin\Debug\EntityFramework.SqlServer.dll
+D:\My Program\HH.RMS\HH.RMS\HH.RMS.EntityFramework\bin\Debug\HH.RMS.Common.dll
+D:\My Program\HH.RMS\HH.RMS\HH.RMS.EntityFramework\bin\Debug\Newtonsoft.Json.dll
+D:\My Program\HH.RMS\HH.RMS\HH.RMS.EntityFramework\bin\Debug\HH.RMS.Common.pdb
+D:\My Program\HH.RMS\HH.RMS\HH.RMS.EntityFramework\bin\Debug\EntityFramework.xml
+D:\My Program\HH.RMS\HH.RMS\HH.RMS.EntityFramework\bin\Debug\EntityFramework.SqlServer.xml
+D:\My Program\HH.RMS\HH.RMS\HH.RMS.EntityFramework\bin\Debug\Newtonsoft.Json.xml
+D:\MP\HH.RMS\HH.RMS\HH.RMS.EntityFramework\bin\Debug\HH.RMS.EntityFramework.dll.config
+D:\MP\HH.RMS\HH.RMS\HH.RMS.EntityFramework\bin\Debug\HH.RMS.EntityFramework.dll
+D:\MP\HH.RMS\HH.RMS\HH.RMS.EntityFramework\bin\Debug\HH.RMS.EntityFramework.pdb
+D:\MP\HH.RMS\HH.RMS\HH.RMS.EntityFramework\bin\Debug\EntityFramework.dll
+D:\MP\HH.RMS\HH.RMS\HH.RMS.EntityFramework\bin\Debug\EntityFramework.SqlServer.dll
+D:\MP\HH.RMS\HH.RMS\HH.RMS.EntityFramework\bin\Debug\HH.RMS.Common.dll
+D:\MP\HH.RMS\HH.RMS\HH.RMS.EntityFramework\bin\Debug\Newtonsoft.Json.dll
+D:\MP\HH.RMS\HH.RMS\HH.RMS.EntityFramework\bin\Debug\HH.RMS.Common.pdb
+D:\MP\HH.RMS\HH.RMS\HH.RMS.EntityFramework\bin\Debug\EntityFramework.xml
+D:\MP\HH.RMS\HH.RMS\HH.RMS.EntityFramework\bin\Debug\EntityFramework.SqlServer.xml
+D:\MP\HH.RMS\HH.RMS\HH.RMS.EntityFramework\bin\Debug\Newtonsoft.Json.xml
+D:\MP\HH.RMS\HH.RMS\HH.RMS.EntityFramework\obj\Debug\HH.RMS.EntityFramework.csprojResolveAssemblyReference.cache
+D:\MP\HH.RMS\HH.RMS\HH.RMS.EntityFramework\obj\Debug\HH.RMS.EntityFramework.dll
+D:\MP\HH.RMS\HH.RMS\HH.RMS.EntityFramework\obj\Debug\HH.RMS.EntityFramework.pdb
+E:\Programs\HH.RMS\HH.RMS\HH.RMS.EntityFramework\bin\Debug\HH.RMS.EntityFramework.dll.config
+E:\Programs\HH.RMS\HH.RMS\HH.RMS.EntityFramework\bin\Debug\HH.RMS.EntityFramework.dll
+E:\Programs\HH.RMS\HH.RMS\HH.RMS.EntityFramework\bin\Debug\HH.RMS.EntityFramework.pdb
+E:\Programs\HH.RMS\HH.RMS\HH.RMS.EntityFramework\bin\Debug\EntityFramework.dll
+E:\Programs\HH.RMS\HH.RMS\HH.RMS.EntityFramework\bin\Debug\EntityFramework.SqlServer.dll
+E:\Programs\HH.RMS\HH.RMS\HH.RMS.EntityFramework\bin\Debug\HH.RMS.Common.dll
+E:\Programs\HH.RMS\HH.RMS\HH.RMS.EntityFramework\bin\Debug\Newtonsoft.Json.dll
+E:\Programs\HH.RMS\HH.RMS\HH.RMS.EntityFramework\bin\Debug\HH.RMS.Common.pdb
+E:\Programs\HH.RMS\HH.RMS\HH.RMS.EntityFramework\bin\Debug\EntityFramework.xml
+E:\Programs\HH.RMS\HH.RMS\HH.RMS.EntityFramework\bin\Debug\EntityFramework.SqlServer.xml
+E:\Programs\HH.RMS\HH.RMS\HH.RMS.EntityFramework\bin\Debug\Newtonsoft.Json.xml
+E:\Programs\HH.RMS\HH.RMS\HH.RMS.EntityFramework\obj\Debug\HH.RMS.EntityFramework.csprojResolveAssemblyReference.cache
+E:\Programs\HH.RMS\HH.RMS\HH.RMS.EntityFramework\obj\Debug\HH.RMS.EntityFramework.dll
+E:\Programs\HH.RMS\HH.RMS\HH.RMS.EntityFramework\obj\Debug\HH.RMS.EntityFramework.pdb
