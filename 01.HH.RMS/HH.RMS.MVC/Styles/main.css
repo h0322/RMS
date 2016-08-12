@@ -14,3 +14,9 @@ padding:2px;
 ul li span {
     margin-top:2px;
 }
+select {
+    width:100px;
+}
+input[type="text"]  {
+    width:200px;
+}
