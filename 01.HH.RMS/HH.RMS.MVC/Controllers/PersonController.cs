@@ -16,11 +16,14 @@ namespace HH.RMS.MVC.Controllers
         private IPersonService _personService;
         private IProvinceService _provinceService;
         private ICityService _cityService;
-        public PersonController(IPersonService personService, IProvinceService provinceService, ICityService cityService)
+        private IRoleService _roleService;
+        public PersonController(IPersonService personService, IProvinceService provinceService, ICityService cityService, IRoleService roleService)
         {
             _personService = personService;
             _provinceService = provinceService;
             _cityService = cityService;
+            _roleService = roleService;
+
         }
         public ActionResult Index()
         {
@@ -52,6 +55,14 @@ namespace HH.RMS.MVC.Controllers
             var cityList = _cityService.QueryCityListByProvinceId(id);
             selectList.Add(new SelectModel() { text = "---请选择---", value = "0" });
             cityList.ForEach(m => selectList.Add(new SelectModel() { text = m.name, value = m.cityId.ToString() }));
+            return Json(selectList, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult QueryRoleList()
+        {
+            List<SelectModel> selectList = new List<SelectModel>();
+            var roleList = _roleService.QueryRoleList();
+            selectList.Add(new SelectModel() { text = "---请选择---", value = "0" });
+            roleList.ForEach(m => selectList.Add(new SelectModel() { text = m.roleName, value = m.roleId.ToString() }));
             return Json(selectList, JsonRequestBehavior.AllowGet);
         }
     }
