@@ -10,6 +10,6 @@ namespace HH.RMS.Service.Interface
 {
     public interface IPersonService
     {
-        ResultModel<PersonListModel> QueryPersonList(PagerModel pager);
+        GridModel QueryPersonToGrid(PagerModel pager);
     }
 }

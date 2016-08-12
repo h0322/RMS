@@ -1,5 +1,4 @@
-﻿@model HH.RMS.Model.AccountListModel
-@using HH.RMS.Common.Constant
+﻿@using HH.RMS.Common.Constant
 @{
     ViewBag.Title = "账户管理";
 }
@@ -127,25 +126,32 @@
             var status = $("#sel_status").combobox('getValue');
             var dateFrom = $("#date_from").datebox('getValue');
             var dateTo = $("#date_to").datebox('getValue');
-            if (search!="")
+            if (search != "")
                 $.cookie("searchText", search, { path: "/" });
             else
                 $.cookie("searchText", null, { path: "/" });
-            if (status!="")
+            if (status != "")
                 $.cookie("searchStatus", status, { path: "/" });
             else
                 $.cookie("searchStatus", null, { path: "/" });
-            if (dateFrom!="")
+            if (dateFrom != "")
                 $.cookie("searchDateFrom", dateFrom, { path: "/" });
             else
                 $.cookie("searchDateFrom", null, { path: "/" });
-            if (dateTo!="")
+            if (dateTo != "")
                 $.cookie("searchDateTo", dateTo, { path: "/" });
             else
                 $.cookie("searchDateTo", null, { path: "/" });
             $("#accountList").datagrid();
-        })
-
+        });
+        $("#sel_search_role").combobox({
+            url: '/Account/QueryRoleList',
+            valueField: 'value',
+            textField: 'text',
+            required: false,
+            editable: false,
+            value: 0
+        });
     </script>
     }
 <div style="width:100%; height:400px;">
@@ -188,11 +194,7 @@
             From: <input class="easyui-datebox" style="width:80px" id="date_from">
             To: <input class="easyui-datebox" style="width:80px" id="date_to">
         状态:
-        <select class="easyui-combobox" panelheight="auto" style="width:100px" id="sel_status">
-            <option value="0">---请选择---</option>
-            <option value="1">管理员</option>
-            <option value="2">超级用户</option>
-            <option value="3">普通用户</option>
+        <select class="easyui-combobox" panelheight="auto" style="width:100px" id="sel_search_role">
         </select>
         <input class="easyui-textbox" id="txt_search" />
         <a href="#" class="easyui-linkbutton" iconcls="icon-search" id="btn_search">Search</a>

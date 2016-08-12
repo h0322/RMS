@@ -67,10 +67,11 @@ namespace HH.RMS.Service
             using(var db = new ApplicationDbContext())
             {
                 var q = (from a in _menuRepository.Query(db)
-                         join b in _menuRoleRepository.Query(db) on a.id equals b.menuId
-                         where roleList.Contains(b.roleId)
+                         join b in _menuRoleRepository.Query(db) on a.id equals b.menuId into t1
+                         from t in t1.DefaultIfEmpty()
+                         where roleList.Contains(t.roleId) || roleList.Contains((int)RoleType.Admin)
                          select a).Distinct();
-                return q.ToList();
+                return q.OrderBy(m => m.menuOrder).ToList();
             }
         }
         private StringBuilder GetChildMenu(long parentId, List<MenuEntity> menuList)

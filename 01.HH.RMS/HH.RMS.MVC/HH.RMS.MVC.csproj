@@ -549,9 +549,6 @@
     <Content Include="Views\Shared\_TopPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Account\Login.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -568,6 +565,18 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\jquery.form.min.js.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Person\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Person\_CreatePartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Person\_UpdatePartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Account\_UpdatePartial.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

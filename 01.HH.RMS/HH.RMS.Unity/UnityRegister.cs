@@ -45,6 +45,10 @@ namespace HH.RMS.Unity
             _unityManager.RegisterType<ISchedulerService, SchedulerService>();
             _unityManager.RegisterType<IMenuService, MenuService>();
             _unityManager.RegisterType<ILoginService, LoginService>();
+            _unityManager.RegisterType<ICityService, CityService>();
+            _unityManager.RegisterType<IProvinceService, ProvinceService>();
+            _unityManager.RegisterType<IRoleService, RoleService>();
+            _unityManager.RegisterType<ICountryService, CountryService>();
             //_unityManager.RegisterType<IADOUnit, ADOUnit>();
         }
         public virtual void ContorllerRegister()

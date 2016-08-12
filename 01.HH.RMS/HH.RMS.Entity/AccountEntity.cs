@@ -2,6 +2,7 @@
 using HH.RMS.Common.Constant;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -12,7 +13,9 @@ namespace HH.RMS.Entity
     [MappingTable(tableName = "Account")]
     public class AccountEntity : EntityBase
     {
+        [MaxLength(32)]
         public string accountName { get; set; }
+        [MaxLength(32)]
         public string password { get; set; }
         public long personId { get; set; }
         [ForeignKey("personId")]

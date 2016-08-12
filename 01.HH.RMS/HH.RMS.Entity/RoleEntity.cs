@@ -15,6 +15,5 @@ namespace HH.RMS.Entity
         public string roleName { get; set; }
         public RoleType roleType { get; set; }
         public int roleOrder { get; set; }
-        public virtual ICollection<AccountEntity> accountList { get; set; }
     }
 }

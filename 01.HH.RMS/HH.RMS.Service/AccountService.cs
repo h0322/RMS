@@ -120,7 +120,7 @@ namespace HH.RMS.Service
                                 amount = a.amount,
                                 level = a.level,
                                 createTime = a.createTime,
-                                person = new PersonModel() { personId = d.id, birthday = d.birthday, city = d.city, country = d.country, createTime = d.createTime, name = d.name, nickName = d.nickName, privonce = d.privonce, sex = d.sex }
+                                person = new PersonModel() { personId = d.id, birthday = d.birthday, cityId = d.cityId, countryId = d.countryId, createTime = d.createTime, name = d.name, nickName = d.nickName, provinceId = d.provinceId, sex = d.sex }
                             });
                     IQueryable<AccountModel> qPager = null;
                     if (pager != null)

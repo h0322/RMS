@@ -14,9 +14,12 @@ namespace HH.RMS.Entity
     public class SchedulerEntity:EntityBase
     {
         public long jobId { get; set; }
+          [MaxLength(50)]
         public string scheduleName { get; set; }
+         [MaxLength(100)]
         public string scheduleDescription { get; set; }
         public IntervalType intervalType { get; set; }
+         [MaxLength(100)]
         public string cronExpression { get; set; }
         public int year { get; set; }
         public int month { get; set; }
@@ -26,8 +29,11 @@ namespace HH.RMS.Entity
         public int minute { get; set; }
         public int second { get; set; }
         public SqlScriptType sqlScriptType { get; set; }
+         [MaxLength(1000)]
         public string sqlScript { get; set; }
+         [MaxLength(100)]
         public string serverName { get; set; }
+         [MaxLength(100)]
         public string siteName { get; set; }
         public DateTime? runTime { get; set; }
         public DateTime? stopTime { get; set; }

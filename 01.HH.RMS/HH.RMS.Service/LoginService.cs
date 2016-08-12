@@ -46,7 +46,7 @@ namespace HH.RMS.Service
                              select new
                              {
                                  account = new AccountModel() { accountName = a.accountName, accountId = a.id, level = a.level, score = a.score,amount = a.amount },
-                                 person = new PersonModel() { name = d.name, birthday = d.birthday, city = d.city, privonce = d.privonce, sex = d.sex, country = d.country, personId = d.id, nickName = d.nickName },
+                                 person = new PersonModel() { name = d.name, birthday = d.birthday, cityId = d.cityId, provinceId = d.provinceId, sex = d.sex, countryId = d.countryId, personId = d.id, nickName = d.nickName },
                                  role = new RoleModel() { roleName = c.roleName, roleId = c.id, roleOrder = c.roleOrder, roleType = c.roleType },
                              });
                     var list = q.ToList();

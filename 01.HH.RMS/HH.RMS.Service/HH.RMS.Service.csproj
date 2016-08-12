@@ -65,18 +65,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountService.cs" />
+    <Compile Include="CountryService.cs" />
+    <Compile Include="CityService.cs" />
     <Compile Include="ControllerService.cs" />
     <Compile Include="Interface\IAccountService.cs" />
+    <Compile Include="Interface\ICityService.cs" />
     <Compile Include="Interface\IJobService.cs" />
     <Compile Include="Interface\ILoginService.cs" />
     <Compile Include="Interface\IMenuService.cs" />
     <Compile Include="Interface\IPersonService.cs" />
+    <Compile Include="Interface\ICountryService.cs" />
+    <Compile Include="Interface\IProvinceService.cs" />
+    <Compile Include="Interface\IRoleService.cs" />
     <Compile Include="Interface\ISchedulerService.cs" />
     <Compile Include="JobService.cs" />
     <Compile Include="LoginService.cs" />
     <Compile Include="MenuService.cs" />
     <Compile Include="PersonService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProvinceService.cs" />
     <Compile Include="RoleService.cs" />
     <Compile Include="SchedulerService.cs" />
     <Compile Include="ServiceBase.cs" />

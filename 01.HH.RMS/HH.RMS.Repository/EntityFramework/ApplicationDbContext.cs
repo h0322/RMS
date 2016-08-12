@@ -29,13 +29,16 @@ namespace HH.RMS.Repository.EntityFramework
             modelBuilder.Configurations.Add(new RoleMapping());
             modelBuilder.Configurations.Add(new MappingTableBase<MenuEntity>());
             modelBuilder.Configurations.Add(new MappingTableBase<MenuRoleEntity>());
+            modelBuilder.Configurations.Add(new MappingTableBase<CountryEntity>());
+            modelBuilder.Configurations.Add(new MappingTableBase<ProvinceEntity>());
+            modelBuilder.Configurations.Add(new MappingTableBase<CityEntity>());
             base.OnModelCreating(modelBuilder);
         }
         public void CreateExcute()
         {
  
         }
-        public DbSet<AccountEntity> Account { get; set; }
+        //public DbSet<AccountEntity> Account { get; set; }
         //public DbSet<PersonEntity> Person { get; set; }
         //public DbSet<SchedulerLogEntity> Scheduler { get; set; }
         

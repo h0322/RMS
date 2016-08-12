@@ -20,10 +20,12 @@ namespace HH.RMS.MVC.Controllers
     {
         private IAccountService _accountService;
         private IPersonService _personService;
-        public AccountController(IAccountService accountService, IPersonService personService)
+        private IRoleService _roleService;
+        public AccountController(IAccountService accountService, IPersonService personService, IRoleService roleService)
         {
             _accountService = accountService;
             _personService = personService;
+            _roleService = roleService;
         }
         public ActionResult Index()
         {
@@ -68,6 +70,14 @@ namespace HH.RMS.MVC.Controllers
         {
             var result = _accountService.UpdateAccount(model);
             return Json(new { result = (int)result }, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult QueryRoleList()
+        {
+            var roleList = _roleService.QueryRoleList();
+            List<SelectModel> selectList = new List<SelectModel>();
+            selectList.Add(new SelectModel() { text = "请选择", value = "0" });
+            roleList.ForEach(m => selectList.Add(new SelectModel() { text = m.roleName, value = m.roleId.ToString() }));
+            return Json(selectList, JsonRequestBehavior.AllowGet);
         }
     }
 }

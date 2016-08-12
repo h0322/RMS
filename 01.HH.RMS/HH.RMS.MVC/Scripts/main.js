@@ -38,3 +38,14 @@ function ClearSearchCookie() {
     $.cookie("searchDateTo", "", { path: "/" });
     $.cookie("searchType", "", { path: "/" });
 }
+function GetSexDescription(sex)
+{
+    if (sex == 1)
+    {
+        return "男";
+    }
+    else if (sex == 0)
+    {
+        return "女";
+    }
+}

@@ -1,0 +1,50 @@
+﻿<div id="dlgAdd" class="easyui-dialog" title="添加新用户" closed="true" style="width:300px" data-options=" iconCls: 'icon-save',	buttons: [{	text:'保存',	iconCls:'icon-ok',	handler:Save},{text:'取消',iconCls:'icon-cancel',handler:cancel}]">
+    <div title="Register" style="width:98%;">
+        <form id="from_account">
+            <ul><li style="width:30%">账户名称:</li><li style="width:60%"><input id="txt_accountName" name="accountName" class="easyui-textbox"></li></ul>@*data-options="prompt:'Enter a email address...',validType:'email'"*@
+            <ul><li style="width:30%">积分:</li><li style="width:60%"><input id="txt_score" name="score" class="easyui-numberbox"></li></ul>
+            <ul><li style="width:30%">充值:</li><li style="width:60%"><input id="txt_amount" name="amount" class="easyui-numberbox"></li></ul>
+            <ul>
+                <li style="width:30%">等级:</li>
+                <li style="width:60%">
+                    <select id="sel_level" class="easyui-combobox" name="level">
+                        <option value="1">level1</option>
+                        <option value="2">level2</option>
+                    </select>
+                </li>
+            </ul>
+            <ul>
+                <li style="width:30%">状态:</li>
+                <li style="width:60%">
+                    <select id="sel_statusType" class="easyui-combobox" name="statusType">
+                        <option value="1">Normal</option>
+                        <option value="2">Disable</option>
+                        <option value="3">Black</option>
+                    </select>
+                </li>
+            </ul>
+            <ul>
+                <li style="width:30%">角色:</li>
+                <li style="width:60%">
+                    <select id="sel_roleType" class="easyui-combobox" name="roleType">
+                    </select>
+                </li>
+            </ul>
+            <ul><li style="width:100%">&nbsp;</li></ul>
+            <ul><li style="width:30%">姓名:</li><li style="width:60%"><input id="txt_name" name="name" class="easyui-textbox"></li></ul>@*data-options="prompt:'Enter a email address...',validType:'email'"*@
+            <ul><li style="width:30%">昵称:</li><li style="width:60%"><input id="txt_nickName" name="nickName" class="easyui-textbox"></li></ul>
+            <ul><li style="width:30%">手机:</li><li style="width:60%"><input id="txt_mobile" name="mobile" class="easyui-textbox"></li></ul>
+            <ul><li style="width:30%">邮箱:</li><li style="width:60%"><input id="txt_email" name="email" class="easyui-textbox"></li></ul>
+            <ul><li style="width:30%">性别:</li><li style="width:60%"><input id="txt_email" name="sex" class="easyui-numberbox"></li></ul>
+            <ul><li style="width:30%">省:</li><li style="width:60%"><select id="sel_province" class="easyui-combobox" name="provinceId" style="width:100px;"></select></li></ul>
+            <ul><li style="width:30%">市:</li><li style="width:60%"><select id="sel_city" class="easyui-combobox" name="cityId"><option value="0">---请选择---</option></select></li></ul>
+            <ul><li style="width:30%">详细地址:</li><li style="width:60%"><input id="txt_email" name="email" class="easyui-numberbox"></li></ul>
+            <ul>
+                <li style="width:30%">备注:</li>
+                <li style="width:60%">
+                    <input id="txt_email" name="email" class="easyui-numberbox">
+                </li>
+            </ul>
+        </form>
+    </div>
+</div>

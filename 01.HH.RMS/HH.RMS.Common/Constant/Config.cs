@@ -18,5 +18,8 @@ namespace HH.RMS.Common.Constant
         public static string siteName = Utilities.ConfigHelper.GetConfigString("SiteName");
         public readonly static string loginSession = "AccountDetailsSession";
         public readonly static string menuSession = "SystemMenusSession";
+        public readonly static string provinceCache = "ProvinceCache";
+        public readonly static string cityCache = "CityCache";
+        public readonly static string countryCache = "CountryCache";
     }
 }
