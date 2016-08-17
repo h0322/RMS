@@ -19,7 +19,7 @@
                 border: true,
                 collapsible: true,//是否可折叠的  
                 fit: true,//自动大小  
-                url: '/Account/QueryAccountToGrid',
+                url: '/Account/QueryAccountToGrid@(ViewBag.personId)',
                 idField: 'rows.accountId',
                 singleSelect: false,//是否单选  
                 loadMsg: "正在加载，请稍等...",

@@ -35,11 +35,6 @@ namespace HH.RMS.MVC.Controllers
         [HttpPost]
         public JsonResult QueryAccountToGrid(PagerModel pagerModel)
         {
-            if (Request.QueryString["personid"] != null)
-            {
-                pagerModel.personId = Convert.ToInt64(Request.QueryString["personid"]);
-            }
-
             pagerModel.searchText = searchText;
             pagerModel.searchType = searchType;
             pagerModel.searchDateFrom = searchDateFrom;

@@ -18,3 +18,4 @@ E:\Programs\HH.RMS\HH.RMS\01.HH.RMS\HH.RMS.Console\bin\Debug\HH.RMS.Console.exe
 E:\Programs\HH.RMS\HH.RMS\01.HH.RMS\HH.RMS.Console\bin\Debug\HH.RMS.Console.pdb
 E:\Programs\HH.RMS\HH.RMS\01.HH.RMS\HH.RMS.Console\obj\Debug\HH.RMS.Console.exe
 E:\Programs\HH.RMS\HH.RMS\01.HH.RMS\HH.RMS.Console\obj\Debug\HH.RMS.Console.pdb
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Console\obj\Debug\HH.RMS.Consoles.csprojResolveAssemblyReference.cache
