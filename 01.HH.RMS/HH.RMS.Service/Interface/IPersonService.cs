@@ -1,4 +1,5 @@
-﻿using HH.RMS.Entity;
+﻿using HH.RMS.Common.Constant;
+using HH.RMS.Entity;
 using HH.RMS.Model;
 using System;
 using System.Collections.Generic;
@@ -11,5 +12,6 @@ namespace HH.RMS.Service.Interface
     public interface IPersonService
     {
         GridModel QueryPersonToGrid(PagerModel pager);
+        ResultModel<ResultType> CreatePersonAccount(AccountModel model);
     }
 }

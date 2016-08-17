@@ -29,12 +29,17 @@ namespace HH.RMS.MVC.Controllers
         }
         public ActionResult Index()
         {
-
+            ViewBag.RoleList = _roleService.QueryRoleList();
             return View();
         }
         [HttpPost]
         public JsonResult QueryAccountToGrid(PagerModel pagerModel)
         {
+            if (Request.QueryString["personid"] != null)
+            {
+                pagerModel.personId = Convert.ToInt64(Request.QueryString["personid"]);
+            }
+
             pagerModel.searchText = searchText;
             pagerModel.searchType = searchType;
             pagerModel.searchDateFrom = searchDateFrom;
@@ -79,5 +84,6 @@ namespace HH.RMS.MVC.Controllers
             roleList.ForEach(m => selectList.Add(new SelectModel() { text = m.roleName, value = m.roleId.ToString() }));
             return Json(selectList, JsonRequestBehavior.AllowGet);
         }
+
     }
 }

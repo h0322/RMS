@@ -42,24 +42,39 @@ namespace HH.RMS.Service
             {
                 using (var db = new ApplicationDbContext())
                 {
-                    var account = _accountRepository.Find(db, id);
-                    if (account == null)
-                    {
-                        return null;
-                    }
-                    AccountModel model = new AccountModel()
-                    {
-                        accountId = account.id,
-                        accountName = account.accountName,
-                        level = account.level,
-                        score = account.score,
-                        amount = account.amount,
-                        statusType = account.status,
-                        remark = account.remark,
-                        
-                        person = new PersonModel() { personId = account.personId}
+                    var q = from a in _accountRepository.Query(db)
+                            join b in _accountRoleRepository.Query(db) on a.id equals b.accountId
+                            join c in _roleRepository.Query(db) on b.roleId equals c.id
+                            where a.id == id
+                            select new
+                            {
+                                accountId = a.id,
+                                accountName = a.accountName,
+                                level = a.level,
+                                score = a.score,
+                                amount = a.amount,
+                                statusType = a.status,
+                                remark = a.remark,
+                                person = new PersonModel() { personId = a.personId},
+                                role = new RoleModel(){roleId = b.roleId, roleName = c.roleName}
+                            };
+                    var list = q.ToList();
+                    List<long> roleList = new List<long>();
+                    list.ForEach(m=>roleList.Add(m.role.roleId));
+                    var def = list.FirstOrDefault();
+
+                    AccountModel account = new AccountModel(){
+                                accountId = def.accountId,
+                                accountName = def.accountName,
+                                level = def.level,
+                                score = def.score,
+                                amount = def.amount,
+                                statusType = def.statusType,
+                                remark = def.remark,
+                                person = new PersonModel() { personId = def.person.personId},
+                                roles =roleList.ToArray()
                     };
-                    return model;
+                    return account;
                 }
             }
             catch (Exception ex)
@@ -72,7 +87,7 @@ namespace HH.RMS.Service
         {
             try
             {
-                AccountEntity entity = new AccountEntity()
+                AccountEntity account = new AccountEntity()
                 {
                     accountName = model.accountName,
                     password = model.password,
@@ -82,10 +97,12 @@ namespace HH.RMS.Service
                     status = model.statusType,
                     remark = model.remark
                 };
+
                 using (var db = new ApplicationDbContext())
                 {
-                    _accountRepository.Insert(db, entity);
+                    _accountRepository.Insert(db, account);
                 }
+
                 return ResultType.Success;
             }
             catch (Exception ex)
@@ -111,6 +128,8 @@ namespace HH.RMS.Service
                             && (pager.searchStatus == 0 || a.status == (AccountStatusType)pager.searchStatus)
                             && (pager.searchDateFrom == null || a.createTime > pager.searchDateFrom)
                             && (pager.searchDateTo == null || a.createTime < pager.searchDateTo)
+                            && (pager.searchRole == 0 || b.roleId == pager.searchRole)
+                            && (pager.personId > 0 || d.id == pager.personId)
                             select new AccountModel()
                             {
                                 accountId = a.id,
@@ -183,7 +202,6 @@ namespace HH.RMS.Service
                 {
                     _accountRepository.Update(db, m => new AccountEntity()
                     {
-                        accountName = model.accountName,
                         level = model.level,
                         score = model.score,
                         amount = model.amount,
@@ -194,6 +212,20 @@ namespace HH.RMS.Service
                     },
                     m => m.id == model.accountId
                     );
+                    _accountRoleRepository.Update(db, m => new AccountRoleEntity()
+                    {
+                        isActive = false
+                    },
+                    m=>m.accountId == model.accountId);
+                    foreach (var role in model.roles)
+                    {
+                        AccountRoleEntity accountRole = new AccountRoleEntity()
+                        {
+                            accountId = model.accountId,
+                            roleId = role
+                        };
+                        _accountRoleRepository.Insert(db, accountRole);
+                    }
                 }
                 return ResultType.Success;
             }

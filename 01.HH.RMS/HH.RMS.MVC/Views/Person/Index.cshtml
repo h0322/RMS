@@ -57,11 +57,11 @@
                     },
                     {
                         field: 'edit', title: '操作', width: 100, align: 'center', formatter: function (value, row) {
-                            return "<a style='color:blue;cursor:pointer' onclick='javascript:edit(" + row.accountId + ")'>编辑</a>";
+                            return "<a style='color:blue;cursor:pointer' onclick='javascript:edit(" + row.personId + ")'>编辑</a>&nbsp;&nbsp;<a style='color:blue;cursor:pointer' onclick='javascript:ManageAccount(" + row.personId + ")'>账号管理</a>";
                         }
                     }
                 ]] ,
-                toolbar:'#toolbar'
+                toolbar:'#toolbar',
             });
         });
 
@@ -86,28 +86,17 @@
         {
             $("#dlgAdd").dialog('open');
         }
-        function Save()
+        function AddSave()
         {
-            var data = $("#from_account").serialize();
-            var accountId = $("#accountId").val();
-            var url = "";
-            if (accountId > 0) {
-                url = "/Account/UpdateAccount";
-            }
-            else {
-                url = "/Account/SaveAccount";
-            }
-            $.post(url, data, function (d) {
-                if (d.result == "@((int)ResultType.Success)") {
-                    alert("保存成功")
-                }
-                else {
-                    alert("保存失败")
-                }
+            var data = $("#from_addPerson").serialize();
+            $.post("/Person/CreatePersonAccount", data, function (d) {
 
-            })
+            });
         }
-
+        function ManageAccount(id)
+        {
+            location.href = "/Account/Index?personId="+id;
+        }
         function del()
         {
             var rows = $('#accountList').datagrid('getSelections')
@@ -124,7 +113,7 @@
                 alert("删除成功");
             },"json")
         }
-        function cancel()
+        function AddCancel()
         {
             $('#dlgAdd').dialog('close');
         }

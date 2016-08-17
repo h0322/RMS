@@ -34,6 +34,19 @@ namespace HH.RMS.Model
             }
             this.remark = remark;
         }
+        public ResultModel(ResultType type, string msg = "", string remark = "")
+        {
+            resultType = type;
+            if (string.IsNullOrEmpty(msg))
+            {
+                resultMsg = type.ToString();
+            }
+            else
+            {
+                resultMsg = msg;
+            }
+            this.remark = remark;
+        }
 
     }
 }

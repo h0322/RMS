@@ -65,6 +65,7 @@
         function edit(accountId)
         {
             //var row = $('#accountList').datagrid('getSelected');
+            $("#from_account")[0].reset();
             $("#accountList").datagrid('uncheckAll');
             $(".panel-title panel-with-icon").text("修改账户信息");
             $.post("/Account/QueryAccountById", { id: accountId }, function (d) {
@@ -76,6 +77,14 @@
                 $('#statusType').combobox('setValue', d.statusType);
                 $('#dlgAdd').dialog('open');
                 $('#accountName').textbox('disable');
+                $('#li_role').find("input").each(function () {
+                    for (var i = 0; i < d.roles.length; i++)
+                    {
+                        if (d.roles[i] == this.value) {
+                            this.checked = true;
+                        }
+                    }
+                })
             }, "json")
             
         }
@@ -122,15 +131,16 @@
             $('#dlgAdd').dialog('close');
         }
         $("#btn_search").click(function () {
-            var search = $("#txt_search").val();
-            var status = $("#sel_status").combobox('getValue');
-            var dateFrom = $("#date_from").datebox('getValue');
-            var dateTo = $("#date_to").datebox('getValue');
+            var search = $("#search_txt_text").val();
+            var status = $("#search_sel_status").combobox('getValue');
+            var dateFrom = $("#search_date_from").datebox('getValue');
+            var dateTo = $("#search_date_to").datebox('getValue');
+            var role = $("#search_sel_role").datebox('getValue');
             if (search != "")
                 $.cookie("searchText", search, { path: "/" });
             else
                 $.cookie("searchText", null, { path: "/" });
-            if (status != "")
+            if (status >0)
                 $.cookie("searchStatus", status, { path: "/" });
             else
                 $.cookie("searchStatus", null, { path: "/" });
@@ -142,9 +152,21 @@
                 $.cookie("searchDateTo", dateTo, { path: "/" });
             else
                 $.cookie("searchDateTo", null, { path: "/" });
+            if (role > 0)
+                $.cookie("searchRole", role, { path: "/" });
+            else
+                $.cookie("searchRole", role, { path: "/" });
             $("#accountList").datagrid();
         });
-        $("#sel_search_role").combobox({
+        $("#search_sel_role").combobox({
+            url: '/Account/QueryRoleList',
+            valueField: 'value',
+            textField: 'text',
+            required: false,
+            editable: false,
+            value: 0
+        });
+        $("#sel_roleId").combobox({
             url: '/Account/QueryRoleList',
             valueField: 'value',
             textField: 'text',
@@ -158,45 +180,20 @@
     <table class="easyui-datagrid" id="accountList" style="width:600px; height:200px;"></table>
 </div>
 
-<div id="dlgAdd" class="easyui-dialog" title="添加账户" closed="true" style="width:300px" data-options=" iconCls: 'icon-save',	buttons: [{	text:'保存',	iconCls:'icon-ok',	handler:Save},{text:'取消',iconCls:'icon-cancel',handler:cancel}]">
-    <div title="Register" style="width:98%;">
-        <form id="from_account">
-            <input type="hidden" name="accountId" id="accountId" />
-            <ul><li style="width:30%">账户名称:</li><li style="width:60%"><input id="accountName" name="accountName" class="easyui-textbox"></li></ul>@*data-options="prompt:'Enter a email address...',validType:'email'"*@
-            <ul><li style="width:30%">积分:</li><li style="width:60%"><input id="score" name="score" class="easyui-numberbox"></li></ul>
-            <ul><li style="width:30%">充值:</li><li style="width:60%"><input id="amount" name="amount" class="easyui-numberbox"></li></ul>
-            <ul>
-                <li style="width:30%">等级:</li>
-                <li style="width:60%">
-                    <select id="level" class="easyui-combobox" name="level">
-                        <option value="1">level1</option>
-                        <option value="2">level2</option>
-                    </select>
-                </li>
-            </ul>
-            <ul>
-                <li style="width:30%">状态:</li>
-                <li style="width:60%">
-                    <select id="statusType" class="easyui-combobox" name="statusType">
-                        <option value="1">Normal</option>
-                        <option value="2">Disable</option>
-                        <option value="3">Black</option>
-                    </select>
-                </li>
-            </ul>
-        </form>
-    </div>
-</div>
-
-
+@Html.Partial("_UpdatePartial")
 <div id="toolbar" style="padding:5px;height:auto">
     <div><a href="#" class="easyui-linkbutton" iconcls="icon-remove" plain="true" onclick="del()">删除</a> &nbsp;
-            From: <input class="easyui-datebox" style="width:80px" id="date_from">
-            To: <input class="easyui-datebox" style="width:80px" id="date_to">
-        状态:
-        <select class="easyui-combobox" panelheight="auto" style="width:100px" id="sel_search_role">
+            From: <input class="easyui-datebox" style="width:80px" id="search_date_from">
+            To: <input class="easyui-datebox" style="width:80px" id="search_date_to">
+        角色:
+        <select class="easyui-combobox" panelheight="auto" style="width:100px" id="search_sel_role"></select>
+       状态
+        <select id="search_sel_statusType" class="easyui-combobox" name="statusType">
+            <option value="1">Normal</option>
+            <option value="2">Disable</option>
+            <option value="3">Black</option>
         </select>
-        <input class="easyui-textbox" id="txt_search" />
+        <input class="easyui-textbox" id="search_txt_text" />
         <a href="#" class="easyui-linkbutton" iconcls="icon-search" id="btn_search">Search</a>
     </div>
 </div>

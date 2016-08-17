@@ -37,6 +37,8 @@ function ClearSearchCookie() {
     $.cookie("searchDateFrom", "", { path: "/" });
     $.cookie("searchDateTo", "", { path: "/" });
     $.cookie("searchType", "", { path: "/" });
+    $.cookie("searchRole", "", { path: "/" });
+    $.cookie("searchId", "", { path: "/" });
 }
 function GetSexDescription(sex)
 {

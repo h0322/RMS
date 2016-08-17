@@ -26,6 +26,7 @@ namespace HH.RMS.Model
         public decimal amount { get; set; }
         public string remark { get; set; }
         public RoleType roleType { get; set; }
+        public long[] roles { get; set; }
         public override string ToString()
         {
             return JsonConvert.SerializeObject(this);

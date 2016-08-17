@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 
 namespace HH.RMS.Service
 {
@@ -18,8 +19,12 @@ namespace HH.RMS.Service
         private IRepository<CountryEntity> _countryRepository;
         private IRepository<ProvinceEntity> _provinceRepository;
         private IRepository<CityEntity> _cityRepository;
-        public PersonService(IRepository<PersonEntity> personRepository, IRepository<CountryEntity> countryRepository, IRepository<ProvinceEntity> provinceRepository, IRepository<CityEntity> cityRepository)
+        private IRepository<AccountEntity> _accountRepository;
+        private IRepository<AccountRoleEntity> _accountRoleRepository;
+        public PersonService(IRepository<AccountRoleEntity> accountRoleRepository, IRepository<AccountEntity> accountRepository, IRepository<PersonEntity> personRepository, IRepository<CountryEntity> countryRepository, IRepository<ProvinceEntity> provinceRepository, IRepository<CityEntity> cityRepository)
         {
+            _accountRoleRepository = accountRoleRepository;
+            _accountRepository = accountRepository;
             _personRepository = personRepository;
             _countryRepository = countryRepository;
             _provinceRepository = provinceRepository;
@@ -80,6 +85,74 @@ namespace HH.RMS.Service
 
             //return _personRepository.Query().Where(m=>m.id==id).FirstOrDefault();
             return null;
+        }
+
+        public ResultModel<ResultType> CreatePersonAccount(AccountModel model)
+        {
+            using (var db = new ApplicationDbContext())
+            {
+                try
+                {
+                    using (TransactionScope transaction = new TransactionScope())
+                    {
+                        PersonEntity person = new PersonEntity()
+                        {
+                            name = model.person.name,
+                            nickName = model.person.nickName,
+                            address = model.person.address,
+                            birthday = model.person.birthday,
+                            cityId = model.person.cityId,
+                            countryId = model.person.countryId,
+                            email = model.person.email,
+                            mobile = model.person.mobile,
+                            provinceId = model.person.provinceId,
+                            remark = model.person.remark,
+                            sex = model.person.sex,
+                        };
+                        _personRepository.Insert(db, person);
+                        if (person.id < 1)
+                        {
+                            return new ResultModel<ResultType>(ResultType.NotExecute,  "Person Insert Fail");
+                        }
+                        AccountEntity account = new AccountEntity()
+                        {
+                            personId = person.id,
+                            accountName = model.accountName,
+                            amount = model.amount,
+                            level = model.level,
+                            password = model.password,
+                            remark = model.remark,
+                            score = model.score,
+                            status = model.statusType,
+                        };
+                        _accountRepository.Insert(db, account);
+                        if (person.id < 1)
+                        {
+                            return new ResultModel<ResultType>(ResultType.NotExecute, "Account Insert Fail");
+                        }
+                        foreach (var role in model.roles)
+                        {
+                            AccountRoleEntity accountRole = new AccountRoleEntity()
+                            {
+                                accountId = account.id,
+                                roleId = role
+                            };
+                            _accountRoleRepository.Insert(db, accountRole);
+                        }
+                        if (person.id < 1)
+                        {
+                            return new ResultModel<ResultType>(ResultType.NotExecute, "Account Role Insert Fail");
+                        }
+                        transaction.Complete();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    log.Error("PersonService.CreatePersonAccount", ex);
+                    return new ResultModel<ResultType>(ResultType.SystemError);
+                }
+            }
+            return new ResultModel<ResultType>(ResultType.Success);
         }
     }
 }

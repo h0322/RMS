@@ -67,6 +67,29 @@ namespace HH.RMS.Service
                 return Convert.ToInt32(Request.Cookies.Get("searchType").Value);
             }
         }
+        public int searchRole
+        {
+            get
+            {
+                if (Request.Cookies.Get("searchRole") == null || string.IsNullOrEmpty(Request.Cookies.Get("searchRole").Value))
+                {
+                    return 0;
+                }
+                return Convert.ToInt32(Request.Cookies.Get("searchRole").Value);
+            }
+        }
+
+        public int searchId
+        {
+            get
+            {
+                if (Request.Cookies.Get("searchId") == null || string.IsNullOrEmpty(Request.Cookies.Get("searchId").Value))
+                {
+                    return 0;
+                }
+                return Convert.ToInt32(Request.Cookies.Get("searchId").Value);
+            }
+        }
         //protected PagerModel pagerModel=new PagerModel();
         public ControllerService()
         {

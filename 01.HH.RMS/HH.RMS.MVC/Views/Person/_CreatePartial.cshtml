@@ -1,6 +1,6 @@
-﻿<div id="dlgAdd" class="easyui-dialog" title="添加新用户" closed="true" style="width:600px" data-options=" iconCls: 'icon-save',	buttons: [{	text:'保存',	iconCls:'icon-ok',	handler:Save},{text:'取消',iconCls:'icon-cancel',handler:cancel}]">
+﻿<div id="dlgAdd" class="easyui-dialog" title="添加新用户" closed="true" style="width:600px" data-options=" iconCls: 'icon-save',	buttons: [{	text:'保存',	iconCls:'icon-ok',	handler:AddSave},{text:'取消',iconCls:'icon-cancel',handler:AddCancel}]">
     <div title="Register" style="width:98%;">
-        <form id="from_account">
+        <form id="from_addPerson">
             <ul><li style="width:20%">账户名称:</li><li style="width:60%"><input id="txt_accountName" name="accountName" class="easyui-textbox"></li></ul>@*data-options="prompt:'Enter a email address...',validType:'email'"*@
             <ul><li style="width:20%">积分:</li><li style="width:60%"><input id="txt_score" name="score" class="easyui-numberbox"></li></ul>
             <ul><li style="width:20%">充值:</li><li style="width:60%"><input id="txt_amount" name="amount" class="easyui-numberbox"></li></ul>
@@ -26,23 +26,30 @@
             <ul>
                 <li style="width:20%">角色:</li>
                 <li style="width:60%">
-                    <select id="sel_roleType" class="easyui-combobox" name="roleType" style="width:100px">
-                    </select>
+                    @if (ViewBag.RoleList != null)
+                    {
+                        var roleList = (List<RoleModel>)ViewBag.RoleList;
+                        for (int i = 0; i < roleList.Count; i++)
+                        {
+                            <input name="roles" type="checkbox" value="@roleList[i].roleId" /> @roleList[i].roleName
+                        }
+                    }
                 </li>
             </ul>
             <ul><li style="width:100%">&nbsp;</li></ul>
-            <ul><li style="width:20%">姓名:</li><li style="width:60%"><input id="txt_name" name="name" class="easyui-textbox"></li></ul>@*data-options="prompt:'Enter a email address...',validType:'email'"*@
-            <ul><li style="width:20%">昵称:</li><li style="width:60%"><input id="txt_nickName" name="nickName" class="easyui-textbox"></li></ul>
-            <ul><li style="width:20%">手机:</li><li style="width:60%"><input id="txt_mobile" name="mobile" class="easyui-textbox"></li></ul>
-            <ul><li style="width:20%">邮箱:</li><li style="width:60%"><input id="txt_email" name="email" class="easyui-textbox"></li></ul>
-            <ul><li style="width:20%">性别:</li><li style="width:60%"><input id="rad_man" type="radio" name="sex" value="1">男&nbsp;<input id="rad_female" type="radio" name="sex" value="0">女</li></ul>
-            <ul><li style="width:20%">省:</li><li style="width:60%"><select id="sel_province" class="easyui-combobox" name="provinceId" style="width:100px;"></select></li></ul>
-            <ul><li style="width:20%">市:</li><li style="width:60%"><select id="sel_city" class="easyui-combobox" name="cityId"><option value="0">---请选择---</option></select></li></ul>
-            <ul><li style="width:20%">详细地址:</li><li style="width:60%"><input id="txt_address" name="address" class="easyui-textbox" style="width:400px;"></li></ul>
+            <ul><li style="width:20%">姓名:</li><li style="width:60%"><input id="txt_name" name="person.name" class="easyui-textbox"></li></ul>@*data-options="prompt:'Enter a email address...',validType:'email'"*@
+            <ul><li style="width:20%">昵称:</li><li style="width:60%"><input id="txt_nickName" name="person.nickName" class="easyui-textbox"></li></ul>
+            <ul><li style="width:20%">手机:</li><li style="width:60%"><input id="txt_mobile" name="person.mobile" class="easyui-textbox"></li></ul>
+            <ul><li style="width:20%">邮箱:</li><li style="width:60%"><input id="txt_email" name="person.email" class="easyui-textbox"></li></ul>
+            <ul><li style="width:20%">生日:</li><li style="width:60%"><input id="txt_email" name="person.birthday" class="easyui-datebox"></li></ul>
+            <ul><li style="width:20%">性别:</li><li style="width:60%"><input id="rad_man" type="radio" name="person.sex" value="1">男&nbsp;<input id="rad_female" type="radio" name="person.sex" value="0">女</li></ul>
+            <ul><li style="width:20%">省:</li><li style="width:60%"><input id="txt_country" name="person.countryId" type="hidden" value="1" ><select id="sel_province" class="easyui-combobox" name="person.provinceId" style="width:100px;"></select></li></ul>
+            <ul><li style="width:20%">市:</li><li style="width:60%"><select id="sel_city" class="easyui-combobox" name="person.cityId"><option value="0">---请选择---</option></select></li></ul>
+            <ul><li style="width:20%">详细地址:</li><li style="width:60%"><input id="txt_address" name="person.address" class="easyui-textbox" style="width:400px;"></li></ul>
             <ul>
                 <li style="width:20%">备注:</li>
                 <li style="width:60%">
-                    <input id="txt_remark" name="email" class="easyui-textbox" style="width:400px;">
+                    <input id="txt_remark" name="person.remark" class="easyui-textbox" style="width:400px;">
                 </li>
             </ul>
         </form>

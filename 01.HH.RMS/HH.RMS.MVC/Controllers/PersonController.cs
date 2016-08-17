@@ -1,4 +1,5 @@
-﻿using HH.RMS.Model;
+﻿using HH.RMS.Common.Constant;
+using HH.RMS.Model;
 using HH.RMS.Service;
 using HH.RMS.Service.Interface;
 using System;
@@ -27,6 +28,7 @@ namespace HH.RMS.MVC.Controllers
         }
         public ActionResult Index()
         {
+            ViewBag.RoleList = _roleService.QueryRoleList();
             return View();
         }
         [HttpPost]
@@ -64,6 +66,11 @@ namespace HH.RMS.MVC.Controllers
             selectList.Add(new SelectModel() { text = "---请选择---", value = "0" });
             roleList.ForEach(m => selectList.Add(new SelectModel() { text = m.roleName, value = m.roleId.ToString() }));
             return Json(selectList, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult CreatePersonAccount(AccountModel model)
+        {
+            ResultModel<ResultType> result =  _personService.CreatePersonAccount(model);
+            return Json(result);
         }
     }
 }

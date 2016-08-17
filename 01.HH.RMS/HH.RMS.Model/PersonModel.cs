@@ -22,6 +22,7 @@ namespace HH.RMS.Model
         public string cityName { get; set; }
         public long countryId { get; set; }
         public string countryDescription { get; set; }
+        public string address { get; set; }
         public string birthday { get; set; }
         public SexType sex { get; set; }
         public string mobile { get; set; }
