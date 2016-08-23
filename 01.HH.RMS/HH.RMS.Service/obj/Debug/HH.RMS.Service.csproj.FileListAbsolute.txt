@@ -82,7 +82,6 @@ E:\Programs\HH.RMS\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\Microsoft.Practices
 E:\Programs\HH.RMS\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\Microsoft.Practices.Unity.Configuration.xml
 E:\Programs\HH.RMS\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\Microsoft.Practices.Unity.RegistrationByConvention.xml
 E:\Programs\HH.RMS\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\Newtonsoft.Json.xml
-D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\obj\Debug\HH.RMS.Service.csprojResolveAssemblyReference.cache
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\HH.RMS.Service.dll.config
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\HH.RMS.Service.dll
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\HH.RMS.Service.pdb
@@ -113,5 +112,6 @@ D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\Microsoft.Practices.Unit
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\Microsoft.Practices.Unity.RegistrationByConvention.xml
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\Newtonsoft.Json.xml
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\EntityFramework.Extended.xml
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\obj\Debug\HH.RMS.Service.csprojResolveAssemblyReference.cache
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\obj\Debug\HH.RMS.Service.dll
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\obj\Debug\HH.RMS.Service.pdb

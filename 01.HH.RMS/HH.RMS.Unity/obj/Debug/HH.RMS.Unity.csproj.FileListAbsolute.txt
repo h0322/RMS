@@ -88,7 +88,6 @@ E:\Programs\HH.RMS\HH.RMS\01.HH.RMS\HH.RMS.Unity\obj\Debug\HH.RMS.Unity.dll
 E:\Programs\HH.RMS\HH.RMS\01.HH.RMS\HH.RMS.Unity\obj\Debug\HH.RMS.Unity.pdb
 E:\Programs\HH.RMS\HH.RMS\01.HH.RMS\HH.RMS.Unity\bin\Debug\HH.RMS.Service.dll
 E:\Programs\HH.RMS\HH.RMS\01.HH.RMS\HH.RMS.Unity\bin\Debug\HH.RMS.Service.pdb
-D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Unity\obj\Debug\HH.RMS.Unity.csprojResolveAssemblyReference.cache
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Unity\bin\Debug\HH.RMS.Unity.dll
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Unity\bin\Debug\HH.RMS.Unity.pdb
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Unity\bin\Debug\EntityFramework.dll
@@ -118,5 +117,6 @@ D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Unity\bin\Debug\Microsoft.Practices.Unity.
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Unity\bin\Debug\HH.RMS.Model.pdb
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Unity\bin\Debug\log4net.xml
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Unity\bin\Debug\EntityFramework.Extended.xml
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Unity\obj\Debug\HH.RMS.Unity.csprojResolveAssemblyReference.cache
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Unity\obj\Debug\HH.RMS.Unity.dll
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Unity\obj\Debug\HH.RMS.Unity.pdb

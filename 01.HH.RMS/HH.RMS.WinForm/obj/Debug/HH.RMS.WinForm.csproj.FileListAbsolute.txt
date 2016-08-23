@@ -12,13 +12,6 @@ E:\Programs\HH.RMS\HH.RMS\HH.RMS.WinForm\obj\Debug\HH.RMS.WinForm.Properties.Res
 E:\Programs\HH.RMS\HH.RMS\HH.RMS.WinForm\obj\Debug\HH.RMS.WinForm.csproj.GenerateResource.Cache
 E:\Programs\HH.RMS\HH.RMS\HH.RMS.WinForm\obj\Debug\HH.RMS.WinForm.exe
 E:\Programs\HH.RMS\HH.RMS\HH.RMS.WinForm\obj\Debug\HH.RMS.WinForm.pdb
-D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.WinForm\bin\Debug\HH.RMS.WinForm.exe.config
-D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.WinForm\bin\Debug\HH.RMS.WinForm.exe
-D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.WinForm\bin\Debug\HH.RMS.WinForm.pdb
-D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.WinForm\obj\Debug\HH.RMS.WinForm.Properties.Resources.resources
-D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.WinForm\obj\Debug\HH.RMS.WinForm.csproj.GenerateResource.Cache
-D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.WinForm\obj\Debug\HH.RMS.WinForm.exe
-D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.WinForm\obj\Debug\HH.RMS.WinForm.pdb
 E:\Programs\HH.RMS\HH.RMS\01.HH.RMS\HH.RMS.WinForm\bin\Debug\HH.RMS.WinForm.exe.config
 E:\Programs\HH.RMS\HH.RMS\01.HH.RMS\HH.RMS.WinForm\bin\Debug\HH.RMS.WinForm.exe
 E:\Programs\HH.RMS\HH.RMS\01.HH.RMS\HH.RMS.WinForm\bin\Debug\HH.RMS.WinForm.pdb
@@ -27,4 +20,10 @@ E:\Programs\HH.RMS\HH.RMS\01.HH.RMS\HH.RMS.WinForm\obj\Debug\HH.RMS.WinForm.cspr
 E:\Programs\HH.RMS\HH.RMS\01.HH.RMS\HH.RMS.WinForm\obj\Debug\HH.RMS.WinForm.exe
 E:\Programs\HH.RMS\HH.RMS\01.HH.RMS\HH.RMS.WinForm\obj\Debug\HH.RMS.WinForm.pdb
 E:\Programs\HH.RMS\HH.RMS\01.HH.RMS\HH.RMS.WinForm\obj\Debug\HH.RMS.WinForm.csprojResolveAssemblyReference.cache
-D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.WinForm\obj\Debug\HH.RMS.WinForm.csprojResolveAssemblyReference.cache
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.WinForm\bin\Debug\HH.RMS.WinForm.exe.config
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.WinForm\bin\Debug\HH.RMS.WinForm.exe
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.WinForm\bin\Debug\HH.RMS.WinForm.pdb
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.WinForm\obj\Debug\HH.RMS.WinForm.Properties.Resources.resources
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.WinForm\obj\Debug\HH.RMS.WinForm.csproj.GenerateResource.Cache
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.WinForm\obj\Debug\HH.RMS.WinForm.exe
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.WinForm\obj\Debug\HH.RMS.WinForm.pdb

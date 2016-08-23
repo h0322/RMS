@@ -112,6 +112,7 @@ namespace HH.RMS.Service
             }
         }
 
+
         public GridModel QueryAccountToGridByRole(PagerModel pager = null)
         {
             int roleOrder = AccountDetailModel.loginSession.roleList.Max(m=>m.roleOrder);

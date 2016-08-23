@@ -228,7 +228,6 @@ E:\Programs\HH.RMS\HH.RMS\01.HH.RMS\HH.RMS.MVC\bin\Common.Logging.Core.pdb
 E:\Programs\HH.RMS\HH.RMS\01.HH.RMS\HH.RMS.MVC\bin\Common.Logging.Core.xml
 E:\Programs\HH.RMS\HH.RMS\01.HH.RMS\HH.RMS.MVC\bin\Common.Logging.pdb
 E:\Programs\HH.RMS\HH.RMS\01.HH.RMS\HH.RMS.MVC\bin\Common.Logging.xml
-D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.MVC\obj\Debug\HH.RMS.MVC.csprojResolveAssemblyReference.cache
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.MVC\bin\HH.RMS.MVC.dll.config
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.MVC\bin\HH.RMS.MVC.dll
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.MVC\bin\HH.RMS.MVC.pdb
@@ -294,5 +293,6 @@ D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.MVC\bin\Common.Logging.Core.xml
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.MVC\bin\Common.Logging.pdb
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.MVC\bin\Common.Logging.xml
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.MVC\bin\EntityFramework.Extended.xml
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.MVC\obj\Debug\HH.RMS.MVC.csprojResolveAssemblyReference.cache
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.MVC\obj\Debug\HH.RMS.MVC.dll
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.MVC\obj\Debug\HH.RMS.MVC.pdb

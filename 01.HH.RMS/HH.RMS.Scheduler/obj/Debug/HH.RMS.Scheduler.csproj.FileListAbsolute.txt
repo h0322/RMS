@@ -100,7 +100,6 @@ E:\Programs\HH.RMS\HH.RMS\01.HH.RMS\HH.RMS.Scheduler\bin\Debug\Microsoft.Practic
 E:\Programs\HH.RMS\HH.RMS\01.HH.RMS\HH.RMS.Scheduler\obj\Debug\HH.RMS.Scheduler.csprojResolveAssemblyReference.cache
 E:\Programs\HH.RMS\HH.RMS\01.HH.RMS\HH.RMS.Scheduler\obj\Debug\HH.RMS.Scheduler.dll
 E:\Programs\HH.RMS\HH.RMS\01.HH.RMS\HH.RMS.Scheduler\obj\Debug\HH.RMS.Scheduler.pdb
-D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Scheduler\obj\Debug\HH.RMS.Scheduler.csprojResolveAssemblyReference.cache
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Scheduler\bin\Debug\HH.RMS.Scheduler.dll
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Scheduler\bin\Debug\HH.RMS.Scheduler.pdb
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Scheduler\bin\Debug\Common.Logging.Core.dll
@@ -139,5 +138,6 @@ D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Scheduler\bin\Debug\EntityFramework.xml
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Scheduler\bin\Debug\EntityFramework.Extended.xml
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Scheduler\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Scheduler\bin\Debug\Microsoft.Practices.ServiceLocation.xml
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Scheduler\obj\Debug\HH.RMS.Scheduler.csprojResolveAssemblyReference.cache
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Scheduler\obj\Debug\HH.RMS.Scheduler.dll
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Scheduler\obj\Debug\HH.RMS.Scheduler.pdb
