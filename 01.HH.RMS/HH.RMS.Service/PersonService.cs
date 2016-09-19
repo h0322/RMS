@@ -126,7 +126,7 @@ namespace HH.RMS.Service
                             status = model.statusType,
                         };
                         _accountRepository.Insert(db, account);
-                        if (person.id < 1)
+                        if (account.id < 1)
                         {
                             return new ResultModel<ResultType>(ResultType.NotExecute, "Account Insert Fail");
                         }

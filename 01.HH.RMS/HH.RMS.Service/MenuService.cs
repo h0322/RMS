@@ -62,14 +62,14 @@ namespace HH.RMS.Service
             {
                 return null;
             }
-            List<long> roleList = AccountDetailModel.loginSession.roleList.Select(m => m.roleId).ToList();
+            long roleId = AccountDetailModel.loginSession.role.roleId;
             var loginSession = AccountDetailModel.loginSession;
             using(var db = new ApplicationDbContext())
             {
                 var q = (from a in _menuRepository.Query(db)
                          join b in _menuRoleRepository.Query(db) on a.id equals b.menuId into t1
                          from t in t1.DefaultIfEmpty()
-                         where roleList.Contains(t.roleId) || roleList.Contains((int)RoleType.Admin)
+                         where (t.roleId == roleId || roleId == (int)RoleType.Admin)
                          select a).Distinct();
                 return q.OrderBy(m => m.menuOrder).ToList();
             }

@@ -43,19 +43,13 @@ namespace HH.RMS.Service
                              join d in _personRepository.Query(db)
                              on a.personId equals d.id
                              where a.accountName == accountName && a.password == password && (c.roleType == RoleType.Admin || c.roleType == RoleType.SuperUser)
-                             select new
+                             select new AccountDetailModel
                              {
                                  account = new AccountModel() { accountName = a.accountName, accountId = a.id, level = a.level, score = a.score,amount = a.amount },
                                  person = new PersonModel() { name = d.name, birthday = d.birthday, cityId = d.cityId, provinceId = d.provinceId, sex = d.sex, countryId = d.countryId, personId = d.id, nickName = d.nickName },
                                  role = new RoleModel() { roleName = c.roleName, roleId = c.id, roleOrder = c.roleOrder, roleType = c.roleType },
                              });
-                    var list = q.ToList();
-                    result.resultObj = new AccountDetailModel()
-                    {
-                        account = list.FirstOrDefault().account,
-                        person = list.FirstOrDefault().person,
-                        roleList = list.Select(m => m.role).ToList()
-                    };
+                    result.resultObj = q.FirstOrDefault();
                 }
                 if (result.resultObj != null)
                 {

@@ -26,14 +26,17 @@
             <ul>
                 <li style="width:20%">角色:</li>
                 <li style="width:60%">
-                    @if (ViewBag.RoleList != null)
-                    {
-                        var roleList = (List<RoleModel>)ViewBag.RoleList;
-                        for (int i = 0; i < roleList.Count; i++)
+                    <select id="sel_Role" class="easyui-combobox" name="role">
+                        @if (ViewBag.RoleList != null)
                         {
-                            <input name="roles" type="checkbox" value="@roleList[i].roleId" /> @roleList[i].roleName
+                            var roleList = (List<RoleModel>)ViewBag.RoleList;
+                            for (int i = 0; i < roleList.Count; i++)
+                            {
+                                <option value="@roleList[i].roleId">@roleList[i].roleName</option>
+                            }
                         }
-                    }
+                    </select>
+
                 </li>
             </ul>
             <ul><li style="width:100%">&nbsp;</li></ul>

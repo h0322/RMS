@@ -115,7 +115,7 @@ namespace HH.RMS.Service
 
         public GridModel QueryAccountToGridByRole(PagerModel pager = null)
         {
-            int roleOrder = AccountDetailModel.loginSession.roleList.Max(m=>m.roleOrder);
+            int roleOrder = AccountDetailModel.loginSession.role.roleOrder;
             try
             {
                 using (var db = new ApplicationDbContext())
@@ -130,7 +130,6 @@ namespace HH.RMS.Service
                             && (pager.searchDateFrom == null || a.createTime > pager.searchDateFrom)
                             && (pager.searchDateTo == null || a.createTime < pager.searchDateTo)
                             && (pager.searchRole == 0 || b.roleId == pager.searchRole)
-                            && (pager.personId > 0 || d.id == pager.personId)
                             select new AccountModel()
                             {
                                 accountId = a.id,

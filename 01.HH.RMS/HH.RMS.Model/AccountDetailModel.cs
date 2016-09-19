@@ -12,7 +12,7 @@ namespace HH.RMS.Model
 
         public AccountModel account { get; set; }
         public PersonModel person { get; set; }
-        public List<RoleModel> roleList { get; set; }
+        public RoleModel role { get; set; }
 
         public static AccountDetailModel loginSession
         {

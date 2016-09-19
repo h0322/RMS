@@ -90,6 +90,7 @@
         }
         function Save()
         {
+            loadingBox.show("正在保存中...")
             var data = $("#from_account").serialize();
             var accountId = $("#accountId").val();
             var url = "";
@@ -106,7 +107,7 @@
                 else {
                     alert("保存失败")
                 }
-
+                loadingBox.hide();
             })
         }
 

@@ -33,7 +33,7 @@
                         var roleList = (List<RoleModel>)ViewBag.RoleList;
                         for (int i = 0; i < roleList.Count; i++)
                         {
-                            <input name="roles" type="checkbox" value="@roleList[i].roleId" /> @roleList[i].roleName
+                            <option value="@roleList[i].roleId">@roleList[i].roleName</option>
                         }
                     }
                 </li>

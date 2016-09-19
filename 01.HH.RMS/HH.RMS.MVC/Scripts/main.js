@@ -51,3 +51,65 @@ function GetSexDescription(sex)
         return "女";
     }
 }
+
+/**
+ *  页面加载等待页面
+ *
+ * @author gxjiang
+ * @date 2010/7/24
+ *
+ */
+var height = window.screen.height - 250;
+var width = window.screen.width;
+var leftW = 300;
+if (width > 1200) {
+    leftW = 500;
+} else if (width > 1000) {
+    leftW = 350;
+} else {
+    leftW = 100;
+}
+
+var loadingHtml = "<div id='div_loading' style='position:absolute;left:0;width:100%;height:" + height + "px;top:0;background:#efefef;opacity:0.8;filter:alpha(opacity=80);'>\
+ <div style='position:absolute; font-size:12px;	cursor1:wait;left:"+ leftW + "px;top:200px;width:auto;height:16px;padding:12px 5px 10px 30px;\
+ background:#fff url(/easyui/themes/default/images/loading.gif) no-repeat scroll 5px 10px;border:2px solid #ccc;color:#000;'>\
+ 正在加载，请等待...\
+ </div></div>";
+
+//window.onload = function () {
+//    var _mask = document.getElementById('div_loading');
+//    _mask.parentNode.removeChild(_mask);
+//}
+//window.onload = function () {
+//    document.write(loadingHtml);
+//}
+function AddLoading()
+{
+    if ($("#div_loading").is(":Visible"))
+    {
+        return false;
+    }
+    $("#div_loading").show();
+}
+var loadingBox = {
+    isLoading: function () {
+        if ($("#div_loading").is(":visible")) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    },
+    show: function (msg) {
+        $("body").append(loadingHtml);
+        if (typeof (msg) == "undefined")
+        {
+            msg = "正在加载，请等待...";
+        }
+        $("#div_loading").children("div").text(msg)
+    },
+    hide: function () {
+        var mask = document.getElementById('div_loading');
+        mask.parentNode.removeChild(mask);
+    }
+};
