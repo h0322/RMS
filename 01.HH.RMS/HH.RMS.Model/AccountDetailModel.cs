@@ -14,6 +14,7 @@ namespace HH.RMS.Model
         public PersonModel person { get; set; }
         public RoleModel role { get; set; }
 
+
         public static AccountDetailModel loginSession
         {
             get

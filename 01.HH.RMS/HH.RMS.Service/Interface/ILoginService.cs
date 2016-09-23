@@ -9,7 +9,7 @@ namespace HH.RMS.Service.Interface
 {
     public interface ILoginService
     {
-        ResultModel<AccountDetailModel> UserLogin(string accountName, string password);
+        ResultModel<AccountModel> UserLogin(string accountName, string password);
         void ExitLogin();
     }
 }

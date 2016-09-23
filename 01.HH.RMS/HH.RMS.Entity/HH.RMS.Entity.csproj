@@ -45,6 +45,7 @@
     <Compile Include="CountryEntity.cs" />
     <Compile Include="EntityBase.cs" />
     <Compile Include="JobEntity.cs" />
+    <Compile Include="LevelEntity.cs" />
     <Compile Include="LogEntity.cs" />
     <Compile Include="MenuEntity.cs" />
     <Compile Include="MenuRoleEntity.cs" />

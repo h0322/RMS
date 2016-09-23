@@ -49,5 +49,25 @@ namespace HH.RMS.Service
                 return null;
             }
         }
+        public List<CityModel> QueryCityListAll()
+        {
+            if (CityModel.Cache == null)
+            {
+
+                using (var db = new ApplicationDbContext())
+                {
+                    var q = from a in _cityRepository.Query(db)
+                            select new CityModel()
+                            {
+                                name = a.name,
+                                provinceId = a.provinceId,
+                                cityId = a.id,
+                                order = a.order
+                            };
+                    CacheHelper.SetCache(Config.cityCache, q.ToList());
+                }
+            }
+            return CityModel.Cache;
+        }
     }
 }

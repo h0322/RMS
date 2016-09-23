@@ -34,3 +34,10 @@ D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Model\bin\Debug\Newtonsoft.Json.xml
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Model\obj\Debug\HH.RMS.Model.csprojResolveAssemblyReference.cache
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Model\obj\Debug\HH.RMS.Model.dll
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Model\obj\Debug\HH.RMS.Model.pdb
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Model\bin\Debug\Microsoft.Practices.Unity.dll
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Model\bin\Debug\Microsoft.Practices.Unity.Configuration.dll
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Model\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Model\bin\Debug\Microsoft.Practices.Unity.xml
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Model\bin\Debug\Microsoft.Practices.Unity.Configuration.xml
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Model\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Model\bin\Debug\Microsoft.Practices.ServiceLocation.xml

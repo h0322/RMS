@@ -1,4 +1,4 @@
-﻿<div id="dlgAdd" class="easyui-dialog" title="添加新用户" closed="true" style="width:600px" data-options=" iconCls: 'icon-save',	buttons: [{	text:'保存',	iconCls:'icon-ok',	handler:AddSave},{text:'取消',iconCls:'icon-cancel',handler:AddCancel}]">
+﻿<div id="dlg_Add" class="easyui-dialog" title="添加新用户" closed="true" style="width:600px" data-options=" iconCls: 'icon-save',	buttons: [{	text:'保存',	iconCls:'icon-ok',	handler:AddSave},{text:'取消',iconCls:'icon-cancel',handler:AddCancel}]">
     <div title="Register" style="width:98%;">
         <form id="from_addPerson">
             <ul><li style="width:20%">账户名称:</li><li style="width:60%"><input id="txt_accountName" name="accountName" class="easyui-textbox"></li></ul>@*data-options="prompt:'Enter a email address...',validType:'email'"*@
@@ -26,7 +26,7 @@
             <ul>
                 <li style="width:20%">角色:</li>
                 <li style="width:60%">
-                    <select id="sel_Role" class="easyui-combobox" name="role">
+                    <select id="sel_Role" class="easyui-combobox" name="role.roleId">
                         @if (ViewBag.RoleList != null)
                         {
                             var roleList = (List<RoleModel>)ViewBag.RoleList;
@@ -58,3 +58,35 @@
         </form>
     </div>
 </div>
+@section Scripts{
+<script type="text/javascript">
+    $('#sel_province').combobox({
+        onChange: function (value, o) {
+            console.log(value)
+            console.log(o)
+            $('#sel_city').combobox({
+                url: '/Person/QueryCityByProvinceId?id=' + value,
+                valueField: 'value',
+                textField: 'text',
+                required: false,
+                editable: false,
+                value: 0
+            });
+        },
+        url: '/Person/QueryProvinceList',
+        valueField: 'value',
+        textField: 'text',
+        required: false,
+        editable: false,
+        value: 0
+    });
+    $("#sel_roleType").combobox({
+        url: '/Person/QueryRoleList',
+        valueField: 'value',
+        textField: 'text',
+        required: false,
+        editable: false,
+        value: 0
+    });
+</script>
+}

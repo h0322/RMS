@@ -80,10 +80,36 @@ namespace HH.RMS.Service
                 return null;
             }
         }
-        public PersonEntity QueryPersonById(long id)
+        public PersonModel QueryPersonById(long id)
         {
-
-            //return _personRepository.Query().Where(m=>m.id==id).FirstOrDefault();
+            PersonModel model = new PersonModel();
+            try
+            {
+                using (var db = new ApplicationDbContext())
+                {
+                    var entity = _personRepository.Find(db, id);
+                    if (entity != null)
+                    {
+                        model.personId = entity.id;
+                        model.address = entity.address;
+                        model.birthday = entity.birthday;
+                        model.cityId = entity.cityId;
+                        model.countryId = entity.countryId;
+                        model.provinceId = entity.provinceId;
+                        model.remark = entity.remark;
+                        model.sex = entity.sex;
+                        model.email = entity.email;
+                        model.mobile = entity.mobile;
+                        model.name = entity.name;
+                        model.nickName = entity.nickName;
+                    }
+                }
+                return model;
+            }
+            catch (Exception ex)
+            {
+                log.Error("PersonService.QueryPersonById", ex);
+            }
             return null;
         }
 
@@ -119,7 +145,7 @@ namespace HH.RMS.Service
                             personId = person.id,
                             accountName = model.accountName,
                             amount = model.amount,
-                            level = model.level,
+                            levelId = model.level.levelId,
                             password = model.password,
                             remark = model.remark,
                             score = model.score,
@@ -130,16 +156,13 @@ namespace HH.RMS.Service
                         {
                             return new ResultModel<ResultType>(ResultType.NotExecute, "Account Insert Fail");
                         }
-                        foreach (var role in model.roles)
+                        AccountRoleEntity accountRole = new AccountRoleEntity()
                         {
-                            AccountRoleEntity accountRole = new AccountRoleEntity()
-                            {
-                                accountId = account.id,
-                                roleId = role
-                            };
-                            _accountRoleRepository.Insert(db, accountRole);
-                        }
-                        if (person.id < 1)
+                            accountId = account.id,
+                            roleId = model.role.roleId
+                        };
+                        _accountRoleRepository.Insert(db, accountRole);
+                        if (accountRole.id < 1)
                         {
                             return new ResultModel<ResultType>(ResultType.NotExecute, "Account Role Insert Fail");
                         }
@@ -153,6 +176,40 @@ namespace HH.RMS.Service
                 }
             }
             return new ResultModel<ResultType>(ResultType.Success);
+        }
+
+        public ResultType UpdatePersonById(PersonModel model)
+        {
+            try
+            {
+                using (var db = new ApplicationDbContext())
+                {
+                    _personRepository.Update(db, m => new PersonEntity()
+                    {
+                        cityId = model.cityId,
+                        address = model.address,
+                        birthday = model.birthday,
+                        countryId = model.countryId,
+                        email = model.email,
+                        mobile = model.mobile,
+                        name = model.name,
+                        nickName = model.nickName,
+                        provinceId = model.provinceId,
+                        remark = model.remark,
+                        sex = model.sex,
+                        updateTime = DateTime.Now,
+                        updateBy = AccountModel.Session.accountId
+                    },
+                    m => m.id == model.personId
+                    );
+                }
+                return ResultType.Success;
+            }
+            catch (Exception ex)
+            {
+                log.Error("PersonService.UpdatePerson", ex);
+                return ResultType.SystemError;
+            }
         }
     }
 }

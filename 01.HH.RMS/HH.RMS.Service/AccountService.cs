@@ -28,13 +28,15 @@ namespace HH.RMS.Service
         private IRepository<AccountEntity> _accountRepository;
         private IRepository<RoleEntity> _roleRepository;
         private IRepository<AccountRoleEntity> _accountRoleRepository;
+        private IRepository<LevelEntity> _levelRepository;
         private IRepository<PersonEntity> _personRepository;
-        public AccountService(IRepository<RoleEntity> roleRepository, IRepository<AccountRoleEntity> accountRoleRepository, IRepository<AccountEntity> accountRepository, IRepository<PersonEntity> personRepository)
+        public AccountService(IRepository<LevelEntity> levelRepository,IRepository<RoleEntity> roleRepository, IRepository<AccountRoleEntity> accountRoleRepository, IRepository<AccountEntity> accountRepository, IRepository<PersonEntity> personRepository)
         {
             _roleRepository = roleRepository;
             _accountRoleRepository = accountRoleRepository;
             _accountRepository = accountRepository;
             _personRepository = personRepository;
+            _levelRepository = levelRepository;
         }
         public AccountModel QueryAccountById(long id)
         {
@@ -45,36 +47,21 @@ namespace HH.RMS.Service
                     var q = from a in _accountRepository.Query(db)
                             join b in _accountRoleRepository.Query(db) on a.id equals b.accountId
                             join c in _roleRepository.Query(db) on b.roleId equals c.id
+                            join d in _levelRepository.Query(db) on a.levelId equals d.id
                             where a.id == id
-                            select new
+                            select new AccountModel
                             {
                                 accountId = a.id,
                                 accountName = a.accountName,
-                                level = a.level,
                                 score = a.score,
                                 amount = a.amount,
                                 statusType = a.status,
                                 remark = a.remark,
-                                person = new PersonModel() { personId = a.personId},
-                                role = new RoleModel(){roleId = b.roleId, roleName = c.roleName}
+                                person = new PersonModel() { personId = a.personId },
+                                role = new RoleModel() { roleId = b.roleId, roleName = c.roleName },
+                                level = new LevelModel() { levelId = d.id, levelName = d.levelName, levelOrder = d.levelOrder }
                             };
-                    var list = q.ToList();
-                    List<long> roleList = new List<long>();
-                    list.ForEach(m=>roleList.Add(m.role.roleId));
-                    var def = list.FirstOrDefault();
-
-                    AccountModel account = new AccountModel(){
-                                accountId = def.accountId,
-                                accountName = def.accountName,
-                                level = def.level,
-                                score = def.score,
-                                amount = def.amount,
-                                statusType = def.statusType,
-                                remark = def.remark,
-                                person = new PersonModel() { personId = def.person.personId},
-                                roles =roleList.ToArray()
-                    };
-                    return account;
+                    return q.FirstOrDefault();
                 }
             }
             catch (Exception ex)
@@ -91,7 +78,7 @@ namespace HH.RMS.Service
                 {
                     accountName = model.accountName,
                     password = model.password,
-                    level = model.level,
+                    levelId = model.level.levelId,
                     score = model.score,
                     amount = model.amount,
                     status = model.statusType,
@@ -115,7 +102,7 @@ namespace HH.RMS.Service
 
         public GridModel QueryAccountToGridByRole(PagerModel pager = null)
         {
-            int roleOrder = AccountDetailModel.loginSession.role.roleOrder;
+            int roleOrder = AccountModel.Session.role.roleOrder;
             try
             {
                 using (var db = new ApplicationDbContext())
@@ -124,6 +111,7 @@ namespace HH.RMS.Service
                             join b in _accountRoleRepository.Query(db) on a.id equals b.accountId
                             join c in _roleRepository.Query(db) on b.roleId equals c.id
                             join d in _personRepository.Query(db) on a.personId equals d.id
+                            join e in _levelRepository.Query(db) on a.levelId equals e.id
                             where c.roleOrder >= roleOrder
                             && (string.IsNullOrEmpty(pager.searchText) || a.accountName.Contains(pager.searchText))
                             && (pager.searchStatus == 0 || a.status == (AccountStatusType)pager.searchStatus)
@@ -137,9 +125,9 @@ namespace HH.RMS.Service
                                 statusType = a.status,
                                 score = a.score,
                                 amount = a.amount,
-                                level = a.level,
                                 createTime = a.createTime,
-                                person = new PersonModel() { personId = d.id, birthday = d.birthday, cityId = d.cityId, countryId = d.countryId, createTime = d.createTime, name = d.name, nickName = d.nickName, provinceId = d.provinceId, sex = d.sex }
+                                person = new PersonModel() { personId = d.id, birthday = d.birthday, cityId = d.cityId, countryId = d.countryId, createTime = d.createTime, name = d.name, nickName = d.nickName, provinceId = d.provinceId, sex = d.sex },
+                                level = new LevelModel() { levelId = d.id, levelName = e.levelName, levelOrder = e.levelOrder }
                             });
                     IQueryable<AccountModel> qPager = null;
                     if (pager != null)
@@ -150,8 +138,6 @@ namespace HH.RMS.Service
                     {
                         rows = qPager.ToList(),
                         total = q.Count()
-                        //pageNumber = pager.pageNumber,
-                        //pageSize = pager.pageSize
                     };
                     return list;
                 }
@@ -178,7 +164,6 @@ namespace HH.RMS.Service
                                 statusType = a.status,
                                 score = a.score,
                                 amount = a.amount,
-                                level = a.level,
                                 createTime = a.createTime,
                             };
                     AccountListModel list = new AccountListModel()
@@ -202,30 +187,20 @@ namespace HH.RMS.Service
                 {
                     _accountRepository.Update(db, m => new AccountEntity()
                     {
-                        level = model.level,
+                        levelId = model.level.levelId,
                         score = model.score,
                         amount = model.amount,
                         remark = model.remark,
                         status = model.statusType,
                         updateTime = DateTime.Now,
-                        updateBy = AccountDetailModel.loginSession.account.accountId
+                        updateBy = AccountModel.Session.accountId
                     },
                     m => m.id == model.accountId
                     );
                     _accountRoleRepository.Update(db, m => new AccountRoleEntity()
                     {
-                        isActive = false
-                    },
-                    m=>m.accountId == model.accountId);
-                    foreach (var role in model.roles)
-                    {
-                        AccountRoleEntity accountRole = new AccountRoleEntity()
-                        {
-                            accountId = model.accountId,
-                            roleId = role
-                        };
-                        _accountRoleRepository.Insert(db, accountRole);
-                    }
+                        roleId = model.role.roleId
+                    },m=>m.accountId == model.accountId);
                 }
                 return ResultType.Success;
             }
@@ -250,7 +225,7 @@ namespace HH.RMS.Service
                     {
                         isActive = false,
                         updateTime = DateTime.Now,
-                        updateBy = AccountDetailModel.loginSession.account.accountId
+                        updateBy = AccountModel.Session.accountId
                     },
                     m => idList.Contains(m.id.ToString())
                     );

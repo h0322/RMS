@@ -7,11 +7,6 @@ using System.Threading.Tasks;
 
 namespace HH.RMS.Common.Constant
 {
-    public enum LevelType
-    {
-        level1=1,
-        level2=2
-    }
     public enum StatusType
     {
         Nomal=1

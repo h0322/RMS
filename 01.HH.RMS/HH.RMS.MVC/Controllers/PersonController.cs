@@ -72,5 +72,16 @@ namespace HH.RMS.MVC.Controllers
             ResultModel<ResultType> result =  _personService.CreatePersonAccount(model);
             return Json(result);
         }
+        public JsonResult QueryPersonById(long id)
+        {
+            var person = _personService.QueryPersonById(id);
+            return Json(person, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult UpdatePerson(PersonModel model)
+        {
+            var result = _personService.UpdatePersonById(model);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
     }
 }

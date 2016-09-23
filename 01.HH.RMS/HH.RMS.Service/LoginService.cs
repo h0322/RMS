@@ -21,16 +21,18 @@ namespace HH.RMS.Service
         private IRepository<RoleEntity> _roleRepository;
         private IRepository<AccountRoleEntity> _accountRoleRepository;
         private IRepository<PersonEntity> _personRepository;
-        public LoginService(IRepository<AccountEntity> accountRepository, IRepository<RoleEntity> roleRepository, IRepository<AccountRoleEntity> accountRoleRepository, IRepository<PersonEntity> personRepository)
+        private IRepository<LevelEntity> _levelRepository;
+        public LoginService(IRepository<LevelEntity> levelRepository,IRepository<AccountEntity> accountRepository, IRepository<RoleEntity> roleRepository, IRepository<AccountRoleEntity> accountRoleRepository, IRepository<PersonEntity> personRepository)
         {
             _accountRepository = accountRepository;
             _roleRepository = roleRepository;
             _accountRoleRepository = accountRoleRepository;
             _personRepository = personRepository;
+            _levelRepository = levelRepository;
         }
-        public ResultModel<AccountDetailModel> UserLogin(string accountName, string password)
+        public ResultModel<AccountModel> UserLogin(string accountName, string password)
         {
-            ResultModel<AccountDetailModel> result = new ResultModel<AccountDetailModel>();
+            ResultModel<AccountModel> result = new ResultModel<AccountModel>();
             try
             {
                 using (var db = new ApplicationDbContext())
@@ -42,12 +44,17 @@ namespace HH.RMS.Service
                              on b.roleId equals c.id
                              join d in _personRepository.Query(db)
                              on a.personId equals d.id
+                             join e in _levelRepository.Query(db) on a.levelId equals e.id
                              where a.accountName == accountName && a.password == password && (c.roleType == RoleType.Admin || c.roleType == RoleType.SuperUser)
-                             select new AccountDetailModel
+                             select new AccountModel
                              {
-                                 account = new AccountModel() { accountName = a.accountName, accountId = a.id, level = a.level, score = a.score,amount = a.amount },
+                                 accountName = a.accountName,
+                                 accountId = a.id,
+                                 score = a.score,
+                                 amount = a.amount,
                                  person = new PersonModel() { name = d.name, birthday = d.birthday, cityId = d.cityId, provinceId = d.provinceId, sex = d.sex, countryId = d.countryId, personId = d.id, nickName = d.nickName },
                                  role = new RoleModel() { roleName = c.roleName, roleId = c.id, roleOrder = c.roleOrder, roleType = c.roleType },
+                                 level = new LevelModel() { levelName = e.levelName, levelId = e.id, remark = e.remark }
                              });
                     result.resultObj = q.FirstOrDefault();
                 }

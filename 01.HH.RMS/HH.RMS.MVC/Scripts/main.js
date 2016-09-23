@@ -113,3 +113,61 @@ var loadingBox = {
         mask.parentNode.removeChild(mask);
     }
 };
+
+function SetFormValue(form, Json) {
+    for (var name in Json) {
+        var element = $("#" + form).find("[textboxname='" + name + "']");
+        if (element.length > 0) {
+            if (element.attr("class").indexOf("easyui-textbox") >= 0) {
+                element.textbox('setValue', Json[name])
+            }
+            else if (element.attr("class").indexOf("easyui-numberbox") >= 0) {
+                element.numberbox('setValue', Json[name])
+            }
+            else if (element.attr("class").indexOf("easyui-combobox") >= 0) {
+                element.combobox('setValue', Json[name])
+            }
+            else if (element.attr("class").indexOf("easyui-datebox") >= 0) {
+                element.datebox('setValue', Json[name])
+            }
+        }
+        else {
+            element = $("#" + form).find("[name='" + name + "']");
+            console.log(element)
+            if (element.length > 0) {
+                if (element[0].tagName == "INPUT") {
+                    if (element.attr("type") == "text" || element.attr("type")=="hidden") {
+                        element.val(Json[name]);
+                    }
+                    else if (element.attr("type") == "checkbox") {
+                        var values = "," + Json[name] + ",";
+                        element.each(function () {
+                            if (values.indexOf("," + this.value + ",") >= 0) {
+                                this.checked = true;
+                            }
+                            else {
+                                this.checked = false;
+                            }
+                        });
+                    }
+                    else if (element.attr("type") == "radio") {
+                        element.each(function () {
+                            if (Json[name] == this.value) {
+                                this.checked = true;
+                            }
+                            else {
+                                this.checked = false;
+                            }
+                        });
+                    }
+                }
+                else if (element[0].tagName == "SELECT")
+                {
+                    element.val(Json[name]);
+                }
+            }
+
+        }
+
+    }
+}

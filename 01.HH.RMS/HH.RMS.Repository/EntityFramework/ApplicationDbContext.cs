@@ -32,6 +32,7 @@ namespace HH.RMS.Repository.EntityFramework
             modelBuilder.Configurations.Add(new MappingTableBase<CountryEntity>());
             modelBuilder.Configurations.Add(new MappingTableBase<ProvinceEntity>());
             modelBuilder.Configurations.Add(new MappingTableBase<CityEntity>());
+            modelBuilder.Configurations.Add(new MappingTableBase<LevelEntity>());
             base.OnModelCreating(modelBuilder);
         }
         public void CreateExcute()

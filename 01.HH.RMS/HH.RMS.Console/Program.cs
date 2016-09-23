@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -12,6 +14,15 @@ namespace HH.RMS.Consoles
     {
         static void Main(string[] args)
         {
+            if(DateTime.Now.Minute%10==0)
+            {
+                WebClient wc = new WebClient();
+                string sss = wc.DownloadString("https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx7f7055c58def7a9d&secret=2abbafe8db3b3cfcbd2c79e2d14516fa");
+                JObject obj = (JObject)JsonConvert.DeserializeObject(sss);
+                string token = obj["access_token"].ToString();
+            }
+
+
             C[] cs = new C[]{
             new C(11),new C(22),new C(33),
             new C(44),new C(55),new C(66)};
@@ -28,8 +39,13 @@ namespace HH.RMS.Consoles
             //22 33 44
             Console.ReadLine();
         }
+
     }
- 
+        public class  TokenModel
+        {
+             public string access_token { get; set; }
+             public string expires_in { get; set; }
+         }
     //元素类型定义
     class C
     {

@@ -34,12 +34,12 @@ namespace HH.RMS.MVC.Controllers
         public JsonResult Index(LoginModel model)
         {
 
-            ResultModel<AccountDetailModel> result = _loginService.UserLogin(model.accountName, model.password);
+            ResultModel<AccountModel> result = _loginService.UserLogin(model.accountName, model.password);
             if (result.resultType == ResultType.Success)
             {
-                if (result.resultObj.account.statusType == AccountStatusType.Normal)
+                if (result.resultObj.statusType == AccountStatusType.Normal)
                 {
-                    FormsAuthentication.SetAuthCookie(result.resultObj.account.accountName.ToString(), true);
+                    FormsAuthentication.SetAuthCookie(result.resultObj.accountName.ToString(), true);
                     SessionHelper.SetSession(Config.loginSession, result.resultObj);
                     return Json(new { msg = ResultType.Success });
                 }

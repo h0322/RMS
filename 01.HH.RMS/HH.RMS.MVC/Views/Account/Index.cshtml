@@ -65,7 +65,8 @@
         function edit(accountId)
         {
             //var row = $('#accountList').datagrid('getSelected');
-            $("#from_account")[0].reset();
+            //$("#from_account")[0].reset();
+            $('#from_account').form('clear'); //清表单
             $("#accountList").datagrid('uncheckAll');
             $(".panel-title panel-with-icon").text("修改账户信息");
             $.post("/Account/QueryAccountById", { id: accountId }, function (d) {
@@ -73,41 +74,34 @@
                 $('#accountName').textbox('setValue', d.accountName);
                 $('#score').numberbox('setValue', d.score);
                 $('#amount').numberbox('setValue', d.amount);
-                $('#level').combobox('setValue', d.level);
-                $('#statusType').combobox('setValue', d.statusType);
-                $('#dlgAdd').dialog('open');
+                $('#sel_level').combobox('setValue', d.level);
+                $("#sel_statusType").combobox('setValue', d.statusType);
                 $('#accountName').textbox('disable');
-                $('#li_role').find("input").each(function () {
-                    for (var i = 0; i < d.roles.length; i++)
-                    {
-                        if (d.roles[i] == this.value) {
-                            this.checked = true;
-                        }
-                    }
-                })
-            }, "json")
+                $("#sel_role").combobox('setValue', d.role.roleId);
+                $('#dlg_Add').dialog('open');
+            }, "json");
             
         }
         function Save()
         {
+            $('#dlg_Add').dialog('close');
             loadingBox.show("正在保存中...")
             var data = $("#from_account").serialize();
             var accountId = $("#accountId").val();
-            var url = "";
-            if (accountId > 0) {
-                url = "/Account/UpdateAccount";
-            }
-            else {
-                url = "/Account/SaveAccount";
-            }
+            var url = "/Account/UpdateAccount";
             $.post(url, data, function (d) {
+                loadingBox.hide();
                 if (d.result == "@((int)ResultType.Success)") {
-                    alert("保存成功")
+                    alert("保存成功");
+                    $("#accountList").datagrid();
+                    
                 }
                 else {
-                    alert("保存失败")
+                    alert("保存失败");
+                    $('#dlg_Add').dialog('open');
                 }
-                loadingBox.hide();
+                $("#accountList").datagrid('uncheckAll');
+                
             })
         }
 
@@ -124,12 +118,13 @@
             accountIds = accountIds.substring(0, accountIds.length - 1);
             $.post("/Account/DeleteAccountById", { ids: accountIds }, function (data) {
                 $("#accountList").datagrid();
+                $("#accountList").datagrid('uncheckAll');
                 alert("删除成功");
             },"json")
         }
         function cancel()
         {
-            $('#dlgAdd').dialog('close');
+            $('#dlg_Add').dialog('close');
         }
         $("#btn_search").click(function () {
             var search = $("#search_txt_text").val();

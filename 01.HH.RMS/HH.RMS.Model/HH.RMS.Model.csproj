@@ -43,12 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccountDetailModel.cs" />
     <Compile Include="AccountModel.cs" />
     <Compile Include="CityModel.cs" />
     <Compile Include="CommandModel.cs" />
     <Compile Include="ConditionBuilderModel.cs" />
     <Compile Include="CountryModel.cs" />
+    <Compile Include="LevelModel.cs" />
     <Compile Include="LoginModel.cs" />
     <Compile Include="PagerModel.cs" />
     <Compile Include="PersonModel.cs" />

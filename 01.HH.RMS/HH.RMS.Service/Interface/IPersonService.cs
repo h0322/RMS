@@ -13,5 +13,7 @@ namespace HH.RMS.Service.Interface
     {
         GridModel QueryPersonToGrid(PagerModel pager);
         ResultModel<ResultType> CreatePersonAccount(AccountModel model);
+        PersonModel QueryPersonById(long id);
+        ResultType UpdatePersonById(PersonModel model);
     }
 }

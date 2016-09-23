@@ -21,5 +21,7 @@ namespace HH.RMS.Common.Constant
         public readonly static string provinceCache = "ProvinceCache";
         public readonly static string cityCache = "CityCache";
         public readonly static string countryCache = "CountryCache";
+        public readonly static string levelCache = "LevelCache";
+        public readonly static string roleCache = "RoleCache";
     }
 }

@@ -1,4 +1,4 @@
-﻿@model HH.RMS.Model.AccountDetailModel
+﻿@model HH.RMS.Model.AccountModel
 <div style="margin:20px 0; height:40px;"></div>
 <div class="easyui-panel" style="padding:5px;">
     <div style="width:60%; float:left;">
@@ -8,7 +8,7 @@
         <a href="#" class="easyui-menubutton" data-options="menu:'#mm3'">账号</a>
     </div>
     <div style="width:36%; float:left; text-align:right; padding-top:4px;">@if (Model != null)
-                                                                           {<span>当前用户: @Model.account.accountName 积分：@Model.account.score 等级：@Model.account.level</span>}</div>
+                                                                           {<span>当前用户: @Model.Session.accountName 积分：@Model.Session.score 等级：@Model.Session.level.levelName</span>}</div>
 </div>
 @*<div id="mm1" style="width:150px;">
     <div data-options="iconCls:'icon-undo'">Undo</div>

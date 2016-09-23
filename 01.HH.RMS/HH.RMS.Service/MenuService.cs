@@ -58,12 +58,12 @@ namespace HH.RMS.Service
         }
         public List<MenuEntity> QueryMenuByRole()
         {
-            if (AccountDetailModel.loginSession == null)
+            if (AccountModel.Session == null)
             {
                 return null;
             }
-            long roleId = AccountDetailModel.loginSession.role.roleId;
-            var loginSession = AccountDetailModel.loginSession;
+            long roleId = AccountModel.Session.role.roleId;
+
             using(var db = new ApplicationDbContext())
             {
                 var q = (from a in _menuRepository.Query(db)

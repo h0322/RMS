@@ -22,7 +22,9 @@ namespace HH.RMS.Entity
         public virtual PersonEntity person { get; set; }
         public decimal amount { get; set; }
         public decimal score { get; set; }
-        public LevelType level { get; set; }
+        public long levelId { get; set; }
         public AccountStatusType status { get; set; }
+        [ForeignKey("levelId")]
+        public virtual LevelEntity level { get; set; }
     }
 }

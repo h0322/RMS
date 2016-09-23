@@ -3,7 +3,7 @@ using HH.RMS.Entity;
 using HH.RMS.MVC;
 using HH.RMS.Scheduler;
 using HH.RMS.Service;
-using HH.RMS.Unity;
+using HH.RMS.Common.Unity;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -66,6 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountService.cs" />
+    <Compile Include="AddressService.cs" />
     <Compile Include="CountryService.cs" />
     <Compile Include="CityService.cs" />
     <Compile Include="ControllerService.cs" />
@@ -80,6 +81,7 @@
     <Compile Include="Interface\IRoleService.cs" />
     <Compile Include="Interface\ISchedulerService.cs" />
     <Compile Include="JobService.cs" />
+    <Compile Include="LevelService.cs" />
     <Compile Include="LoginService.cs" />
     <Compile Include="MenuService.cs" />
     <Compile Include="PersonService.cs" />
@@ -88,6 +90,7 @@
     <Compile Include="RoleService.cs" />
     <Compile Include="SchedulerService.cs" />
     <Compile Include="ServiceBase.cs" />
+    <Compile Include="ServiceRegister.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HH.RMS.Common\HH.RMS.Common.csproj">
