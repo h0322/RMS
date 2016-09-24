@@ -52,6 +52,10 @@
     <Reference Include="Microsoft.Practices.Unity.RegistrationByConvention">
       <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -73,6 +77,7 @@
     <Compile Include="Interface\IAccountService.cs" />
     <Compile Include="Interface\ICityService.cs" />
     <Compile Include="Interface\IJobService.cs" />
+    <Compile Include="Interface\ILevelService.cs" />
     <Compile Include="Interface\ILoginService.cs" />
     <Compile Include="Interface\IMenuService.cs" />
     <Compile Include="Interface\IPersonService.cs" />
@@ -84,13 +89,28 @@
     <Compile Include="LevelService.cs" />
     <Compile Include="LoginService.cs" />
     <Compile Include="MenuService.cs" />
+    <Compile Include="Model\AccountModel.cs" />
+    <Compile Include="Model\CityModel.cs" />
+    <Compile Include="Model\CommandModel.cs" />
+    <Compile Include="Model\ConditionBuilderModel.cs" />
+    <Compile Include="Model\CountryModel.cs" />
+    <Compile Include="Model\LevelModel.cs" />
+    <Compile Include="Model\LoginModel.cs" />
+    <Compile Include="Model\PagerModel.cs" />
+    <Compile Include="Model\PersonModel.cs" />
+    <Compile Include="Model\ProvinceModel.cs" />
+    <Compile Include="Model\ResultModel.cs" />
+    <Compile Include="Model\RoleModel.cs" />
+    <Compile Include="Model\SelectModel.cs" />
+    <Compile Include="Model\SortConditionModel.cs" />
+    <Compile Include="Model\UserModel.cs" />
     <Compile Include="PersonService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProvinceService.cs" />
     <Compile Include="RoleService.cs" />
     <Compile Include="SchedulerService.cs" />
     <Compile Include="ServiceBase.cs" />
-    <Compile Include="ServiceRegister.cs" />
+    <Compile Include="UnityService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HH.RMS.Common\HH.RMS.Common.csproj">
@@ -101,10 +121,6 @@
       <Project>{73b8ac6f-5953-4f02-a10c-13744db73c8f}</Project>
       <Name>HH.RMS.Entity</Name>
     </ProjectReference>
-    <ProjectReference Include="..\HH.RMS.Model\HH.RMS.Model.csproj">
-      <Project>{4ee75f78-f3e0-4731-bd8f-58f48c67a62b}</Project>
-      <Name>HH.RMS.Model</Name>
-    </ProjectReference>
     <ProjectReference Include="..\HH.RMS.Repository\HH.RMS.Repository.csproj">
       <Project>{6e3b9805-4a5d-4857-9797-abe850af554e}</Project>
       <Name>HH.RMS.Repository</Name>
@@ -112,11 +128,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Model\packages.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Wechat\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

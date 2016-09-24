@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace HH.RMS.Service.Interface
 {
-    public interface ILoginService
+    public interface ILevelService
     {
-        ResultModel<AccountModel> UserLogin(string accountName, string password);
-        void ExitLogin();
+        List<LevelModel> QueryLevelList();
     }
 }

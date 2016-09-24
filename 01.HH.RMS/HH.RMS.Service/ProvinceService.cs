@@ -1,7 +1,7 @@
 ﻿using HH.RMS.Common.Constant;
 using HH.RMS.Common.Utilities;
 using HH.RMS.Entity;
-using HH.RMS.Model;
+using HH.RMS.Service.Model;
 using HH.RMS.Repository.EntityFramework;
 using HH.RMS.Repository.EntityFramework.Interface;
 using HH.RMS.Service.Interface;
@@ -24,22 +24,18 @@ namespace HH.RMS.Service
         {
             try
             { 
-                if (CacheHelper.GetCache(Config.provinceCache) == null)
+                using (var db = new ApplicationDbContext())
                 {
-                    using (var db = new ApplicationDbContext())
-                    {
-                        var q = from a in _provinceRepository.Query(db)
-                                select new ProvinceModel()
-                                {
-                                    name = a.name,
-                                    provinceId = a.id,
-                                    order = a.order
-                                };
-                        CacheHelper.SetCache(Config.provinceCache, q.ToList());
-                    }
+                    var q = from a in _provinceRepository.Query(db)
+                            select new ProvinceModel()
+                            {
+                                name = a.name,
+                                provinceId = a.id,
+                                order = a.order
+                            };
+                    return q.ToList();
                 }
-                List<ProvinceModel> provinceList = (List<ProvinceModel>)CacheHelper.GetCache(Config.provinceCache);
-                return provinceList;
+                
             }
             catch (Exception ex)
             {

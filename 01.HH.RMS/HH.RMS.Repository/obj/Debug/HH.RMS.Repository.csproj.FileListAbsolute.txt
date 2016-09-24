@@ -110,3 +110,32 @@ D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Repository\bin\Debug\Newtonsoft.Json.xml
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Repository\obj\Debug\HH.RMS.Repository.csprojResolveAssemblyReference.cache
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Repository\obj\Debug\HH.RMS.Repository.dll
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Repository\obj\Debug\HH.RMS.Repository.pdb
+E:\Programs\RMS\01.HH.RMS\HH.RMS.Repository\bin\Debug\HH.RMS.Repository.dll.config
+E:\Programs\RMS\01.HH.RMS\HH.RMS.Repository\bin\Debug\HH.RMS.Repository.dll
+E:\Programs\RMS\01.HH.RMS\HH.RMS.Repository\bin\Debug\HH.RMS.Repository.pdb
+E:\Programs\RMS\01.HH.RMS\HH.RMS.Repository\bin\Debug\EntityFramework.dll
+E:\Programs\RMS\01.HH.RMS\HH.RMS.Repository\bin\Debug\EntityFramework.Extended.dll
+E:\Programs\RMS\01.HH.RMS\HH.RMS.Repository\bin\Debug\EntityFramework.SqlServer.dll
+E:\Programs\RMS\01.HH.RMS\HH.RMS.Repository\bin\Debug\HH.RMS.Common.dll
+E:\Programs\RMS\01.HH.RMS\HH.RMS.Repository\bin\Debug\HH.RMS.Entity.dll
+E:\Programs\RMS\01.HH.RMS\HH.RMS.Repository\bin\Debug\log4net.dll
+E:\Programs\RMS\01.HH.RMS\HH.RMS.Repository\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+E:\Programs\RMS\01.HH.RMS\HH.RMS.Repository\bin\Debug\Microsoft.Practices.Unity.Configuration.dll
+E:\Programs\RMS\01.HH.RMS\HH.RMS.Repository\bin\Debug\Microsoft.Practices.Unity.dll
+E:\Programs\RMS\01.HH.RMS\HH.RMS.Repository\bin\Debug\Microsoft.Practices.Unity.RegistrationByConvention.dll
+E:\Programs\RMS\01.HH.RMS\HH.RMS.Repository\bin\Debug\Newtonsoft.Json.dll
+E:\Programs\RMS\01.HH.RMS\HH.RMS.Repository\bin\Debug\HH.RMS.Common.pdb
+E:\Programs\RMS\01.HH.RMS\HH.RMS.Repository\bin\Debug\HH.RMS.Entity.pdb
+E:\Programs\RMS\01.HH.RMS\HH.RMS.Repository\bin\Debug\EntityFramework.xml
+E:\Programs\RMS\01.HH.RMS\HH.RMS.Repository\bin\Debug\EntityFramework.Extended.xml
+E:\Programs\RMS\01.HH.RMS\HH.RMS.Repository\bin\Debug\EntityFramework.SqlServer.xml
+E:\Programs\RMS\01.HH.RMS\HH.RMS.Repository\bin\Debug\log4net.xml
+E:\Programs\RMS\01.HH.RMS\HH.RMS.Repository\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
+E:\Programs\RMS\01.HH.RMS\HH.RMS.Repository\bin\Debug\Microsoft.Practices.ServiceLocation.xml
+E:\Programs\RMS\01.HH.RMS\HH.RMS.Repository\bin\Debug\Microsoft.Practices.Unity.xml
+E:\Programs\RMS\01.HH.RMS\HH.RMS.Repository\bin\Debug\Microsoft.Practices.Unity.Configuration.xml
+E:\Programs\RMS\01.HH.RMS\HH.RMS.Repository\bin\Debug\Microsoft.Practices.Unity.RegistrationByConvention.xml
+E:\Programs\RMS\01.HH.RMS\HH.RMS.Repository\bin\Debug\Newtonsoft.Json.xml
+E:\Programs\RMS\01.HH.RMS\HH.RMS.Repository\obj\Debug\HH.RMS.Repository.csprojResolveAssemblyReference.cache
+E:\Programs\RMS\01.HH.RMS\HH.RMS.Repository\obj\Debug\HH.RMS.Repository.dll
+E:\Programs\RMS\01.HH.RMS\HH.RMS.Repository\obj\Debug\HH.RMS.Repository.pdb

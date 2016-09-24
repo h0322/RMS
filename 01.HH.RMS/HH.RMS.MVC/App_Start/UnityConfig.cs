@@ -9,14 +9,21 @@ using System.Web.Mvc;
 
 namespace HH.RMS.MVC
 {
-    public class UnityConfig : ServiceRegister
+    public class UnityConfig : UnityService
     {
         public UnityConfig(UnityManager unityManager)
             : base(unityManager)
         {
-            _unityManager.RegisterType(typeof(IADORepository<>), typeof(ADORepositoryBase<>));
             ContorllerRegister();
             ServiceRegister();
-        }    
+        }
+        public override void ServiceRegister()
+        {
+            base.ServiceRegister();
+        }
+        public override void ContorllerRegister()
+        {
+            base.ContorllerRegister();
+        }
     }
 }

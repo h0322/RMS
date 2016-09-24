@@ -41,3 +41,19 @@ D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Model\bin\Debug\Microsoft.Practices.Unity.
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Model\bin\Debug\Microsoft.Practices.Unity.Configuration.xml
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Model\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Model\bin\Debug\Microsoft.Practices.ServiceLocation.xml
+E:\Programs\RMS\01.HH.RMS\HH.RMS.Model\bin\Debug\HH.RMS.Model.dll
+E:\Programs\RMS\01.HH.RMS\HH.RMS.Model\bin\Debug\HH.RMS.Model.pdb
+E:\Programs\RMS\01.HH.RMS\HH.RMS.Model\bin\Debug\HH.RMS.Common.dll
+E:\Programs\RMS\01.HH.RMS\HH.RMS.Model\bin\Debug\Newtonsoft.Json.dll
+E:\Programs\RMS\01.HH.RMS\HH.RMS.Model\bin\Debug\Microsoft.Practices.Unity.dll
+E:\Programs\RMS\01.HH.RMS\HH.RMS.Model\bin\Debug\Microsoft.Practices.Unity.Configuration.dll
+E:\Programs\RMS\01.HH.RMS\HH.RMS.Model\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+E:\Programs\RMS\01.HH.RMS\HH.RMS.Model\bin\Debug\HH.RMS.Common.pdb
+E:\Programs\RMS\01.HH.RMS\HH.RMS.Model\bin\Debug\Newtonsoft.Json.xml
+E:\Programs\RMS\01.HH.RMS\HH.RMS.Model\bin\Debug\Microsoft.Practices.Unity.xml
+E:\Programs\RMS\01.HH.RMS\HH.RMS.Model\bin\Debug\Microsoft.Practices.Unity.Configuration.xml
+E:\Programs\RMS\01.HH.RMS\HH.RMS.Model\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
+E:\Programs\RMS\01.HH.RMS\HH.RMS.Model\bin\Debug\Microsoft.Practices.ServiceLocation.xml
+E:\Programs\RMS\01.HH.RMS\HH.RMS.Model\obj\Debug\HH.RMS.Model.csprojResolveAssemblyReference.cache
+E:\Programs\RMS\01.HH.RMS\HH.RMS.Model\obj\Debug\HH.RMS.Model.dll
+E:\Programs\RMS\01.HH.RMS\HH.RMS.Model\obj\Debug\HH.RMS.Model.pdb

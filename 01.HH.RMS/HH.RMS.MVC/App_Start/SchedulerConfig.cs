@@ -1,7 +1,7 @@
 ﻿using HH.RMS.Common.Constant;
 using HH.RMS.Scheduler;
 using HH.RMS.Service.Interface;
-using HH.RMS.Unity;
+using HH.RMS.Common.Unity;
 using System;
 using System.Collections.Generic;
 using System.Linq;

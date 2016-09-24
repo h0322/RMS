@@ -1,6 +1,6 @@
 ﻿using HH.RMS.Common.Constant;
 using HH.RMS.Entity;
-using HH.RMS.Model;
+using HH.RMS.Service.Model;
 using HH.RMS.Repository.ADONet.Interface;
 using HH.RMS.Repository.EntityFramework;
 using HH.RMS.Repository.EntityFramework.Interface;

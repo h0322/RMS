@@ -69,17 +69,9 @@
       <Project>{73b8ac6f-5953-4f02-a10c-13744db73c8f}</Project>
       <Name>HH.RMS.Entity</Name>
     </ProjectReference>
-    <ProjectReference Include="..\HH.RMS.Model\HH.RMS.Model.csproj">
-      <Project>{4ee75f78-f3e0-4731-bd8f-58f48c67a62b}</Project>
-      <Name>HH.RMS.Model</Name>
-    </ProjectReference>
     <ProjectReference Include="..\HH.RMS.Service\HH.RMS.Service.csproj">
       <Project>{e535a624-40b0-460f-a91b-69384d3f24e3}</Project>
       <Name>HH.RMS.Service</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\HH.RMS.Unity\HH.RMS.Unity.csproj">
-      <Project>{82096679-df5f-4b1a-894e-0e4d5a400d5e}</Project>
-      <Name>HH.RMS.Unity</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

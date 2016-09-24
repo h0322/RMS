@@ -1,6 +1,6 @@
 ﻿using HH.RMS.Common.Constant;
 using HH.RMS.Common.Utilities;
-using HH.RMS.Model;
+using HH.RMS.Service.Model;
 using HH.RMS.MVC.Models;
 using HH.RMS.Service;
 using HH.RMS.Service.Interface;

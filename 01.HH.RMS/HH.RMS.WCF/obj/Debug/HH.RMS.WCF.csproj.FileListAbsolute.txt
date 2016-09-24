@@ -4,3 +4,9 @@ D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.WCF\bin\HH.RMS.WCF.pdb
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.WCF\obj\Debug\HH.RMS.WCF.dll
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.WCF\obj\Debug\HH.RMS.WCF.pdb
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.WCF\obj\Debug\HH.RMS.WCF.csprojResolveAssemblyReference.cache
+E:\Programs\RMS\01.HH.RMS\HH.RMS.WCF\bin\HH.RMS.WCF.dll.config
+E:\Programs\RMS\01.HH.RMS\HH.RMS.WCF\bin\HH.RMS.WCF.dll
+E:\Programs\RMS\01.HH.RMS\HH.RMS.WCF\bin\HH.RMS.WCF.pdb
+E:\Programs\RMS\01.HH.RMS\HH.RMS.WCF\obj\Debug\HH.RMS.WCF.dll
+E:\Programs\RMS\01.HH.RMS\HH.RMS.WCF\obj\Debug\HH.RMS.WCF.pdb
+E:\Programs\RMS\01.HH.RMS\HH.RMS.WCF\obj\Debug\HH.RMS.WCF.csprojResolveAssemblyReference.cache

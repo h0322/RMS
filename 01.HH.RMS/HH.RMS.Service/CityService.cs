@@ -1,7 +1,7 @@
 ﻿using HH.RMS.Common.Constant;
 using HH.RMS.Common.Utilities;
 using HH.RMS.Entity;
-using HH.RMS.Model;
+using HH.RMS.Service.Model;
 using HH.RMS.Repository.EntityFramework;
 using HH.RMS.Repository.EntityFramework.Interface;
 using HH.RMS.Service.Interface;
@@ -24,23 +24,7 @@ namespace HH.RMS.Service
         {
             try
             { 
-                if (CacheHelper.GetCache(Config.cityCache) == null)
-                {
-
-                    using (var db = new ApplicationDbContext())
-                    {
-                        var q = from a in _cityRepository.Query(db)
-                                select new CityModel()
-                                {
-                                    name = a.name,
-                                    provinceId = a.provinceId,
-                                    cityId = a.id,
-                                    order = a.order
-                                };
-                        CacheHelper.SetCache(Config.cityCache, q.ToList());
-                    }
-                }
-                List<CityModel> cityList = (List<CityModel>)CacheHelper.GetCache(Config.cityCache);
+                List<CityModel> cityList = CityModel.ListCache;
                 return cityList.Where(m => m.provinceId == provinceId).ToList();
             }
             catch (Exception ex)
@@ -51,9 +35,8 @@ namespace HH.RMS.Service
         }
         public List<CityModel> QueryCityListAll()
         {
-            if (CityModel.Cache == null)
+            try
             {
-
                 using (var db = new ApplicationDbContext())
                 {
                     var q = from a in _cityRepository.Query(db)
@@ -64,10 +47,14 @@ namespace HH.RMS.Service
                                 cityId = a.id,
                                 order = a.order
                             };
-                    CacheHelper.SetCache(Config.cityCache, q.ToList());
+                    return q.ToList();
                 }
             }
-            return CityModel.Cache;
+            catch (Exception ex)
+            {
+                log.Error("CityService.QueryCityListAll", ex);
+                return null;
+            }
         }
     }
 }

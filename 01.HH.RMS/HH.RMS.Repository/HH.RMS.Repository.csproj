@@ -82,9 +82,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ADONet\ADORepositoryBase.cs" />
-    <Compile Include="ADONet\Interface\IADORepository.cs" />
-    <Compile Include="ADONet\SqlServerExtension.cs" />
+    <Compile Include="ADONet\ADORepositoryBase.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ADONet\Interface\IADORepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ADONet\SqlServerExtension.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="EntityFramework\ApplicationDbContext.cs" />
     <Compile Include="EntityFramework\Interface\IRepository.cs" />
     <Compile Include="EntityFramework\Mapping\AccountMapping.cs" />
@@ -111,10 +117,6 @@
     <ProjectReference Include="..\HH.RMS.Entity\HH.RMS.Entity.csproj">
       <Project>{73b8ac6f-5953-4f02-a10c-13744db73c8f}</Project>
       <Name>HH.RMS.Entity</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\HH.RMS.Model\HH.RMS.Model.csproj">
-      <Project>{4ee75f78-f3e0-4731-bd8f-58f48c67a62b}</Project>
-      <Name>HH.RMS.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

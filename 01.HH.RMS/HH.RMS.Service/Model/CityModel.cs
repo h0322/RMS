@@ -1,22 +1,27 @@
 ﻿using HH.RMS.Common.Constant;
+using HH.RMS.Common.Unity;
 using HH.RMS.Common.Utilities;
+using HH.RMS.Service.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HH.RMS.Model
+namespace HH.RMS.Service.Model
 {
     public class CityModel
     {
-        public static List<CityModel> Cache
+        public static List<CityModel> ListCache
         {
             get
             {
                 if (CacheHelper.GetCache(Config.cityCache) == null)
                 {
-                    return null;
+                    ICityService cityService = UnityManager.instance.GetService<ICityService>();
+                    var cityList = cityService.QueryCityListAll();
+                    CacheHelper.SetCache(Config.cityCache, cityList);
+                    return cityList;
                 }
                 else
                 {

@@ -92,3 +92,23 @@ D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Common\bin\Debug\Newtonsoft.Json.xml
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Common\obj\Debug\HH.RMS.Common.dll
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Common\obj\Debug\HH.RMS.Common.pdb
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Common\obj\Debug\HH.RMS.Common.csprojResolveAssemblyReference.cache
+E:\Programs\RMS\01.HH.RMS\HH.RMS.Common\bin\Debug\HH.RMS.Common.dll.config
+E:\Programs\RMS\01.HH.RMS\HH.RMS.Common\bin\Debug\HH.RMS.Common.dll
+E:\Programs\RMS\01.HH.RMS\HH.RMS.Common\bin\Debug\HH.RMS.Common.pdb
+E:\Programs\RMS\01.HH.RMS\HH.RMS.Common\bin\Debug\EntityFramework.dll
+E:\Programs\RMS\01.HH.RMS\HH.RMS.Common\bin\Debug\EntityFramework.SqlServer.dll
+E:\Programs\RMS\01.HH.RMS\HH.RMS.Common\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+E:\Programs\RMS\01.HH.RMS\HH.RMS.Common\bin\Debug\Microsoft.Practices.Unity.Configuration.dll
+E:\Programs\RMS\01.HH.RMS\HH.RMS.Common\bin\Debug\Microsoft.Practices.Unity.dll
+E:\Programs\RMS\01.HH.RMS\HH.RMS.Common\bin\Debug\Microsoft.Practices.Unity.RegistrationByConvention.dll
+E:\Programs\RMS\01.HH.RMS\HH.RMS.Common\bin\Debug\Newtonsoft.Json.dll
+E:\Programs\RMS\01.HH.RMS\HH.RMS.Common\bin\Debug\EntityFramework.xml
+E:\Programs\RMS\01.HH.RMS\HH.RMS.Common\bin\Debug\EntityFramework.SqlServer.xml
+E:\Programs\RMS\01.HH.RMS\HH.RMS.Common\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
+E:\Programs\RMS\01.HH.RMS\HH.RMS.Common\bin\Debug\Microsoft.Practices.ServiceLocation.xml
+E:\Programs\RMS\01.HH.RMS\HH.RMS.Common\bin\Debug\Microsoft.Practices.Unity.xml
+E:\Programs\RMS\01.HH.RMS\HH.RMS.Common\bin\Debug\Microsoft.Practices.Unity.Configuration.xml
+E:\Programs\RMS\01.HH.RMS\HH.RMS.Common\bin\Debug\Microsoft.Practices.Unity.RegistrationByConvention.xml
+E:\Programs\RMS\01.HH.RMS\HH.RMS.Common\bin\Debug\Newtonsoft.Json.xml
+E:\Programs\RMS\01.HH.RMS\HH.RMS.Common\obj\Debug\HH.RMS.Common.dll
+E:\Programs\RMS\01.HH.RMS\HH.RMS.Common\obj\Debug\HH.RMS.Common.pdb

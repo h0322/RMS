@@ -1,5 +1,5 @@
 ﻿using HH.RMS.Entity;
-using HH.RMS.Model;
+using HH.RMS.Service.Model;
 using HH.RMS.Repository.EntityFramework;
 using HH.RMS.Repository.EntityFramework.Interface;
 using HH.RMS.Service.Interface;

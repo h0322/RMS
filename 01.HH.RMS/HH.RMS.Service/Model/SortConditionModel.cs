@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HH.RMS.Model
+namespace HH.RMS.Service.Model
 {
     public class SortConditionModel
     {

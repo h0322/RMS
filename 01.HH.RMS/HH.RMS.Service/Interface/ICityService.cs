@@ -1,5 +1,5 @@
 ﻿using HH.RMS.Entity;
-using HH.RMS.Model;
+using HH.RMS.Service.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,5 +11,6 @@ namespace HH.RMS.Service.Interface
     public interface ICityService
     {
         List<CityModel> QueryCityListByProvinceId(long provinceId);
+        List<CityModel> QueryCityListAll();
     }
 }

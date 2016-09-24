@@ -1,5 +1,5 @@
 ﻿using HH.RMS.Entity;
-using HH.RMS.Model;
+using HH.RMS.Service.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;

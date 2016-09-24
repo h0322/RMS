@@ -13,7 +13,6 @@ using System.Threading.Tasks;
 using System.Reflection;
 using System.Transactions;
 using System.ComponentModel.DataAnnotations;
-using HH.RMS.Model;
 using HH.RMS.Entity;
 using System.ComponentModel.DataAnnotations.Schema;
 namespace HH.RMS.Repository.ADONet
@@ -123,16 +122,16 @@ namespace HH.RMS.Repository.ADONet
             return CreateExcute(excute, express);
         }
 
-        public List<T> QueryByPager(int index, int pagesize, List<SortConditionModel> orderFields, Expression<Func<T, bool>> express = null)
-        {
-            Func<PropertyInfo[], string, IDictionary<string, object>, List<T>> excute = (propertys, condition, parameters) =>
-            {
-                string sql = "select {0} from {1} {2}";
-                string commadText = string.Format(sql, string.Join(",", propertys.Select(x => x.Name)), tableName, condition);
-                return ExecuteReaderList<T>(commadText, parameters, CommandType.Text);
-            };
-            return CreateExcute(excute, express);
-        }
+        //public List<T> QueryByPager(int index, int pagesize, List<SortConditionModel> orderFields, Expression<Func<T, bool>> express = null)
+        //{
+        //    Func<PropertyInfo[], string, IDictionary<string, object>, List<T>> excute = (propertys, condition, parameters) =>
+        //    {
+        //        string sql = "select {0} from {1} {2}";
+        //        string commadText = string.Format(sql, string.Join(",", propertys.Select(x => x.Name)), tableName, condition);
+        //        return ExecuteReaderList<T>(commadText, parameters, CommandType.Text);
+        //    };
+        //    return CreateExcute(excute, express);
+        //}
 
         public List<object> QueryAll(string commandText, List<Type> typeList, IDictionary<string, object> parameters, CommandType commandType, Expression<Func<T, bool>> express = null)
         {

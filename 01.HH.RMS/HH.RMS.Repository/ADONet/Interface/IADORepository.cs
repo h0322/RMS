@@ -1,5 +1,4 @@
-﻿using HH.RMS.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -47,7 +46,7 @@ namespace HH.RMS.Repository.ADONet.Interface
         /// <param name="asc"></param>
         /// <param name="express"></param>
         /// <returns></returns>
-        List<T> QueryByPager(int index, int pagesize, List<SortConditionModel> orderFields, Expression<Func<T, bool>> express = null);
+        //List<T> QueryByPager(int index, int pagesize, List<SortConditionModel> orderFields, Expression<Func<T, bool>> express = null);
 
         /// <summary>
         /// 查询对象集合
@@ -55,7 +54,7 @@ namespace HH.RMS.Repository.ADONet.Interface
         /// <param name="type"></param>
         /// <param name="predicate"></param>
         /// <returns></returns>
-        List<object> QueryAll(string commandText, List<Type> typeList, IDictionary<string, object> parameters, CommandType commandType = CommandType.Text, Expression<Func<T, bool>> express = null);
+       // List<object> QueryAll(string commandText, List<Type> typeList, IDictionary<string, object> parameters, CommandType commandType = CommandType.Text, Expression<Func<T, bool>> express = null);
 
         List<object> QueryAll(string commandText, Type type, IDictionary<string, object> parameters, CommandType commandType = CommandType.Text, Expression<Func<T, bool>> express = null);
         /// <summary>

@@ -14,21 +14,21 @@ using System.Web.Mvc;
 
 namespace HH.RMS.Service
 {
-    public class ServiceRegister
+    public class UnityService
     {
         private UnityManager _unityManager;
-        public ServiceRegister(UnityManager unityManager)
+        public UnityService(UnityManager unityManager)
         {
             _unityManager = unityManager;
 
         }
 
-        //public virtual void ADORepositoryRegister()
-        //{
-        //    _unityManager.RegisterType(typeof(IADORepository<>), typeof(ADORepositoryBase<>));
-        //    //_unityManager.RegisterType<IADORepository, ADORepositoryBase>();
-        //}
-        public virtual void Register()
+        public virtual void ADORepositoryRegister()
+        {
+            _unityManager.RegisterType(typeof(IADORepository<>), typeof(ADORepositoryBase<>));
+            //_unityManager.RegisterType<IADORepository, ADORepositoryBase>();
+        }
+        public virtual void ServiceRegister()
         {
             _unityManager.RegisterType<IPersonService, PersonService>();
             _unityManager.RegisterType<IAccountService, AccountService>();
@@ -39,6 +39,7 @@ namespace HH.RMS.Service
             _unityManager.RegisterType<IProvinceService, ProvinceService>();
             _unityManager.RegisterType<IRoleService, RoleService>();
             _unityManager.RegisterType<ICountryService, CountryService>();
+            _unityManager.RegisterType<ILevelService, LevelService>();
             //_unityManager.RegisterType<IADOUnit, ADOUnit>();
         }
         public virtual void ContorllerRegister()
