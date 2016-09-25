@@ -1,9 +1,9 @@
 ﻿using HH.RMS.Common.Constant;
 using HH.RMS.Common.Utilities;
-using HH.RMS.Service.Model;
+using HH.RMS.Service.Web.Model;
 using HH.RMS.MVC.Models;
-using HH.RMS.Service;
-using HH.RMS.Service.Interface;
+using HH.RMS.Service.Web;
+using HH.RMS.Service.Web.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using HH.RMS.Service.Model;
 
 namespace HH.RMS.MVC.Controllers
 {

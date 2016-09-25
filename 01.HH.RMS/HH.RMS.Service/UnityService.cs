@@ -3,7 +3,7 @@ using HH.RMS.Repository.ADONet.Interface;
 using HH.RMS.Repository.EntityFramework;
 using HH.RMS.Repository.EntityFramework.Interface;
 using HH.RMS.Common.Unity;
-using HH.RMS.Service.Interface;
+using HH.RMS.Service.Web.Interface;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -12,7 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
-namespace HH.RMS.Service
+namespace HH.RMS.Service.Web
 {
     public class UnityService
     {

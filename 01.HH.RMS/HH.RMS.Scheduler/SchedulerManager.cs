@@ -1,6 +1,6 @@
 ﻿using HH.RMS.Common.Constant;
 using HH.RMS.Entity;
-using HH.RMS.Service.Interface;
+using HH.RMS.Service.Web.Interface;
 using HH.RMS.Common.Unity;
 using Quartz;
 using System;

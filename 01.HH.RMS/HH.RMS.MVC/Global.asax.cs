@@ -2,7 +2,7 @@
 using HH.RMS.Entity;
 using HH.RMS.MVC;
 using HH.RMS.Scheduler;
-using HH.RMS.Service;
+using HH.RMS.Service.Web;
 using HH.RMS.Common.Unity;
 using System;
 using System.Collections.Generic;
