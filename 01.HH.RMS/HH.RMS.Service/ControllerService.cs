@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
-namespace HH.RMS.Service.Web
+namespace HH.RMS.Service
 {
     public class ControllerService : Controller
     {

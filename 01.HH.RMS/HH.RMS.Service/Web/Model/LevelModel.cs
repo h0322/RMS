@@ -1,5 +1,7 @@
 ﻿using HH.RMS.Common.Constant;
+using HH.RMS.Common.Unity;
 using HH.RMS.Common.Utilities;
+using HH.RMS.Service.Web.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,17 +12,20 @@ namespace HH.RMS.Service.Web.Model
 {
     public class LevelModel
     {
-        public LevelModel ListCache
+        public static List<LevelModel> ListCache
         {
             get
             {
-                if (CacheHelper.GetCache(Config.levelCache) == null)
+                if (CacheHelper.GetCache(Config.cityCache) == null)
                 {
-                    return null;
+                    ILevelService levelService = UnityManager.instance.GetService<ILevelService>();
+                    var levelList = levelService.QueryLevelList();
+                    CacheHelper.SetCache(Config.cityCache, levelList);
+                    return levelList;
                 }
                 else
                 {
-                    return (LevelModel)CacheHelper.GetCache(Config.levelCache);
+                    return (List<LevelModel>)CacheHelper.GetCache(Config.cityCache);
                 }
             }
         }

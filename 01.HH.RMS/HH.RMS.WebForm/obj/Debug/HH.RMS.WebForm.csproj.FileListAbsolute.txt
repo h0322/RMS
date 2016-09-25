@@ -24,3 +24,4 @@ E:\Programs\RMS\01.HH.RMS\HH.RMS.WebForm\bin\HH.RMS.WebForm.dll
 E:\Programs\RMS\01.HH.RMS\HH.RMS.WebForm\bin\HH.RMS.WebForm.pdb
 E:\Programs\RMS\01.HH.RMS\HH.RMS.WebForm\obj\Debug\HH.RMS.WebForm.dll
 E:\Programs\RMS\01.HH.RMS\HH.RMS.WebForm\obj\Debug\HH.RMS.WebForm.pdb
+E:\Programs\RMS\01.HH.RMS\HH.RMS.WebForm\obj\Debug\HH.RMS.WebForm.csprojResolveAssemblyReference.cache

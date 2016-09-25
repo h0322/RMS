@@ -12,6 +12,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using HH.RMS.Service.Model;
+using HH.RMS.Service;
 
 namespace HH.RMS.MVC.Controllers
 {

@@ -1,4 +1,5 @@
-﻿using HH.RMS.Service.Web.Model;
+﻿using HH.RMS.Common.Constant;
+using HH.RMS.Service.Web.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +11,9 @@ namespace HH.RMS.Service.Web.Interface
     public interface IRoleService
     {
         List<RoleModel> QueryRoleList();
+        GridModel QueryRoleToGrid(PagerModel pager);
+        ResultType CreateRole(RoleModel model);
+        ResultType UpdateRole(RoleModel model);
+        RoleModel QueryRoleById(long id);
     }
 }

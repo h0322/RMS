@@ -73,7 +73,7 @@
     <Compile Include="Web\AddressService.cs" />
     <Compile Include="Web\CountryService.cs" />
     <Compile Include="Web\CityService.cs" />
-    <Compile Include="Web\ControllerService.cs" />
+    <Compile Include="ControllerService.cs" />
     <Compile Include="Web\Interface\IAccountService.cs" />
     <Compile Include="Web\Interface\ICityService.cs" />
     <Compile Include="Web\Interface\IJobService.cs" />
@@ -109,7 +109,7 @@
     <Compile Include="Web\ProvinceService.cs" />
     <Compile Include="Web\RoleService.cs" />
     <Compile Include="Web\SchedulerService.cs" />
-    <Compile Include="Web\ServiceBase.cs" />
+    <Compile Include="ServiceBase.cs" />
     <Compile Include="UnityService.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -132,7 +132,8 @@
     <None Include="Web\packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Wechat\" />
+    <Folder Include="Wechat\Interface\" />
+    <Folder Include="Wechat\Model\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

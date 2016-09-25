@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HH.RMS.Service.Web
+namespace HH.RMS.Service
 {
     public class ServiceBase
     {

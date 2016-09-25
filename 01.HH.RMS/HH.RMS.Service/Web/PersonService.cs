@@ -77,7 +77,7 @@ namespace HH.RMS.Service.Web
             }
             catch (Exception ex)
             {
-                log.Error("PersonService.QueryPersonList", ex);
+                log.Error("PersonService.QueryPersonToGrid", ex);
                 return null;
             }
         }

@@ -27,3 +27,4 @@ E:\Programs\RMS\01.HH.RMS\HH.RMS.Console\bin\Debug\Newtonsoft.Json.dll
 E:\Programs\RMS\01.HH.RMS\HH.RMS.Console\bin\Debug\Newtonsoft.Json.xml
 E:\Programs\RMS\01.HH.RMS\HH.RMS.Console\obj\Debug\HH.RMS.Console.exe
 E:\Programs\RMS\01.HH.RMS\HH.RMS.Console\obj\Debug\HH.RMS.Console.pdb
+E:\Programs\RMS\01.HH.RMS\HH.RMS.Console\obj\Debug\HH.RMS.Consoles.csprojResolveAssemblyReference.cache
