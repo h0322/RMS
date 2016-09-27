@@ -10,7 +10,6 @@ namespace HH.RMS.Service.Web.Interface
 {
     public interface ICityService
     {
-        List<CityModel> QueryCityListByProvinceId(long provinceId);
         List<CityModel> QueryCityListAll();
     }
 }

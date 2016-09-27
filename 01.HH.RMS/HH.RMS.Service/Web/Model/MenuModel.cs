@@ -29,5 +29,6 @@ namespace HH.RMS.Service.Web.Model
         public int menuOrder { get; set; }
         public MenuType menuType { get; set; }
         public string url { get; set; }
+        public DateTime createTime { get; set; }
     }
 }

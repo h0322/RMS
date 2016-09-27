@@ -20,19 +20,6 @@ namespace HH.RMS.Service.Web
         {
             _cityRepository = cityRepository;
         }
-        public List<CityModel> QueryCityListByProvinceId(long provinceId)
-        {
-            try
-            { 
-                List<CityModel> cityList = CityModel.ListCache;
-                return cityList.Where(m => m.provinceId == provinceId).ToList();
-            }
-            catch (Exception ex)
-            {
-                log.Error("CityService.QueryCityListByProvinceId", ex);
-                return null;
-            }
-        }
         public List<CityModel> QueryCityListAll()
         {
             try

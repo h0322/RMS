@@ -51,6 +51,5 @@ D:\My Program\HH.RMS\01.HH.RMS\HH.Mobile\bin\System.Web.Razor.xml
 D:\My Program\HH.RMS\01.HH.RMS\HH.Mobile\bin\System.Web.WebPages.xml
 D:\My Program\HH.RMS\01.HH.RMS\HH.Mobile\bin\System.Web.WebPages.Deployment.xml
 D:\My Program\HH.RMS\01.HH.RMS\HH.Mobile\bin\System.Web.WebPages.Razor.xml
-D:\My Program\HH.RMS\01.HH.RMS\HH.Mobile\obj\Debug\HH.Mobile.csprojResolveAssemblyReference.cache
 D:\My Program\HH.RMS\01.HH.RMS\HH.Mobile\obj\Debug\HH.Mobile.dll
 D:\My Program\HH.RMS\01.HH.RMS\HH.Mobile\obj\Debug\HH.Mobile.pdb

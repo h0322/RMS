@@ -82,7 +82,7 @@ namespace HH.RMS.Service.Web
         {
 
             SessionHelper.SessionClear();
-            HttpContext.Current.Response.Redirect("/Login/Index", true);
+            return;
         }
     }
 }

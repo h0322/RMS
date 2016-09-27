@@ -24,9 +24,5 @@
 @using HH.RMS.Service.Web.Interface;
 @using HH.RMS.Common.Unity;
 <ul class="easyui-tree">
-    @{
-        Output.Write(MenuModel.Session);
-    }
-
-
+    @Html.Raw(MenuModel.Session);
 </ul>

@@ -121,7 +121,7 @@ function SetFormValue(form, Json) {
             if (element.attr("class").indexOf("easyui-textbox") >= 0) {
                 element.textbox('setValue', Json[name])
             }
-            else if (element.attr("class").indexOf("easyui-numberbox") >= 0) {
+            else if ((typeof (element.attr("numberboxname")) == "undefined")) {
                 element.numberbox('setValue', Json[name])
             }
             else if (element.attr("class").indexOf("easyui-combobox") >= 0) {
@@ -169,5 +169,18 @@ function SetFormValue(form, Json) {
 
         }
 
+    }
+}
+function BindBox(control,url,type)
+{
+    if (type == "combobox") {
+        $(control).combobox({
+            url: url,
+            valueField: 'value',
+            textField: 'text',
+            required: false,
+            editable: false,
+            value: 0
+        });
     }
 }

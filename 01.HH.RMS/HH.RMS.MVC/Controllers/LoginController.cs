@@ -41,6 +41,7 @@ namespace HH.RMS.MVC.Controllers
             {
                 if (result.resultObj.statusType == AccountStatusType.Normal)
                 {
+                    FormsAuthentication.SetAuthCookie(result.resultObj.accountName.ToString(), true);
                     SessionHelper.SetSession(Config.loginSession, result.resultObj);
                     return Json(new { msg = ResultType.Success });
                 }
@@ -53,7 +54,7 @@ namespace HH.RMS.MVC.Controllers
         public ActionResult Exit()
         {
             _loginService.ExitLogin();
-            return View();
+            return Redirect("/Login/Index");
         }
     }
 }

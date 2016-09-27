@@ -30,7 +30,6 @@ namespace HH.RMS.MVC.Controllers
         }
         public ActionResult Index()
         {
-            ViewBag.RoleList = _roleService.QueryRoleList();
             return View();
         }
         [HttpPost]

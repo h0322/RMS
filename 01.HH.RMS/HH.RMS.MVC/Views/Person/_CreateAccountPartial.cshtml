@@ -9,10 +9,7 @@
             <ul>
                 <li style="width:30%">等级:</li>
                 <li style="width:60%">
-                    <select id="sel_level" class="easyui-combobox" name="level">
-                        <option value="1">level1</option>
-                        <option value="2">level2</option>
-                    </select>
+                    <select id="sel_level" class="easyui-combobox" name="level"></select>
                 </li>
             </ul>
             <ul>
@@ -28,16 +25,7 @@
             <ul>
                 <li style="width:30%">角色:</li>
                 <li style="width:60%">
-                    <select name="role.roleId" class="easyui-combobox" id="sel_role">
-                        @if (ViewBag.RoleList != null)
-                        {
-                            var roleList = (List<RoleModel>)ViewBag.RoleList;
-                            for (int i = 0; i < roleList.Count; i++)
-                            {
-                                <option value="@roleList[i].roleId">@roleList[i].roleName</option>
-                            }
-                        }
-                    </select>
+                    <select name="role.roleId" class="easyui-combobox" id="sel_role"></select>
                 </li>
             </ul>
         </form>

@@ -22,7 +22,7 @@ namespace HH.RMS.MVC
             {
                 return false;
             }
-            return base.AuthorizeCore(context);
+            return true;
         }
         protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext)
         {

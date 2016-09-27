@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace HH.RMS.Service.Web.Model
 {
@@ -35,5 +36,16 @@ namespace HH.RMS.Service.Web.Model
         public string code { get; set; }
         public string name { get; set; }
         public int order { get; set; }
+        public static JsonResult ToSelect(long id)
+        {
+            List<SelectModel> selectList = new List<SelectModel>();
+            var cityList = CityModel.ListCache.Where(m=>m.provinceId == id).ToList();
+            selectList.Add(new SelectModel() { text = "---请选择---", value = "0" });
+            cityList.ForEach(m => selectList.Add(new SelectModel() { text = m.name, value = m.cityId.ToString() }));
+            JsonResult json = new JsonResult();
+            json.Data = selectList;
+            json.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
+            return json;
+        }
     }
 }

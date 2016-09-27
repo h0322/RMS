@@ -28,16 +28,7 @@
             <ul>
                 <li style="width:30%">角色:</li>
                 <li style="width:60%">
-                    <select name="role.roleId" class="easyui-combobox" id="sel_role">
-                        @if (ViewBag.RoleList != null)
-                        {
-                            var roleList = (List<RoleModel>)ViewBag.RoleList;
-                            for (int i = 0; i < roleList.Count; i++)
-                            {
-                                <option value="@roleList[i].roleId">@roleList[i].roleName</option>
-                            }
-                        }
-                    </select>
+                    <input name="role.roleId" id="sel_role"/>
                 </li>
             </ul>
         </form>

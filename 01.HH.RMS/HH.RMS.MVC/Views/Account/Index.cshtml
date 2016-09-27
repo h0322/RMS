@@ -174,12 +174,13 @@
             value: 0
         });
     </script>
+@Html.Partial("_UpdatePartial")
     }
 <div style="width:100%; height:400px;">
     <table class="easyui-datagrid" id="accountList" style="width:600px; height:200px;"></table>
 </div>
 
-@Html.Partial("_UpdatePartial")
+
 <div id="toolbar" style="padding:5px;height:auto">
     <div><a href="#" class="easyui-linkbutton" iconcls="icon-remove" plain="true" onclick="del()">删除</a> &nbsp;
             From: <input class="easyui-datebox" style="width:80px" id="search_date_from">

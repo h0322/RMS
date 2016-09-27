@@ -11,6 +11,7 @@ using System.Web.Mvc;
 
 namespace HH.RMS.MVC.Controllers
 {
+    [RMSAuthorize]
     public class RoleController : ControllerService
     {
         private IRoleService _roleService { get; set; }

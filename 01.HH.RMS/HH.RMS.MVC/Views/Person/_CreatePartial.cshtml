@@ -7,10 +7,7 @@
             <ul>
                 <li style="width:20%">等级:</li>
                 <li style="width:60%">
-                    <select id="sel_level" class="easyui-combobox" name="level">
-                        <option value="1">level1</option>
-                        <option value="2">level2</option>
-                    </select>
+                    <input id="sel_level" name="level" />
                 </li>
             </ul>
             <ul>
@@ -26,17 +23,7 @@
             <ul>
                 <li style="width:20%">角色:</li>
                 <li style="width:60%">
-                    <select id="sel_Role" class="easyui-combobox" name="role.roleId">
-                        @if (ViewBag.RoleList != null)
-                        {
-                            var roleList = (List<RoleModel>)ViewBag.RoleList;
-                            for (int i = 0; i < roleList.Count; i++)
-                            {
-                                <option value="@roleList[i].roleId">@roleList[i].roleName</option>
-                            }
-                        }
-                    </select>
-
+                    <input id="sel_Role" name="role.roleId"/>
                 </li>
             </ul>
             <ul><li style="width:100%">&nbsp;</li></ul>
@@ -46,8 +33,8 @@
             <ul><li style="width:20%">邮箱:</li><li style="width:60%"><input id="txt_email" name="person.email" class="easyui-textbox"></li></ul>
             <ul><li style="width:20%">生日:</li><li style="width:60%"><input id="txt_email" name="person.birthday" class="easyui-datebox"></li></ul>
             <ul><li style="width:20%">性别:</li><li style="width:60%"><input id="rad_man" type="radio" name="person.sex" value="1">男&nbsp;<input id="rad_female" type="radio" name="person.sex" value="0">女</li></ul>
-            <ul><li style="width:20%">省:</li><li style="width:60%"><input id="txt_country" name="person.countryId" type="hidden" value="1" ><select id="sel_province" class="easyui-combobox" name="person.provinceId" style="width:100px;"></select></li></ul>
-            <ul><li style="width:20%">市:</li><li style="width:60%"><select id="sel_city" class="easyui-combobox" name="person.cityId"><option value="0">---请选择---</option></select></li></ul>
+            <ul><li style="width:20%">省:</li><li style="width:60%"><input id="txt_country" name="person.countryId" type="hidden" value="1" ><input id="sel_province" name="person.provinceId" style="width:100px;"/></li></ul>
+            <ul><li style="width:20%">市:</li><li style="width:60%"><input id="sel_city" class="easyui-combobox" name="person.cityId" /></li></ul>
             <ul><li style="width:20%">详细地址:</li><li style="width:60%"><input id="txt_address" name="person.address" class="easyui-textbox" style="width:400px;"></li></ul>
             <ul>
                 <li style="width:20%">备注:</li>
@@ -58,12 +45,11 @@
         </form>
     </div>
 </div>
-@section Scripts{
 <script type="text/javascript">
     $('#sel_province').combobox({
         onChange: function (value, o) {
-            console.log(value)
-            console.log(o)
+            //console.log(value)
+            //console.log(o)
             $('#sel_city').combobox({
                 url: '/Person/QueryCityByProvinceId?id=' + value,
                 valueField: 'value',
@@ -80,7 +66,15 @@
         editable: false,
         value: 0
     });
-    $("#sel_roleType").combobox({
+    $("#sel_level").combobox({
+        url: '/Person/QueryLevelList',
+        valueField: 'value',
+        textField: 'text',
+        required: false,
+        editable: false,
+        value: 0
+    });
+    $("#sel_Role").combobox({
         url: '/Person/QueryRoleList',
         valueField: 'value',
         textField: 'text',
@@ -89,4 +83,3 @@
         value: 0
     });
 </script>
-}
