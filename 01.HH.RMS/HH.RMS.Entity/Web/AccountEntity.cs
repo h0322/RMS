@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HH.RMS.Entity
+namespace HH.RMS.Entity.Web
 {
     [MappingTable(tableName = "Account")]
     public class AccountEntity : EntityBase

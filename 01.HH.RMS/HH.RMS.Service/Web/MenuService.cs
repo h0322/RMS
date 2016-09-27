@@ -1,5 +1,5 @@
 ﻿using HH.RMS.Common.Constant;
-using HH.RMS.Entity;
+using HH.RMS.Entity.Web;
 using HH.RMS.Service.Web.Model;
 using HH.RMS.Repository.ADONet.Interface;
 using HH.RMS.Repository.EntityFramework;
@@ -29,12 +29,8 @@ namespace HH.RMS.Service.Web
                 return _menuRepository.Query(db).ToList();
             }
         }
-        public string GetMenuString(long menuId=0)
+        public string GetMenuString()
         {
-            if (!string.IsNullOrEmpty(Common.Utilities.SessionHelper.Get(Config.menuSession)))
-            {
-                return Common.Utilities.SessionHelper.Get(Config.menuSession).ToString();
-            }
             var menuList = QueryMenuByRole();
             if (menuList == null)
             { 
@@ -53,7 +49,7 @@ namespace HH.RMS.Service.Web
                 menuBuilder.Append("</li>");
             }
             string menuString = menuBuilder.ToString();
-            Common.Utilities.SessionHelper.SetSession(Config.menuSession, menuString);
+            
             return menuString;
         }
         public List<MenuEntity> QueryMenuByRole()

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HH.RMS.Entity
+namespace HH.RMS.Entity.Web
 {
     [MappingTable(tableName = "AccountLevel")]
     public class LevelEntity:EntityBase

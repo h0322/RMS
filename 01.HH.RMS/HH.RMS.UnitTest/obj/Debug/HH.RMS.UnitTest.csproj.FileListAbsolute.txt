@@ -11,29 +11,6 @@ E:\Programs\HH.RMS\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\HH.RMS.UnitTest.pd
 E:\Programs\HH.RMS\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\obj\Debug\HH.RMS.UnitTest.dll
 E:\Programs\HH.RMS\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\obj\Debug\HH.RMS.UnitTest.pdb
 E:\Programs\HH.RMS\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\obj\Debug\HH.RMS.UnitTest.csprojResolveAssemblyReference.cache
-D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\HH.RMS.UnitTest.dll
-D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\HH.RMS.UnitTest.pdb
-D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\HH.RMS.Common.dll
-D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\HH.RMS.Service.dll
-D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\Newtonsoft.Json.dll
-D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\log4net.dll
-D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\HH.RMS.Model.dll
-D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\HH.RMS.Repository.dll
-D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\HH.RMS.Entity.dll
-D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\EntityFramework.dll
-D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\EntityFramework.Extended.dll
-D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\HH.RMS.Common.pdb
-D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\HH.RMS.Service.pdb
-D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\Newtonsoft.Json.xml
-D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\log4net.xml
-D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\HH.RMS.Model.pdb
-D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\HH.RMS.Repository.pdb
-D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\HH.RMS.Entity.pdb
-D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\EntityFramework.xml
-D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\EntityFramework.Extended.xml
-D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\obj\Debug\HH.RMS.UnitTest.csprojResolveAssemblyReference.cache
-D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\obj\Debug\HH.RMS.UnitTest.dll
-D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\obj\Debug\HH.RMS.UnitTest.pdb
 E:\Programs\RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\HH.RMS.UnitTest.dll
 E:\Programs\RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\HH.RMS.UnitTest.pdb
 E:\Programs\RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\HH.RMS.Common.dll
@@ -62,3 +39,31 @@ E:\Programs\RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\EntityFramework.Extended.xml
 E:\Programs\RMS\01.HH.RMS\HH.RMS.UnitTest\obj\Debug\HH.RMS.UnitTest.csprojResolveAssemblyReference.cache
 E:\Programs\RMS\01.HH.RMS\HH.RMS.UnitTest\obj\Debug\HH.RMS.UnitTest.dll
 E:\Programs\RMS\01.HH.RMS\HH.RMS.UnitTest\obj\Debug\HH.RMS.UnitTest.pdb
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\HH.RMS.UnitTest.dll
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\HH.RMS.UnitTest.pdb
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\HH.RMS.Common.dll
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\HH.RMS.Service.dll
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\Microsoft.Practices.Unity.dll
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\Microsoft.Practices.Unity.Configuration.dll
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\Newtonsoft.Json.dll
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\log4net.dll
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\HH.RMS.Repository.dll
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\HH.RMS.Entity.dll
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\EntityFramework.dll
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\EntityFramework.Extended.dll
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\HH.RMS.Common.pdb
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\HH.RMS.Service.pdb
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\Microsoft.Practices.Unity.xml
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\Microsoft.Practices.Unity.Configuration.xml
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\Newtonsoft.Json.xml
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\log4net.xml
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\HH.RMS.Repository.pdb
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\HH.RMS.Entity.pdb
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\Microsoft.Practices.ServiceLocation.xml
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\EntityFramework.xml
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\EntityFramework.Extended.xml
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\obj\Debug\HH.RMS.UnitTest.csprojResolveAssemblyReference.cache
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\obj\Debug\HH.RMS.UnitTest.dll
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\obj\Debug\HH.RMS.UnitTest.pdb

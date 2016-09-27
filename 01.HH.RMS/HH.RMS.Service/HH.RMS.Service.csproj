@@ -96,6 +96,7 @@
     <Compile Include="Web\Model\CountryModel.cs" />
     <Compile Include="Web\Model\LevelModel.cs" />
     <Compile Include="Web\Model\LoginModel.cs" />
+    <Compile Include="Web\Model\MenuModel.cs" />
     <Compile Include="Web\Model\PagerModel.cs" />
     <Compile Include="Web\Model\PersonModel.cs" />
     <Compile Include="Web\Model\ProvinceModel.cs" />
@@ -111,6 +112,27 @@
     <Compile Include="Web\SchedulerService.cs" />
     <Compile Include="ServiceBase.cs" />
     <Compile Include="UnityService.cs" />
+    <Compile Include="Wechat\AccessTokenService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Wechat\Interface\IAccessTokenService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Wechat\Interface\IWechatService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Wechat\Model\AccessTokenModel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Wechat\Model\WechatRequestModel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Wechat\Model\WechatResponseModel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Wechat\WechatService.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HH.RMS.Common\HH.RMS.Common.csproj">
@@ -131,10 +153,7 @@
     <None Include="Web\Model\packages.config" />
     <None Include="Web\packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Wechat\Interface\" />
-    <Folder Include="Wechat\Model\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

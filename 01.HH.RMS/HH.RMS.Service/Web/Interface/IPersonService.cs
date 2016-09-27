@@ -1,5 +1,5 @@
 ﻿using HH.RMS.Common.Constant;
-using HH.RMS.Entity;
+using HH.RMS.Entity.Web;
 using HH.RMS.Service.Model;
 using HH.RMS.Service.Web.Model;
 using System;

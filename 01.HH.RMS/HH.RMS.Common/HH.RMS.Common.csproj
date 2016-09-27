@@ -100,6 +100,7 @@
     <Compile Include="Utilities\DownFile.cs" />
     <Compile Include="Utilities\FileUpload.cs" />
     <Compile Include="Utilities\JScript.cs" />
+    <Compile Include="Utilities\NetHelper.cs" />
     <Compile Include="Utilities\PageValidate.cs" />
     <Compile Include="Utilities\PaginationHelper.cs" />
     <Compile Include="Utilities\QueryString.cs" />

@@ -15,23 +15,12 @@ namespace HH.RMS.Common.Utilities
 		/// <returns></returns>
 		public static string GetConfigString(string key)
 		{
-            string CacheKey = "AppSettings-" + key;
-            //object objModel = DataCache.GetCache(CacheKey);
-            object objModel = null;
-            if (objModel == null)
-            {
-                try
-                {
-                    objModel = ConfigurationManager.AppSettings[key]; 
-                    if (objModel != null)
-                    {                        
-                        //DataCache.SetCache(CacheKey, objModel, DateTime.Now.AddMinutes(180), TimeSpan.Zero);
-                    }
-                }
-                catch
-                { }
+            var objModel = ConfigurationManager.AppSettings[key]; 
+            if (objModel != null)
+            {                        
+                return objModel.ToString();
             }
-            return objModel.ToString();
+            return null;
 		}
 
 		/// <summary>

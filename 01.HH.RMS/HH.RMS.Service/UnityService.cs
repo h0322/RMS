@@ -22,7 +22,10 @@ namespace HH.RMS.Service.Web
             _unityManager = unityManager;
 
         }
-
+        public virtual void RepositoryRegister()
+        {
+            _unityManager.RegisterType(typeof(IRepository<>), typeof(RepositoryBase<>));
+        }
         public virtual void ADORepositoryRegister()
         {
             _unityManager.RegisterType(typeof(IADORepository<>), typeof(ADORepositoryBase<>));

@@ -16,6 +16,7 @@ namespace HH.RMS.MVC
         {
             ContorllerRegister();
             ServiceRegister();
+            RepositoryRegister();
         }
         public override void ServiceRegister()
         {
@@ -24,6 +25,10 @@ namespace HH.RMS.MVC
         public override void ContorllerRegister()
         {
             base.ContorllerRegister();
+        }
+        public override void RepositoryRegister()
+        {
+            base.RepositoryRegister();
         }
     }
 }

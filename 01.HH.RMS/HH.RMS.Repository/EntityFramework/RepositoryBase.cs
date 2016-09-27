@@ -1,6 +1,6 @@
 ﻿using HH.RMS.Common.Attributes;
 using HH.RMS.Common.Constant;
-using HH.RMS.Entity;
+using HH.RMS.Entity.Web;
 using HH.RMS.Repository.EntityFramework.Interface;
 using System;
 using System.Collections.Generic;
@@ -16,6 +16,7 @@ using System.Threading.Tasks;
 using EntityFramework.Extensions;
 using HH.RMS.Common.Utilities;
 using System.Data.Common;
+using HH.RMS.Entity;
 
 namespace HH.RMS.Repository.EntityFramework
 {

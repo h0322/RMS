@@ -35,7 +35,11 @@
                         field: 'accountName', title: '用户名', width: 120, align: 'center'
                     },
                     { field: 'score', title: '积分', width: 120, align: 'center' },
-                    { field: 'level', title: '等级', width: 120, align: 'center' },
+                    {
+                        field: 'level.levelName', title: '等级', width: 120, align: 'center', formatter: function (value, row) {
+                            return row.level.levelName;
+                        }
+                    },
                     {
                         field: 'person.name', title: '姓名', width: 120, align: 'center', formatter: function (value, row) {
                             return row.person.name;

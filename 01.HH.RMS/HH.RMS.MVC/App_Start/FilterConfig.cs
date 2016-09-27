@@ -20,11 +20,21 @@ namespace HH.RMS.MVC
         {
             if (SessionHelper.GetSession(Config.loginSession) == null)
             {
-                string currentUrl = context.Request.Url.ToString();
-                context.Response.Redirect("/Login/Index?RedirectUrl=" + HttpUtility.UrlEncode(currentUrl));
+                return false;
             }
             return base.AuthorizeCore(context);
         }
+        protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext)
+        {
+            base.HandleUnauthorizedRequest(filterContext);
+            string currentUrl = filterContext.HttpContext.Request.Url.ToString();
+            if (SessionHelper.GetSession(Config.loginSession) == null)
+            {
+                filterContext.Result = new RedirectResult("/Login/Index?RedirectUrl=" + HttpUtility.UrlEncode(currentUrl));
+                return;
+            }
+            
+        }  
 
     }
 }

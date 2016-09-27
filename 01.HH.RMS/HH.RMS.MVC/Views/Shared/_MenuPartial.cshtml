@@ -22,11 +22,10 @@
 
 
 @using HH.RMS.Service.Web.Interface;
-@using HH.RMS.Unity;
+@using HH.RMS.Common.Unity;
 <ul class="easyui-tree">
     @{
-        IMenuService menuService = UnityManager.instance.GetService<IMenuService>();
-        Output.Write(menuService.GetMenuString());
+        Output.Write(MenuModel.Session);
     }
 
 
