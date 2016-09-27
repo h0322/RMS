@@ -1,31 +1,3 @@
-D:\My Program\HH.RMS\01.HH.RMS\HH.Mobile\bin\HH.Mobile.dll.config
-D:\My Program\HH.RMS\01.HH.RMS\HH.Mobile\bin\HH.Mobile.dll
-D:\My Program\HH.RMS\01.HH.RMS\HH.Mobile\bin\HH.Mobile.pdb
-D:\My Program\HH.RMS\01.HH.RMS\HH.Mobile\bin\Microsoft.Web.Infrastructure.dll
-D:\My Program\HH.RMS\01.HH.RMS\HH.Mobile\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
-D:\My Program\HH.RMS\01.HH.RMS\HH.Mobile\bin\Newtonsoft.Json.dll
-D:\My Program\HH.RMS\01.HH.RMS\HH.Mobile\bin\System.Net.Http.Formatting.dll
-D:\My Program\HH.RMS\01.HH.RMS\HH.Mobile\bin\System.Web.Helpers.dll
-D:\My Program\HH.RMS\01.HH.RMS\HH.Mobile\bin\System.Web.Http.dll
-D:\My Program\HH.RMS\01.HH.RMS\HH.Mobile\bin\System.Web.Http.WebHost.dll
-D:\My Program\HH.RMS\01.HH.RMS\HH.Mobile\bin\System.Web.Mvc.dll
-D:\My Program\HH.RMS\01.HH.RMS\HH.Mobile\bin\System.Web.Razor.dll
-D:\My Program\HH.RMS\01.HH.RMS\HH.Mobile\bin\System.Web.WebPages.Deployment.dll
-D:\My Program\HH.RMS\01.HH.RMS\HH.Mobile\bin\System.Web.WebPages.dll
-D:\My Program\HH.RMS\01.HH.RMS\HH.Mobile\bin\System.Web.WebPages.Razor.dll
-D:\My Program\HH.RMS\01.HH.RMS\HH.Mobile\bin\Newtonsoft.Json.xml
-D:\My Program\HH.RMS\01.HH.RMS\HH.Mobile\bin\System.Net.Http.Formatting.xml
-D:\My Program\HH.RMS\01.HH.RMS\HH.Mobile\bin\System.Web.Helpers.xml
-D:\My Program\HH.RMS\01.HH.RMS\HH.Mobile\bin\System.Web.Http.xml
-D:\My Program\HH.RMS\01.HH.RMS\HH.Mobile\bin\System.Web.Http.WebHost.xml
-D:\My Program\HH.RMS\01.HH.RMS\HH.Mobile\bin\System.Web.Mvc.xml
-D:\My Program\HH.RMS\01.HH.RMS\HH.Mobile\bin\System.Web.Razor.xml
-D:\My Program\HH.RMS\01.HH.RMS\HH.Mobile\bin\System.Web.WebPages.xml
-D:\My Program\HH.RMS\01.HH.RMS\HH.Mobile\bin\System.Web.WebPages.Deployment.xml
-D:\My Program\HH.RMS\01.HH.RMS\HH.Mobile\bin\System.Web.WebPages.Razor.xml
-D:\My Program\HH.RMS\01.HH.RMS\HH.Mobile\obj\Debug\HH.Mobile.dll
-D:\My Program\HH.RMS\01.HH.RMS\HH.Mobile\obj\Debug\HH.Mobile.pdb
-D:\My Program\HH.RMS\01.HH.RMS\HH.Mobile\obj\Debug\HH.Mobile.csprojResolveAssemblyReference.cache
 E:\Programs\RMS\01.HH.RMS\HH.Mobile\bin\HH.Mobile.dll.config
 E:\Programs\RMS\01.HH.RMS\HH.Mobile\bin\HH.Mobile.dll
 E:\Programs\RMS\01.HH.RMS\HH.Mobile\bin\HH.Mobile.pdb
@@ -54,3 +26,30 @@ E:\Programs\RMS\01.HH.RMS\HH.Mobile\bin\System.Web.WebPages.Razor.xml
 E:\Programs\RMS\01.HH.RMS\HH.Mobile\obj\Debug\HH.Mobile.dll
 E:\Programs\RMS\01.HH.RMS\HH.Mobile\obj\Debug\HH.Mobile.pdb
 E:\Programs\RMS\01.HH.RMS\HH.Mobile\obj\Debug\HH.Mobile.csprojResolveAssemblyReference.cache
+D:\My Program\HH.RMS\01.HH.RMS\HH.Mobile\bin\HH.Mobile.dll.config
+D:\My Program\HH.RMS\01.HH.RMS\HH.Mobile\bin\HH.Mobile.dll
+D:\My Program\HH.RMS\01.HH.RMS\HH.Mobile\bin\HH.Mobile.pdb
+D:\My Program\HH.RMS\01.HH.RMS\HH.Mobile\bin\Microsoft.Web.Infrastructure.dll
+D:\My Program\HH.RMS\01.HH.RMS\HH.Mobile\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+D:\My Program\HH.RMS\01.HH.RMS\HH.Mobile\bin\Newtonsoft.Json.dll
+D:\My Program\HH.RMS\01.HH.RMS\HH.Mobile\bin\System.Net.Http.Formatting.dll
+D:\My Program\HH.RMS\01.HH.RMS\HH.Mobile\bin\System.Web.Helpers.dll
+D:\My Program\HH.RMS\01.HH.RMS\HH.Mobile\bin\System.Web.Http.dll
+D:\My Program\HH.RMS\01.HH.RMS\HH.Mobile\bin\System.Web.Http.WebHost.dll
+D:\My Program\HH.RMS\01.HH.RMS\HH.Mobile\bin\System.Web.Mvc.dll
+D:\My Program\HH.RMS\01.HH.RMS\HH.Mobile\bin\System.Web.Razor.dll
+D:\My Program\HH.RMS\01.HH.RMS\HH.Mobile\bin\System.Web.WebPages.Deployment.dll
+D:\My Program\HH.RMS\01.HH.RMS\HH.Mobile\bin\System.Web.WebPages.dll
+D:\My Program\HH.RMS\01.HH.RMS\HH.Mobile\bin\System.Web.WebPages.Razor.dll
+D:\My Program\HH.RMS\01.HH.RMS\HH.Mobile\bin\Newtonsoft.Json.xml
+D:\My Program\HH.RMS\01.HH.RMS\HH.Mobile\bin\System.Net.Http.Formatting.xml
+D:\My Program\HH.RMS\01.HH.RMS\HH.Mobile\bin\System.Web.Helpers.xml
+D:\My Program\HH.RMS\01.HH.RMS\HH.Mobile\bin\System.Web.Http.xml
+D:\My Program\HH.RMS\01.HH.RMS\HH.Mobile\bin\System.Web.Http.WebHost.xml
+D:\My Program\HH.RMS\01.HH.RMS\HH.Mobile\bin\System.Web.Mvc.xml
+D:\My Program\HH.RMS\01.HH.RMS\HH.Mobile\bin\System.Web.Razor.xml
+D:\My Program\HH.RMS\01.HH.RMS\HH.Mobile\bin\System.Web.WebPages.xml
+D:\My Program\HH.RMS\01.HH.RMS\HH.Mobile\bin\System.Web.WebPages.Deployment.xml
+D:\My Program\HH.RMS\01.HH.RMS\HH.Mobile\bin\System.Web.WebPages.Razor.xml
+D:\My Program\HH.RMS\01.HH.RMS\HH.Mobile\obj\Debug\HH.Mobile.dll
+D:\My Program\HH.RMS\01.HH.RMS\HH.Mobile\obj\Debug\HH.Mobile.pdb

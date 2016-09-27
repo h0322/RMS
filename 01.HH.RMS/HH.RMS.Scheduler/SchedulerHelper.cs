@@ -1,5 +1,5 @@
 ﻿using HH.RMS.Common.Constant;
-using HH.RMS.Entity;
+using HH.RMS.Entity.Web;
 using HH.RMS.Service.Web;
 using HH.RMS.Common.Unity;
 using Quartz;

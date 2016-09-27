@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace HH.RMS.MVC.Controllers
 {
+    [RMSAuthorize]
     public class MenuController : ControllerService
     {
         //

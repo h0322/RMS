@@ -1,5 +1,5 @@
 ﻿using HH.RMS.Common.Constant;
-using HH.RMS.Entity;
+using HH.RMS.Entity.Web;
 using HH.RMS.MVC;
 using HH.RMS.Scheduler;
 using HH.RMS.Service.Web;
@@ -30,7 +30,8 @@ namespace HH.RMS.MVC
         protected void Application_Error(object sender, EventArgs e)
         {
             var ex = Server.GetLastError().GetBaseException();
-            log.Error("Application.Error", ex);
+            log.Error("Application.Error:"+Request.Url, ex);
+            //Response.Redirect("/Error.html");
         }
     }
 }

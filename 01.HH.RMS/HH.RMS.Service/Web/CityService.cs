@@ -1,6 +1,6 @@
 ﻿using HH.RMS.Common.Constant;
 using HH.RMS.Common.Utilities;
-using HH.RMS.Entity;
+using HH.RMS.Entity.Web;
 using HH.RMS.Service.Web.Model;
 using HH.RMS.Repository.EntityFramework;
 using HH.RMS.Repository.EntityFramework.Interface;
@@ -19,19 +19,6 @@ namespace HH.RMS.Service.Web
         public CityService(IRepository<CityEntity> cityRepository)
         {
             _cityRepository = cityRepository;
-        }
-        public List<CityModel> QueryCityListByProvinceId(long provinceId)
-        {
-            try
-            { 
-                List<CityModel> cityList = CityModel.ListCache;
-                return cityList.Where(m => m.provinceId == provinceId).ToList();
-            }
-            catch (Exception ex)
-            {
-                log.Error("CityService.QueryCityListByProvinceId", ex);
-                return null;
-            }
         }
         public List<CityModel> QueryCityListAll()
         {

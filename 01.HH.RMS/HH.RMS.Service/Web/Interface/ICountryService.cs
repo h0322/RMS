@@ -1,4 +1,4 @@
-﻿using HH.RMS.Entity;
+﻿using HH.RMS.Entity.Web;
 using HH.RMS.Service.Web.Model;
 using System;
 using System.Collections.Generic;

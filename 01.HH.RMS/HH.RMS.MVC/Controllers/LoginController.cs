@@ -54,7 +54,7 @@ namespace HH.RMS.MVC.Controllers
         public ActionResult Exit()
         {
             _loginService.ExitLogin();
-            return View();
+            return Redirect("/Login/Index");
         }
     }
 }

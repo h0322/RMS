@@ -40,22 +40,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccountEntity.cs" />
-    <Compile Include="CityEntity.cs" />
-    <Compile Include="CountryEntity.cs" />
+    <Compile Include="Web\AccountEntity.cs" />
+    <Compile Include="Web\CityEntity.cs" />
+    <Compile Include="Web\CountryEntity.cs" />
     <Compile Include="EntityBase.cs" />
-    <Compile Include="JobEntity.cs" />
-    <Compile Include="LevelEntity.cs" />
-    <Compile Include="LogEntity.cs" />
-    <Compile Include="MenuEntity.cs" />
-    <Compile Include="MenuRoleEntity.cs" />
-    <Compile Include="PersonEntity.cs" />
+    <Compile Include="Web\JobEntity.cs" />
+    <Compile Include="Web\LevelEntity.cs" />
+    <Compile Include="Web\LogEntity.cs" />
+    <Compile Include="Web\MenuEntity.cs" />
+    <Compile Include="Web\MenuRoleEntity.cs" />
+    <Compile Include="Web\PersonEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ProvinceEntity.cs" />
-    <Compile Include="RoleEntity.cs" />
-    <Compile Include="SchedulerEntity.cs" />
-    <Compile Include="SchedulerLogEntity.cs" />
-    <Compile Include="AccountRoleEntity.cs" />
+    <Compile Include="Web\ProvinceEntity.cs" />
+    <Compile Include="Web\RoleEntity.cs" />
+    <Compile Include="Web\SchedulerEntity.cs" />
+    <Compile Include="Web\SchedulerLogEntity.cs" />
+    <Compile Include="Web\AccountRoleEntity.cs" />
+    <Compile Include="Wechat\WechatSetting.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HH.RMS.Common\HH.RMS.Common.csproj">

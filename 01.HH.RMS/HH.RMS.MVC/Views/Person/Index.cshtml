@@ -75,6 +75,9 @@
                 $('#sel_city_update').combobox("setValue", d.cityId);
                 $('#accountName').textbox('disable');
             }, "json")
+            //$.post("/Person/QueryPersonById", { id: personId }, function (d) {
+            //    console.log(d)
+            //})
 
         }
         
@@ -161,60 +164,15 @@
                 $.cookie("searchDateTo", null, { path: "/" });
             $("#personList").datagrid();
         })
-
-
-        $('#sel_province_update').combobox({
-            onChange: function (value, o) {
-                $('#sel_city_update').combobox({
-                    url: '/Person/QueryCityByProvinceId?id=' + value,
-                    valueField: 'value',
-                    textField: 'text',
-                    required: false,
-                    editable: false,
-                    value: 0
-                });
-            },
-            onLoadSuccess:function()
-            {
-                var val = $(this).getValue
-                if (val == 'undefined')
-                {
-
-                    $('#sel_city_update').combobox({
-                        url: '/Person/QueryCityByProvinceId?id=' + val,
-                        valueField: 'value',
-                        textField: 'text',
-                        required: false,
-                        editable: false,
-                        value: 0
-                    });
-                    return;
-                }
-
-            },
-            url: '/Person/QueryProvinceList',
-            valueField: 'value',
-            textField: 'text',
-            required: false,
-            editable: false,
-            value: 0
-        });
-        $("#sel_roleType").combobox({
-            url: '/Person/QueryRoleList',
-            valueField: 'value',
-            textField: 'text',
-            required: false,
-            editable: false,
-            value: 0
-        });
     </script>
+@Html.Partial("_CreatePartial")
+@Html.Partial("_UpdatePartial")
 }
 <div style="width:100%; height:400px;">
     <table class="easyui-datagrid" id="personList" style="width:600px; height:200px;"></table>
 </div>
 
-@Html.Partial("_CreatePartial")
-@Html.Partial("_UpdatePartial")
+
 
 <div id="toolbar" style="padding:5px;height:auto">
     <div>

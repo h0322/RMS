@@ -13,8 +13,9 @@ using System.Threading.Tasks;
 using System.Reflection;
 using System.Transactions;
 using System.ComponentModel.DataAnnotations;
-using HH.RMS.Entity;
+using HH.RMS.Entity.Web;
 using System.ComponentModel.DataAnnotations.Schema;
+using HH.RMS.Entity;
 namespace HH.RMS.Repository.ADONet
 {
     public class ADORepositoryBase<T> : IADORepository<T> where T : EntityBase, new()

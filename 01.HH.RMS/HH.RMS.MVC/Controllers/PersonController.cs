@@ -12,6 +12,7 @@ using HH.RMS.Service;
 
 namespace HH.RMS.MVC.Controllers
 {
+    [RMSAuthorize]
     public class PersonController : ControllerService
     {
         //
@@ -30,7 +31,6 @@ namespace HH.RMS.MVC.Controllers
         }
         public ActionResult Index()
         {
-            ViewBag.RoleList = _roleService.QueryRoleList();
             return View();
         }
         [HttpPost]
@@ -47,28 +47,22 @@ namespace HH.RMS.MVC.Controllers
         [HttpPost]
         public JsonResult QueryProvinceList()
         {
-            var provinceList = _provinceService.QueryProvinceList();
-            List<SelectModel> selectList = new List<SelectModel>();
-            selectList.Add(new SelectModel() { text = "---请选择---", value = "0" });
-            provinceList.ForEach(m => selectList.Add(new SelectModel() { text = m.name, value = m.provinceId.ToString() }));
-            return Json(selectList, JsonRequestBehavior.AllowGet);
+            return ProvinceModel.ToSelect();
         }
         public JsonResult QueryCityByProvinceId(long id)
         {
-            List<SelectModel> selectList = new List<SelectModel>();
-            var cityList = _cityService.QueryCityListByProvinceId(id);
-            selectList.Add(new SelectModel() { text = "---请选择---", value = "0" });
-            cityList.ForEach(m => selectList.Add(new SelectModel() { text = m.name, value = m.cityId.ToString() }));
-            return Json(selectList, JsonRequestBehavior.AllowGet);
+            return CityModel.ToSelect(id);
         }
+          [HttpPost]
         public JsonResult QueryRoleList()
         {
-            List<SelectModel> selectList = new List<SelectModel>();
-            var roleList = _roleService.QueryRoleList();
-            selectList.Add(new SelectModel() { text = "---请选择---", value = "0" });
-            roleList.ForEach(m => selectList.Add(new SelectModel() { text = m.roleName, value = m.roleId.ToString() }));
-            return Json(selectList, JsonRequestBehavior.AllowGet);
+            return RoleModel.ToSelect();
         }
+          [HttpPost]
+          public JsonResult QueryLevelList()
+          {
+              return LevelModel.ToSelect();
+          }
         public JsonResult CreatePersonAccount(AccountModel model)
         {
             ResultModel<ResultType> result =  _personService.CreatePersonAccount(model);
@@ -80,6 +74,12 @@ namespace HH.RMS.MVC.Controllers
             return Json(person, JsonRequestBehavior.AllowGet);
         }
 
+        //public ActionResult QueryPersonById(long id)
+        //{
+        //    var person = _personService.QueryPersonById(id);
+        //    return PartialView("_UpdatePartial", person);
+        //}
+        //
         public JsonResult UpdatePerson(PersonModel model)
         {
             var result = _personService.UpdatePersonById(model);

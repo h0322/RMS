@@ -27,7 +27,7 @@ namespace HH.RMS.MVC
                         continue;
                     }
                     AdoNetAppender adoAppender = (AdoNetAppender)appender;
-                    adoAppender.ConnectionString = Config.sqlLogConnStr;
+                    adoAppender.ConnectionString = "data source=.;user ID=sa;password=henry123;initial catalog=HH_RMS;persist security info=True;";
                     //refresh settings of appender
                     adoAppender.ActivateOptions();
                 }

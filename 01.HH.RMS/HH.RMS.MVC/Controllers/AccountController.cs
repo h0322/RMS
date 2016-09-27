@@ -1,7 +1,7 @@
 ﻿using HH.RMS.Common.Constant;
 using HH.RMS.Service.Web.Model;
 using HH.RMS.Common.Utilities;
-using HH.RMS.Entity;
+using HH.RMS.Entity.Web;
 using HH.RMS.Service.Web.Model;
 using HH.RMS.MVC.Models;
 using HH.RMS.Service.Web.Interface;
@@ -30,7 +30,6 @@ namespace HH.RMS.MVC.Controllers
         }
         public ActionResult Index()
         {
-            ViewBag.RoleList = _roleService.QueryRoleList();
             return View();
         }
         [HttpPost]

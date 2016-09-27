@@ -1,5 +1,6 @@
 ﻿using HH.RMS.Common.Constant;
 using HH.RMS.Service;
+using HH.RMS.Service.Web;
 using HH.RMS.Service.Web.Interface;
 using HH.RMS.Service.Web.Model;
 using System;
@@ -10,14 +11,14 @@ using System.Web.Mvc;
 
 namespace HH.RMS.MVC.Controllers
 {
+    [RMSAuthorize]
     public class LevelController : ControllerService
     {
         private ILevelService _levelService { get; set; }
         public LevelController(ILevelService levelService)
         {
-            _levelService = levelService;
+            this._levelService = levelService;
         }
-
         public ActionResult Index()
         {
             return View();
