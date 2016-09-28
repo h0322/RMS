@@ -63,6 +63,9 @@
         }
         function Add()
         {
+            $('#from_role').form('clear'); //清表单
+            $("#sel_roleType").combobox('setValue', -1);
+            $("#sel_roleOrder").combobox('setValue', -1);
             $('#dlg_Add').dialog('open');
         }
         function Save()
@@ -104,7 +107,11 @@
                 console.log(rows[index].roleId)
                 roleIds += rows[index].roleId + ",";
             }
-            console.log(roleIds)
+            if (roleIds == "")
+            {
+                alert("请选择删除数据");
+                return;
+            }
             roleIds = roleIds.substring(0, roleIds.length - 1);
             $.post("/Role/DeleteRoleByIds", { ids: roleIds }, function (data) {
                 $("#roleList").datagrid();
@@ -148,7 +155,7 @@
 @Html.Partial("_UpdatePartial")
 }
 <div style="width:100%; height:400px;">
-    <table class="easyui-datagrid" id="roleList" style="width:600px; height:200px;"></table>
+    <table id="roleList" style="width:600px; height:200px;"></table>
 </div>
 
 

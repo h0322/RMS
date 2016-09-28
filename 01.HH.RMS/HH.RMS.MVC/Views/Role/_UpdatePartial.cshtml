@@ -5,7 +5,7 @@
             <ul><li style="width:30%">角色名称:</li><li style="width:60%"><input id="txt_roleName" name="roleName" class="easyui-textbox"></li></ul>@*data-options="prompt:'Enter a email address...',validType:'email'"*@
             <ul><li style="width:30%">角色类型:</li><li style="width:60%">
                     <select id="sel_roleType" class="easyui-combobox" name="roleType">
-                        <option value="-1">请选择</option>
+                        <option value="-1" selected="selected">请选择</option>
                         @foreach (RoleType item in Enum.GetValues(typeof(RoleType)))
                         {
                             <option value="@((int)item)">@item.ToString()</option>
@@ -16,7 +16,7 @@
                 <li style="width:30%">角色排序:</li>
                 <li style="width:60%">
                     <select id="sel_roleOrder" class="easyui-combobox" name="roleOrder">
-                        <option value="-1">请选择</option>
+                        <option value="-1" selected ="selected">请选择</option>
                         @for (int i = 1; i < 10; i++)
                         {
                             <option value="@i">@i</option>

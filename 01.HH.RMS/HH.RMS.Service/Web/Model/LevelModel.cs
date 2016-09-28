@@ -34,6 +34,7 @@ namespace HH.RMS.Service.Web.Model
         public string levelName { get; set; }
         public int levelOrder { get; set; }
         public string remark { get; set; }
+        public DateTime createTime { get; set; }
         public static JsonResult ToSelect()
         {
             List<SelectModel> selectList = new List<SelectModel>();

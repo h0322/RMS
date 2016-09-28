@@ -35,7 +35,8 @@ namespace HH.RMS.Service.Web
                                  roleName = a.roleName,
                                  roleOrder = a.roleOrder,
                                  roleId = a.id,
-                                 roleType = a.roleType
+                                 roleType = a.roleType,
+                                 createTime =a.createTime
                              });
                     IQueryable<RoleModel> qPager = null;
                     if (pager != null)
@@ -69,7 +70,8 @@ namespace HH.RMS.Service.Web
                                 roleId = a.id,
                                 roleName = a.roleName,
                                 roleOrder = a.roleOrder,
-                                roleType = a.roleType
+                                roleType = a.roleType,
+                                createTime = a.createTime
                             };
                     return q.ToList();
                 }

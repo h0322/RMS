@@ -118,17 +118,17 @@ function SetFormValue(form, Json) {
     for (var name in Json) {
         var element = $("#" + form).find("[textboxname='" + name + "']");
         if (element.length > 0) {
-            if (element.attr("class").indexOf("easyui-textbox") >= 0) {
-                element.textbox('setValue', Json[name])
-            }
-            else if ((typeof (element.attr("numberboxname")) == "undefined")) {
-                element.numberbox('setValue', Json[name])
-            }
-            else if (element.attr("class").indexOf("easyui-combobox") >= 0) {
+            if (element.attr("class").indexOf("combobox-f") >= 0) {
                 element.combobox('setValue', Json[name])
             }
-            else if (element.attr("class").indexOf("easyui-datebox") >= 0) {
+            else if (element.attr("class").indexOf("numberbox-f") >= 0) {
+                element.numberbox('setValue', Json[name])
+            }
+            else if (element.attr("class").indexOf("datebox-f") >= 0) {
                 element.datebox('setValue', Json[name])
+            }
+            else if (element.attr("class").indexOf("textbox-f") >= 0) {
+                element.textbox('setValue', Json[name])
             }
         }
         else {

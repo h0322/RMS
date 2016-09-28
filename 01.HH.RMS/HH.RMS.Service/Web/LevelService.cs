@@ -35,7 +35,8 @@ namespace HH.RMS.Service.Web
                              {
                                 levelName = a.levelName,
                                 levelOrder = a.levelOrder,
-                                levelId= a.id
+                                levelId= a.id,
+                                createTime = a.createTime
                              });
                     IQueryable<LevelModel> qPager = null;
                     if (pager != null)
@@ -68,7 +69,8 @@ namespace HH.RMS.Service.Web
                             {
                                 levelId = a.id,
                                 levelName = a.levelName,
-                                levelOrder = a.levelOrder
+                                levelOrder = a.levelOrder,
+                                createTime = a.createTime
                             };
                     return q.ToList();
                 }
