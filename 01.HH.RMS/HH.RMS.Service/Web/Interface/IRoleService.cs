@@ -15,5 +15,6 @@ namespace HH.RMS.Service.Web.Interface
         ResultType CreateRole(RoleModel model);
         ResultType UpdateRole(RoleModel model);
         RoleModel QueryRoleById(long id);
+        ResultType DeleteRoleByIds(long[] ids);
     }
 }

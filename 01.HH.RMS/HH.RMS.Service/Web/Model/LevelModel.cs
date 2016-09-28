@@ -38,7 +38,7 @@ namespace HH.RMS.Service.Web.Model
         {
             List<SelectModel> selectList = new List<SelectModel>();
             var levelList = LevelModel.ListCache;
-            selectList.Add(new SelectModel() { text = "---请选择---", value = "0" });
+            selectList.Add(new SelectModel() { text = "---请选择---", value = "-1" });
             levelList.ForEach(m => selectList.Add(new SelectModel() { text = m.levelName, value = m.levelId.ToString() }));
             JsonResult json = new JsonResult();
             json.Data = selectList;

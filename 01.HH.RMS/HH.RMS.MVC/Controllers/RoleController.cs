@@ -50,8 +50,15 @@ namespace HH.RMS.MVC.Controllers
         [HttpPost]
         public JsonResult QueryRoleById(long id)
         {
-            var person = _roleService.QueryRoleById(id);
-            return Json(person, JsonRequestBehavior.AllowGet);
+            var role = _roleService.QueryRoleById(id);
+            return Json(role, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public JsonResult DeleteRoleByIds(string idString)
+        {
+            long[] ids = Array.ConvertAll<string, long>(idString.Split(','), s => int.Parse(s));
+            var result = _roleService.DeleteRoleByIds(ids);
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
 
     }

@@ -1,4 +1,5 @@
 ﻿using HH.RMS.Common.Constant;
+using HH.RMS.Common.Utilities;
 using HH.RMS.Entity.Web;
 using HH.RMS.Repository.EntityFramework;
 using HH.RMS.Repository.EntityFramework.Interface;
@@ -88,6 +89,7 @@ namespace HH.RMS.Service.Web
                         levelName = model.levelName,
                         levelOrder = model.levelOrder
                     });
+                    CacheHelper.RemoveCache(Config.levelCache);
                     return ResultType.Success;
                 }
             }
@@ -115,6 +117,7 @@ namespace HH.RMS.Service.Web
                     m => m.id == model.levelId
                     );
                 }
+                CacheHelper.RemoveCache(Config.levelCache);
                 return ResultType.Success;
             }
             catch (Exception ex)
@@ -134,6 +137,31 @@ namespace HH.RMS.Service.Web
             {
                 log.Error("levelService.QueryLevelById", ex);
                 return null;
+            }
+        }
+
+        public ResultType DeleteLevelByIds(long[] ids)
+        {
+            try
+            {
+                using (var db = new ApplicationDbContext())
+                {
+                    _levelRepository.Update(db, m => new LevelEntity()
+                    {
+                        isActive = false,
+                        updateTime = DateTime.Now,
+                        updateBy = AccountModel.Session.accountId
+                    },
+                    m => ids.Contains(m.id)
+                    );
+                }
+                CacheHelper.RemoveCache(Config.levelCache);
+                return ResultType.Success;
+            }
+            catch (Exception ex)
+            {
+                log.Error("levelService.DeleteLevelById", ex);
+                return ResultType.SystemError;
             }
         }
     }

@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using HH.RMS.Common.Constant;
+using HH.RMS.Common.Utilities;
 
 namespace HH.RMS.Service.Web
 {
@@ -88,8 +89,10 @@ namespace HH.RMS.Service.Web
                     _roleRepository.Insert(db, new RoleEntity()
                     {
                         roleName = model.roleName,
-                        roleOrder = model.roleOrder
+                        roleOrder = model.roleOrder,
+                        roleType = model.roleType
                     });
+                    CacheHelper.RemoveCache(Config.roleCache);
                     return ResultType.Success;
                 }
             }
@@ -111,12 +114,14 @@ namespace HH.RMS.Service.Web
                     {
                         roleName = model.roleName,
                         roleOrder = model.roleOrder,
+                        roleType = model.roleType,
                         updateTime = DateTime.Now,
                         updateBy = AccountModel.Session.accountId
                     },
                     m => m.id == model.roleId
                     );
                 }
+                CacheHelper.RemoveCache(Config.roleCache);
                 return ResultType.Success;
             }
             catch (Exception ex)
@@ -136,6 +141,30 @@ namespace HH.RMS.Service.Web
             {
                 log.Error("roleService.QueryRoleById", ex);
                 return null;
+            }
+        }
+        public ResultType DeleteRoleByIds(long[] ids)
+        {
+            try
+            {
+                using (var db = new ApplicationDbContext())
+                {
+                    _roleRepository.Update(db, m => new RoleEntity()
+                    {
+                        isActive = false,
+                        updateTime = DateTime.Now,
+                        updateBy = AccountModel.Session.accountId
+                    },
+                    m => ids.Contains(m.id)
+                    );
+                }
+                CacheHelper.RemoveCache(Config.roleCache);
+                return ResultType.Success;
+            }
+            catch (Exception ex)
+            {
+                log.Error("roleService.DeleteRoleById", ex);
+                return ResultType.SystemError;
             }
         }
     }

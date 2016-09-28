@@ -41,7 +41,16 @@ namespace HH.RMS.MVC.Controllers
             {
                 if (result.resultObj.statusType == AccountStatusType.Normal)
                 {
-                    FormsAuthentication.SetAuthCookie(result.resultObj.accountName.ToString(), true);
+                    FormsAuthentication.SetAuthCookie(result.resultObj.accountName, true);
+                    FormsAuthenticationTicket ticket = new FormsAuthenticationTicket
+                   (1,
+                       result.resultObj.accountName,
+                       DateTime.Now,
+                       DateTime.Now.AddMinutes(20),
+                       true,
+                       result.resultObj.role.roleId.ToString(),
+                       "/"
+                   );
                     SessionHelper.SetSession(Config.loginSession, result.resultObj);
                     return Json(new { msg = ResultType.Success });
                 }

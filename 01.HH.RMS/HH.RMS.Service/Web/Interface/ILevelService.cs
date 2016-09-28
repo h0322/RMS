@@ -15,5 +15,6 @@ namespace HH.RMS.Service.Web.Interface
         ResultType UpdateLevel(LevelModel model);
         LevelModel QueryLevelById(long id);
         GridModel QueryLevelToGrid(PagerModel pager);
+        ResultType DeleteLevelByIds(long[] ids);
     }
 }

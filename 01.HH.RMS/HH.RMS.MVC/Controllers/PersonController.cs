@@ -73,13 +73,6 @@ namespace HH.RMS.MVC.Controllers
             var person = _personService.QueryPersonById(id);
             return Json(person, JsonRequestBehavior.AllowGet);
         }
-
-        //public ActionResult QueryPersonById(long id)
-        //{
-        //    var person = _personService.QueryPersonById(id);
-        //    return PartialView("_UpdatePartial", person);
-        //}
-        //
         public JsonResult UpdatePerson(PersonModel model)
         {
             var result = _personService.UpdatePersonById(model);

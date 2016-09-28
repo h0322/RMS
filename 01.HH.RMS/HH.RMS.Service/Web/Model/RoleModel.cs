@@ -37,7 +37,7 @@ namespace HH.RMS.Service.Web.Model
         {
             List<SelectModel> selectList = new List<SelectModel>();
             var roleList = RoleModel.ListCache;
-            selectList.Add(new SelectModel() { text = "---请选择---", value = "0" });
+            selectList.Add(new SelectModel() { text = "---请选择---", value = "-1" });
             roleList.ForEach(m => selectList.Add(new SelectModel() { text = m.roleName, value = m.roleId.ToString() }));
             JsonResult json = new JsonResult();
             json.Data = selectList;

@@ -13,6 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using HH.RMS.Service.Model;
+using System.Web.Security;
 
 namespace HH.RMS.Service.Web
 {
@@ -80,8 +81,8 @@ namespace HH.RMS.Service.Web
         }
         public void ExitLogin()
         {
-
             SessionHelper.SessionClear();
+            FormsAuthentication.SignOut();
             return;
         }
     }
