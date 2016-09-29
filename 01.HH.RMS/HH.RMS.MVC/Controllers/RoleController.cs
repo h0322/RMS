@@ -60,6 +60,12 @@ namespace HH.RMS.MVC.Controllers
             var result = _roleService.DeleteRoleByIds(ids);
             return Json(result, JsonRequestBehavior.AllowGet);
         }
+        [HttpPost]
+        public JsonResult QueryMenuRole(long roleId)
+        {
+            var menuRole = _roleService.QueryMenuByRoleIdList(roleId);
+            return Json(menuRole, JsonRequestBehavior.AllowGet);
+        }
 
     }
 }

@@ -42,7 +42,7 @@
                     },
                     {
                         field: 'edit', title: '操作', width: 100, align: 'center', formatter: function (value, row) {
-                            return "<a style='color:blue;cursor:pointer' onclick='javascript:edit(" + row.roleId + ")'>编辑</a>";
+                            return "<a style='color:blue;cursor:pointer' onclick='javascript:edit(" + row.roleId + ")'>编辑</a>&nbsp;<a style='color:blue;cursor:pointer' onclick='javascript:MenuRole(" + row.roleId + ")'>权限</a>";
                         }
                     }
                 ]] ,
@@ -60,6 +60,12 @@
                 $('#dlg_Add').dialog('open');
             }, "json");
 
+        }
+        function MenuRole(roleId)
+        {
+            $.post("/Role/QueryMenuRole", { roleId: roleId }, function (d) {
+                $('#dlg_menuRole').dialog('open');
+            }, "json");
         }
         function Add()
         {

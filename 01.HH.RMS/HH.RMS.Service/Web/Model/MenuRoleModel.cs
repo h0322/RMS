@@ -1,17 +1,16 @@
-﻿using HH.RMS.Common.Attributes;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HH.RMS.Entity.Web
+namespace HH.RMS.Service.Web.Model
 {
-    [MappingTable(tableName = "SystemMenuRole")]
-    public class MenuRoleEntity:EntityBase
+    public class MenuRoleModel
     {
-        public long menuId { get; set; }
-        public long roleId { get; set; }
+        public long menuRoleId { get; set; }
+        public MenuModel menu { get; set; }
+        public RoleModel role { get; set; }
         public bool isInsert { get; set; }
         public bool isUpdate { get; set; }
         public bool isDelete { get; set; }

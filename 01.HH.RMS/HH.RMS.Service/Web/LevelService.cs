@@ -25,32 +25,17 @@ namespace HH.RMS.Service.Web
         {
             try
             {
-                using (var db = new ApplicationDbContext())
-                {
-                    var q = (from a in _levelRepository.Query(db)
-                             where (string.IsNullOrEmpty(pager.searchText) || a.levelName.Contains(pager.searchText))
-                                && (pager.searchDateFrom == null || a.createTime > pager.searchDateFrom)
-                                && (pager.searchDateTo == null || a.createTime < pager.searchDateTo)
-                             select new LevelModel
-                             {
-                                levelName = a.levelName,
-                                levelOrder = a.levelOrder,
-                                levelId= a.id,
-                                createTime = a.createTime
-                             });
-                    IQueryable<LevelModel> qPager = null;
+                    List<LevelModel> list = null;
                     if (pager != null)
                     {
-                        qPager = q.OrderByDescending(m => m.levelId).Take(pager.rows * pager.page).Skip(pager.rows * (pager.page - 1));
+                        list = LevelModel.ListCache.OrderByDescending(m => m.levelId).Take(pager.rows * pager.page).Skip(pager.rows * (pager.page - 1)).ToList();
                     }
                     GridModel gridModel = new GridModel()
                     {
-                        rows = qPager.ToList(),
-                        total = q.Count()
+                        rows = list,
+                        total = LevelModel.ListCache.Count()
                     };
                     return gridModel;
-                    //return null;
-                }
             }
             catch (Exception ex)
             {

@@ -34,6 +34,7 @@ namespace HH.RMS.Service.Web.Model
         public RoleType roleType { get; set; }
         public int roleOrder { get; set; }
         public DateTime createTime { get; set; }
+        public List<MenuModel> menuList { get; set; }
         public static JsonResult ToSelect()
         {
             List<SelectModel> selectList = new List<SelectModel>();

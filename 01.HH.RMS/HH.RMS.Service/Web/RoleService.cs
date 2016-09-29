@@ -6,6 +6,7 @@ using HH.RMS.Service.Web.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using HH.RMS.Common.Constant;
@@ -16,41 +17,29 @@ namespace HH.RMS.Service.Web
     public class RoleService : ServiceBase, IRoleService
     {
         private IRepository<RoleEntity> _roleRepository;
-        public RoleService(IRepository<RoleEntity> roleRepository)
+        private IRepository<MenuEntity> _menuRepository;
+        private IRepository<MenuRoleEntity> _menuRoleRepository;
+        public RoleService(IRepository<RoleEntity> roleRepository, IRepository<MenuRoleEntity> menuRoleRepository, IRepository<MenuEntity> menuRepository)
         {
             _roleRepository = roleRepository;
+            _menuRepository = menuRepository;
+            _menuRoleRepository = menuRoleRepository;
         }
         public GridModel QueryRoleToGrid(PagerModel pager)
         {
             try
             {
-                using (var db = new ApplicationDbContext())
+                List<RoleModel> list = null;
+                if (pager != null)
                 {
-                    var q = (from a in _roleRepository.Query(db)
-                             where (string.IsNullOrEmpty(pager.searchText) || a.roleName.Contains(pager.searchText))
-                                && (pager.searchDateFrom == null || a.createTime > pager.searchDateFrom)
-                                && (pager.searchDateTo == null || a.createTime < pager.searchDateTo)
-                             select new RoleModel
-                             {
-                                 roleName = a.roleName,
-                                 roleOrder = a.roleOrder,
-                                 roleId = a.id,
-                                 roleType = a.roleType,
-                                 createTime =a.createTime
-                             });
-                    IQueryable<RoleModel> qPager = null;
-                    if (pager != null)
-                    {
-                        qPager = q.OrderByDescending(m => m.roleId).Take(pager.rows * pager.page).Skip(pager.rows * (pager.page - 1));
-                    }
-                    GridModel gridModel = new GridModel()
-                    {
-                        rows = qPager.ToList(),
-                        total = q.Count()
-                    };
-                    return gridModel;
-                    //return null;
+                    list = RoleModel.ListCache.OrderByDescending(m => m.roleId).Take(pager.rows * pager.page).Skip(pager.rows * (pager.page - 1)).ToList();
                 }
+                GridModel gridModel = new GridModel()
+                {
+                    rows = list.ToList(),
+                    total = RoleModel.ListCache.Count
+                };
+                return gridModel;
             }
             catch (Exception ex)
             {
@@ -165,9 +154,150 @@ namespace HH.RMS.Service.Web
             }
             catch (Exception ex)
             {
-                log.Error("roleService.DeleteRoleById", ex);
+                log.Error("roleService.DeleteRoleByIds", ex);
                 return ResultType.SystemError;
             }
         }
+        //public ResultType CreateMenuRole(long[] menuIds, long roleId)
+        //{
+        //    try 
+        //    {
+        //        using (var db = new ApplicationDbContext())
+        //        {
+        //            foreach (var menuId in menuIds)
+        //            {
+        //                var menuRole = _menuRoleRepository.Query(db).Where(m => m.menuId == menuId && m.roleId == roleId);
+        //                if (menuRole != null)
+        //                {
+                            
+        //                }
+        //            }
+        //        }
+        //    }
+        //}
+        public ResultType UpdateMenuRoleById(MenuRoleModel model)
+        {
+             try
+             {
+                using (var db = new ApplicationDbContext())
+                {
+                    _menuRoleRepository.Update(db, m => new MenuRoleEntity()
+                    {
+                        isDelete = model.isDelete,
+                        isInsert = model.isInsert,
+                        isUpdate = model.isUpdate,
+                        roleId = model.role.roleId,
+                        menuId = model.menu.menuId,
+                        updateTime = DateTime.Now,
+                        updateBy = AccountModel.Session.accountId
+                    },
+                    m => m.id == model.menuRoleId
+                    );
+                }
+                return ResultType.Success;
+            }
+            catch (Exception ex)
+            {
+                log.Error("roleService.UpdateMenuRoleById", ex);
+                return ResultType.SystemError;
+            }
+        }
+        public ResultType InsertMenuRole(MenuRoleModel model)
+        {
+            try
+            {
+                using (var db = new ApplicationDbContext())
+                {
+                    _menuRoleRepository.Insert(db, new MenuRoleEntity()
+                    {
+                        isDelete = model.isDelete,
+                        isInsert = model.isInsert,
+                        isUpdate = model.isUpdate,
+                        roleId = model.role.roleId,
+                        menuId = model.menu.menuId
+                    });
+                }
+                return ResultType.Success;
+            }
+            catch (Exception ex)
+            {
+                log.Error("roleService.InsertMenuRole", ex);
+                return ResultType.SystemError;
+            }
+        }
+        public ResultType DeleteMenuRoleByIds(long[] ids)
+        {
+            try
+            {
+                using (var db = new ApplicationDbContext())
+                {
+                    _menuRoleRepository.Update(db, m => new MenuRoleEntity()
+                    {
+                        isActive = false,
+                        updateTime = DateTime.Now,
+                        updateBy = AccountModel.Session.accountId
+                    },
+                    m => ids.Contains(m.id)
+                    );
+                }
+                CacheHelper.RemoveCache(Config.roleCache);
+                return ResultType.Success;
+            }
+            catch (Exception ex)
+            {
+                log.Error("roleService.DeleteMenuRoleByIds", ex);
+                return ResultType.SystemError;
+            }
+        }
+        public ResultType DeleteMenuRoleById(long id)
+        {
+            try
+            {
+                using (var db = new ApplicationDbContext())
+                {
+                    _menuRoleRepository.Update(db, m => new MenuRoleEntity()
+                    {
+                        isActive = false,
+                        updateTime = DateTime.Now,
+                        updateBy = AccountModel.Session.accountId
+                    },
+                    m => m.id == id
+                    );
+                }
+                return ResultType.Success;
+            }
+            catch (Exception ex)
+            {
+                log.Error("roleService.DeleteMenuRoleById", ex);
+                return ResultType.SystemError;
+            }
+        }
+        public List<MenuRoleModel> QueryMenuByRoleIdList(long roleId)
+        {
+            try
+            {
+                using (var db = new ApplicationDbContext())
+                {
+                    var q = from a in _menuRepository.Query(db)
+                            join b in _menuRoleRepository.Query(db).Where(m=>m.roleId==roleId) on a.id equals b.menuId
+                             into ss
+                            from m in ss.DefaultIfEmpty()
+                            select new MenuRoleModel
+                            {
+                                menu = new MenuModel() { menuId = a.id, description = a.description, menuName = a.menuName, menuOrder = a.menuOrder, parentId = a.parentId },
+                                isInsert = m == null ? false : m.isInsert,
+                                isUpdate = m == null ? false : m.isUpdate,
+                                isDelete = m == null ? false : m.isDelete
+                            };
+                    return q.ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                log.Error("roleService.QueryMenuByRoleIdList", ex);
+                return null;
+            }
+        }
+
     }
 }
