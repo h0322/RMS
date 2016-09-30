@@ -16,4 +16,8 @@ namespace HH.RMS.Service.Web.Model
         public bool isDelete { get; set; }
 
     }
+    public class MenuRoleListModel
+    {
+        public List<MenuRoleModel> menuRoleList { get; set; }
+    }
 }

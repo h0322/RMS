@@ -249,7 +249,7 @@ namespace HH.RMS.Service.Web
                 return ResultType.SystemError;
             }
         }
-        public ResultType DeleteMenuRoleById(long id)
+        public ResultType DeleteMenuRoleByRoleId(long roleId)
         {
             try
             {
@@ -261,7 +261,7 @@ namespace HH.RMS.Service.Web
                         updateTime = DateTime.Now,
                         updateBy = AccountModel.Session.accountId
                     },
-                    m => m.id == id
+                    m => m.roleId == roleId
                     );
                 }
                 return ResultType.Success;

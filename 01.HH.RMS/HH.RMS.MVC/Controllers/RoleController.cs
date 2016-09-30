@@ -60,7 +60,23 @@ namespace HH.RMS.MVC.Controllers
             var result = _roleService.DeleteRoleByIds(ids);
             return Json(result, JsonRequestBehavior.AllowGet);
         }
-        [HttpPost]
+
+        public JsonResult UpdateMenuRole(MenuRoleListModel list,long roleId)
+        {
+            var result = _roleService.DeleteMenuRoleByRoleId(roleId);
+            if(result == ResultType.Success)
+            {
+                foreach (var item in list.menuRoleList)
+                {
+                    result = _roleService.InsertMenuRole(item);
+                    if (result != ResultType.Success)
+                    {
+                        return Json(result, JsonRequestBehavior.AllowGet);
+                    }
+                }
+            }
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
         public JsonResult QueryMenuRole(long roleId)
         {
             var menuRole = _roleService.QueryMenuByRoleIdList(roleId);

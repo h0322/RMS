@@ -8,7 +8,7 @@
     <script type="text/javascript">
         $(function () {
             ClearSearchCookie();
-            $('#roleList').datagrid({
+            $('#table_roleList').datagrid({
                 title: '角色列表',
                 iconCls: 'icon-save',//图标
                 width: 700,
@@ -19,7 +19,7 @@
                 collapsible: true,//是否可折叠的
                 fit: true,//自动大小
                 url: '/Role/QueryRoleToGrid',
-                idField: 'rows.roleId',
+                idField: 'roleId',
                 singleSelect: false,//是否单选
                 loadMsg: "正在加载，请稍等...",
                 pagination: true,//分页控件
@@ -53,19 +53,13 @@
         function edit(roleId)
         {
             $('#from_role').form('clear'); //清表单
-            $("#roleList").datagrid('uncheckAll');
+            $("#table_roleList").datagrid('uncheckAll');
             $(".panel-title panel-with-icon").text("修改角色信息");
             $.post("/Role/QueryRoleById", { id: roleId }, function (d) {
                 SetFormValue("from_role", d);
                 $('#dlg_Add').dialog('open');
             }, "json");
 
-        }
-        function MenuRole(roleId)
-        {
-            $.post("/Role/QueryMenuRole", { roleId: roleId }, function (d) {
-                $('#dlg_menuRole').dialog('open');
-            }, "json");
         }
         function Add()
         {
@@ -89,7 +83,7 @@
                 loadingBox.hide();
                 if (d == "@((int)ResultType.Success)") {
                     alert("保存成功");
-                    $("#roleList").datagrid();
+                    $("#table_roleList").datagrid();
                     if (roleId > 0)
                     {
                         $('#dlg_Add').dialog('open');
@@ -99,14 +93,14 @@
                     alert("保存失败");
                     $('#dlg_Add').dialog('open');
                 }
-                $("#roleList").datagrid('uncheckAll');
+                $("#table_roleList").datagrid('uncheckAll');
 
             })
         }
 
         function del()
         {
-            var rows = $('#roleList').datagrid('getSelections')
+            var rows = $('#table_roleList').datagrid('getSelections')
             var roleIds = "";
             for (index in rows)
             {
@@ -120,8 +114,8 @@
             }
             roleIds = roleIds.substring(0, roleIds.length - 1);
             $.post("/Role/DeleteRoleByIds", { ids: roleIds }, function (data) {
-                $("#roleList").datagrid();
-                $("#roleList").datagrid('uncheckAll');
+                $("#table_roleList").datagrid();
+                $("#table_roleList").datagrid('uncheckAll');
                 alert("删除成功");
             },"json")
         }
@@ -155,13 +149,14 @@
                 $.cookie("searchRole", role, { path: "/" });
             else
                 $.cookie("searchRole", role, { path: "/" });
-            $("#roleList").datagrid();
+            $("#table_roleList").datagrid();
         });
     </script>
 @Html.Partial("_UpdatePartial")
+@Html.Partial("_MenuRolePartial")
 }
 <div style="width:100%; height:400px;">
-    <table id="roleList" style="width:600px; height:200px;"></table>
+    <table id="table_roleList" style="width:600px; height:200px;"></table>
 </div>
 
 

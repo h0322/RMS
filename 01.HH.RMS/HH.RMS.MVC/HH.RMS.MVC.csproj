@@ -586,7 +586,7 @@
     <Content Include="Views\Level\_UpdatePartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Role\_RoleMenuPartial.cshtml" />
+    <Content Include="Views\Role\_MenuRolePartial.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
