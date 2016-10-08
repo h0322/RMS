@@ -1,0 +1,60 @@
+﻿@model HH.RMS.Service.Web.Model.PersonModel
+<div id="dlg_Update" class="easyui-dialog" title="修改用户信息" closed="true" style="width:600px" data-options=" iconCls: 'icon-save',	buttons: [{	text:'保存',	iconCls:'icon-ok',	handler:UpdateSave},{text:'取消',iconCls:'icon-cancel',handler:UpdateCancel}]">
+    <div title="Register" style="width:98%;">
+        <form id="from_update">
+            <input type="hidden" name="personId" />
+            <ul><li style="width:20%">姓名:</li><li style="width:60%"><input id="txt_name" name="name" value="" class="easyui-textbox"></li></ul>@*data-options="prompt:'Enter a email address...',validType:'email'"*@
+            <ul><li style="width:20%">昵称:</li><li style="width:60%"><input id="txt_nickName" name="nickName" class="easyui-textbox"></li></ul>
+            <ul><li style="width:20%">手机:</li><li style="width:60%"><input id="txt_mobile" name="mobile" class="easyui-textbox"></li></ul>
+            <ul><li style="width:20%">邮箱:</li><li style="width:60%"><input id="txt_email" name="email" class="easyui-textbox"></li></ul>
+            <ul><li style="width:20%">生日:</li><li style="width:60%"><input id="txt_birthday" name="birthday" class="easyui-datebox"></li></ul>
+            <ul><li style="width:20%">性别:</li><li style="width:60%"><input id="rad_man" type="radio" name="sex" value="1">男&nbsp;<input id="rad_female" type="radio" name="sex" value="0">女</li></ul>
+            <ul><li style="width:20%">省:</li><li style="width:60%"><input id="txt_country" name="countryId" type="hidden" value="1"><select id="sel_province_update" name="provinceId" style="width:100px;"></select></li></ul>
+            <ul><li style="width:20%">市:</li><li style="width:60%"><select id="sel_city_update" class="easyui-combobox" name="person.cityId"><option value="0">---请选择---</option></select></li></ul>
+            <ul><li style="width:20%">详细地址:</li><li style="width:60%"><input id="txt_address" name="address" class="easyui-textbox" style="width:400px;"></li></ul>
+            <ul>
+                <li style="width:20%">备注:</li>
+                <li style="width:60%">
+                    <input id="txt_remark" name="person.remark" class="easyui-textbox" style="width:400px;">
+                </li>
+            </ul>
+            <ul><li style="width:20%">所属账号:</li><li><input name="accountName" value="" readonly="readonly" /><input name="statusType" value="" readonly="readonly" /><input name="level" value="" readonly="readonly" /></li></ul>
+        </form>
+    </div>
+</div>
+<script type="text/javascript">
+    $('#sel_province_update').combobox({
+        onChange: function (value, o) {
+            $('#sel_city_update').combobox({
+                url: '/Person/QueryCityByProvinceId?id=' + value,
+                valueField: 'value',
+                textField: 'text',
+                required: false,
+                editable: false,
+                value: 0
+            });
+        },
+        onLoadSuccess: function () {
+            var val = $(this).getValue
+            if (val == 'undefined') {
+
+                $('#sel_city_update').combobox({
+                    url: '/Person/QueryCityByProvinceId?id=' + val,
+                    valueField: 'value',
+                    textField: 'text',
+                    required: false,
+                    editable: false,
+                    value: 0
+                });
+                return;
+            }
+
+        },
+        url: '/Person/QueryProvinceList',
+        valueField: 'value',
+        textField: 'text',
+        required: false,
+        editable: false,
+        value: 0
+    });
+</script>

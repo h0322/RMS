@@ -1,0 +1,182 @@
+﻿@{
+    ViewBag.Title = "等级管理";
+}
+@section Heads{
+
+}
+@section Scripts{
+    <script type="text/javascript">
+        $(function () {
+            ClearSearchCookie();
+            $('#levelList').datagrid({
+                title: '等级列表',
+                iconCls: 'icon-save',//图标
+                width: 700,
+                height: 'auto',
+                nowrap: false,
+                striped: true,
+                border: true,
+                collapsible: true,//是否可折叠的
+                fit: true,//自动大小
+                url: '/Account/QueryAccountToGrid@(ViewBag.personId)',
+                idField: 'rows.accountId',
+                singleSelect: false,//是否单选
+                loadMsg: "正在加载，请稍等...",
+                pagination: true,//分页控件
+                rownumbers: true,//行号
+                pagination: true,//分页控件
+                pageSize: 10,        //设置默认分页大小
+                pageList: [5, 10,20, 50],   //设置分页大小
+                checkbox: true,
+                columns: [[
+                    //<th data-options="field:'ck',checkbox:true"></th>
+                    { field: 'levelId', checkbox: true },
+                    {
+                        field: 'levelName', title: '等级名称', width: 120, align: 'center'
+                    },
+                    { field: 'levelOrder', title: '等级排序', width: 120, align: 'center' },
+                    {
+                        field: 'createTime', title: '创建日期', width: 120, align: 'center', formatter: function (value, row) {
+                            return DataGridDateTime(value,"yyyy-MM-dd")
+                        }
+                    },
+                    {
+                        field: 'edit', title: '操作', width: 100, align: 'center', formatter: function (value, row) {
+                            return "<a style='color:blue;cursor:pointer' onclick='javascript:edit(" + row.accountId + ")'>编辑</a>";
+                        }
+                    }
+                ]] ,
+                toolbar:'#toolbar'
+            });
+        });
+
+        function edit(accountId)
+        {
+            $('#from_level').form('clear'); //清表单
+            $("#levelList").datagrid('uncheckAll');
+            $(".panel-title panel-with-icon").text("修改等级信息");
+            $.post("/Level/QueryAccountById", { id: accountId }, function (d) {
+                $('#accountId').val(d.accountId);
+                $('#accountName').textbox('setValue', d.accountName);
+                $('#score').numberbox('setValue', d.score);
+                $('#amount').numberbox('setValue', d.amount);
+                $('#sel_level').combobox('setValue', d.level);
+                $("#sel_statusType").combobox('setValue', d.statusType);
+                $('#accountName').textbox('disable');
+                $("#sel_role").combobox('setValue', d.role.roleId);
+                $('#dlg_Add').dialog('open');
+            }, "json");
+
+        }
+        function Save()
+        {
+            $('#dlg_Add').dialog('close');
+            loadingBox.show("正在保存中...")
+            var data = $("#from_level").serialize();
+            var accountId = $("#accountId").val();
+            var url = "/Account/UpdateAccount";
+            $.post(url, data, function (d) {
+                loadingBox.hide();
+                if (d.result == "@((int)ResultType.Success)") {
+                    alert("保存成功");
+                    $("#levelList").datagrid();
+
+                }
+                else {
+                    alert("保存失败");
+                    $('#dlg_Add').dialog('open');
+                }
+                $("#levelList").datagrid('uncheckAll');
+
+            })
+        }
+
+        function del()
+        {
+            var rows = $('#levelList').datagrid('getSelections')
+            var accountIds = "";
+            for (index in rows)
+            {
+                console.log(rows[index].accountId)
+                accountIds += rows[index].accountId + ",";
+            }
+            console.log(accountIds)
+            accountIds = accountIds.substring(0, accountIds.length - 1);
+            $.post("/Account/DeleteAccountById", { ids: accountIds }, function (data) {
+                $("#levelList").datagrid();
+                $("#levelList").datagrid('uncheckAll');
+                alert("删除成功");
+            },"json")
+        }
+        function cancel()
+        {
+            $('#dlg_Add').dialog('close');
+        }
+        $("#btn_search").click(function () {
+            var search = $("#search_txt_text").val();
+            var status = $("#search_sel_status").combobox('getValue');
+            var dateFrom = $("#search_date_from").datebox('getValue');
+            var dateTo = $("#search_date_to").datebox('getValue');
+            var role = $("#search_sel_role").datebox('getValue');
+            if (search != "")
+                $.cookie("searchText", search, { path: "/" });
+            else
+                $.cookie("searchText", null, { path: "/" });
+            if (status >0)
+                $.cookie("searchStatus", status, { path: "/" });
+            else
+                $.cookie("searchStatus", null, { path: "/" });
+            if (dateFrom != "")
+                $.cookie("searchDateFrom", dateFrom, { path: "/" });
+            else
+                $.cookie("searchDateFrom", null, { path: "/" });
+            if (dateTo != "")
+                $.cookie("searchDateTo", dateTo, { path: "/" });
+            else
+                $.cookie("searchDateTo", null, { path: "/" });
+            if (role > 0)
+                $.cookie("searchRole", role, { path: "/" });
+            else
+                $.cookie("searchRole", role, { path: "/" });
+            $("#levelList").datagrid();
+        });
+        $("#search_sel_role").combobox({
+            url: '/Account/QueryRoleList',
+            valueField: 'value',
+            textField: 'text',
+            required: false,
+            editable: false,
+            value: 0
+        });
+        $("#sel_roleId").combobox({
+            url: '/Account/QueryRoleList',
+            valueField: 'value',
+            textField: 'text',
+            required: false,
+            editable: false,
+            value: 0
+        });
+    </script>
+}
+<div style="width:100%; height:400px;">
+    <table class="easyui-datagrid" id="levelList" style="width:600px; height:200px;"></table>
+</div>
+
+@Html.Partial("_UpdatePartial")
+<div id="toolbar" style="padding:5px;height:auto">
+    <div>
+        <a href="#" class="easyui-linkbutton" iconcls="icon-remove" plain="true" onclick="del()">删除</a> &nbsp;
+        From: <input class="easyui-datebox" style="width:80px" id="search_date_from">
+        To: <input class="easyui-datebox" style="width:80px" id="search_date_to">
+        角色:
+        <select class="easyui-combobox" panelheight="auto" style="width:100px" id="search_sel_role"></select>
+        状态
+        <select id="search_sel_statusType" class="easyui-combobox" name="statusType">
+            <option value="1">Normal</option>
+            <option value="2">Disable</option>
+            <option value="3">Black</option>
+        </select>
+        <input class="easyui-textbox" id="search_txt_text" />
+        <a href="#" class="easyui-linkbutton" iconcls="icon-search" id="btn_search">Search</a>
+    </div>
+</div>

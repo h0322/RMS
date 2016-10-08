@@ -1,0 +1,29 @@
+﻿<div id="dlg_Add" class="easyui-dialog" title="添加用户角色" closed="true" style="width:300px" data-options=" iconCls: 'icon-save',	buttons: [{	text:'保存',	iconCls:'icon-ok',	handler:Save},{text:'取消',iconCls:'icon-cancel',handler:cancel}]">
+    <div title="Register" style="width:98%;">
+        <form id="from_role">
+            <input type="hidden" name="roleId" id="hid_roleId" />
+            <ul><li style="width:30%">角色名称:</li><li style="width:60%"><input id="txt_roleName" name="roleName" class="easyui-textbox"></li></ul>@*data-options="prompt:'Enter a email address...',validType:'email'"*@
+            <ul><li style="width:30%">角色类型:</li><li style="width:60%">
+                    <select id="sel_roleType" class="easyui-combobox" name="roleType">
+                        <option value="-1" selected="selected">请选择</option>
+                        @foreach (RoleType item in Enum.GetValues(typeof(RoleType)))
+                        {
+                            <option value="@((int)item)">@item.ToString()</option>
+                        }
+                    </select></li>
+            </ul>
+            <ul>
+                <li style="width:30%">角色排序:</li>
+                <li style="width:60%">
+                    <select id="sel_roleOrder" class="easyui-combobox" name="roleOrder">
+                        <option value="-1" selected ="selected">请选择</option>
+                        @for (int i = 1; i < 10; i++)
+                        {
+                            <option value="@i">@i</option>
+                        }
+                    </select>
+                </li>
+            </ul>
+        </form>
+    </div>
+</div>

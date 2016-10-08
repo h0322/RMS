@@ -1,0 +1,172 @@
+﻿@{
+    ViewBag.Title = "角色管理";
+}
+@section Heads{
+
+}
+@section Scripts{
+    <script type="text/javascript">
+        $(function () {
+            ClearSearchCookie();
+            $('#table_roleList').datagrid({
+                title: '角色列表',
+                iconCls: 'icon-save',//图标
+                width: 700,
+                height: 'auto',
+                nowrap: false,
+                striped: true,
+                border: true,
+                collapsible: true,//是否可折叠的
+                fit: true,//自动大小
+                url: '/Role/QueryRoleToGrid',
+                idField: 'roleId',
+                singleSelect: false,//是否单选
+                loadMsg: "正在加载，请稍等...",
+                pagination: true,//分页控件
+                rownumbers: true,//行号
+                pagination: true,//分页控件
+                pageSize: 10,        //设置默认分页大小
+                pageList: [5, 10,20, 50],   //设置分页大小
+                checkbox: true,
+                columns: [[
+                    //<th data-options="field:'ck',checkbox:true"></th>
+                    { field: 'roleId', checkbox: true },
+                    {
+                        field: 'roleName', title: '角色名称', width: 120, align: 'center'
+                    },
+                    { field: 'roleOrder', title: '角色排序', width: 120, align: 'center' },
+                    {
+                        field: 'createTime', title: '创建日期', width: 120, align: 'center', formatter: function (value, row) {
+                            return DataGridDateTime(value,"yyyy-MM-dd")
+                        }
+                    },
+                    {
+                        field: 'edit', title: '操作', width: 100, align: 'center', formatter: function (value, row) {
+                            return "<a style='color:blue;cursor:pointer' onclick='javascript:edit(" + row.roleId + ")'>编辑</a>&nbsp;<a style='color:blue;cursor:pointer' onclick='javascript:MenuRole(" + row.roleId + ")'>权限</a>";
+                        }
+                    }
+                ]] ,
+                toolbar:'#toolbar'
+            });
+        });
+
+        function edit(roleId)
+        {
+            $('#from_role').form('clear'); //清表单
+            $("#table_roleList").datagrid('uncheckAll');
+            $(".panel-title panel-with-icon").text("修改角色信息");
+            $.post("/Role/QueryRoleById", { id: roleId }, function (d) {
+                SetFormValue("from_role", d);
+                $('#dlg_Add').dialog('open');
+            }, "json");
+
+        }
+        function Add()
+        {
+            $('#from_role').form('clear'); //清表单
+            $("#sel_roleType").combobox('setValue', -1);
+            $("#sel_roleOrder").combobox('setValue', -1);
+            $('#dlg_Add').dialog('open');
+        }
+        function Save()
+        {
+            $('#dlg_Add').dialog('close');
+            loadingBox.show("正在保存中...")
+            var data = $("#from_role").serialize();
+            var roleId = $("#hid_roleId").val();
+            var url = "/Role/CreateRole";
+            if (roleId > 0)
+            {
+                url = "/Role/UpdateRole"
+            }
+            $.post(url, data, function (d) {
+                loadingBox.hide();
+                if (d == "@((int)ResultType.Success)") {
+                    alert("保存成功");
+                    $("#table_roleList").datagrid();
+                    if (roleId > 0)
+                    {
+                        $('#dlg_Add').dialog('open');
+                    }
+                }
+                else {
+                    alert("保存失败");
+                    $('#dlg_Add').dialog('open');
+                }
+                $("#table_roleList").datagrid('uncheckAll');
+
+            })
+        }
+
+        function del()
+        {
+            var rows = $('#table_roleList').datagrid('getSelections')
+            var roleIds = "";
+            for (index in rows)
+            {
+                console.log(rows[index].roleId)
+                roleIds += rows[index].roleId + ",";
+            }
+            if (roleIds == "")
+            {
+                alert("请选择删除数据");
+                return;
+            }
+            roleIds = roleIds.substring(0, roleIds.length - 1);
+            $.post("/Role/DeleteRoleByIds", { ids: roleIds }, function (data) {
+                $("#table_roleList").datagrid();
+                $("#table_roleList").datagrid('uncheckAll');
+                alert("删除成功");
+            },"json")
+        }
+        function cancel()
+        {
+            $('#dlg_Add').dialog('close');
+        }
+        $("#btn_search").click(function () {
+            var search = $("#search_txt_text").val();
+            var status = $("#search_sel_status").combobox('getValue');
+            var dateFrom = $("#search_date_from").datebox('getValue');
+            var dateTo = $("#search_date_to").datebox('getValue');
+            var role = $("#search_sel_role").datebox('getValue');
+            if (search != "")
+                $.cookie("searchText", search, { path: "/" });
+            else
+                $.cookie("searchText", null, { path: "/" });
+            if (status >0)
+                $.cookie("searchStatus", status, { path: "/" });
+            else
+                $.cookie("searchStatus", null, { path: "/" });
+            if (dateFrom != "")
+                $.cookie("searchDateFrom", dateFrom, { path: "/" });
+            else
+                $.cookie("searchDateFrom", null, { path: "/" });
+            if (dateTo != "")
+                $.cookie("searchDateTo", dateTo, { path: "/" });
+            else
+                $.cookie("searchDateTo", null, { path: "/" });
+            if (role > 0)
+                $.cookie("searchRole", role, { path: "/" });
+            else
+                $.cookie("searchRole", role, { path: "/" });
+            $("#table_roleList").datagrid();
+        });
+    </script>
+@Html.Partial("_UpdatePartial")
+@Html.Partial("_MenuRolePartial")
+}
+<div style="width:100%; height:400px;">
+    <table id="table_roleList" style="width:600px; height:200px;"></table>
+</div>
+
+
+<div id="toolbar" style="padding:5px;height:auto">
+    <div>
+        <a href="#" class="easyui-linkbutton" iconcls="icon-add" plain="true" onclick="Add()">添加</a> &nbsp;
+        <a href="#" class="easyui-linkbutton" iconcls="icon-remove" plain="true" onclick="del()">删除</a> &nbsp;
+        From: <input class="easyui-datebox" style="width:80px" id="search_date_from">
+        To: <input class="easyui-datebox" style="width:80px" id="search_date_to">
+        <input class="easyui-textbox" id="search_txt_text" />
+        <a href="#" class="easyui-linkbutton" iconcls="icon-search" id="btn_search">Search</a>
+    </div>
+</div>

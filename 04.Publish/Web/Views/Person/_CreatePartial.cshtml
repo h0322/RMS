@@ -1,0 +1,85 @@
+﻿<div id="dlg_Add" class="easyui-dialog" title="添加新用户" closed="true" style="width:600px" data-options=" iconCls: 'icon-save',	buttons: [{	text:'保存',	iconCls:'icon-ok',	handler:AddSave},{text:'取消',iconCls:'icon-cancel',handler:AddCancel}]">
+    <div title="Register" style="width:98%;">
+        <form id="from_addPerson">
+            <ul><li style="width:20%">账户名称:</li><li style="width:60%"><input id="txt_accountName" name="accountName" class="easyui-textbox"></li></ul>@*data-options="prompt:'Enter a email address...',validType:'email'"*@
+            <ul><li style="width:20%">积分:</li><li style="width:60%"><input id="txt_score" name="score" class="easyui-numberbox"></li></ul>
+            <ul><li style="width:20%">充值:</li><li style="width:60%"><input id="txt_amount" name="amount" class="easyui-numberbox"></li></ul>
+            <ul>
+                <li style="width:20%">等级:</li>
+                <li style="width:60%">
+                    <input id="sel_level" name="level" />
+                </li>
+            </ul>
+            <ul>
+                <li style="width:20%">状态:</li>
+                <li style="width:60%">
+                    <select id="sel_statusType" class="easyui-combobox" name="statusType">
+                        <option value="1">Normal</option>
+                        <option value="2">Disable</option>
+                        <option value="3">Black</option>
+                    </select>
+                </li>
+            </ul>
+            <ul>
+                <li style="width:20%">角色:</li>
+                <li style="width:60%">
+                    <select id="sel_Role" name="role.roleId"></select>
+                </li>
+            </ul>
+            <ul><li style="width:100%">&nbsp;</li></ul>
+            <ul><li style="width:20%">姓名:</li><li style="width:60%"><input id="txt_name" name="person.name" class="easyui-textbox"></li></ul>@*data-options="prompt:'Enter a email address...',validType:'email'"*@
+            <ul><li style="width:20%">昵称:</li><li style="width:60%"><input id="txt_nickName" name="person.nickName" class="easyui-textbox"></li></ul>
+            <ul><li style="width:20%">手机:</li><li style="width:60%"><input id="txt_mobile" name="person.mobile" class="easyui-textbox"></li></ul>
+            <ul><li style="width:20%">邮箱:</li><li style="width:60%"><input id="txt_email" name="person.email" class="easyui-textbox"></li></ul>
+            <ul><li style="width:20%">生日:</li><li style="width:60%"><input id="txt_email" name="person.birthday" class="easyui-datebox"></li></ul>
+            <ul><li style="width:20%">性别:</li><li style="width:60%"><input id="rad_man" type="radio" name="person.sex" value="1">男&nbsp;<input id="rad_female" type="radio" name="person.sex" value="0">女</li></ul>
+            <ul><li style="width:20%">省:</li><li style="width:60%"><input id="txt_country" name="person.countryId" type="hidden" value="1" ><input id="sel_province" name="person.provinceId" style="width:100px;"/></li></ul>
+            <ul><li style="width:20%">市:</li><li style="width:60%"><input id="sel_city" class="easyui-combobox" name="person.cityId" /></li></ul>
+            <ul><li style="width:20%">详细地址:</li><li style="width:60%"><input id="txt_address" name="person.address" class="easyui-textbox" style="width:400px;"></li></ul>
+            <ul>
+                <li style="width:20%">备注:</li>
+                <li style="width:60%">
+                    <input id="txt_remark" name="person.remark" class="easyui-textbox" style="width:400px;">
+                </li>
+            </ul>
+        </form>
+    </div>
+</div>
+<script type="text/javascript">
+    $('#sel_province').combobox({
+        onChange: function (value, o) {
+            //console.log(value)
+            //console.log(o)
+            $('#sel_city').combobox({
+                url: '/Person/QueryCityByProvinceId?id=' + value,
+                valueField: 'value',
+                textField: 'text',
+                required: false,
+                editable: false,
+                value: 0
+            });
+        },
+        url: '/Person/QueryProvinceList',
+        valueField: 'value',
+        textField: 'text',
+        required: false,
+        editable: false,
+        value: 0
+    });
+    $("#sel_level").combobox({
+        url: '/Person/QueryLevelList',
+        valueField: 'value',
+        textField: 'text',
+        required: false,
+        editable: false,
+        value: 0
+    });
+    $("#sel_Role").combobox({
+        url: '/Person/QueryRoleList',
+        valueField: 'value',
+        textField: 'text',
+        required: false,
+        editable: false,
+        value: 0
+    });
+</script>
