@@ -1,0 +1,42 @@
+﻿@model HH.RMS.Service.Web.Model.AccountModel
+<div style="margin:20px 0; height:40px;"></div>
+<div class="easyui-panel" style="padding:5px;">
+    <div style="width:60%; float:left;">
+        <a href="#" class="easyui-linkbutton" data-options="plain:true">首页</a>
+        @*<a href="#" class="easyui-menubutton" data-options="menu:'#mm1',iconCls:'icon-edit'">Edit</a>
+            <a href="#" class="easyui-menubutton" data-options="menu:'#mm2',iconCls:'icon-help'">Help</a>*@
+        <a href="#" class="easyui-menubutton" data-options="menu:'#mm3'">账号</a>
+    </div>
+    <div style="width:36%; float:left; text-align:right; padding-top:4px;"><span>当前用户: @Model.accountName 积分：@Model.score 等级：@Model.level.levelName</span></div>
+</div>
+@*<div id="mm1" style="width:150px;">
+    <div data-options="iconCls:'icon-undo'">Undo</div>
+    <div data-options="iconCls:'icon-redo'">Redo</div>
+    <div class="menu-sep"></div>
+    <div>Cut</div>
+    <div>Copy</div>
+    <div>Paste</div>
+    <div class="menu-sep"></div>
+    <div>
+        <span>Toolbar</span>
+        <div>
+            <div>Address</div>
+            <div>Link</div>
+            <div>Navigation Toolbar</div>
+            <div>Bookmark Toolbar</div>
+            <div class="menu-sep"></div>
+            <div>New Toolbar...</div>
+        </div>
+    </div>
+    <div data-options="iconCls:'icon-remove'">Delete</div>
+    <div>Select All</div>
+</div>
+<div id="mm2" style="width:100px;">
+    <div>Help</div>
+    <div>Update</div>
+    <div>About</div>
+</div>*@
+<div id="mm3" style="width:100px;">
+    <div>修改密码</div>
+    <div><a href="/Login/Exit">退出</a></div>
+</div>

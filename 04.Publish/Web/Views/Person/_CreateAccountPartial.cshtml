@@ -1,0 +1,33 @@
+﻿<div id="dlg_Add" class="easyui-dialog" title="添加账户信息" closed="true" style="width:300px" data-options=" iconCls: 'icon-save',	buttons: [{	text:'保存',	iconCls:'icon-ok',	handler:Save},{text:'取消',iconCls:'icon-cancel',handler:cancel}]">
+    <div title="Register" style="width:98%;">
+        <form id="from_account">
+            <input type="hidden" name="accountId" id="accountId" />
+            <input type="hidden" name="person.personId" id="personId" />
+            <ul><li style="width:30%">账户名称:</li><li style="width:60%"><input id="accountName" name="accountName" class="easyui-textbox"></li></ul>@*data-options="prompt:'Enter a email address...',validType:'email'"*@
+            <ul><li style="width:30%">积分:</li><li style="width:60%"><input id="score" name="score" class="easyui-numberbox"></li></ul>
+            <ul><li style="width:30%">充值:</li><li style="width:60%"><input id="amount" name="amount" class="easyui-numberbox"></li></ul>
+            <ul>
+                <li style="width:30%">等级:</li>
+                <li style="width:60%">
+                    <select id="sel_level" class="easyui-combobox" name="level"></select>
+                </li>
+            </ul>
+            <ul>
+                <li style="width:30%">状态:</li>
+                <li style="width:60%">
+                    <select id="sel_statusType" class="easyui-combobox" name="statusType">
+                        <option value="1">Normal</option>
+                        <option value="2">Disable</option>
+                        <option value="3">Black</option>
+                    </select>
+                </li>
+            </ul>
+            <ul>
+                <li style="width:30%">角色:</li>
+                <li style="width:60%">
+                    <select name="role.roleId" class="easyui-combobox" id="sel_role"></select>
+                </li>
+            </ul>
+        </form>
+    </div>
+</div>

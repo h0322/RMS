@@ -23,12 +23,15 @@ namespace HH.RMS.Service.Web.Model
                 return SessionHelper.GetSession(Config.menuSession).ToString();
             }
         }
+        public long menuId { get; set; }
         public string menuName { get; set; }
         public string description { get; set; }
         public long parentId { get; set; }
         public int menuOrder { get; set; }
         public MenuType menuType { get; set; }
+        public List<RoleModel> roleList { get; set; }
         public string url { get; set; }
+        public int treeLevel { get; set; }
         public DateTime createTime { get; set; }
     }
 }

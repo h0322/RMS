@@ -75,7 +75,7 @@ namespace HH.RMS.MVC.Controllers
         {
             var roleList = _roleService.QueryRoleList();
             List<SelectModel> selectList = new List<SelectModel>();
-            selectList.Add(new SelectModel() { text = "请选择", value = "0" });
+            selectList.Add(new SelectModel() { text = "请选择", value = "-1" });
             roleList.ForEach(m => selectList.Add(new SelectModel() { text = m.roleName, value = m.roleId.ToString() }));
             return Json(selectList, JsonRequestBehavior.AllowGet);
         }

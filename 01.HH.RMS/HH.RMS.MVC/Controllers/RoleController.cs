@@ -3,6 +3,7 @@ using HH.RMS.Service;
 using HH.RMS.Service.Web;
 using HH.RMS.Service.Web.Interface;
 using HH.RMS.Service.Web.Model;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -50,8 +51,39 @@ namespace HH.RMS.MVC.Controllers
         [HttpPost]
         public JsonResult QueryRoleById(long id)
         {
-            var person = _roleService.QueryRoleById(id);
-            return Json(person, JsonRequestBehavior.AllowGet);
+            var role = _roleService.QueryRoleById(id);
+            return Json(role, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public JsonResult DeleteRoleByIds(string idString)
+        {
+            long[] ids = Array.ConvertAll<string, long>(idString.Split(','), s => int.Parse(s));
+            var result = _roleService.DeleteRoleByIds(ids);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public JsonResult UpdateMenuRole(string menuRoleString, long roleId)
+        {
+            var result = _roleService.DeleteMenuRoleByRoleId(roleId);
+            List<MenuRoleModel> list = JsonConvert.DeserializeObject<List<MenuRoleModel>>(menuRoleString);
+            if(result == ResultType.Success)
+            {
+                foreach (var item in list)
+                {
+                    item.roleId = roleId;
+                    result = _roleService.InsertMenuRole(item);
+                    if (result != ResultType.Success)
+                    {
+                        return Json(result, JsonRequestBehavior.AllowGet);
+                    }
+                }
+            }
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult QueryMenuRole(long roleId)
+        {
+            var menuRole = _roleService.QueryMenuByRoleIdList(roleId);
+            return Json(menuRole, JsonRequestBehavior.AllowGet);
         }
 
     }

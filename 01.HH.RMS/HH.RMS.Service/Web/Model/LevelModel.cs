@@ -34,11 +34,12 @@ namespace HH.RMS.Service.Web.Model
         public string levelName { get; set; }
         public int levelOrder { get; set; }
         public string remark { get; set; }
+        public DateTime createTime { get; set; }
         public static JsonResult ToSelect()
         {
             List<SelectModel> selectList = new List<SelectModel>();
             var levelList = LevelModel.ListCache;
-            selectList.Add(new SelectModel() { text = "---请选择---", value = "0" });
+            selectList.Add(new SelectModel() { text = "---请选择---", value = "-1" });
             levelList.ForEach(m => selectList.Add(new SelectModel() { text = m.levelName, value = m.levelId.ToString() }));
             JsonResult json = new JsonResult();
             json.Data = selectList;

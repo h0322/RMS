@@ -52,7 +52,7 @@ namespace HH.RMS.Service.Web
             
             return menuString;
         }
-        public List<MenuEntity> QueryMenuByRole()
+        private List<MenuEntity> QueryMenuByRole()
         {
             if (AccountModel.Session == null)
             {
@@ -89,5 +89,7 @@ namespace HH.RMS.Service.Web
             menuBuilder.Append("</ul>");
             return menuBuilder;
         }
+
+
     }
 }

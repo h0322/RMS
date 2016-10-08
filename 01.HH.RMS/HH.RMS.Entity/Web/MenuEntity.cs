@@ -21,5 +21,6 @@ namespace HH.RMS.Entity.Web
         public MenuType menuType { get; set; }
         [MaxLength(100)]
         public string url { get; set; }
+        public int treeLevel { get; set; }
     }
 }

@@ -12,6 +12,9 @@ namespace HH.RMS.Entity.Web
     {
         public long menuId { get; set; }
         public long roleId { get; set; }
+        public bool isInsert { get; set; }
+        public bool isUpdate { get; set; }
+        public bool isDelete { get; set; }
 
     }
 }

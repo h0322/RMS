@@ -1,4 +1,5 @@
 ﻿using HH.RMS.Common.Constant;
+using HH.RMS.Common.Utilities;
 using HH.RMS.Entity.Web;
 using HH.RMS.Repository.EntityFramework;
 using HH.RMS.Repository.EntityFramework.Interface;
@@ -24,31 +25,17 @@ namespace HH.RMS.Service.Web
         {
             try
             {
-                using (var db = new ApplicationDbContext())
-                {
-                    var q = (from a in _levelRepository.Query(db)
-                             where (string.IsNullOrEmpty(pager.searchText) || a.levelName.Contains(pager.searchText))
-                                && (pager.searchDateFrom == null || a.createTime > pager.searchDateFrom)
-                                && (pager.searchDateTo == null || a.createTime < pager.searchDateTo)
-                             select new LevelModel
-                             {
-                                levelName = a.levelName,
-                                levelOrder = a.levelOrder,
-                                levelId= a.id
-                             });
-                    IQueryable<LevelModel> qPager = null;
+                    List<LevelModel> list = null;
                     if (pager != null)
                     {
-                        qPager = q.OrderByDescending(m => m.levelId).Take(pager.rows * pager.page).Skip(pager.rows * (pager.page - 1));
+                        list = LevelModel.ListCache.OrderByDescending(m => m.levelId).Take(pager.rows * pager.page).Skip(pager.rows * (pager.page - 1)).ToList();
                     }
                     GridModel gridModel = new GridModel()
                     {
-                        rows = qPager.ToList(),
-                        total = q.Count()
+                        rows = list,
+                        total = LevelModel.ListCache.Count()
                     };
                     return gridModel;
-                    //return null;
-                }
             }
             catch (Exception ex)
             {
@@ -67,7 +54,8 @@ namespace HH.RMS.Service.Web
                             {
                                 levelId = a.id,
                                 levelName = a.levelName,
-                                levelOrder = a.levelOrder
+                                levelOrder = a.levelOrder,
+                                createTime = a.createTime
                             };
                     return q.ToList();
                 }
@@ -88,6 +76,7 @@ namespace HH.RMS.Service.Web
                         levelName = model.levelName,
                         levelOrder = model.levelOrder
                     });
+                    CacheHelper.RemoveCache(Config.levelCache);
                     return ResultType.Success;
                 }
             }
@@ -115,6 +104,7 @@ namespace HH.RMS.Service.Web
                     m => m.id == model.levelId
                     );
                 }
+                CacheHelper.RemoveCache(Config.levelCache);
                 return ResultType.Success;
             }
             catch (Exception ex)
@@ -134,6 +124,31 @@ namespace HH.RMS.Service.Web
             {
                 log.Error("levelService.QueryLevelById", ex);
                 return null;
+            }
+        }
+
+        public ResultType DeleteLevelByIds(long[] ids)
+        {
+            try
+            {
+                using (var db = new ApplicationDbContext())
+                {
+                    _levelRepository.Update(db, m => new LevelEntity()
+                    {
+                        isActive = false,
+                        updateTime = DateTime.Now,
+                        updateBy = AccountModel.Session.accountId
+                    },
+                    m => ids.Contains(m.id)
+                    );
+                }
+                CacheHelper.RemoveCache(Config.levelCache);
+                return ResultType.Success;
+            }
+            catch (Exception ex)
+            {
+                log.Error("levelService.DeleteLevelById", ex);
+                return ResultType.SystemError;
             }
         }
     }

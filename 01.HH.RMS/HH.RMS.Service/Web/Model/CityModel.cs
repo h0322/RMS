@@ -40,7 +40,7 @@ namespace HH.RMS.Service.Web.Model
         {
             List<SelectModel> selectList = new List<SelectModel>();
             var cityList = CityModel.ListCache.Where(m=>m.provinceId == id).ToList();
-            selectList.Add(new SelectModel() { text = "---请选择---", value = "0" });
+            selectList.Add(new SelectModel() { text = "---请选择---", value = "-1" });
             cityList.ForEach(m => selectList.Add(new SelectModel() { text = m.name, value = m.cityId.ToString() }));
             JsonResult json = new JsonResult();
             json.Data = selectList;

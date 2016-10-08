@@ -585,6 +585,12 @@
   <ItemGroup>
     <Content Include="Views\Level\_UpdatePartial.cshtml" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Role\_MenuRolePartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\PublishProfiles\Web.pubxml" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

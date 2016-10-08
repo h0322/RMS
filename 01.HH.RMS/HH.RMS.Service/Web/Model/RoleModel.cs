@@ -33,11 +33,13 @@ namespace HH.RMS.Service.Web.Model
         public string roleName { get; set; }
         public RoleType roleType { get; set; }
         public int roleOrder { get; set; }
+        public DateTime createTime { get; set; }
+        public List<MenuModel> menuList { get; set; }
         public static JsonResult ToSelect()
         {
             List<SelectModel> selectList = new List<SelectModel>();
             var roleList = RoleModel.ListCache;
-            selectList.Add(new SelectModel() { text = "---请选择---", value = "0" });
+            selectList.Add(new SelectModel() { text = "---请选择---", value = "-1" });
             roleList.ForEach(m => selectList.Add(new SelectModel() { text = m.roleName, value = m.roleId.ToString() }));
             JsonResult json = new JsonResult();
             json.Data = selectList;

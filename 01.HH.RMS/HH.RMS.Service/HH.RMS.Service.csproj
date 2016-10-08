@@ -97,6 +97,7 @@
     <Compile Include="Web\Model\LevelModel.cs" />
     <Compile Include="Web\Model\LoginModel.cs" />
     <Compile Include="Web\Model\MenuModel.cs" />
+    <Compile Include="Web\Model\MenuRoleModel.cs" />
     <Compile Include="Web\Model\PagerModel.cs" />
     <Compile Include="Web\Model\PersonModel.cs" />
     <Compile Include="Web\Model\ProvinceModel.cs" />
