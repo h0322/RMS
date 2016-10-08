@@ -3,6 +3,7 @@ using HH.RMS.Service;
 using HH.RMS.Service.Web;
 using HH.RMS.Service.Web.Interface;
 using HH.RMS.Service.Web.Model;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -60,14 +61,16 @@ namespace HH.RMS.MVC.Controllers
             var result = _roleService.DeleteRoleByIds(ids);
             return Json(result, JsonRequestBehavior.AllowGet);
         }
-
-        public JsonResult UpdateMenuRole(MenuRoleListModel list,long roleId)
+        [HttpPost]
+        public JsonResult UpdateMenuRole(string menuRoleString, long roleId)
         {
             var result = _roleService.DeleteMenuRoleByRoleId(roleId);
+            List<MenuRoleModel> list = JsonConvert.DeserializeObject<List<MenuRoleModel>>(menuRoleString);
             if(result == ResultType.Success)
             {
-                foreach (var item in list.menuRoleList)
+                foreach (var item in list)
                 {
+                    item.roleId = roleId;
                     result = _roleService.InsertMenuRole(item);
                     if (result != ResultType.Success)
                     {

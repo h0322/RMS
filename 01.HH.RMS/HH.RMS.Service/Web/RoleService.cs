@@ -186,8 +186,8 @@ namespace HH.RMS.Service.Web
                         isDelete = model.isDelete,
                         isInsert = model.isInsert,
                         isUpdate = model.isUpdate,
-                        roleId = model.role.roleId,
-                        menuId = model.menu.menuId,
+                        roleId = model.roleId,
+                        menuId = model.menuId,
                         updateTime = DateTime.Now,
                         updateBy = AccountModel.Session.accountId
                     },
@@ -213,8 +213,8 @@ namespace HH.RMS.Service.Web
                         isDelete = model.isDelete,
                         isInsert = model.isInsert,
                         isUpdate = model.isUpdate,
-                        roleId = model.role.roleId,
-                        menuId = model.menu.menuId
+                        roleId = model.roleId,
+                        menuId = model.menuId
                     });
                 }
                 return ResultType.Success;
@@ -284,12 +284,19 @@ namespace HH.RMS.Service.Web
                             from m in ss.DefaultIfEmpty()
                             select new MenuRoleModel
                             {
-                                menu = new MenuModel() { menuId = a.id, description = a.description, menuName = a.menuName, menuOrder = a.menuOrder, parentId = a.parentId },
+                                menuId = a.id, 
+                                menuDescription = a.description, 
+                                menuName = a.menuName, 
+                                menuOrder = a.menuOrder, 
+                                parentId = a.parentId,
+                                treeLevel = a.treeLevel,
+                                menuRoleId = m == null ? 0 : m.id,
                                 isInsert = m == null ? false : m.isInsert,
                                 isUpdate = m == null ? false : m.isUpdate,
-                                isDelete = m == null ? false : m.isDelete
+                                isDelete = m == null ? false : m.isDelete,
+                                isSelect=m==null?false:true
                             };
-                    return q.ToList();
+                    return q.OrderBy(m=>m.menuOrder).ToList();
                 }
             }
             catch (Exception ex)

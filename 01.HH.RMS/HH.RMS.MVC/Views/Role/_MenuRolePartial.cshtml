@@ -21,60 +21,75 @@
             idField: 'menuRoleId',
             singleSelect: true,//是否单选
             loadMsg: "正在加载，请稍等...",
-
-            rownumbers: true,//行号
-            onClickCell: function (rowIndex, rowData) {
-                //双击开启编辑行
-                if (editRow != undefined) {
-                    $('#table_menuRole').datagrid("endEdit", editRow);
-                }
-                if (editRow == undefined) {
-                    $('#table_menuRole').datagrid("beginEdit", rowIndex);
-                    editRow = rowIndex;
-                }
-            },
-            onAfterEdit: function (rowIndex, rowData, changes) {
-                //endEdit该方法触发此事件
-                editRow = undefined;
-            },
+            rownumbers: false,//行号
+            //onClickCell: function (rowIndex, rowData) {
+            //    if (editRow != undefined) {
+            //        $('#table_menuRole').datagrid("endEdit", editRow);
+            //    }
+            //    if (editRow == undefined) {
+            //        $('#table_menuRole').datagrid("beginEdit", rowIndex);
+            //        editRow = rowIndex;
+            //        $('#table_menuRole').datagrid('selectRow', rowIndex);
+            //    }
+            //},
+            //onAfterEdit: function (rowIndex, rowData, changes) {
+            //    //endEdit该方法触发此事件
+            //    editRow = undefined;
+            //},
             columns: [[
+                { field: 'menuRoleId', title: '', width: 20, align: 'center', hidden: true },
+                { field: 'menuId', title: '', width: 20, align: 'center', hidden: true },
                 {
-                    field: 'menu.menuName', title: '菜单名称', width: 120, align: 'center', formatter: function (value, row) {
-                        return row.menu.menuName;
-                    }
-                },
-                {
-                    field: 'isSelect', title: '选择', width: 50, align: 'center', editor: { type: 'checkbox', options: { on: 'True', off: '' } }, formatter: function (value, row) {
-                        if (row.isInsert == "True" || row.isUpdate == "True" || row.isDelete == "True" || row.isSelect=="True") {
-                            return "√";
+                    field: 'menuName', title: '菜单名称', width: 120, align: 'center', formatter: function (value, row) {
+                        var space = "";
+                        var spaceCount = row.treeLevel * 8;
+                        for (var i = 1; i <= spaceCount; i++)
+                        {
+                            space += "&nbsp;";
                         }
-                        else {
-                            return "";
+                        return space + row.menuName;
+                    }
+                },
+                {
+                    field: 'isSelect', title: '选择', width: 50, align: 'center'
+                    //, editor: { type: 'checkbox', options: { on: true, off: false } }
+                    , formatter: function (value, row) {
+                        var checked = '';
+                        if (row.isInsert == true || row.isUpdate == true || row.isDelete == true || row.isSelect == true) {
+                            checked = 'checked="true" ';
                         }
+                        return '<input type="checkbox" name="isSelect"' + checked + '>';
                     }
                 },
                 {
-                    field: 'isInsert', title: '插入', width: 50, align: 'center', editor: { type: 'checkbox', options: { on: 'True', off: '' } }, formatter: function (value, row) {
-                        if (row.isInsert == "True")
-                            return "√";
-                        else
-                            return "";
+                    field: 'isInsert', title: '插入', width: 50, align: 'center'
+                    , formatter: function (value, row) {
+                        var checked = '';
+                        if (row.isInsert == true) {
+                            checked = 'checked="true" ';
+                        }
+                        return '<input type="checkbox" name="isInsert" ' + checked + '>';
                     }
                 },
                 {
-                    field: 'isUpdate', title: '更新', width: 50, align: 'center', editor: { type: 'checkbox', options: { on: 'True', off: '' } }, formatter: function (value, row) {
-                        if (row.isUpdate == "True")
-                            return "√";
-                        else
-                            return "";
+                    field: 'isUpdate', title: '更新', width: 50, align: 'center'
+                    , formatter: function (value, row) {
+                        var checked = '';
+                        if (row.isUpdate == true) {
+                            checked = 'checked="true"';
+                        }
+                        return '<input type="checkbox" name="isUpdate" ' + checked + '>';
                     }
                 },
                 {
-                    field: 'isDelete', title: '删除', width: 50, align: 'center', editor: { type: 'checkbox', options: { on: 'True', off: '' } }, formatter: function (value, row) {
-                        if (row.isDelete == "True")
-                            return "√";
-                        else
-                            return ""; 
+                    field: 'isDelete', title: '删除', width: 50, align: 'center'
+                    //, editor: { type: 'checkbox', options: { on: true, off: false } }
+                    , formatter: function (value, row) {
+                        var checked = '';
+                        if (row.isDelete == true) {
+                            checked = 'checked="true"';
+                        }
+                        return '<input type="checkbox" name="isDelete" ' + checked + '>';
                     }
                 },
             ]] ,
@@ -82,17 +97,16 @@
     }
     function MenuRoleSave()
     {
-        var data = "{";
         var selectedRow = $("#table_roleList").datagrid('getSelected');
         var roleId = selectedRow.roleId
-        data = "roleId:"+roleId;
-        var rows = $("#table_menuRole").datagrid("getRows");
-        console.log(rows)
-        console.log(JSON.stringify(rows))
-        rows.push(arr);
-        data = "}";
-        $.post("/Role/UpdateRole", data, function (d) {
+        var rows = JSON.stringify($("#table_menuRole").datagrid("getRows"));
+        var data = { menuRoleString: rows, roleId: roleId };
+        //var rows = $("#table_menuRole").datagrid("getRows");
+        //var data = { list: rows, roleId: roleId };
+        console.log(data)
+        $.post("/Role/UpdateMenuRole", data, function (d) {
 
-        })
+        },"json")
     }
+
 </script>

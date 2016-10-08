@@ -31,6 +31,7 @@ namespace HH.RMS.Service.Web.Model
         public MenuType menuType { get; set; }
         public List<RoleModel> roleList { get; set; }
         public string url { get; set; }
+        public int treeLevel { get; set; }
         public DateTime createTime { get; set; }
     }
 }

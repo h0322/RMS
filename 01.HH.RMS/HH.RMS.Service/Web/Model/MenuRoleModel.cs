@@ -9,15 +9,17 @@ namespace HH.RMS.Service.Web.Model
     public class MenuRoleModel
     {
         public long menuRoleId { get; set; }
-        public MenuModel menu { get; set; }
-        public RoleModel role { get; set; }
+        public long menuId { get; set; }
+        public string menuName { get; set; }
+        public string menuDescription { get; set; }
+        public int menuOrder { get; set; }
+        public long parentId { get; set; }
+        public int treeLevel { get; set; }
+        public long roleId { get; set; }
+        public bool isSelect { get; set; }
         public bool isInsert { get; set; }
         public bool isUpdate { get; set; }
         public bool isDelete { get; set; }
 
-    }
-    public class MenuRoleListModel
-    {
-        public List<MenuRoleModel> menuRoleList { get; set; }
     }
 }
