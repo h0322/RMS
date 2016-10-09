@@ -13,6 +13,7 @@ using System.Web.Mvc;
 using System.Web.Security;
 using HH.RMS.Service.Model;
 using HH.RMS.Service;
+using System.Threading;
 
 namespace HH.RMS.MVC.Controllers
 {
@@ -28,6 +29,8 @@ namespace HH.RMS.MVC.Controllers
         public ActionResult Index(string redirectUrl)
         {
             LoginModel model = new LoginModel();
+            //_log.Info(1);
+            //Thread.Sleep(10000);  
             model.redirectUrl = redirectUrl;
             return View(model);
         }

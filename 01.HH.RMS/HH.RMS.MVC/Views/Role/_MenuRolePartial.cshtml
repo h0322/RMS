@@ -58,7 +58,7 @@
                         if (row.isInsert == true || row.isUpdate == true || row.isDelete == true || row.isSelect == true) {
                             checked = 'checked="true" ';
                         }
-                        return '<input type="checkbox" name="isSelect"' + checked + '>';
+                        return '<input type="checkbox" name="isSelect"' + checked + ' currentName="isSelect_' + row.menuId + '" parentName="isSelect_' + row.parentId + '" onclick="RoleCheck(this)">';
                     }
                 },
                 {
@@ -68,7 +68,7 @@
                         if (row.isInsert == true) {
                             checked = 'checked="true" ';
                         }
-                        return '<input type="checkbox" name="isInsert" ' + checked + '>';
+                        return '<input type="checkbox" name="isInsert" ' + checked + ' currentName="isInsert_' + row.menuId + '"  parentName="isInsert_' + row.parentId + '" onclick="RoleCheck(this)">';
                     }
                 },
                 {
@@ -78,7 +78,7 @@
                         if (row.isUpdate == true) {
                             checked = 'checked="true"';
                         }
-                        return '<input type="checkbox" name="isUpdate" ' + checked + '>';
+                        return '<input type="checkbox" name="isUpdate" ' + checked + ' currentName="isUpdate_' + row.menuId + '"  parentName="isUpdate_' + row.parentId + '" onclick="RoleCheck(this)">';
                     }
                 },
                 {
@@ -89,7 +89,7 @@
                         if (row.isDelete == true) {
                             checked = 'checked="true"';
                         }
-                        return '<input type="checkbox" name="isDelete" ' + checked + '>';
+                        return '<input type="checkbox" name="isDelete" ' + checked + ' currentName="isDelete_' + row.menuId + '"  parentName="isDelete_' + row.parentId + '" onclick="RoleCheck(this)">';
                     }
                 },
             ]] ,
@@ -108,5 +108,22 @@
 
         },"json")
     }
+    function RoleCheck(e)
+    {
+        var parentName = $(e).attr("parentName");
+        if (e.checked) {
+            $("[currentName='" + parentName + "']").prop("checked", true);
+        }
+        else
+        {
+            $("[currentName='" + parentName + "']").prop("checked", false);
+            $("[parentName='" + parentName + "']").each(function () {
+                if (this.checked)
+                {
+                    $("[currentName='" + parentName + "']").prop("checked", true);
+                }
+            })
+        }
 
+    }
 </script>
