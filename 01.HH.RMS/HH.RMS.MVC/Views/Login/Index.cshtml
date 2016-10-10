@@ -9,8 +9,7 @@
     <title>欢迎登录</title>
     <link rel="stylesheet" type="text/css" href="/easyui/themes/icon.css" />
     <link rel="stylesheet" type="text/css" href="/easyui/themes/default/easyui.css" />
-    <script type="text/javascript" src="/easyui/jquery.min.js"></script>
-    <script type="text/javascript" src="/easyui/jquery.easyui.min.js"></script>
+
 </head>
 <body>
     @*<div id="loginWin" class="easyui-window" title="登录" style="width:320px;height:180px;padding:2px;"
@@ -41,6 +40,9 @@
         @*</div>
             </div>*@
 </body>
+</html>
+<script type="text/javascript" src="/easyui/jquery.min.js"></script>
+<script type="text/javascript" src="/easyui/jquery.easyui.min.js"></script>
 <script type="text/javascript" src="/Scripts/main.js"></script>
 <script type="text/javascript">
     document.onkeydown = function (e) {
@@ -51,12 +53,13 @@
         }
     }
     $(function () {
-        $("input[name='login']").focus();
+        $("input[name='accountName']").focus();
     });
     function cleardata() {
         $('#loginForm').form('clear');
     }
     function login() {
+
         if ($("input[name='accountName']").val() == "" || $("input[name='password']").val() == "") {
             $("#showMsg").html("用户名或密码为空，请输入");
             $("input[name='login']").focus();
@@ -91,4 +94,3 @@
         }
     }
 </script>
-</html>
