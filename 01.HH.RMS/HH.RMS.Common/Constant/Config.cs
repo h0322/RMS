@@ -27,10 +27,12 @@ namespace HH.RMS.Common.Constant
         public static readonly string wechatAppSecret = ConfigHelper.GetConfigString("WechatAppSecret");
         public readonly static string loginSession = "AccountDetailsSession";
         public readonly static string menuSession = "SystemMenusSession";
+        public readonly static string menuRoleSession = "MenuRoleSession";
         public readonly static string provinceCache = "ProvinceCache";
         public readonly static string cityCache = "CityCache";
         public readonly static string countryCache = "CountryCache";
         public readonly static string levelCache = "LevelCache";
+        public readonly static string menuCache = "MenuCache";
         public readonly static string roleCache = "RoleCache";
         public readonly static string accessTokenCache = "AccessTokenCache";
         #region WechatUrl

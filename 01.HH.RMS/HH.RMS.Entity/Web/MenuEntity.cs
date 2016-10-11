@@ -12,6 +12,7 @@ namespace HH.RMS.Entity.Web
     [MappingTable(tableName = "SystemMenu")]
     public class MenuEntity:EntityBase
     {
+        public string code { get; set; }
         [MaxLength(50)]
         public string menuName { get; set; }
         [MaxLength(100)]

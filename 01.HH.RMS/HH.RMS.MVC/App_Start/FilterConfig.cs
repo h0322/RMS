@@ -3,8 +3,12 @@ using HH.RMS.Common.Unity;
 using HH.RMS.Common.Utilities;
 using HH.RMS.MVC.Models;
 using HH.RMS.Service.Web.Interface;
+using HH.RMS.Service.Web.Model;
+using System.Collections.Generic;
 using System.Web;
 using System.Web.Mvc;
+using System.Linq;
+using System.Linq.Expressions;
 
 namespace HH.RMS.MVC
 {
@@ -18,13 +22,23 @@ namespace HH.RMS.MVC
     }
     public class RMSAuthorizeAttribute : AuthorizeAttribute
     {
+        public new int excuteType { get; set; }
+        public new string menuCode { get; set; }
         protected override bool AuthorizeCore(HttpContextBase context)
         {
             if (SessionHelper.GetSession(Config.loginSession) == null)
             {
                 return false;
             }
-            return true;
+            var role = MenuRoleModel.ListSession.Where(m => m.code == menuCode && m.excuteType == excuteType);
+            if (role == null)
+            {
+                return false;
+            }
+            else
+            { 
+                return true;
+            }
             //return base.AuthorizeCore(context);
         }
         protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext)

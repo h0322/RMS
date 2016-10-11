@@ -69,7 +69,8 @@ namespace HH.RMS.Common.Constant
      }
     public enum MenuType
     {
-        Menu1=1
+        Page=1,
+        Menu=2
     }
     public enum WechatUrlType
     {
@@ -159,5 +160,12 @@ namespace HH.RMS.Common.Constant
         GetPreviewUrl=83,
         InvitationCustomUrl=84,
         
+    }
+    public enum ExcuteType
+    {
+        Select = 1,
+        Insert = 2,
+        Update = 4,
+        Delete = 8
     }
 }

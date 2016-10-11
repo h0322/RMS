@@ -16,7 +16,7 @@ using HH.RMS.Service;
 
 namespace HH.RMS.MVC.Controllers
 {
-    [RMSAuthorize]
+    
     public class AccountController : ControllerService
     {
         private IAccountService _accountService;
@@ -28,11 +28,13 @@ namespace HH.RMS.MVC.Controllers
             _personService = personService;
             _roleService = roleService;
         }
+        
         public ActionResult Index()
         {
             return View();
         }
         [HttpPost]
+        [RMSAuthorize(excuteType = (int)ExcuteType.Select, menuCode = "Account")]
         public JsonResult QueryAccountToGrid(PagerModel pagerModel)
         {
             pagerModel.searchText = searchText;
@@ -45,6 +47,7 @@ namespace HH.RMS.MVC.Controllers
            
         }
         [HttpPost]
+        [RMSAuthorize(excuteType = (int)ExcuteType.Select, menuCode = "Account")]
         public JsonResult QueryAccountById(long id)
         {
             var account = _accountService.QueryAccountById(id);
@@ -52,6 +55,7 @@ namespace HH.RMS.MVC.Controllers
         }
 
         [HttpPost]
+        [RMSAuthorize(excuteType = (int)ExcuteType.Delete, menuCode = "Account")]
         public JsonResult DeleteAccountById(string ids)
         {
             List<string> idList = ids.Split(',').ToList();
@@ -60,12 +64,14 @@ namespace HH.RMS.MVC.Controllers
         }
 
         [HttpPost]
+        [RMSAuthorize(excuteType = (int)ExcuteType.Insert, menuCode = "Account")]
         public JsonResult SaveAccount(AccountModel model)
         {
            var result = _accountService.InsertAccount(model);
            return Json(new { result= (int)result}, JsonRequestBehavior.AllowGet);
         }
         [HttpPost]
+        [RMSAuthorize(excuteType = (int)ExcuteType.Update, menuCode = "Account")]
         public JsonResult UpdateAccount(AccountModel model)
         {
             var result = _accountService.UpdateAccount(model);
@@ -73,11 +79,7 @@ namespace HH.RMS.MVC.Controllers
         }
         public JsonResult QueryRoleList()
         {
-            var roleList = _roleService.QueryRoleList();
-            List<SelectModel> selectList = new List<SelectModel>();
-            selectList.Add(new SelectModel() { text = "请选择", value = "-1" });
-            roleList.ForEach(m => selectList.Add(new SelectModel() { text = m.roleName, value = m.roleId.ToString() }));
-            return Json(selectList, JsonRequestBehavior.AllowGet);
+            return RoleModel.ToSelect();
         }
 
     }

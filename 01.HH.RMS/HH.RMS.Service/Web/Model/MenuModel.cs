@@ -23,7 +23,25 @@ namespace HH.RMS.Service.Web.Model
                 return SessionHelper.GetSession(Config.menuSession).ToString();
             }
         }
+        public static List<MenuModel> ListCache
+        {
+            get
+            {
+                if (CacheHelper.GetCache(Config.menuCache) == null)
+                {
+                    IMenuService menuService = UnityManager.instance.GetService<IMenuService>();
+                    var menuList = menuService.QueryMenuALL();
+                    CacheHelper.SetCache(Config.menuCache, menuList);
+                    return menuList;
+                }
+                else
+                {
+                    return (List<MenuModel>)CacheHelper.GetCache(Config.menuCache);
+                }
+            }
+        }
         public long menuId { get; set; }
+        public string code { get; set; }
         public string menuName { get; set; }
         public string description { get; set; }
         public long parentId { get; set; }
