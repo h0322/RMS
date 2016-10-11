@@ -18,6 +18,7 @@ namespace HH.RMS.MVC
     }
     public class RMSAuthorizeAttribute : AuthorizeAttribute
     {
+        public new string[] RoleType { }
         protected override bool AuthorizeCore(HttpContextBase context)
         {
             if (SessionHelper.GetSession(Config.loginSession) == null)
