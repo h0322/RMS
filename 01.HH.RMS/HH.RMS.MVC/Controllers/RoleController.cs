@@ -71,6 +71,22 @@ namespace HH.RMS.MVC.Controllers
                 foreach (var item in list)
                 {
                     item.roleId = roleId;
+                    if (item.isSelect)
+                    {
+                        item.excuteType = item.excuteType | (int)ExcuteType.Select; 
+                    }
+                    if (item.isInsert)
+                    {
+                        item.excuteType = item.excuteType | (int)ExcuteType.Insert;
+                    }
+                    if (item.isUpdate)
+                    {
+                        item.excuteType = item.excuteType | (int)ExcuteType.Update;
+                    }
+                    if (item.isDelete)
+                    {
+                        item.excuteType = item.excuteType | (int)ExcuteType.Delete;
+                    }
                     result = _roleService.InsertMenuRole(item);
                     if (result != ResultType.Success)
                     {

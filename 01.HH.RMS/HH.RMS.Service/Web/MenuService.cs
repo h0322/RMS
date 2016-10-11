@@ -22,11 +22,34 @@ namespace HH.RMS.Service.Web
             _menuRepository = menuRepository;
             _menuRoleRepository = menuRoleRepository;
         }
-        public List<MenuEntity> QueryMenuALL()
+        public List<MenuModel> QueryMenuALL()
         {
-            using (var db = new ApplicationDbContext())
+            List<MenuModel> menuList = new List<MenuModel>();
+            try
             {
-                return _menuRepository.Query(db).ToList();
+                using (var db = new ApplicationDbContext())
+                {
+                    var List = _menuRepository.Query(db).ToList();
+                    List.ForEach(m => menuList.Add(new MenuModel()
+                    {
+                        code = m.code,
+                        createTime = m.createTime,
+                        description = m.description,
+                        menuId = m.id,
+                        menuName = m.menuName,
+                        menuOrder = m.menuOrder,
+                        menuType = m.menuType,
+                        parentId = m.parentId,
+                        treeLevel = m.treeLevel,
+                        url = m.url
+                    }));
+                    return menuList;
+                }
+            }
+            catch (Exception ex)
+            {
+                log.Error("MenuService.QueryMenuALL", ex);
+                return null;
             }
         }
         public string GetMenuString()

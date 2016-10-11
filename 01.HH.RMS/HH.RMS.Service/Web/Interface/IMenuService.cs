@@ -1,4 +1,5 @@
 ﻿using HH.RMS.Entity.Web;
+using HH.RMS.Service.Web.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace HH.RMS.Service.Web.Interface
 {
     public interface IMenuService
     {
-        List<MenuEntity> QueryMenuALL();
+        List<MenuModel> QueryMenuALL();
         string GetMenuString();
     }
 }

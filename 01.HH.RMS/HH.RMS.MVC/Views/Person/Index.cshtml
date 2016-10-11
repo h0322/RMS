@@ -132,7 +132,7 @@
                 accountIds += rows[index].accountId + ",";
             }
             accountIds = accountIds.substring(0, accountIds.length - 1);
-            $.post("/Account/DeleteAccountById", { ids: accountIds }, function (data) {
+            $.post("/Peson/DeletePersonById", { ids: accountIds }, function (data) {
                 $("#personList").datagrid();
                 alert("删除成功");
             },"json")

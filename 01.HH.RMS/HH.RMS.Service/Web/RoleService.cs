@@ -183,9 +183,7 @@ namespace HH.RMS.Service.Web
                 {
                     _menuRoleRepository.Update(db, m => new MenuRoleEntity()
                     {
-                        isDelete = model.isDelete,
-                        isInsert = model.isInsert,
-                        isUpdate = model.isUpdate,
+                        excuteType = model.excuteType,
                         roleId = model.roleId,
                         menuId = model.menuId,
                         updateTime = DateTime.Now,
@@ -210,9 +208,7 @@ namespace HH.RMS.Service.Web
                 {
                     _menuRoleRepository.Insert(db, new MenuRoleEntity()
                     {
-                        isDelete = model.isDelete,
-                        isInsert = model.isInsert,
-                        isUpdate = model.isUpdate,
+                        excuteType = model.excuteType,
                         roleId = model.roleId,
                         menuId = model.menuId
                     });
@@ -285,16 +281,14 @@ namespace HH.RMS.Service.Web
                             select new MenuRoleModel
                             {
                                 menuId = a.id, 
+                                code = a.code,
                                 menuDescription = a.description, 
                                 menuName = a.menuName, 
                                 menuOrder = a.menuOrder, 
                                 parentId = a.parentId,
                                 treeLevel = a.treeLevel,
                                 menuRoleId = m == null ? 0 : m.id,
-                                isInsert = m == null ? false : m.isInsert,
-                                isUpdate = m == null ? false : m.isUpdate,
-                                isDelete = m == null ? false : m.isDelete,
-                                isSelect=m==null?false:true
+                                excuteType = m == null ? 0 : m.excuteType
                             };
                     return q.OrderBy(m=>m.menuOrder).ToList();
                 }

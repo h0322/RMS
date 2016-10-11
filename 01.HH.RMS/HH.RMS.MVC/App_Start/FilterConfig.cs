@@ -3,8 +3,12 @@ using HH.RMS.Common.Unity;
 using HH.RMS.Common.Utilities;
 using HH.RMS.MVC.Models;
 using HH.RMS.Service.Web.Interface;
+using HH.RMS.Service.Web.Model;
+using System.Collections.Generic;
 using System.Web;
 using System.Web.Mvc;
+using System.Linq;
+using System.Linq.Expressions;
 
 namespace HH.RMS.MVC
 {
@@ -18,12 +22,25 @@ namespace HH.RMS.MVC
     }
     public class RMSAuthorizeAttribute : AuthorizeAttribute
     {
-        public new string[] RoleType { }
+        public new int excuteType { get; set; }
+        public new string menuCode { get; set; }
         protected override bool AuthorizeCore(HttpContextBase context)
         {
             if (SessionHelper.GetSession(Config.loginSession) == null)
             {
                 return false;
+            }
+            if (excuteType > 0 && !string.IsNullOrEmpty(menuCode))
+            {
+                MenuRoleModel role = MenuRoleModel.ListSession.Where(m => m.code == menuCode && (m.excuteType & excuteType)== excuteType).FirstOrDefault();
+                if (role == null)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
             }
             return true;
             //return base.AuthorizeCore(context);
@@ -38,6 +55,7 @@ namespace HH.RMS.MVC
                 filterContext.Result = new RedirectResult("/Login/Index?RedirectUrl=" + HttpUtility.UrlEncode(currentUrl));
                 return;
             }
+            filterContext.Result = new JsonResult() { Data = ResultType.NoAccess };
             
         }  
 

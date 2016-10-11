@@ -78,5 +78,9 @@ namespace HH.RMS.MVC.Controllers
             var result = _personService.UpdatePersonById(model);
             return Json(result, JsonRequestBehavior.AllowGet);
         }
+        public JsonResult DeletePersonById(long id)
+        {
+            return null;
+        }
     }
 }
