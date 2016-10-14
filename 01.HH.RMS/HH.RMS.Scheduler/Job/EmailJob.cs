@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace HH.RMS.Scheduler.Job
@@ -13,6 +14,8 @@ namespace HH.RMS.Scheduler.Job
         public void Execute(IJobExecutionContext context)
         {
             log.Info("EmailJob.Execute:Start");
+            Thread.Sleep(10000);
+            log.Info("EmailJob.Excute:End");
         }
     }
 }
