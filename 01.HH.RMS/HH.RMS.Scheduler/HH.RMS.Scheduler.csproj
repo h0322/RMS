@@ -52,10 +52,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Job\EmailJob.cs" />
+    <Compile Include="Job\DatabaseJob.cs" />
+    <Compile Include="Job\LocalObjectJob.cs" />
+    <Compile Include="Job\WCFObjectJob.cs" />
+    <Compile Include="Job\WebPageJob.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SchedulerHelper.cs" />
     <Compile Include="SchedulerManager.cs" />
+    <Compile Include="UnityScheduler.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

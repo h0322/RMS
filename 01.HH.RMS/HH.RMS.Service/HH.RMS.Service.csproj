@@ -69,6 +69,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Scheduler\Model\JobModel.cs" />
+    <Compile Include="Scheduler\Model\JobParameterModel.cs" />
+    <Compile Include="Scheduler\Model\SchedulerLogModel.cs" />
+    <Compile Include="Scheduler\Model\SchedulerModel.cs" />
     <Compile Include="Web\AccountService.cs" />
     <Compile Include="Web\AddressService.cs" />
     <Compile Include="Web\CountryService.cs" />
@@ -76,7 +80,7 @@
     <Compile Include="ControllerService.cs" />
     <Compile Include="Web\Interface\IAccountService.cs" />
     <Compile Include="Web\Interface\ICityService.cs" />
-    <Compile Include="Web\Interface\IJobService.cs" />
+    <Compile Include="Scheduler\Interface\IJobService.cs" />
     <Compile Include="Web\Interface\ILevelService.cs" />
     <Compile Include="Web\Interface\ILoginService.cs" />
     <Compile Include="Web\Interface\IMenuService.cs" />
@@ -84,8 +88,8 @@
     <Compile Include="Web\Interface\ICountryService.cs" />
     <Compile Include="Web\Interface\IProvinceService.cs" />
     <Compile Include="Web\Interface\IRoleService.cs" />
-    <Compile Include="Web\Interface\ISchedulerService.cs" />
-    <Compile Include="Web\JobService.cs" />
+    <Compile Include="Scheduler\Interface\ISchedulerService.cs" />
+    <Compile Include="Scheduler\JobService.cs" />
     <Compile Include="Web\LevelService.cs" />
     <Compile Include="Web\LoginService.cs" />
     <Compile Include="Web\MenuService.cs" />
@@ -110,7 +114,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Web\ProvinceService.cs" />
     <Compile Include="Web\RoleService.cs" />
-    <Compile Include="Web\SchedulerService.cs" />
+    <Compile Include="Scheduler\SchedulerService.cs" />
     <Compile Include="ServiceBase.cs" />
     <Compile Include="UnityService.cs" />
     <Compile Include="Wechat\AccessTokenService.cs">

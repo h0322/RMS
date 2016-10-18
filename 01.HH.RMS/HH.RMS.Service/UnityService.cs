@@ -22,6 +22,12 @@ namespace HH.RMS.Service.Web
             _unityManager = unityManager;
 
         }
+        public virtual void Register()
+        {
+            RepositoryRegister();
+            ServiceRegister();
+            ContorllerRegister();
+        }
         public virtual void RepositoryRegister()
         {
             _unityManager.RegisterType(typeof(IRepository<>), typeof(RepositoryBase<>));

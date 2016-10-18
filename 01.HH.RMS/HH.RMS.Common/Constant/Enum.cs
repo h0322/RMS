@@ -169,4 +169,11 @@ namespace HH.RMS.Common.Constant
         Update = 4,
         Delete = 8
     }
+    public enum JobType
+    {
+        Database =1,
+        Assembly=2,
+        Page=3,
+        WCF=4,
+    }
 }

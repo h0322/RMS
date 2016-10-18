@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HH.RMS.Entity.Web
+namespace HH.RMS.Entity
 {
      [MappingTable(tableName = "SystemLog")]
     public class LogEntity : EntityBase
