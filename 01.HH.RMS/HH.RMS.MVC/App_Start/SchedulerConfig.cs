@@ -15,11 +15,11 @@ namespace HH.RMS.MVC
         {
             SchedulerManager.Start();
             var scheduler = UnityManager.instance.GetService<ISchedulerService>();
-            var list = scheduler.QuerySchedulerAll();
-            foreach(var info in list)
-            {
-                SchedulerManager.ExecuteScheduler(info);
-            }
+            //var list = scheduler.QuerySchedulerAll();
+            //foreach(var info in list)
+            //{
+            //    SchedulerManager.ExecuteScheduler(info);
+            //}
         }
     }
 }

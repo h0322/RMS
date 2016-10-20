@@ -18,6 +18,8 @@ namespace HH.RMS.Entity.Scheduler
         public string scheduleName { get; set; }
          [MaxLength(100)]
         public string scheduleDescription { get; set; }
+        [MaxLength(100)]
+        public string scheduleGroup { get; set; }
         public IntervalType intervalType { get; set; }
          [MaxLength(100)]
         public string cronExpression { get; set; }

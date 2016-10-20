@@ -20,7 +20,7 @@ namespace HH.RMS.Service.Web
             _jobRepository = jobRepository;
             _jobParameterRepository = jobParameterRepository;
         }
-        public List<JobModel> QueryRunningJobBy()
+        public List<JobModel> QueryRunningJob()
         {
             try
             {

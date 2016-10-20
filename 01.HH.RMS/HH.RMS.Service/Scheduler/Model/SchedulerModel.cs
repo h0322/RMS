@@ -13,6 +13,7 @@ namespace HH.RMS.Service.Scheduler.Model
         public long jobId { get; set; }
         public string scheduleName { get; set; }
         public string scheduleDescription { get; set; }
+        public string scheduleGroup { get; set; }
         public IntervalType intervalType { get; set; }
         public string cronExpression { get; set; }
         public int year { get; set; }
