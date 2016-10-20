@@ -188,7 +188,7 @@ FakesAssemblies/
 /Src/packages
 /HH.RMS.MVC/bin
 
-
+bin/
 01.HH.RMS/HH.Mobile/bin/HH.Mobile.pdb
 01.HH.RMS/HH.Mobile/obj/Debug/HH.Mobile.csproj.FileListAbsolute.txt
 01.HH.RMS/HH.Mobile/obj/Debug/HH.Mobile.dll
