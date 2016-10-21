@@ -71,7 +71,7 @@
   <ItemGroup>
     <Compile Include="Scheduler\Model\JobModel.cs" />
     <Compile Include="Scheduler\Model\JobParameterModel.cs" />
-    <Compile Include="Scheduler\Model\SchedulerLogModel.cs" />
+    <Compile Include="Scheduler\Model\JobLogModel.cs" />
     <Compile Include="Scheduler\Model\SchedulerModel.cs" />
     <Compile Include="Web\AccountService.cs" />
     <Compile Include="Web\AddressService.cs" />

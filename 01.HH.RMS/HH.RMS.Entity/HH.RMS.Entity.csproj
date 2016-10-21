@@ -55,7 +55,7 @@
     <Compile Include="Web\ProvinceEntity.cs" />
     <Compile Include="Web\RoleEntity.cs" />
     <Compile Include="Scheduler\SchedulerEntity.cs" />
-    <Compile Include="Scheduler\SchedulerLogEntity.cs" />
+    <Compile Include="Scheduler\JobLogEntity.cs" />
     <Compile Include="Web\AccountRoleEntity.cs" />
     <Compile Include="Wechat\WechatSetting.cs" />
   </ItemGroup>

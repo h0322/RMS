@@ -1,4 +1,5 @@
-﻿using HH.RMS.Service.Scheduler.Model;
+﻿using HH.RMS.Common.Constant;
+using HH.RMS.Service.Scheduler.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,5 +13,6 @@ namespace HH.RMS.Service.Web.Interface
         List<JobModel> QueryRunningJob();
         List<JobModel> QueryRunningJobBySchedulerId(long id);
         List<JobParameterModel> QueryJobParameterByJobId(long id);
+        ResultType InsertJobLog(JobLogModel model);
     }
 }

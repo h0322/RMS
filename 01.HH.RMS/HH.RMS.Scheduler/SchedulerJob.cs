@@ -1,4 +1,5 @@
-﻿using HH.RMS.Common.Constant;
+﻿using Common.Logging;
+using HH.RMS.Common.Constant;
 using HH.RMS.Service.Scheduler.Model;
 using HH.RMS.Service.Web.Interface;
 using Quartz;
@@ -10,10 +11,11 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HH.RMS.Scheduler.Job
+namespace HH.RMS.Scheduler
 {
-    public class LocalObjectJob : JobBase,IJob
+    public class SchedulerJob :IJob
     {
+        protected static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
         private const string _targetAssemblyFullName = "TargetAssemblyFullName";
         private const string _targetAssemblyPath = "TargetAssemblyPath";
         private const string _targetTypeFullName = "TargetTypeFullName";
@@ -21,7 +23,7 @@ namespace HH.RMS.Scheduler.Job
         private const string _jobId = "jobId";
         private const string _scheduleId = "scheduleId";
         private IJobService _jobService;
-        public LocalObjectJob(IJobService jobService)
+        public SchedulerJob(IJobService jobService)
         {
             _jobService = jobService;
         }

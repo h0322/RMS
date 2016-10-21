@@ -39,17 +39,37 @@ namespace HH.RMS.Scheduler
                     foreach (var job in jobList)
                     {
                         var jobAssembly = Assembly.GetExecutingAssembly().GetType(job.jobAssembly,true,true);
-                        IJobDetail jobDetail = JobBuilder.Create(jobAssembly).WithDescription(job.jobDescription).WithIdentity(job.jobName, job.jobCode).Build();
+                        IJobDetail jobDetail = JobBuilder.Create(jobAssembly).WithDescription(job.jobDescription).WithIdentity(job.jobName, job.jobGroup).Build();
                         var jobParameter = _jobService.QueryJobParameterByJobId(job.jobId);
                         foreach (var item in jobParameter)
                         {
                             jobDetail.JobDataMap.Put(item.parameterName, item.parameterValue);
                         }
+
                         jobDetail.JobDataMap.Put("jobId", job.jobId);
-                        jobDetail.JobDataMap.Put("scheduleId",scheduler.schedulerId);
+                        switch (job.jobType)
+                        {
+                            case JobType.Assembly:
+                                jobDetail.JobDataMap.Put("jobAssemblyFullName", job.jobAssemblyFullName);
+                                jobDetail.JobDataMap.Put("jobAssembly", job.jobAssembly);
+                                jobDetail.JobDataMap.Put("jobAssemblyPath", job.jobAssemblyPath);
+                                jobDetail.JobDataMap.Put("jobAssemblyMethod", job.jobAssemblyMethod);
+                                break;
+                            case JobType.Database:
+                                jobDetail.JobDataMap.Put("jobCommandType", job.jobCommandType);
+                                jobDetail.JobDataMap.Put("jobCommandText", job.jobCommandText);
+                                break;
+                            case JobType.Page:
+                                jobDetail.JobDataMap.Put("jobUrl", job.jobUrl);
+                                break;
+                            case JobType.WCF:
+                                jobDetail.JobDataMap.Put("jobUrl", job.jobUrl);
+                                jobDetail.JobDataMap.Put("jobAssemblyMethod", job.jobAssemblyMethod);
+                                break;
+                        }
                         ICronTrigger trigger = (ICronTrigger)TriggerBuilder.Create().WithDescription(scheduler.scheduleDescription)
-                        .WithIdentity(scheduler.scheduleName, "")
-                        .WithCronSchedule(scheduler.cronExpression, x => x.WithMisfireHandlingInstructionIgnoreMisfires()).Build();
+.WithIdentity(scheduler.scheduleName, scheduler.scheduleGroup)
+.WithCronSchedule(scheduler.cronExpression, x => x.WithMisfireHandlingInstructionIgnoreMisfires()).Build();
                         _scheduler.ScheduleJob(jobDetail, trigger);
                     }
                 }
@@ -61,6 +81,14 @@ namespace HH.RMS.Scheduler
                 return;
             }
         }
+        private void DatabaseJob()
+        {
+ 
+        }
+        private void AssemblyJob()
+        { 
+        }
+
         protected virtual ISchedulerFactory CreateSchedulerFactory()
         {
             return new StdSchedulerFactory();

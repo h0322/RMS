@@ -11,12 +11,19 @@ namespace HH.RMS.Service.Scheduler.Model
     {
         public long jobId { get; set; }
         public long schedulerId { get; set; }
-        public string jobCode { get; set; }
+        public string jobGroup { get; set; }
         public string jobName { get; set; }
         public string jobDescription { get; set; }
         public JobType jobType { get; set; }
+        public string jobAssembly { get; set; }
+        public string jobAssemblyPath { get; set; }
+        public string jobAssemblyFullName { get; set; }
+        public string jobAssemblyMethod { get; set; }
+        public string jobUrl { get; set; }
+        public SqlScriptType jobCommandType { get; set; }
+        public string jobCommandText { get; set; }
         public DateTime fromDate { get; set; }
         public DateTime toDate { get; set; }
-        public string jobAssembly { get; set; }
+        public bool isSequence { get; set; }
     }
 }

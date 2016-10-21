@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace HH.RMS.Repository.EntityFramework.Mapping
 {
-    public class SchedulerLogMapping : MappingTableBase<SchedulerLogEntity>
+    public class SchedulerLogMapping : MappingTableBase<JobLogEntity>
     {
     }
 }

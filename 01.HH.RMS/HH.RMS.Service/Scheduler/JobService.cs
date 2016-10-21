@@ -1,4 +1,5 @@
-﻿using HH.RMS.Entity.Scheduler;
+﻿using HH.RMS.Common.Constant;
+using HH.RMS.Entity.Scheduler;
 using HH.RMS.Repository.EntityFramework;
 using HH.RMS.Repository.EntityFramework.Interface;
 using HH.RMS.Service.Scheduler.Model;
@@ -15,10 +16,12 @@ namespace HH.RMS.Service.Web
     {
         private IRepository<JobEntity> _jobRepository;
         private IRepository<JobParameterEntity> _jobParameterRepository;
-        public JobService(IRepository<JobEntity> jobRepository, IRepository<JobParameterEntity> jobParameterRepository)
+        private IRepository<JobLogEntity> _jobLogRepository;
+        public JobService(IRepository<JobEntity> jobRepository, IRepository<JobParameterEntity> jobParameterRepository, IRepository<JobLogEntity> jobLogRepository)
         {
             _jobRepository = jobRepository;
             _jobParameterRepository = jobParameterRepository;
+            _jobLogRepository = jobLogRepository;
         }
         public List<JobModel> QueryRunningJob()
         {
@@ -33,10 +36,17 @@ namespace HH.RMS.Service.Web
                                 fromDate = a.fromDate,
                                 toDate = a.toDate,
                                 jobAssembly = a.jobAssembly,
-                                jobCode = a.jobCode,
+                                jobAssemblyFullName = a.jobAssemblyFullName,
+                                jobAssemblyMethod = a.jobAssemblyMethod,
+                                jobAssemblyPath = a.jobAssemblyPath,
+                                jobCommandText = a.jobCommandText,
+                                jobCommandType = a.jobCommandType,
+                                jobUrl = a.jobUrl,
+                                jobGroup = a.jobGroup,
                                 jobDescription = a.jobDescription,
                                 jobId = a.id,
                                 jobName = a.jobName,
+                                isSequence = a.isSequence,
                                 jobType = a.jobType
                             };
                     return q.ToList();
@@ -63,7 +73,7 @@ namespace HH.RMS.Service.Web
                                 fromDate = a.fromDate,
                                 toDate = a.toDate,
                                 jobAssembly = a.jobAssembly,
-                                jobCode = a.jobCode,
+                                jobGroup = a.jobGroup,
                                 jobDescription = a.jobDescription,
                                 jobId = a.id,
                                 jobName = a.jobName,
@@ -101,6 +111,35 @@ namespace HH.RMS.Service.Web
             {
                 return null;
                 log.Error("JobService.QueryJobParameterByJobId", ex);
+            }
+        }
+        public ResultType InsertJobLog(JobLogModel model)
+        {
+            try
+            {
+                using (var db = new ApplicationDbContext())
+                {
+                    _jobLogRepository.Insert(db, new JobLogEntity()
+                    {
+                        jobId = model.jobId,
+                        schedulerId = model.schedulerId,
+                        jobGroup = model.jobGroup,
+                        jobName = model.jobName,
+                        scheduleGroup = model.scheduleGroup,
+                        scheduleName = model.scheduleName,
+                        executeSecond = model.executeSecond,
+                        resultType = model.resultType,
+                        startTime = model.startTime,
+                        endTime = model.endTime,
+                        resultMessage = model.resultMessage,
+                    });
+                }
+                return ResultType.Success;
+            }
+            catch (Exception ex)
+            {
+                log.Error("JobService.InsertJobLog", ex);
+                return ResultType.SystemError;
             }
         }
     }
