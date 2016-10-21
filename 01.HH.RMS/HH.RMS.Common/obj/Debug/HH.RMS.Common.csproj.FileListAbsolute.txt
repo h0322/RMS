@@ -112,3 +112,4 @@ D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Common\bin\Debug\Microsoft.Practices.Unity
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Common\bin\Debug\Newtonsoft.Json.xml
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Common\obj\Debug\HH.RMS.Common.dll
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Common\obj\Debug\HH.RMS.Common.pdb
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Common\obj\Debug\HH.RMS.Common.csprojResolveAssemblyReference.cache

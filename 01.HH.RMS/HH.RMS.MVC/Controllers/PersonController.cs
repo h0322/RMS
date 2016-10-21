@@ -34,6 +34,7 @@ namespace HH.RMS.MVC.Controllers
             return View();
         }
         [HttpPost]
+        [RMSAuthorize(menuCode="Person",excuteType=(int)ExcuteType.Select)]
         public JsonResult QueryPersonToGrid(PagerModel pagerModel)
         {
             pagerModel.searchText = searchText;
@@ -63,21 +64,25 @@ namespace HH.RMS.MVC.Controllers
           {
               return LevelModel.ToSelect();
           }
+        [RMSAuthorize(menuCode = "Person", excuteType = (int)ExcuteType.Insert)]
         public JsonResult CreatePersonAccount(AccountModel model)
         {
             ResultModel<ResultType> result =  _personService.CreatePersonAccount(model);
             return Json(result);
         }
+        [RMSAuthorize(menuCode = "Person", excuteType = (int)ExcuteType.Select)]
         public JsonResult QueryPersonById(long id)
         {
             var person = _personService.QueryPersonById(id);
             return Json(person, JsonRequestBehavior.AllowGet);
         }
+        [RMSAuthorize(menuCode = "Person", excuteType = (int)ExcuteType.Update)]
         public JsonResult UpdatePerson(PersonModel model)
         {
             var result = _personService.UpdatePersonById(model);
             return Json(result, JsonRequestBehavior.AllowGet);
         }
+        [RMSAuthorize(menuCode = "Person", excuteType = (int)ExcuteType.Delete)]
         public JsonResult DeletePersonById(long id)
         {
             return null;

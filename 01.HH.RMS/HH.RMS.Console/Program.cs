@@ -14,6 +14,8 @@ namespace HH.RMS.Consoles
     {
         static void Main(string[] args)
         {
+            decimal s = 9.03m;
+            string dd = s.ToString("0");
             if(DateTime.Now.Minute%10==0)
             {
                 WebClient wc = new WebClient();

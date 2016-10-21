@@ -55,7 +55,7 @@ namespace HH.RMS.MVC
                 filterContext.Result = new RedirectResult("/Login/Index?RedirectUrl=" + HttpUtility.UrlEncode(currentUrl));
                 return;
             }
-            filterContext.Result = new JsonResult() { Data = ResultType.NoAccess };
+            filterContext.Result = new JsonResult() { Data = new { access = ResultType.NoAccess } };
             
         }  
 

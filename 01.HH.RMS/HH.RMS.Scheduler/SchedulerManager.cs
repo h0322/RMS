@@ -9,26 +9,106 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using Quartz.Impl;
+using HH.RMS.Entity.Scheduler;
 
 namespace HH.RMS.Scheduler
 {
     public class SchedulerManager
     {
         private static readonly log4net.ILog _log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        private static IScheduler _iScheduler;
-        private ISchedulerService _iSchedulerService;
-        public SchedulerManager(ISchedulerService iSchedulerService)
+        private static IScheduler _scheduler;
+        private ISchedulerService _schedulerService;
+        private ISchedulerFactory _schedulerFactory;
+        private IJobService _jobService;
+        public SchedulerManager(ISchedulerService schedulerService, IJobService jobService)
         {
-            _iSchedulerService = iSchedulerService;
+            _jobService = jobService;
+            _schedulerService = schedulerService;
         }
+        public virtual void Initialize()
+        {
+            try
+            {
+                _schedulerFactory = CreateSchedulerFactory();
+                _scheduler = GetScheduler();
+                var schedulerList = _schedulerService.QueryRunningScheduler();
+                foreach (var scheduler in schedulerList)
+                {
+                    var jobList = _jobService.QueryRunningJobBySchedulerId(scheduler.schedulerId);
+                    foreach (var job in jobList)
+                    {
+                        var jobAssembly = Assembly.GetExecutingAssembly().GetType(job.jobAssembly,true,true);
+                        IJobDetail jobDetail = JobBuilder.Create(jobAssembly).WithDescription(job.jobDescription).WithIdentity(job.jobName, job.jobGroup).Build();
+                        var jobParameter = _jobService.QueryJobParameterByJobId(job.jobId);
+                        foreach (var item in jobParameter)
+                        {
+                            jobDetail.JobDataMap.Put(item.parameterName, item.parameterValue);
+                        }
+
+                        jobDetail.JobDataMap.Put("jobId", job.jobId);
+                        switch (job.jobType)
+                        {
+                            case JobType.Assembly:
+                                jobDetail.JobDataMap.Put("jobAssemblyFullName", job.jobAssemblyFullName);
+                                jobDetail.JobDataMap.Put("jobAssembly", job.jobAssembly);
+                                jobDetail.JobDataMap.Put("jobAssemblyPath", job.jobAssemblyPath);
+                                jobDetail.JobDataMap.Put("jobAssemblyMethod", job.jobAssemblyMethod);
+                                break;
+                            case JobType.Database:
+                                jobDetail.JobDataMap.Put("jobCommandType", job.jobCommandType);
+                                jobDetail.JobDataMap.Put("jobCommandText", job.jobCommandText);
+                                break;
+                            case JobType.Page:
+                                jobDetail.JobDataMap.Put("jobUrl", job.jobUrl);
+                                break;
+                            case JobType.WCF:
+                                jobDetail.JobDataMap.Put("jobUrl", job.jobUrl);
+                                jobDetail.JobDataMap.Put("jobAssemblyMethod", job.jobAssemblyMethod);
+                                break;
+                        }
+                        ICronTrigger trigger = (ICronTrigger)TriggerBuilder.Create().WithDescription(scheduler.scheduleDescription)
+.WithIdentity(scheduler.scheduleName, scheduler.scheduleGroup)
+.WithCronSchedule(scheduler.cronExpression, x => x.WithMisfireHandlingInstructionIgnoreMisfires()).Build();
+                        _scheduler.ScheduleJob(jobDetail, trigger);
+                    }
+                }
+
+            }
+            catch(Exception ex)
+            {
+                _log.Error("SchedulerManager.Initialize", ex);
+                return;
+            }
+        }
+        private void DatabaseJob()
+        {
+ 
+        }
+        private void AssemblyJob()
+        { 
+        }
+
+        protected virtual ISchedulerFactory CreateSchedulerFactory()
+        {
+            return new StdSchedulerFactory();
+        }
+        protected virtual IScheduler GetScheduler()
+        {
+            return _schedulerFactory.GetScheduler();
+        }
+
+
+
+
         //public static string contentString = "";
         public static void Start()
         {
             try
             {
                 ISchedulerFactory schedulerFactory = new Quartz.Impl.StdSchedulerFactory();
-                _iScheduler = schedulerFactory.GetScheduler();
-                _iScheduler.Start();
+                _scheduler = schedulerFactory.GetScheduler();
+                _scheduler.Start();
                 //启动任务
                 
             }
@@ -58,14 +138,14 @@ namespace HH.RMS.Scheduler
                 if (entity.intervalType == IntervalType.CronExpression)
                 {
                     var trigger = TriggerBuilder.Create().WithIdentity(entity.scheduleName, entity.job.jobName).WithCronSchedule(entity.cronExpression).Build();
-                    _iScheduler.ScheduleJob(jobDetail, trigger);
+                    _scheduler.ScheduleJob(jobDetail, trigger);
                 }
                 else
                 {
                     //使得时分秒的方式
                     var cronExpression = SchedulerHelper.GetCronExpression(entity.intervalType, "0", entity.minute.ToString(), entity.hour.ToString(), entity.day.ToString(), entity.month.ToString(), entity.weekday.ToString(), entity.year.ToString());
                     var trigger = TriggerBuilder.Create().WithIdentity(entity.scheduleName, entity.job.jobName).WithCronSchedule(cronExpression).Build();
-                    _iScheduler.ScheduleJob(jobDetail, trigger);
+                    _scheduler.ScheduleJob(jobDetail, trigger);
                 }
                 return ResultType.Success;
             }
@@ -81,7 +161,7 @@ namespace HH.RMS.Scheduler
             {
                 IJobDetail jobDetail = JobBuilder.Create(type).WithIdentity(type.Name, type.Namespace).Build();
                 var trigger = TriggerBuilder.Create().WithIdentity(type.Name, type.Namespace).WithSimpleSchedule(m => m.RepeatForever().WithRepeatCount(0).WithIntervalInSeconds(interval)).Build();
-                _iScheduler.ScheduleJob(jobDetail, trigger);
+                _scheduler.ScheduleJob(jobDetail, trigger);
                 return ResultType.Success;
             }
             catch (Exception ex)

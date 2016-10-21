@@ -14,21 +14,8 @@ namespace HH.RMS.MVC
         public UnityConfig(UnityManager unityManager)
             : base(unityManager)
         {
-            ContorllerRegister();
-            ServiceRegister();
-            RepositoryRegister();
+            Register();
         }
-        public override void ServiceRegister()
-        {
-            base.ServiceRegister();
-        }
-        public override void ContorllerRegister()
-        {
-            base.ContorllerRegister();
-        }
-        public override void RepositoryRegister()
-        {
-            base.RepositoryRegister();
-        }
+
     }
 }
