@@ -135,6 +135,17 @@ namespace HH.RMS.Common.Constant
         }
   
         #endregion
+        #region Job
+        public const string jobAssemblyFullName = "jobAssemblyFullName";
+        public const string jobAssembly = "jobAssembly";
+        public const string jobAssemblyPath = "jobAssemblyPath";
+        public const string jobAssemblyMethod = "jobAssemblyMethod";
+        public const string jobCommandText = "jobCommandText";
+        public const string jobCommandType = "jobCommandType";
+        public const string jobUrl = "jobUrl";
+        public const string jobId = "jobId";
+        public const string schedulerId = "schedulerId";
+        #endregion
 
     }
 }

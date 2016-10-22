@@ -174,3 +174,5 @@ D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Scheduler\bin\Debug\EntityFramework.Extend
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Scheduler\obj\Debug\HH.RMS.Scheduler.csprojResolveAssemblyReference.cache
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Scheduler\obj\Debug\HH.RMS.Scheduler.dll
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Scheduler\obj\Debug\HH.RMS.Scheduler.pdb
+E:\Programs\RMS\01.HH.RMS\HH.RMS.Scheduler\bin\Debug\Microsoft.Practices.Unity.RegistrationByConvention.dll
+E:\Programs\RMS\01.HH.RMS\HH.RMS.Scheduler\bin\Debug\Microsoft.Practices.Unity.RegistrationByConvention.xml

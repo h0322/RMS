@@ -77,7 +77,13 @@ namespace HH.RMS.Service.Web
                                 jobDescription = a.jobDescription,
                                 jobId = a.id,
                                 jobName = a.jobName,
-                                jobType = a.jobType
+                                jobType = a.jobType,
+                                jobAssemblyFullName=a.jobAssemblyFullName,
+                                jobAssemblyMethod=a.jobAssemblyMethod,
+                                jobAssemblyPath=a.jobAssemblyPath,
+                                jobCommandText=a.jobCommandText,
+                                jobCommandType=a.jobCommandType,
+                                jobUrl=a.jobUrl
                             };
                     return q.ToList();
                 }

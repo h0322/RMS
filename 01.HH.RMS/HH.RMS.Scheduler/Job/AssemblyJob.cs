@@ -1,4 +1,5 @@
 ﻿using HH.RMS.Common.Constant;
+using HH.RMS.Common.Unity;
 using HH.RMS.Service.Scheduler.Model;
 using HH.RMS.Service.Web.Interface;
 using Quartz;
@@ -12,34 +13,32 @@ using System.Threading.Tasks;
 
 namespace HH.RMS.Scheduler.Job
 {
-    public class LocalObjectJob : JobBase,IJob
+    public class AssemblyJob : JobBase,IJob
     {
-        private const string _targetAssemblyFullName = "TargetAssemblyFullName";
-        private const string _targetAssemblyPath = "TargetAssemblyPath";
-        private const string _targetTypeFullName = "TargetTypeFullName";
-        private const string _targetMethodName = "TargetMethodName";
-        private const string _jobId = "jobId";
-        private const string _scheduleId = "scheduleId";
         private IJobService _jobService;
-        public LocalObjectJob(IJobService jobService)
+        public AssemblyJob(IJobService jobService)
         {
             _jobService = jobService;
         }
+        public AssemblyJob()
+            : this(UnityManager.instance.GetService<IJobService>())
+        { }
         public void Execute(IJobExecutionContext context)
         {
+            Console.Write("StartJob:" + context.Trigger.Key.Name);
             DateTime startTime = DateTime.Now;
             DateTime endTime = DateTime.Now;
             ResultType resultType = ResultType.Success;
             string resultMessage = "";
             var jobDataMap = context.MergedJobDataMap;
-            var targetAssemblyFullName = jobDataMap.GetString(_targetAssemblyFullName);
-            var targetAssemblyPath = jobDataMap.GetString(_targetAssemblyPath);
-            var targetTypeFullName = jobDataMap.GetString(_targetTypeFullName);
-            var targetMethodName = jobDataMap.GetString(_targetMethodName);
-            var jobId = jobDataMap.GetLong(_jobId);
+            var targetAssemblyFullName = jobDataMap.GetString(Config.jobAssemblyFullName);
+            var targetAssemblyPath = jobDataMap.GetString(Config.jobAssemblyPath);
+            var targetTypeFullName = jobDataMap.GetString(Config.jobAssembly);
+            var targetMethodName = jobDataMap.GetString(Config.jobAssemblyMethod);
+            var jobId = jobDataMap.GetLong(Config.jobId);
+            var scheduleId = jobDataMap.GetLong(Config.schedulerId);
             var jobName = context.JobDetail.Key.Name;
             var jobGroupName = context.JobDetail.Key.Group;
-            var scheduleId = jobDataMap.GetLong(_scheduleId);
             var scheduleName = context.Trigger.Key.Name;
             var scheduleGroupName = context.Trigger.Key.Group;
             Stopwatch stopwatch = new Stopwatch();

@@ -14,7 +14,6 @@ namespace HH.RMS.MVC
         public UnityConfig(UnityManager unityManager)
             : base(unityManager)
         {
-            Register();
         }
 
     }

@@ -26,50 +26,70 @@ namespace HH.RMS.Scheduler
             _jobService = jobService;
             _schedulerService = schedulerService;
         }
+        public SchedulerManager()
+            : this(UnityManager.instance.GetService<ISchedulerService>(), UnityManager.instance.GetService<IJobService>())
+        { 
+        }
         public virtual void Initialize()
         {
             try
             {
                 _schedulerFactory = CreateSchedulerFactory();
+                Start();
                 _scheduler = GetScheduler();
+                _scheduler.Start();
                 var schedulerList = _schedulerService.QueryRunningScheduler();
                 foreach (var scheduler in schedulerList)
                 {
                     var jobList = _jobService.QueryRunningJobBySchedulerId(scheduler.schedulerId);
+                    if (jobList == null)
+                    {
+                        _log.Info("SchedulerManager.Initialize: JobList Is Null;schedulerId:" + scheduler.schedulerId);
+                        continue;
+                    }
                     foreach (var job in jobList)
                     {
-                        var jobAssembly = Assembly.GetExecutingAssembly().GetType(job.jobAssembly,true,true);
+                        var jobAssembly = Assembly.GetExecutingAssembly().GetType(job.jobGroup,true,true);
+                        if (jobAssembly == null)
+                        {
+                            _log.Info("SchedulerManager.Initialize:JobAssembly Is Null;JobId:"+job.jobId);
+                            continue;
+                        }
                         IJobDetail jobDetail = JobBuilder.Create(jobAssembly).WithDescription(job.jobDescription).WithIdentity(job.jobName, job.jobGroup).Build();
                         var jobParameter = _jobService.QueryJobParameterByJobId(job.jobId);
-                        foreach (var item in jobParameter)
+                        if (jobParameter != null)
                         {
-                            jobDetail.JobDataMap.Put(item.parameterName, item.parameterValue);
-                        }
-
-                        jobDetail.JobDataMap.Put("jobId", job.jobId);
-                        switch (job.jobType)
-                        {
-                            case JobType.Assembly:
-                                jobDetail.JobDataMap.Put("jobAssemblyFullName", job.jobAssemblyFullName);
-                                jobDetail.JobDataMap.Put("jobAssembly", job.jobAssembly);
-                                jobDetail.JobDataMap.Put("jobAssemblyPath", job.jobAssemblyPath);
-                                jobDetail.JobDataMap.Put("jobAssemblyMethod", job.jobAssemblyMethod);
-                                break;
-                            case JobType.Database:
-                                jobDetail.JobDataMap.Put("jobCommandType", job.jobCommandType);
-                                jobDetail.JobDataMap.Put("jobCommandText", job.jobCommandText);
-                                break;
-                            case JobType.Page:
-                                jobDetail.JobDataMap.Put("jobUrl", job.jobUrl);
-                                break;
-                            case JobType.WCF:
-                                jobDetail.JobDataMap.Put("jobUrl", job.jobUrl);
-                                jobDetail.JobDataMap.Put("jobAssemblyMethod", job.jobAssemblyMethod);
-                                break;
+                            foreach (var item in jobParameter)
+                            {
+                                jobDetail.JobDataMap.Put(item.parameterName, item.parameterValue);
+                            }
                         }
                         ICronTrigger trigger = (ICronTrigger)TriggerBuilder.Create().WithDescription(scheduler.scheduleDescription)
 .WithIdentity(scheduler.scheduleName, scheduler.scheduleGroup)
 .WithCronSchedule(scheduler.cronExpression, x => x.WithMisfireHandlingInstructionIgnoreMisfires()).Build();
+                        jobDetail.JobDataMap.Put(Config.jobId, job.jobId);
+                        jobDetail.JobDataMap.Put(Config.schedulerId, job.schedulerId);
+                        switch (job.jobType)
+                        {
+                            case JobType.Assembly:
+                                jobDetail.JobDataMap.Put(Config.jobAssemblyFullName, job.jobAssemblyFullName);
+                                jobDetail.JobDataMap.Put(Config.jobAssembly, job.jobAssembly);
+                                jobDetail.JobDataMap.Put(Config.jobAssemblyPath, job.jobAssemblyPath);
+                                jobDetail.JobDataMap.Put(Config.jobAssemblyMethod, job.jobAssemblyMethod);
+                                break;
+                            case JobType.Sql:
+                                jobDetail.JobDataMap.Put(Config.jobCommandType, job.jobCommandType);
+                                jobDetail.JobDataMap.Put(Config.jobCommandText, job.jobCommandText);
+                                break;
+                            case JobType.Page:
+                                jobDetail.JobDataMap.Put(Config.jobUrl, job.jobUrl);
+                                break;
+                            case JobType.WCF:
+                                jobDetail.JobDataMap.Put(Config.jobUrl, job.jobUrl);
+                                jobDetail.JobDataMap.Put(Config.jobAssemblyMethod, job.jobAssemblyMethod);
+                                break;
+                        }
+ 
                         _scheduler.ScheduleJob(jobDetail, trigger);
                     }
                 }

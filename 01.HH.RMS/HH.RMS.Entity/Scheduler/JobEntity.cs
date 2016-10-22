@@ -30,7 +30,7 @@ namespace HH.RMS.Entity.Scheduler
          public string jobAssemblyMethod { get; set; }
         [MaxLength(500)]
          public string jobUrl { get; set; }
-        public SqlScriptType jobCommandType { get; set; }
+        public SqlScriptType? jobCommandType { get; set; }
          public string jobCommandText { get; set; }
         public DateTime fromDate { get; set; }
         public DateTime toDate { get; set; }

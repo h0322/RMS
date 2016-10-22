@@ -16,11 +16,11 @@ namespace HH.RMS.Service.Web
 {
     public class UnityService
     {
-        private UnityManager _unityManager;
+        public UnityManager unityManager;
         public UnityService(UnityManager unityManager)
         {
-            _unityManager = unityManager;
-
+            this.unityManager = unityManager;
+            Register();
         }
         public virtual void Register()
         {
@@ -30,30 +30,30 @@ namespace HH.RMS.Service.Web
         }
         public virtual void RepositoryRegister()
         {
-            _unityManager.RegisterType(typeof(IRepository<>), typeof(RepositoryBase<>));
+            unityManager.RegisterType(typeof(IRepository<>), typeof(RepositoryBase<>));
         }
         public virtual void ADORepositoryRegister()
         {
-            _unityManager.RegisterType(typeof(IADORepository<>), typeof(ADORepositoryBase<>));
-            //_unityManager.RegisterType<IADORepository, ADORepositoryBase>();
+            unityManager.RegisterType(typeof(IADORepository<>), typeof(ADORepositoryBase<>));
+            //unityManager.RegisterType<IADORepository, ADORepositoryBase>();
         }
         public virtual void ServiceRegister()
         {
-            _unityManager.RegisterType<IPersonService, PersonService>();
-            _unityManager.RegisterType<IAccountService, AccountService>();
-            _unityManager.RegisterType<ISchedulerService, SchedulerService>();
-            _unityManager.RegisterType<IMenuService, MenuService>();
-            _unityManager.RegisterType<ILoginService, LoginService>();
-            _unityManager.RegisterType<ICityService, CityService>();
-            _unityManager.RegisterType<IProvinceService, ProvinceService>();
-            _unityManager.RegisterType<IRoleService, RoleService>();
-            _unityManager.RegisterType<ICountryService, CountryService>();
-            _unityManager.RegisterType<ILevelService, LevelService>();
-            //_unityManager.RegisterType<IADOUnit, ADOUnit>();
+            unityManager.RegisterType<IPersonService, PersonService>();
+            unityManager.RegisterType<IAccountService, AccountService>();
+            unityManager.RegisterType<ISchedulerService, SchedulerService>();
+            unityManager.RegisterType<IMenuService, MenuService>();
+            unityManager.RegisterType<ILoginService, LoginService>();
+            unityManager.RegisterType<ICityService, CityService>();
+            unityManager.RegisterType<IProvinceService, ProvinceService>();
+            unityManager.RegisterType<IRoleService, RoleService>();
+            unityManager.RegisterType<ICountryService, CountryService>();
+            unityManager.RegisterType<ILevelService, LevelService>();
+            //unityManager.RegisterType<IADOUnit, ADOUnit>();
         }
         public virtual void ContorllerRegister()
         {
-            ControllerBuilder.Current.SetControllerFactory(_unityManager.UnityControllerFactory);
+            ControllerBuilder.Current.SetControllerFactory(unityManager.UnityControllerFactory);
         }
            
     }

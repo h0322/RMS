@@ -1,5 +1,6 @@
 ﻿using HH.RMS.Common.Unity;
 using HH.RMS.Service.Web;
+using HH.RMS.Service.Web.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,9 +16,11 @@ namespace HH.RMS.Scheduler
         {
             Register();
         }
-        public override void ContorllerRegister()
+        public override void ServiceRegister()
         {
-            return;
+            unityManager.RegisterType<ISchedulerService, SchedulerService>();
+            unityManager.RegisterType<IJobService, JobService>();
+            base.ServiceRegister();
         }
     }
 }

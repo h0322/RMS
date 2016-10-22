@@ -45,6 +45,7 @@ namespace HH.RMS.Common.Constant
     }
     public enum SqlScriptType
     {
+        None=0,
         SqlString=1,
         Procedure=2
     }
@@ -171,8 +172,8 @@ namespace HH.RMS.Common.Constant
     }
     public enum JobType
     {
-        Database =1,
-        Assembly=2,
+        Assembly = 1,
+        Sql =2,
         Page=3,
         WCF=4,
     }

@@ -18,7 +18,6 @@ namespace HH.RMS.Service.Web
     public class SchedulerService :ServiceBase, ISchedulerService
     {
         private IRepository<SchedulerEntity> _schedulerRepository;
-        private IRepository<JobEntity> _jobRepository;
         public SchedulerService(IRepository<SchedulerEntity> schedulerRepository)
         {
             _schedulerRepository = schedulerRepository;
@@ -34,6 +33,9 @@ namespace HH.RMS.Service.Web
                             where a.runTime <= DateTime.Now && a.stopTime >= DateTime.Now
                             select new SchedulerModel()
                             {
+                                scheduleDescription=a.scheduleDescription,
+                                scheduleName =a.scheduleName,
+                                scheduleGroup =a.scheduleGroup,
                                 cronExpression = a.cronExpression,
                                 runTime = a.runTime,
                                 stopTime = a.stopTime,

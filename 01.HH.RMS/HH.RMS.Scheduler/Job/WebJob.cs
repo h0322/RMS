@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HH.RMS.Scheduler.Job
 {
-    public class DatabaseJob
+    public class WebJob
     {
     }
 }
