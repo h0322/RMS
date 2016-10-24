@@ -108,7 +108,8 @@ namespace HH.RMS.Service.Web
                                 jobId=a.jobId,
                                 jobParameterId = a.id,
                                 parameterName = a.parameterName,
-                                parameterValue = a.parameterValue
+                                parameterValue = a.parameterValue,
+                                parameterType = a.parameterType
                             };
                     return q.ToList();
                 }

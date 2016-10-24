@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HH.RMS.Common.Constant;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,5 +13,6 @@ namespace HH.RMS.Service.Scheduler.Model
         public long jobId { get; set; }
         public string parameterName { get; set; }
         public string parameterValue { get; set; }
+        public DataType parameterType { get; set; }
     }
 }

@@ -74,6 +74,16 @@ namespace HH.RMS.Common.Constant
         Page=1,
         Menu=2
     }
+    public enum DataType
+    {
+        String=1,
+        Int32=2,
+        Int64=3,
+        DateTime =4,
+        Decimal=5,
+        Double = 6,
+        Boolean = 7
+    }
     public enum WechatUrlType
     {
         GetAccessToken = 0,
@@ -174,7 +184,7 @@ namespace HH.RMS.Common.Constant
     {
         Assembly = 1,
         Sql =2,
-        Page=3,
+        Web=3,
         WCF=4,
     }
 }

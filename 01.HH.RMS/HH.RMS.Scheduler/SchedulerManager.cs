@@ -56,14 +56,7 @@ namespace HH.RMS.Scheduler
                             continue;
                         }
                         IJobDetail jobDetail = JobBuilder.Create(jobAssembly).WithDescription(job.jobDescription).WithIdentity(job.jobName, job.jobGroup).Build();
-                        var jobParameter = _jobService.QueryJobParameterByJobId(job.jobId);
-                        if (jobParameter != null)
-                        {
-                            foreach (var item in jobParameter)
-                            {
-                                jobDetail.JobDataMap.Put(item.parameterName, item.parameterValue);
-                            }
-                        }
+
                         ICronTrigger trigger = (ICronTrigger)TriggerBuilder.Create().WithDescription(scheduler.scheduleDescription)
 .WithIdentity(scheduler.scheduleName, scheduler.scheduleGroup)
 .WithCronSchedule(scheduler.cronExpression, x => x.WithMisfireHandlingInstructionIgnoreMisfires()).Build();
@@ -81,7 +74,7 @@ namespace HH.RMS.Scheduler
                                 jobDetail.JobDataMap.Put(Config.jobCommandType, job.jobCommandType);
                                 jobDetail.JobDataMap.Put(Config.jobCommandText, job.jobCommandText);
                                 break;
-                            case JobType.Page:
+                            case JobType.Web:
                                 jobDetail.JobDataMap.Put(Config.jobUrl, job.jobUrl);
                                 break;
                             case JobType.WCF:

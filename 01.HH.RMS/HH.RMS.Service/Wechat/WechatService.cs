@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace HH.RMS.Service.Wechat
@@ -51,6 +52,13 @@ namespace HH.RMS.Service.Wechat
                 log.Error("WechatService.PostToWechat", ex);
                 return null;
             }
+        }
+        public void GetOpenIdTest(string a, int b, DateTime date)
+        {
+            Thread.Sleep(10000);
+            log.Info("This is a Job Test:A:" + a + ";B:" + b+";DateTime:"+date);
+            return;
+ 
         }
     }
 }

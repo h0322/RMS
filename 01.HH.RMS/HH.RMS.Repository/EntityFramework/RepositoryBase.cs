@@ -162,7 +162,7 @@ namespace HH.RMS.Repository.EntityFramework
             return m=>t;
         }
 
-       public int UserID
+        public int UserID
         {
             get
             {
@@ -172,6 +172,25 @@ namespace HH.RMS.Repository.EntityFramework
             {
                 throw new NotImplementedException();
             }
+        }
+        public ResultType ExecuteDataSetSql<T>(string sqlString,SqlScriptType sqlType,SqlParameter[] sqlParameters)
+        {
+            return ResultType.Success;
+        }
+        public ResultType ExecuteNonQuerySql<T>(string sqlString, SqlScriptType sqlType, SqlParameter[] sqlParameters)
+        {
+            return ResultType.Success;
+
+        }
+        public ResultType ExecuteReaderSql<T>(string sqlString, SqlScriptType sqlType, SqlParameter[] sqlParameters)
+        {
+            return ResultType.Success;
+
+        }
+        public ResultType ExecuteScalarSql<T>(string sqlString, SqlScriptType sqlType, SqlParameter[] sqlParameters)
+        {
+            return ResultType.Success;
+
         }
     }
 

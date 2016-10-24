@@ -25,16 +25,17 @@ namespace HH.RMS.Scheduler.Job
         { }
         public void Execute(IJobExecutionContext context)
         {
+            
             Console.Write("StartJob:" + context.Trigger.Key.Name);
             DateTime startTime = DateTime.Now;
             DateTime endTime = DateTime.Now;
             ResultType resultType = ResultType.Success;
             string resultMessage = "";
             var jobDataMap = context.MergedJobDataMap;
-            var targetAssemblyFullName = jobDataMap.GetString(Config.jobAssemblyFullName);
-            var targetAssemblyPath = jobDataMap.GetString(Config.jobAssemblyPath);
-            var targetTypeFullName = jobDataMap.GetString(Config.jobAssembly);
-            var targetMethodName = jobDataMap.GetString(Config.jobAssemblyMethod);
+            var jobAssemblyFullName = jobDataMap.GetString(Config.jobAssemblyFullName);
+            var jobAssemblyPath = jobDataMap.GetString(Config.jobAssemblyPath);
+            var jobAssembly = jobDataMap.GetString(Config.jobAssembly);
+            var jobAssemblyMethod = jobDataMap.GetString(Config.jobAssemblyMethod);
             var jobId = jobDataMap.GetLong(Config.jobId);
             var scheduleId = jobDataMap.GetLong(Config.schedulerId);
             var jobName = context.JobDetail.Key.Name;
@@ -45,21 +46,49 @@ namespace HH.RMS.Scheduler.Job
             stopwatch.Start();
             try
             {
-                var assembly = AppDomain.CurrentDomain.GetAssemblies().SingleOrDefault(m => m.FullName.ToLower().Equals(targetAssemblyFullName.ToLower()));
+                var assembly = AppDomain.CurrentDomain.GetAssemblies().SingleOrDefault(m => m.FullName.ToLower().Equals(jobAssemblyFullName.ToLower()));
                 if (assembly == null)
                 {
-                    assembly = Assembly.LoadFrom(AppDomain.CurrentDomain.BaseDirectory + targetAssemblyPath);
+                    assembly = Assembly.LoadFrom(AppDomain.CurrentDomain.BaseDirectory + jobAssembly);
                 }
-                var type = assembly.GetType(targetTypeFullName);
+                var type = assembly.GetType(jobAssemblyPath);
                 var obj = Activator.CreateInstance(type);
-                var method = type.GetMethod(targetMethodName);
-                var parameters = method.GetParameters().OrderBy(m => m.Position).ToList();
-                var count = parameters.Count();
-                var args = new object[count];
-                for (int i = 0; i < count; i++)
+                var method = type.GetMethod(jobAssemblyMethod);
+                var jobParameterList = _jobService.QueryJobParameterByJobId(jobId);
+                object[] args = null;
+                if (jobParameterList != null)
                 {
-                    args[i] = jobDataMap.GetString(parameters[i].Name);
+                    args = new object[jobParameterList.Count];
+                    for (int i = 0; i < jobParameterList.Count; i++)
+                    {
+                        switch (jobParameterList[i].parameterType)
+                        {
+                            case DataType.Int32:
+                                args[i] = Convert.ToInt32(jobParameterList[i].parameterValue);
+                                break;
+                            case DataType.Int64:
+                                args[i] = Convert.ToInt64(jobParameterList[i].parameterValue);
+                                break;
+                            case DataType.Decimal:
+                                args[i] = Convert.ToDecimal(jobParameterList[i].parameterValue);
+                                break;
+                            case DataType.Double:
+                                args[i] = Convert.ToDouble(jobParameterList[i].parameterValue);
+                                break;
+                            case DataType.DateTime:
+                                args[i] = Convert.ToDateTime(jobParameterList[i].parameterValue);
+                                break;
+                            case DataType.Boolean:
+                                args[i] = Convert.ToBoolean(jobParameterList[i].parameterValue);
+                                break;
+                            default:
+                                args[i] = jobParameterList[i].parameterValue;
+                                break;
+                        }
+
+                    }
                 }
+
                 method.Invoke(obj, args);
                 stopwatch.Stop();
             }
@@ -68,7 +97,7 @@ namespace HH.RMS.Scheduler.Job
                 stopwatch.Stop();
                 resultType = ResultType.SystemError;
                 resultMessage = ex.Message;
-                log.Error("LocalObjectJob.Execute", ex);
+                log.Error("AssemblyJob.Execute", ex);
             }
             finally
             {
@@ -85,6 +114,7 @@ namespace HH.RMS.Scheduler.Job
                     endTime = endTime,
                     resultType = resultType,
                     resultMessage = resultMessage,
+                    jobType = JobType.Assembly,
                     executeSecond = stopwatch.ElapsedMilliseconds
                 });
             }

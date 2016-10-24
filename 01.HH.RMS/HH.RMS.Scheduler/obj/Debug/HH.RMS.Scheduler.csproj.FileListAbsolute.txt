@@ -176,3 +176,8 @@ D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Scheduler\obj\Debug\HH.RMS.Scheduler.dll
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Scheduler\obj\Debug\HH.RMS.Scheduler.pdb
 E:\Programs\RMS\01.HH.RMS\HH.RMS.Scheduler\bin\Debug\Microsoft.Practices.Unity.RegistrationByConvention.dll
 E:\Programs\RMS\01.HH.RMS\HH.RMS.Scheduler\bin\Debug\Microsoft.Practices.Unity.RegistrationByConvention.xml
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Scheduler\bin\Debug\HH.RMS.Scheduler.dll.config
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Scheduler\bin\Debug\EntityFramework.SqlServer.dll
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Scheduler\bin\Debug\Microsoft.Practices.Unity.RegistrationByConvention.dll
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Scheduler\bin\Debug\EntityFramework.SqlServer.xml
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Scheduler\bin\Debug\Microsoft.Practices.Unity.RegistrationByConvention.xml

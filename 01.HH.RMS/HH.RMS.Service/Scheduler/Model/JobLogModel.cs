@@ -12,6 +12,7 @@ namespace HH.RMS.Service.Scheduler.Model
         public long schedulerLogId { get; set; }
         public long schedulerId { get; set; }
         public long jobId { get; set; }
+        public JobType jobType { get; set; }
         public string scheduleGroup { get; set; }
         public string jobGroup { get; set; }
         public string scheduleName { get; set; }

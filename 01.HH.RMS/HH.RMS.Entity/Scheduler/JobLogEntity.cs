@@ -26,6 +26,7 @@ namespace HH.RMS.Entity.Scheduler
         public DateTime startTime { get; set; }
         public DateTime endTime { get; set; }
         public ResultType resultType { get; set; }
+        public JobType jobType { get; set; }
         public string resultMessage { get; set; }
     }
 }

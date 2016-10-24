@@ -1,4 +1,5 @@
 ﻿using HH.RMS.Common.Constant;
+using HH.RMS.Entity.Scheduler;
 using HH.RMS.Entity.Web;
 using HH.RMS.Repository.EntityFramework.Mapping;
 using System;
@@ -33,6 +34,7 @@ namespace HH.RMS.Repository.EntityFramework
             modelBuilder.Configurations.Add(new MappingTableBase<ProvinceEntity>());
             modelBuilder.Configurations.Add(new MappingTableBase<CityEntity>());
             modelBuilder.Configurations.Add(new MappingTableBase<LevelEntity>());
+            modelBuilder.Configurations.Add(new MappingTableBase<JobParameterEntity>());
             base.OnModelCreating(modelBuilder);
         }
         public void CreateExcute()
