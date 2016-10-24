@@ -13,9 +13,11 @@ namespace HH.RMS.Job
     {
         static void Main(string[] args)
         {
+
             new UnityScheduler(UnityManager.instance);
             SchedulerManager manager = new SchedulerManager();
             manager.Initialize();
+            
             Console.Write("Job Excetue");
         }
     }
