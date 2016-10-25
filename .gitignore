@@ -5,8 +5,6 @@
 *.suo
 *.user
 *.sln.docstates
-bin/
-*.dll
 
 # Build results
 [Dd]ebug/
@@ -18,7 +16,6 @@ build/
 bld/
 [Bb]in/
 [Oo]bj/
-bin/
 
 # Roslyn cache directories
 *.ide/
@@ -60,6 +57,8 @@ dlldata.c
 *.pidb
 *.svclog
 *.scc
+*.dll
+*.exe
 
 # Chutzpah Test files
 _Chutzpah*
@@ -76,11 +75,6 @@ ipch/
 *.psess
 *.vsp
 *.vspx
-*.dll
-Debug/
-Release/
-obj/
-bin/
 
 # TFS 2012 Local Workspace
 $tf/
@@ -194,6 +188,6 @@ UpgradeLog*.htm
 FakesAssemblies/
 /Src/packages
 /Src/packages
-/HH.RMS.MVC/bin
+/Src/.vs
 
-
+/01.HH.RMS/HH.RMS.Job
