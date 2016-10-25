@@ -1,8 +1,8 @@
 ﻿using HH.RMS.Common.Constant;
 using HH.RMS.Common.Unity;
 using HH.RMS.Scheduler;
-using HH.RMS.Service.Web.Interface;
 using log4net.Appender;
+
 using log4net.Config;
 using log4net.Repository;
 using System;
@@ -10,6 +10,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Topshelf;
+using Topshelf.Runtime;
 
 namespace HH.RMS.Job
 {
@@ -20,10 +22,38 @@ namespace HH.RMS.Job
         {
             LogRegister();
             new UnityScheduler(UnityManager.instance);
-            SchedulerManager manager = new SchedulerManager();
-            manager.Initialize();
-            
-            Console.Write("Job Excetue");
+            //SchedulerManager manager = new SchedulerManager();
+            //manager.Initialize();
+            //var host = HostFactory.New(x =>
+            //{
+            //    x.RunAsLocalSystem();
+
+            //    x.SetDescription("SampleService Description");
+            //    x.SetDisplayName("SampleService");
+            //    x.SetServiceName("SampleService");
+
+            //    x.Service(factory =>
+            //    {
+            //        SchedulerManager manager = new SchedulerManager();
+            //        manager.Initialize();
+            //        return ;
+            //    });
+
+
+            //});
+
+            //host.Run();
+
+            HostFactory.Run(x =>                                 //1
+            {
+                x.Service<SchedulerManager>();
+                x.RunAsLocalSystem();                            //6
+
+                x.SetDescription("Sample Topshelf Host");        //7
+                x.SetDisplayName("Stuff");                       //8
+                x.SetServiceName("Stuff");                       //9
+            });  
+            Console.Write("Job Excetue...");
         }
         public static void LogRegister()
         {

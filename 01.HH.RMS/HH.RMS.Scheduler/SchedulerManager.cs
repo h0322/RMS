@@ -11,10 +11,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Quartz.Impl;
 using HH.RMS.Entity.Scheduler;
+using Topshelf;
 
 namespace HH.RMS.Scheduler
 {
-    public class SchedulerManager
+    public class SchedulerManager : ServiceControl
     {
         private static readonly log4net.ILog _log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private static IScheduler _scheduler;
@@ -112,17 +113,30 @@ namespace HH.RMS.Scheduler
         }
 
 
+        public bool Start(HostControl hostControl)
+        {
+            Start();
+            return true;
+        }
 
+        /// <summary>
+        /// TopShelf's method delegated to <see cref="Stop()"/>.
+        /// </summary>
+        public bool Stop(HostControl hostControl)
+        {
+            return true;
+        }
 
         //public static string contentString = "";
-        public static void Start()
+        public  void Start()
         {
             try
             {
-                ISchedulerFactory schedulerFactory = new Quartz.Impl.StdSchedulerFactory();
-                _scheduler = schedulerFactory.GetScheduler();
-                _scheduler.Start();
+                //ISchedulerFactory schedulerFactory = new Quartz.Impl.StdSchedulerFactory();
+                //_scheduler = schedulerFactory.GetScheduler();
+                //_scheduler.Start();
                 //启动任务
+                Initialize();
                 
             }
             catch (Exception ex)
