@@ -6,6 +6,7 @@ using HH.RMS.Service.Web.Interface;
 using Quartz;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Linq;
@@ -26,36 +27,61 @@ namespace HH.RMS.Scheduler.Job
         { }
         public void Execute(IJobExecutionContext context)
         {
-            ConsoleBegin(context.JobDetail.Key.Name);
+             ConsoleBegin(context.JobDetail.Key.Name);
             DateTime startTime = DateTime.Now;
             DateTime endTime = DateTime.Now;
             ResultType resultType = ResultType.Success;
             string resultMessage = "";
             var jobDataMap = context.MergedJobDataMap;
             var jobCommandText = jobDataMap.GetString(Config.jobCommandText);
-            var jobCommandType = jobDataMap.GetString(Config.jobCommandType);
+            var jobCommandType = jobDataMap.GetInt(Config.jobCommandType);
             var jobId = jobDataMap.GetLong(Config.jobId);
             var scheduleId = jobDataMap.GetLong(Config.schedulerId);
             var jobName = context.JobDetail.Key.Name;
             var jobGroupName = context.JobDetail.Key.Group;
-            var scheduleName = context.Trigger.Key.Name;
-            var scheduleGroupName = context.Trigger.Key.Group;
+            var scheduleName = context.Trigger.Key.Group;
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
             var jobParameterList = _jobService.QueryJobParameterByJobId(jobId);
-            var args = new object[jobParameterList.Count];
-            SqlParameter[] sqlParameters = new SqlParameter[] { };
+            SqlParameter[] sqlParameters = new SqlParameter[jobParameterList.Count];
             if (jobParameterList != null)
             {
                 for (int i = 0; i < jobParameterList.Count; i++)
                 {
-                    sqlParameters[i].Value = jobParameterList[i].parameterValue;
+                    SqlParameter sqlParameter = new SqlParameter();
+                    sqlParameter.Value = jobParameterList[i].parameterValue;
+                    switch (jobParameterList[i].parameterType)
+                    {
+                        case DataType.Int32:
+                            sqlParameter.SqlDbType = SqlDbType.Int;
+                            break;
+                        case DataType.Int64:
+                            sqlParameter.SqlDbType = SqlDbType.BigInt;
+                            break;
+                        case DataType.Decimal:
+                            sqlParameter.SqlDbType = SqlDbType.Decimal;
+                            break;
+                        case DataType.Double:
+                            sqlParameter.SqlDbType = SqlDbType.Float;
+                            break;
+                        case DataType.DateTime:
+                            sqlParameter.SqlDbType = SqlDbType.DateTime;
+                            break;
+                        case DataType.Boolean:
+                            sqlParameter.SqlDbType = SqlDbType.Bit;
+                            break;
+                        default:
+                            sqlParameter.SqlDbType = SqlDbType.NVarChar;
+                            break;
+                    }
+                    sqlParameters[i] = sqlParameter;
                 }
             }
             try
             {
                 using (ApplicationDbContext db = new ApplicationDbContext())
                 {
+                    db.Database.CommandTimeout = 60000;
                     db.Database.ExecuteSqlCommand(jobCommandText, sqlParameters);
                 }
                 stopwatch.Stop();
@@ -77,7 +103,6 @@ namespace HH.RMS.Scheduler.Job
                     schedulerId = scheduleId,
                     jobName = jobName,
                     jobGroup = jobGroupName,
-                    scheduleGroup = scheduleGroupName,
                     scheduleName = scheduleName,
                     startTime = startTime,
                     endTime = endTime,

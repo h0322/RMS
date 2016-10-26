@@ -29,8 +29,6 @@ namespace HH.RMS.MVC.Controllers
         public ActionResult Index(string redirectUrl)
         {
             LoginModel model = new LoginModel();
-            _log.Info(21);
-            Thread.Sleep(10000);  
             model.redirectUrl = redirectUrl;
             return View(model);
         }
@@ -39,8 +37,6 @@ namespace HH.RMS.MVC.Controllers
         [ValidateAntiForgeryToken]
         public JsonResult Index(LoginModel model)
         {
-            _log.Info(31);
-            Thread.Sleep(10000);  
             ResultModel<AccountModel> result = _loginService.UserLogin(model.accountName, model.password);
             if (result.resultType == ResultType.Success)
             {

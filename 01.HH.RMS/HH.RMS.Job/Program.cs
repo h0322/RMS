@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using Topshelf;
 using System.Linq.Expressions;
 using Topshelf.Runtime;
+using HH.RMS.HttpServer;
 namespace HH.RMS.Job
 {
     class Program
@@ -20,7 +21,7 @@ namespace HH.RMS.Job
 
         static void Main(string[] args)
         {
-            
+
             LogRegister();
             new UnityScheduler(UnityManager.instance);
 
@@ -31,7 +32,7 @@ namespace HH.RMS.Job
                 x.SetDescription(Configuration.serverDescription);
                 x.SetDisplayName(Configuration.serverDisplayName);
                 x.SetServiceName(Configuration.serverServiceName);
-                x.StartAutomatically();
+                //x.StartAutomatically();
             });  
             
         }

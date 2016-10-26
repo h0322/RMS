@@ -112,6 +112,10 @@
       <Project>{b1aea69d-ca7d-46b2-9d58-067231ec5749}</Project>
       <Name>HH.RMS.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\HH.RMS.HttpServer\HH.RMS.HttpServer.csproj">
+      <Project>{7d7b4ffb-3be4-4b4d-908d-e6f3e25863a2}</Project>
+      <Name>HH.RMS.HttpServer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HH.RMS.Scheduler\HH.RMS.Scheduler.csproj">
       <Project>{8788eb19-47cd-42a0-ba63-bb0875f7fb4e}</Project>
       <Name>HH.RMS.Scheduler</Name>

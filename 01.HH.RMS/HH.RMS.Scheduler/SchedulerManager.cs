@@ -41,7 +41,7 @@ namespace HH.RMS.Scheduler
                 var schedulerList = _schedulerService.QueryRunningScheduler();
                 foreach (var scheduler in schedulerList)
                 {
-                    Console.Write(scheduler.scheduleName + "Scheduler Exectue...");
+                    Console.WriteLine(scheduler.scheduleName + "Scheduler Exectue...");
                     var jobList = _jobService.QueryRunningJobBySchedulerId(scheduler.schedulerId);
                     if (jobList == null)
                     {
@@ -59,7 +59,7 @@ namespace HH.RMS.Scheduler
                         IJobDetail jobDetail = JobBuilder.Create(jobAssembly).WithDescription(job.jobDescription).WithIdentity(job.jobName, job.jobGroup).Build();
 
                         ICronTrigger trigger = (ICronTrigger)TriggerBuilder.Create().WithDescription(scheduler.scheduleDescription)
-.WithIdentity(scheduler.scheduleName, scheduler.scheduleGroup)
+.WithIdentity(job.jobName, scheduler.scheduleName)
 .WithCronSchedule(scheduler.cronExpression, x => x.WithMisfireHandlingInstructionIgnoreMisfires()).Build();
                         jobDetail.JobDataMap.Put(Config.jobId, job.jobId);
                         jobDetail.JobDataMap.Put(Config.schedulerId, job.schedulerId);

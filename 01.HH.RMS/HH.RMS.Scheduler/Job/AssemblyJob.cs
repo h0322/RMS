@@ -39,8 +39,7 @@ namespace HH.RMS.Scheduler.Job
             var scheduleId = jobDataMap.GetLong(Config.schedulerId);
             var jobName = context.JobDetail.Key.Name;
             var jobGroupName = context.JobDetail.Key.Group;
-            var scheduleName = context.Trigger.Key.Name;
-            var scheduleGroupName = context.Trigger.Key.Group;
+            var scheduleName = context.Trigger.Key.Group;
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
             try
@@ -107,7 +106,6 @@ namespace HH.RMS.Scheduler.Job
                     schedulerId = scheduleId,
                     jobName = jobName,
                     jobGroup = jobGroupName,
-                    scheduleGroup = scheduleGroupName,
                     scheduleName = scheduleName,
                     startTime = startTime,
                     endTime = endTime,
