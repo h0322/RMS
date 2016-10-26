@@ -26,7 +26,7 @@ namespace HH.RMS.Scheduler.Job
         { }
         public void Execute(IJobExecutionContext context)
         {
-            Console.Write("StartJob:" + context.Trigger.Key.Name);
+            ConsoleBegin(context.JobDetail.Key.Name);
             DateTime startTime = DateTime.Now;
             DateTime endTime = DateTime.Now;
             ResultType resultType = ResultType.Success;
@@ -86,6 +86,7 @@ namespace HH.RMS.Scheduler.Job
                     jobType = JobType.Sql,
                     executeSecond = stopwatch.ElapsedMilliseconds
                 });
+                ConsoleEnd(jobName, resultType, resultMessage);
             }
         }
     }

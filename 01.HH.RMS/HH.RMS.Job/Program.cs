@@ -11,53 +11,33 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Topshelf;
+using System.Linq.Expressions;
 using Topshelf.Runtime;
-
 namespace HH.RMS.Job
 {
     class Program
     {
-        public const string configName = "\\HH.RMS.Job.exe.config";
+
         static void Main(string[] args)
         {
+            
             LogRegister();
             new UnityScheduler(UnityManager.instance);
-            //SchedulerManager manager = new SchedulerManager();
-            //manager.Initialize();
-            //var host = HostFactory.New(x =>
-            //{
-            //    x.RunAsLocalSystem();
 
-            //    x.SetDescription("SampleService Description");
-            //    x.SetDisplayName("SampleService");
-            //    x.SetServiceName("SampleService");
-
-            //    x.Service(factory =>
-            //    {
-            //        SchedulerManager manager = new SchedulerManager();
-            //        manager.Initialize();
-            //        return ;
-            //    });
-
-
-            //});
-
-            //host.Run();
-
-            HostFactory.Run(x =>                                 //1
+            HostFactory.Run(x => 
             {
                 x.Service<SchedulerManager>();
-                x.RunAsLocalSystem();                            //6
-
-                x.SetDescription("Sample Topshelf Host");        //7
-                x.SetDisplayName("Stuff");                       //8
-                x.SetServiceName("Stuff");                       //9
+                x.RunAsLocalSystem();
+                x.SetDescription(Configuration.serverDescription);
+                x.SetDisplayName(Configuration.serverDisplayName);
+                x.SetServiceName(Configuration.serverServiceName);
+                x.StartAutomatically();
             });  
-            Console.Write("Job Excetue...");
+            
         }
         public static void LogRegister()
         {
-            string configfile = AppDomain.CurrentDomain.BaseDirectory + configName;
+            string configfile = AppDomain.CurrentDomain.BaseDirectory + Configuration.configName;
             System.IO.FileInfo fileInfo = new System.IO.FileInfo(configfile);
             XmlConfigurator.ConfigureAndWatch(fileInfo);
             ILoggerRepository hier = log4net.LogManager.GetRepository();
@@ -65,7 +45,7 @@ namespace HH.RMS.Job
             {
                 foreach (log4net.Appender.IAppender appender in hier.GetAppenders())
                 {
-                    if (appender.Name != "ADONetAppender")
+                    if (appender.Name != Configuration.logConfig)
                     {
                         continue;
                     }

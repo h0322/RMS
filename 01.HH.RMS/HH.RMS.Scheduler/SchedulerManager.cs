@@ -35,13 +35,13 @@ namespace HH.RMS.Scheduler
         {
             try
             {
+                
                 _schedulerFactory = CreateSchedulerFactory();
-                Start();
                 _scheduler = GetScheduler();
-                _scheduler.Start();
                 var schedulerList = _schedulerService.QueryRunningScheduler();
                 foreach (var scheduler in schedulerList)
                 {
+                    Console.Write(scheduler.scheduleName + "Scheduler Exectue...");
                     var jobList = _jobService.QueryRunningJobBySchedulerId(scheduler.schedulerId);
                     if (jobList == null)
                     {
@@ -132,9 +132,9 @@ namespace HH.RMS.Scheduler
         {
             try
             {
-                //ISchedulerFactory schedulerFactory = new Quartz.Impl.StdSchedulerFactory();
-                //_scheduler = schedulerFactory.GetScheduler();
-                //_scheduler.Start();
+                ISchedulerFactory schedulerFactory = new Quartz.Impl.StdSchedulerFactory();
+                _scheduler = schedulerFactory.GetScheduler();
+                _scheduler.Start();
                 //启动任务
                 Initialize();
                 
