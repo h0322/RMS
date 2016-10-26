@@ -7,16 +7,18 @@
 *.sln.docstates
 
 # Build results
-
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
 [Dd]ebugPublic/
 [Rr]elease/
 [Rr]eleases/
 x64/
 build/
 bld/
-[Bb]in/
-[Oo]bj/
-[Dd]ebug/
+
+
+
 
 
 #NUNIT
@@ -24,9 +26,7 @@ bld/
 TestResult.xml
 
 # Build Results of an ATL Project
-[Dd]ebugPS/
-[Rr]eleasePS/
-dlldata.c
+
 
 *_i.c
 *_p.c
@@ -53,5 +53,6 @@ dlldata.c
 *.svclog
 *.scc
 *.cache
+
 
 
