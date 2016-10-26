@@ -131,8 +131,7 @@ publish/
 ## passwords
 *.pubxml
 
-# NuGet Packages
-packages/*
+
 *.nupkg
 ## TODO: If the tool you use requires repositories.config
 ## uncomment the next line
@@ -185,9 +184,4 @@ UpgradeLog*.htm
 *.bim_*.settings
 
 # Microsoft Fakes
-FakesAssemblies/
-/Src/packages
-/Src/packages
-/Src/.vs
 
-/01.HH.RMS/HH.RMS.Job
