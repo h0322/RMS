@@ -182,3 +182,4 @@ D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Scheduler\obj\Debug\HH.RMS.Scheduler.cspro
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Scheduler\obj\Debug\HH.RMS.Scheduler.dll
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Scheduler\obj\Debug\HH.RMS.Scheduler.pdb
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Scheduler\bin\Debug\Topshelf.dll
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Scheduler\bin\Debug\TinyMapper.dll

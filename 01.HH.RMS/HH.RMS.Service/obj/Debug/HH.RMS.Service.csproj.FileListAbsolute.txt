@@ -144,3 +144,4 @@ D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\EntityFramework.Extended
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\obj\Debug\HH.RMS.Service.csprojResolveAssemblyReference.cache
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\obj\Debug\HH.RMS.Service.dll
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\obj\Debug\HH.RMS.Service.pdb
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\TinyMapper.dll
