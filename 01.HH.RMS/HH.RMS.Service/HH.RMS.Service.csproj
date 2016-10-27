@@ -67,6 +67,10 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="TinyMapper, Version=2.0.0.40, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\TinyMapper.2.0.8\lib\net45\TinyMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Scheduler\Model\JobModel.cs" />
@@ -154,6 +158,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
     <None Include="Web\App.config" />
     <None Include="Web\Model\packages.config" />
     <None Include="Web\packages.config" />

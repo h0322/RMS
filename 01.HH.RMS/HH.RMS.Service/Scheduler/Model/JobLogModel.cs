@@ -1,4 +1,6 @@
 ﻿using HH.RMS.Common.Constant;
+using HH.RMS.Entity.Scheduler;
+using Nelibur.ObjectMapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +11,7 @@ namespace HH.RMS.Service.Scheduler.Model
 {
     public class JobLogModel
     {
+        public long jobLogId { get; set; }
         public long schedulerLogId { get; set; }
         public long schedulerId { get; set; }
         public long jobId { get; set; }
@@ -22,5 +25,19 @@ namespace HH.RMS.Service.Scheduler.Model
         public DateTime endTime { get; set; }
         public ResultType resultType { get; set; }
         public string resultMessage { get; set; }
+        public static void ModelMapper()
+        {
+            TinyMapper.Bind<JobLogEntity, JobLogModel>(config =>
+            {
+                config.Bind(x => x.id, y => y.jobLogId);
+            });
+        }
+        public static void EntityMapper()
+        {
+            TinyMapper.Bind<JobLogModel, JobLogEntity>(config =>
+            {
+                config.Bind(x => x.jobLogId, y => y.id);
+            });
+        }
     }
 }
