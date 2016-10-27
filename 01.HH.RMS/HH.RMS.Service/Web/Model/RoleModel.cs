@@ -1,7 +1,9 @@
 ﻿using HH.RMS.Common.Constant;
 using HH.RMS.Common.Unity;
 using HH.RMS.Common.Utilities;
+using HH.RMS.Entity.Web;
 using HH.RMS.Service.Web.Interface;
+using Nelibur.ObjectMapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,6 +47,20 @@ namespace HH.RMS.Service.Web.Model
             json.Data = selectList;
             json.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
             return json;
+        }
+        public static void ModelMapper()
+        {
+            TinyMapper.Bind<RoleEntity, RoleModel>(config =>
+            {
+                config.Bind(x => x.id, y => y.roleId);
+            });
+        }
+        public static void EntityMapper()
+        {
+            TinyMapper.Bind<RoleModel, RoleEntity>(config =>
+            {
+                config.Bind(x => x.roleId, y => y.id);
+            });
         }
     }
 }

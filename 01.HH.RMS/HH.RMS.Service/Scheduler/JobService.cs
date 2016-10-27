@@ -38,8 +38,8 @@ namespace HH.RMS.Service.Web
             }
             catch (Exception ex)
             {
-                return null;
                 log.Error("JobService.QueryRunningJobBy", ex);
+                return null;
             }
         }
 
@@ -56,8 +56,8 @@ namespace HH.RMS.Service.Web
             }
             catch (Exception ex)
             {
-                return null;
                 log.Error("JobService.QueryRunningJobBySchedulerId", ex);
+                return null;
             }
         }
 
@@ -73,8 +73,8 @@ namespace HH.RMS.Service.Web
             }
             catch (Exception ex)
             {
-                return null;
                 log.Error("JobService.QueryJobParameterByJobId", ex);
+                return null;
             }
         }
         public ResultType InsertJobLog(JobLogModel model)

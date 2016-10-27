@@ -1,7 +1,9 @@
 ﻿using HH.RMS.Common.Constant;
 using HH.RMS.Common.Unity;
 using HH.RMS.Common.Utilities;
+using HH.RMS.Entity.Web;
 using HH.RMS.Service.Web.Interface;
+using Nelibur.ObjectMapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,6 +41,20 @@ namespace HH.RMS.Service.Web.Model
         public bool isUpdate { get; set; }
         public bool isInsert { get; set; }
         public bool isDelete { get; set; }
+        public static void ModelMapper()
+        {
+            TinyMapper.Bind<MenuRoleEntity, MenuRoleModel>(config =>
+            {
+                config.Bind(x => x.id, y => y.menuRoleId);
+            });
+        }
+        public static void EntityMapper()
+        {
+            TinyMapper.Bind<MenuRoleModel, MenuRoleEntity>(config =>
+            {
+                config.Bind(x => x.menuRoleId, y => y.id);
+            });
+        }
 
     }
 }

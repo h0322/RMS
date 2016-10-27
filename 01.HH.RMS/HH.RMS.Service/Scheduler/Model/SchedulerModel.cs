@@ -1,4 +1,6 @@
 ﻿using HH.RMS.Common.Constant;
+using HH.RMS.Entity.Scheduler;
+using Nelibur.ObjectMapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,5 +31,19 @@ namespace HH.RMS.Service.Scheduler.Model
         public string siteName { get; set; }
         public DateTime runTime { get; set; }
         public DateTime stopTime { get; set; }
+        public static void ModelMapper()
+        {
+            TinyMapper.Bind<SchedulerEntity, SchedulerModel>(config =>
+            {
+                config.Bind(x => x.id, y => y.schedulerId);
+            });
+        }
+        public static void EntityMapper()
+        {
+            TinyMapper.Bind<SchedulerModel, SchedulerEntity>(config =>
+            {
+                config.Bind(x => x.schedulerId, y => y.id);
+            });
+        }
     }
 }

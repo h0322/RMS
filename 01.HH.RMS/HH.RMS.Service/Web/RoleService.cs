@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using HH.RMS.Common.Constant;
 using HH.RMS.Common.Utilities;
+using Nelibur.ObjectMapper;
 
 namespace HH.RMS.Service.Web
 {
@@ -53,16 +54,9 @@ namespace HH.RMS.Service.Web
             {
                 using (var db = new ApplicationDbContext())
                 {
-                    var q = from a in _roleRepository.Query(db)
-                            select new RoleModel()
-                            {
-                                roleId = a.id,
-                                roleName = a.roleName,
-                                roleOrder = a.roleOrder,
-                                roleType = a.roleType,
-                                createTime = a.createTime
-                            };
-                    return q.ToList();
+                    var list = _roleRepository.Query(db).ToList();
+                    RoleModel.ModelMapper();
+                    return TinyMapper.Map<List<RoleModel>>(list);
                 }
             }
             catch (Exception ex)
@@ -75,14 +69,11 @@ namespace HH.RMS.Service.Web
         {
             try
             {
+                RoleModel.EntityMapper();
+                var entity = TinyMapper.Map<RoleEntity>(model);
                 using (var db = new ApplicationDbContext())
                 {
-                    _roleRepository.Insert(db, new RoleEntity()
-                    {
-                        roleName = model.roleName,
-                        roleOrder = model.roleOrder,
-                        roleType = model.roleType
-                    });
+                    _roleRepository.Insert(db, entity);
                     CacheHelper.RemoveCache(Config.roleCache);
                     return ResultType.Success;
                 }
@@ -99,16 +90,12 @@ namespace HH.RMS.Service.Web
         {
             try
             {
+                RoleModel.EntityMapper();
+                var entity = TinyMapper.Map<RoleEntity>(model);
+                entity.updateTime = DateTime.Now;
                 using (var db = new ApplicationDbContext())
                 {
-                    _roleRepository.Update(db, m => new RoleEntity()
-                    {
-                        roleName = model.roleName,
-                        roleOrder = model.roleOrder,
-                        roleType = model.roleType,
-                        updateTime = DateTime.Now,
-                        updateBy = AccountModel.Session.accountId
-                    },
+                    _roleRepository.Update(db, m => entity,
                     m => m.id == model.roleId
                     );
                 }
@@ -158,37 +145,17 @@ namespace HH.RMS.Service.Web
                 return ResultType.SystemError;
             }
         }
-        //public ResultType CreateMenuRole(long[] menuIds, long roleId)
-        //{
-        //    try 
-        //    {
-        //        using (var db = new ApplicationDbContext())
-        //        {
-        //            foreach (var menuId in menuIds)
-        //            {
-        //                var menuRole = _menuRoleRepository.Query(db).Where(m => m.menuId == menuId && m.roleId == roleId);
-        //                if (menuRole != null)
-        //                {
-                            
-        //                }
-        //            }
-        //        }
-        //    }
-        //}
         public ResultType UpdateMenuRoleById(MenuRoleModel model)
         {
              try
              {
+                 MenuRoleModel.EntityMapper();
+                 var entity = TinyMapper.Map<MenuRoleEntity>(model);
+                 entity.updateTime = DateTime.Now;
+                 entity.updateBy = AccountModel.Session.accountId;
                 using (var db = new ApplicationDbContext())
                 {
-                    _menuRoleRepository.Update(db, m => new MenuRoleEntity()
-                    {
-                        excuteType = model.excuteType,
-                        roleId = model.roleId,
-                        menuId = model.menuId,
-                        updateTime = DateTime.Now,
-                        updateBy = AccountModel.Session.accountId
-                    },
+                    _menuRoleRepository.Update(db, m => entity,
                     m => m.id == model.menuRoleId
                     );
                 }
@@ -204,14 +171,11 @@ namespace HH.RMS.Service.Web
         {
             try
             {
+                MenuRoleModel.EntityMapper();
+                var entity = TinyMapper.Map<MenuRoleEntity>(model);
                 using (var db = new ApplicationDbContext())
                 {
-                    _menuRoleRepository.Insert(db, new MenuRoleEntity()
-                    {
-                        excuteType = model.excuteType,
-                        roleId = model.roleId,
-                        menuId = model.menuId
-                    });
+                    _menuRoleRepository.Insert(db, entity);
                 }
                 return ResultType.Success;
             }
