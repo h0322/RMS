@@ -15,7 +15,7 @@ namespace HH.RMS.Repository.EntityFramework.Interface
         void Delete(ApplicationDbContext db, T t);
         T Find(ApplicationDbContext db, long id);
         ResultType Insert(ApplicationDbContext db, T entity);
-        int UserID { get; set; }
+        long userId { get; set; }
         IQueryable<T> Query(ApplicationDbContext db, Expression<Func<T, bool>> express = null, bool isNoTracking = true);
         IQueryable<T> Query(ApplicationDbContext db, string include);
         IEnumerable<T> SqlQuery(ApplicationDbContext db, string sql, params object[] parameters);

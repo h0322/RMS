@@ -187,12 +187,6 @@ namespace HH.RMS.Repository.EntityFramework
         #endregion sp
 
 
-        public static Expression<Func<T, T>> And<T>(Expression<Func<T, T>> expr1,
-                                                        Expression<Func<T, T>> expr2)
-        {
-            var invokedExpr = Expression.Invoke(expr2, expr1.Parameters.Cast<Expression>());
-            return Expression.Lambda<Func<T, T>>(Expression.And(expr1.Body, invokedExpr), expr1.Parameters);
-        }
 
         public void Dispose(ApplicationDbContext db)
         {
