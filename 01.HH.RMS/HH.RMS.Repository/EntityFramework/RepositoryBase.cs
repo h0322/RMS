@@ -145,7 +145,7 @@ namespace HH.RMS.Repository.EntityFramework
         }
 
 
-        public void Insert(ApplicationDbContext db, T t)
+        public ResultType Insert(ApplicationDbContext db, T t)
         {
             if (t.createBy == 0)
             {
@@ -161,7 +161,15 @@ namespace HH.RMS.Repository.EntityFramework
             db.Set<T>().Attach(t);
             var entity = db.Entry(t);
             entity.State = EntityState.Added;
-            db.SaveChanges();
+            int result = db.SaveChanges();
+            if (result > 0)
+            {
+                return ResultType.Success;
+            }
+            else
+            {
+                return ResultType.Fail;
+            }
         }
 
         #region sp
