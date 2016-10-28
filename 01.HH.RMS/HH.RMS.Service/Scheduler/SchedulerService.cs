@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using HH.RMS.Service.Model;
 using HH.RMS.Entity.Scheduler;
 using HH.RMS.Service.Scheduler.Model;
+using System.Linq.Expressions;
 
 namespace HH.RMS.Service.Web
 {
@@ -50,6 +51,30 @@ namespace HH.RMS.Service.Web
                 return null;
             }
         }
+        public ResultType DeleteSchedulerById(long id)
+        {
+            try
+            {
+               // Expression<Func<SchedulerEntity, SchedulerEntity>> dd = (m => new SchedulerEntity() {  updateTime= DateTime.Now}.);//(m => new SchedulerEntity() { second = 4 });
+                
+               // var ss = new SchedulerEntity();
+               // ss.second=1;
+                using (var db = new ApplicationDbContext())
+                {
+                    return _schedulerRepository.Update(db, m => new SchedulerEntity { second = 1, day = 3, stopTime = DateTime.Now }, m => m.id == id);
+                    //return _schedulerRepository.Update(db, _schedulerRepository.DeleteEntity(), m => m.id == id);
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                log.Error("SchedulerService.DeleteSchedulerById", ex);
+                return ResultType.Fail;
+            }
+        }
+
+
+
         //public ResultModel<SchedulerEntity> QuerySchedulerById(long schedulerId)
         //{
         //    ResultModel<SchedulerEntity> model = new ResultModel<SchedulerEntity>();

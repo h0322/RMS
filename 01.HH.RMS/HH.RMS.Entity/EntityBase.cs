@@ -17,7 +17,7 @@ namespace HH.RMS.Entity
         public long createBy { get; set; }
         public long? updateBy { get; set; }
         public DateTime createTime { get; set; }
-        public DateTime? updateTime { get; set; }
+        public DateTime updateTime { get; set;}
         public string remark { get; set; }
         public bool isActive { get; set; }
 

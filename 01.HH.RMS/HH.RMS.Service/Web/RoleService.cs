@@ -54,9 +54,7 @@ namespace HH.RMS.Service.Web
             {
                 using (var db = new ApplicationDbContext())
                 {
-                    var list = _roleRepository.Query(db).ToList();
-                    RoleModel.ModelMapper();
-                    return TinyMapper.Map<List<RoleModel>>(list);
+                    return RoleModel.ModelMapper<List<RoleModel>>(_roleRepository.Query(db).ToList());
                 }
             }
             catch (Exception ex)
@@ -69,11 +67,9 @@ namespace HH.RMS.Service.Web
         {
             try
             {
-                RoleModel.EntityMapper();
-                var entity = TinyMapper.Map<RoleEntity>(model);
                 using (var db = new ApplicationDbContext())
                 {
-                    _roleRepository.Insert(db, entity);
+                    _roleRepository.Insert(db, RoleModel.EntityMapper<RoleEntity>(model));
                     CacheHelper.RemoveCache(Config.roleCache);
                     return ResultType.Success;
                 }
@@ -90,7 +86,6 @@ namespace HH.RMS.Service.Web
         {
             try
             {
-                RoleModel.EntityMapper();
                 var entity = TinyMapper.Map<RoleEntity>(model);
                 entity.updateTime = DateTime.Now;
                 using (var db = new ApplicationDbContext())
@@ -127,12 +122,7 @@ namespace HH.RMS.Service.Web
             {
                 using (var db = new ApplicationDbContext())
                 {
-                    _roleRepository.Update(db, m => new RoleEntity()
-                    {
-                        isActive = false,
-                        updateTime = DateTime.Now,
-                        updateBy = AccountModel.Session.accountId
-                    },
+                    _roleRepository.Update(db, _roleRepository.DeleteEntity(),
                     m => ids.Contains(m.id)
                     );
                 }
@@ -191,12 +181,7 @@ namespace HH.RMS.Service.Web
             {
                 using (var db = new ApplicationDbContext())
                 {
-                    _menuRoleRepository.Update(db, m => new MenuRoleEntity()
-                    {
-                        isActive = false,
-                        updateTime = DateTime.Now,
-                        updateBy = AccountModel.Session.accountId
-                    },
+                    _menuRoleRepository.Update(db, _menuRoleRepository.DeleteEntity(),
                     m => ids.Contains(m.id)
                     );
                 }
@@ -215,12 +200,7 @@ namespace HH.RMS.Service.Web
             {
                 using (var db = new ApplicationDbContext())
                 {
-                    _menuRoleRepository.Update(db, m => new MenuRoleEntity()
-                    {
-                        isActive = false,
-                        updateTime = DateTime.Now,
-                        updateBy = AccountModel.Session.accountId
-                    },
+                    _menuRoleRepository.Update(db, _menuRoleRepository.DeleteEntity(),
                     m => m.roleId == roleId
                     );
                 }

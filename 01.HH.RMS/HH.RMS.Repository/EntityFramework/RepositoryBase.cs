@@ -98,16 +98,52 @@ namespace HH.RMS.Repository.EntityFramework
         {
             return db.Set<T>().Where(m => m.isActive).Include(include);
         }
-        public void Update(ApplicationDbContext db, Expression<Func<T, T>> updater, Expression<Func<T, bool>> condition)
+        public ResultType Update(ApplicationDbContext db, Expression<Func<T, T>> updater, Expression<Func<T, bool>> condition)
         {
-            db.Set<T>().Where(condition).Update(updater);
-            db.SaveChanges();
+            int result = db.Set<T>().Update(condition,updater);
+            if (result > 0)
+            {
+                return ResultType.Success;
+            }
+            else
+            {
+                return ResultType.Fail;
+            }
+        }
+        public ResultType Update(ApplicationDbContext db,T entity)
+        {
+            //if (!entity.UpdatedBy.HasValue)
+            //{
+            //    entity.UpdatedBy = this.UserID;
+            //}
+            entity.updateTime = DateTime.Now;
+            //db.Set<T>().Attach(entity);
+            //var entry = db.Entry<T>(entity);
+            //entry.State = EntityState.Modified;
+            db.Entry(entity).State = EntityState.Modified;
+            int result = db.SaveChanges();
+            if (result > 0)
+            {
+                return ResultType.Success;
+            }
+            else
+            {
+                return ResultType.Fail;
+            }
+            //RepositoryTrigger.Execute(t, this.dbContext);
         }
 
-        public Expression<Func<T, T>> UpdateCondition()
+        public Expression<Func<T, T>> DeleteEntity()
         {
-            return m => new T() { updateBy = 1 ,updateTime = DateTime.Now};
+            return m => new T() { updateBy = 1 ,updateTime = DateTime.Now, isActive=false};
         }
+        public Expression<Func<T, T>> UpdateEntity()
+        {
+            //t.updateBy = 2;
+            //t.updateTime = DateTime.Now;
+            return m => new T() { updateBy = 1, updateTime = DateTime.Now};
+        }
+
 
         public void Insert(ApplicationDbContext db, T t)
         {
@@ -155,12 +191,7 @@ namespace HH.RMS.Repository.EntityFramework
             db.Dispose();
         }
 
-        public Expression<Func<T, T>> UpdateEntity(T t)
-        {
-            t.updateBy = 1;
-            t.updateTime = DateTime.Now;
-            return m=>t;
-        }
+
 
         public int UserID
         {

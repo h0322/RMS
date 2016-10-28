@@ -192,7 +192,6 @@ namespace HH.RMS.Service.Web
                         amount = model.amount,
                         remark = model.remark,
                         status = model.statusType,
-                        updateTime = DateTime.Now,
                         updateBy = AccountModel.Session.accountId
                     },
                     m => m.id == model.accountId

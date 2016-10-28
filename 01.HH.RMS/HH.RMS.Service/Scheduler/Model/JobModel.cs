@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using HH.RMS.Service.Model;
 
 namespace HH.RMS.Service.Scheduler.Model
 {
@@ -28,19 +29,21 @@ namespace HH.RMS.Service.Scheduler.Model
         public DateTime toDate { get; set; }
         public bool isSequence { get; set; }
 
-        public static void ModelMapper()
+        public static T ModelMapper<T>(object entity)
         {
             TinyMapper.Bind<JobEntity, JobModel>(config =>
             {
                 config.Bind(x => x.id, y => y.jobId);
             });
+            return TinyMapper.Map<T>(entity);
         }
-        public static void EntityMapper()
+        public static T EntityMapper<T>(object model)
         {
             TinyMapper.Bind<JobModel,JobEntity>(config =>
             {
                 config.Bind(x => x.jobId, y => y.id);
             });
+            return TinyMapper.Map<T>(model);
         }
 
     }
