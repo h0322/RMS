@@ -4,6 +4,7 @@ using Nelibur.ObjectMapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -31,19 +32,22 @@ namespace HH.RMS.Service.Scheduler.Model
         public string siteName { get; set; }
         public DateTime runTime { get; set; }
         public DateTime stopTime { get; set; }
-        public static void ModelMapper()
+
+        public static T ModelMapper<T>(object entity)
         {
             TinyMapper.Bind<SchedulerEntity, SchedulerModel>(config =>
             {
                 config.Bind(x => x.id, y => y.schedulerId);
             });
+            return TinyMapper.Map<T>(entity);
         }
-        public static void EntityMapper()
+        public static T EntityMapper<T>(object model)
         {
             TinyMapper.Bind<SchedulerModel, SchedulerEntity>(config =>
             {
                 config.Bind(x => x.schedulerId, y => y.id);
             });
+            return TinyMapper.Map<T>(model);
         }
     }
 }

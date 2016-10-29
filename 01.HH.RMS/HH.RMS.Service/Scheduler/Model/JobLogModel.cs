@@ -25,19 +25,21 @@ namespace HH.RMS.Service.Scheduler.Model
         public DateTime endTime { get; set; }
         public ResultType resultType { get; set; }
         public string resultMessage { get; set; }
-        public static void ModelMapper()
+        public static T ModelMapper<T>(object entity)
         {
             TinyMapper.Bind<JobLogEntity, JobLogModel>(config =>
             {
                 config.Bind(x => x.id, y => y.jobLogId);
             });
+            return TinyMapper.Map<T>(entity);
         }
-        public static void EntityMapper()
+        public static T EntityMapper<T>(object model)
         {
             TinyMapper.Bind<JobLogModel, JobLogEntity>(config =>
             {
                 config.Bind(x => x.jobLogId, y => y.id);
             });
+            return TinyMapper.Map<T>(model);
         }
     }
 }

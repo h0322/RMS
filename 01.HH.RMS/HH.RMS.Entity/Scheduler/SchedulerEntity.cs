@@ -13,6 +13,10 @@ namespace HH.RMS.Entity.Scheduler
      [MappingTable(tableName = "SystemScheduler")]
     public class SchedulerEntity:EntityBase
     {
+         public SchedulerEntity()
+         {
+             updateTime = DateTime.Now;
+         }
         public long jobId { get; set; }
           [MaxLength(50)]
         public string scheduleName { get; set; }

@@ -33,10 +33,15 @@ namespace HH.RMS.Service.Web
         public AccountService(IRepository<LevelEntity> levelRepository,IRepository<RoleEntity> roleRepository, IRepository<AccountRoleEntity> accountRoleRepository, IRepository<AccountEntity> accountRepository, IRepository<PersonEntity> personRepository)
         {
             _roleRepository = roleRepository;
+            _accountRepository.userId = AccountModel.Session.accountId;
             _accountRoleRepository = accountRoleRepository;
+            _accountRoleRepository.userId = AccountModel.Session.accountId;
             _accountRepository = accountRepository;
+            _accountRepository.userId = AccountModel.Session.accountId;
             _personRepository = personRepository;
+            _personRepository.userId = AccountModel.Session.accountId;
             _levelRepository = levelRepository;
+            _levelRepository.userId = AccountModel.Session.accountId;
         }
         public AccountModel QueryAccountById(long id)
         {
@@ -192,7 +197,6 @@ namespace HH.RMS.Service.Web
                         amount = model.amount,
                         remark = model.remark,
                         status = model.statusType,
-                        updateTime = DateTime.Now,
                         updateBy = AccountModel.Session.accountId
                     },
                     m => m.id == model.accountId

@@ -54,5 +54,6 @@ namespace HH.RMS.Service.Web.Model
         {
             return JsonConvert.SerializeObject(this);
         }
+
     }
 }

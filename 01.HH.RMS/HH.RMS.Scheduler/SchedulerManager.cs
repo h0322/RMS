@@ -35,12 +35,12 @@ namespace HH.RMS.Scheduler
         {
             try
             {
-                
                 _schedulerFactory = CreateSchedulerFactory();
                 _scheduler = GetScheduler();
                 var schedulerList = _schedulerService.QueryRunningScheduler();
                 foreach (var scheduler in schedulerList)
                 {
+                    _schedulerService.DeleteSchedulerById(scheduler.schedulerId);
                     Console.WriteLine(scheduler.scheduleName + "Scheduler Exectue...");
                     var jobList = _jobService.QueryRunningJobBySchedulerId(scheduler.schedulerId);
                     if (jobList == null)

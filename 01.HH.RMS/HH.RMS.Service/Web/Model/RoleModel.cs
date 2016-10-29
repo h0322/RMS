@@ -48,19 +48,21 @@ namespace HH.RMS.Service.Web.Model
             json.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
             return json;
         }
-        public static void ModelMapper()
+        public static T ModelMapper<T>(object entity)
         {
             TinyMapper.Bind<RoleEntity, RoleModel>(config =>
             {
                 config.Bind(x => x.id, y => y.roleId);
             });
+            return TinyMapper.Map<T>(entity);
         }
-        public static void EntityMapper()
+        public static T EntityMapper<T>(object model)
         {
             TinyMapper.Bind<RoleModel, RoleEntity>(config =>
             {
                 config.Bind(x => x.roleId, y => y.id);
             });
+            return TinyMapper.Map<T>(model);
         }
     }
 }
