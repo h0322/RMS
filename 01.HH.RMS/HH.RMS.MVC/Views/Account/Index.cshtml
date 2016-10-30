@@ -77,7 +77,7 @@
             }
             console.log(accountIds)
             accountIds = accountIds.substring(0, accountIds.length - 1);
-            $.post("/Account/DeleteAccountById", { ids: accountIds }, function (data) {
+            $.post("/Account/DeleteAccountById", { idString: accountIds }, function (data) {
                 if (data.access == "@((int)ResultType.NoAccess)")
                 {
                     alert("没有权限");

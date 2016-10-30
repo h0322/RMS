@@ -8,6 +8,7 @@ namespace HH.RMS.Service.Web.Model
 {
     public class CountryModel
     {
+        public long id { get; set; }
         public string code { get; set; }
         public string name { get; set; }
         public int order { get; set; }

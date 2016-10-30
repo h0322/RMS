@@ -10,7 +10,7 @@ namespace HH.RMS.Service.Web.Model
 {
     public class UserModel
     {
-        public long userId { get; set; }
+        public long id { get; set; }
         public string userName { get; set; }
         public string password { get; set; }
         public List<RoleModel> roleList { get; set; }

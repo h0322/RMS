@@ -40,7 +40,7 @@ namespace HH.RMS.Service.Web.Model
                 }
             }
         }
-        public long menuId { get; set; }
+        public long id { get; set; }
         public string code { get; set; }
         public string menuName { get; set; }
         public string description { get; set; }

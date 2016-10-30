@@ -13,7 +13,7 @@ namespace HH.RMS.Service.Web.Model
     }
     public class PersonModel
     {
-        public long personId { get; set; }
+        public long id { get; set; }
         public string name { get; set; }
         public string nickName { get; set; }
         public long provinceId { get; set; }

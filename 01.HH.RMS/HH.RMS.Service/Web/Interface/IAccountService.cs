@@ -14,11 +14,10 @@ namespace HH.RMS.Service.Web.Interface
     {
          ResultType InsertAccount(AccountModel model);
          GridModel QueryAccountToGridByRole(PagerModel pager = null);
-         AccountListModel QueryAccountListByPersonId(long id);
          AccountModel QueryAccountById(long id);
          ResultType UpdateAccount(AccountModel model);
          ResultType DeleteAccountById(long id);
-         ResultType DeleteAccountMassById(List<string> idList);
+         ResultType DeleteAccountMassById(long[] ids);
          int CountAccount();
          
     }

@@ -31,7 +31,7 @@ namespace HH.RMS.Service.Web.Model
                 }
             }
         }
-        public long roleId { get; set; }
+        public long id { get; set; }
         public string roleName { get; set; }
         public RoleType roleType { get; set; }
         public int roleOrder { get; set; }
@@ -42,27 +42,11 @@ namespace HH.RMS.Service.Web.Model
             List<SelectModel> selectList = new List<SelectModel>();
             var roleList = RoleModel.ListCache;
             selectList.Add(new SelectModel() { text = "---请选择---", value = "-1" });
-            roleList.ForEach(m => selectList.Add(new SelectModel() { text = m.roleName, value = m.roleId.ToString() }));
+            roleList.ForEach(m => selectList.Add(new SelectModel() { text = m.roleName, value = m.id.ToString() }));
             JsonResult json = new JsonResult();
             json.Data = selectList;
             json.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
             return json;
-        }
-        public static T ModelMapper<T>(object entity)
-        {
-            TinyMapper.Bind<RoleEntity, RoleModel>(config =>
-            {
-                config.Bind(x => x.id, y => y.roleId);
-            });
-            return TinyMapper.Map<T>(entity);
-        }
-        public static T EntityMapper<T>(object model)
-        {
-            TinyMapper.Bind<RoleModel, RoleEntity>(config =>
-            {
-                config.Bind(x => x.roleId, y => y.id);
-            });
-            return TinyMapper.Map<T>(model);
         }
     }
 }

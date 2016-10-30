@@ -18,6 +18,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using System.Linq.Expressions;
+using Nelibur.ObjectMapper;
 
 
 namespace HH.RMS.Service.Web
@@ -33,15 +34,15 @@ namespace HH.RMS.Service.Web
         public AccountService(IRepository<LevelEntity> levelRepository,IRepository<RoleEntity> roleRepository, IRepository<AccountRoleEntity> accountRoleRepository, IRepository<AccountEntity> accountRepository, IRepository<PersonEntity> personRepository)
         {
             _roleRepository = roleRepository;
-            _accountRepository.userId = AccountModel.Session.accountId;
+            _roleRepository.userId = AccountModel.Session.id;
             _accountRoleRepository = accountRoleRepository;
-            _accountRoleRepository.userId = AccountModel.Session.accountId;
+            _accountRoleRepository.userId = AccountModel.Session.id;
             _accountRepository = accountRepository;
-            _accountRepository.userId = AccountModel.Session.accountId;
+            _accountRepository.userId = AccountModel.Session.id;
             _personRepository = personRepository;
-            _personRepository.userId = AccountModel.Session.accountId;
+            _personRepository.userId = AccountModel.Session.id;
             _levelRepository = levelRepository;
-            _levelRepository.userId = AccountModel.Session.accountId;
+            _levelRepository.userId = AccountModel.Session.id;
         }
         public AccountModel QueryAccountById(long id)
         {
@@ -56,15 +57,15 @@ namespace HH.RMS.Service.Web
                             where a.id == id
                             select new AccountModel
                             {
-                                accountId = a.id,
+                                id = a.id,
                                 accountName = a.accountName,
                                 score = a.score,
                                 amount = a.amount,
                                 statusType = a.status,
                                 remark = a.remark,
-                                person = new PersonModel() { personId = a.personId },
-                                role = new RoleModel() { roleId = b.roleId, roleName = c.roleName },
-                                level = new LevelModel() { levelId = d.id, levelName = d.levelName, levelOrder = d.levelOrder }
+                                person = new PersonModel() { id = a.personId },
+                                role = new RoleModel() { id = b.roleId, roleName = c.roleName },
+                                level = new LevelModel() { id = d.id, levelName = d.levelName, levelOrder = d.levelOrder }
                             };
                     return q.FirstOrDefault();
                 }
@@ -83,7 +84,7 @@ namespace HH.RMS.Service.Web
                 {
                     accountName = model.accountName,
                     password = model.password,
-                    levelId = model.level.levelId,
+                    levelId = model.level.id,
                     score = model.score,
                     amount = model.amount,
                     status = model.statusType,
@@ -113,7 +114,7 @@ namespace HH.RMS.Service.Web
                 using (var db = new ApplicationDbContext())
                 {
                     var q = (from a in _accountRepository.Query(db)
-                            join b in _accountRoleRepository.Query(db) on a.id equals b.accountId
+                            join b in _accountRoleRepository.Query(db) on a.id equals b.id
                             join c in _roleRepository.Query(db) on b.roleId equals c.id
                             join d in _personRepository.Query(db) on a.personId equals d.id
                             join e in _levelRepository.Query(db) on a.levelId equals e.id
@@ -125,19 +126,19 @@ namespace HH.RMS.Service.Web
                             && (pager.searchRole == 0 || b.roleId == pager.searchRole)
                             select new AccountModel()
                             {
-                                accountId = a.id,
+                                id = a.id,
                                 accountName = a.accountName,
                                 statusType = a.status,
                                 score = a.score,
                                 amount = a.amount,
                                 createTime = a.createTime,
-                                person = new PersonModel() { personId = d.id, birthday = d.birthday, cityId = d.cityId, countryId = d.countryId, createTime = d.createTime, name = d.name, nickName = d.nickName, provinceId = d.provinceId, sex = d.sex },
-                                level = new LevelModel() { levelId = d.id, levelName = e.levelName, levelOrder = e.levelOrder }
+                                person = TinyMapper.Map<PersonModel>(d),//new PersonModel() { id = d.id, birthday = d.birthday, id = d.id, countryId = d.countryId, createTime = d.createTime, name = d.name, nickName = d.nickName, provinceId = d.provinceId, sex = d.sex },
+                                level = TinyMapper.Map<LevelModel>(e)//new LevelModel() { id = d.id, levelName = e.levelName, levelOrder = e.levelOrder }
                             });
                     IQueryable<AccountModel> qPager = null;
                     if (pager != null)
                     {
-                        qPager = q.OrderByDescending(m => m.accountId).Take(pager.rows * pager.page).Skip(pager.rows * (pager.page - 1));
+                        qPager = q.OrderByDescending(m => m.id).Take(pager.rows * pager.page).Skip(pager.rows * (pager.page - 1));
                     }
                     GridModel list = new GridModel()
                     {
@@ -154,59 +155,55 @@ namespace HH.RMS.Service.Web
             }
         }
 
-        public AccountListModel QueryAccountListByPersonId(long id)
-        {
-            try
-            {
-                using (var db = new ApplicationDbContext())
-                {
-                    var q = from a in _accountRepository.Query(db)
-                            where a.personId == id
-                            select new AccountModel()
-                            {
-                                accountId = a.id,
-                                accountName = a.accountName,
-                                statusType = a.status,
-                                score = a.score,
-                                amount = a.amount,
-                                createTime = a.createTime,
-                            };
-                    AccountListModel list = new AccountListModel()
-                    {
-                        accountList = q.ToList()
-                    };
-                    return list;
-                }
-            }
-            catch (Exception ex)
-            {
-                log.Error("AccountService.QueryAccountListByPersonId", ex);
-                return null;
-            }
-        }
+        //public AccountListModel QueryAccountListByPersonId(long id)
+        //{
+        //    try
+        //    {
+        //        using (var db = new ApplicationDbContext())
+        //        {
+        //            var entity = _accountRepository.Query(db).Where(m => m.personId == id);
+        //            var q = from a in _accountRepository.Query(db)
+        //                    where a.personId == id
+        //                    select new AccountModel()
+        //                    {
+        //                        id = a.id,
+        //                        accountName = a.accountName,
+        //                        statusType = a.status,
+        //                        score = a.score,
+        //                        amount = a.amount,
+        //                        createTime = a.createTime,
+        //                    };
+        //            AccountModel
+        //            AccountListModel list = new AccountListModel()
+        //            {
+        //                accountList = q.ToList()
+        //            };
+        //            return list;
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        log.Error("AccountService.QueryAccountListByPersonId", ex);
+        //        return null;
+        //    }
+        //}
         public ResultType UpdateAccount(AccountModel model)
         {
             try
             {
+                var entity = TinyMapper.Map<AccountEntity>(model);
                 using (var db = new ApplicationDbContext())
                 {
-                    _accountRepository.Update(db, m => new AccountEntity()
+                    int result = _accountRepository.Update(db, entity);
+                    if (result > 0)
                     {
-                        levelId = model.level.levelId,
-                        score = model.score,
-                        amount = model.amount,
-                        remark = model.remark,
-                        status = model.statusType,
-                        updateBy = AccountModel.Session.accountId
-                    },
-                    m => m.id == model.accountId
-                    );
-                    _accountRoleRepository.Update(db, m => new AccountRoleEntity()
+                        return ResultType.Success;
+                    }
+                    else
                     {
-                        roleId = model.role.roleId
-                    },m=>m.accountId == model.accountId);
+                        return ResultType.Fail;
+                    }
                 }
-                return ResultType.Success;
             }
             catch (Exception ex)
             {
@@ -219,20 +216,13 @@ namespace HH.RMS.Service.Web
         {
             return ResultType.Success;
         }
-        public ResultType DeleteAccountMassById(List<string> idList)
+        public ResultType DeleteAccountMassById(long[] ids)
         {
             try
             {
                 using (var db = new ApplicationDbContext())
                 {
-                    _accountRepository.Update(db, m => new AccountEntity()
-                    {
-                        isActive = false,
-                        updateTime = DateTime.Now,
-                        updateBy = AccountModel.Session.accountId
-                    },
-                    m => idList.Contains(m.id.ToString())
-                    );
+                    _accountRepository.Update(db, _accountRepository.DeleteEntity(), m => ids.Contains(m.id));
                 }
                 return ResultType.Success;
             }

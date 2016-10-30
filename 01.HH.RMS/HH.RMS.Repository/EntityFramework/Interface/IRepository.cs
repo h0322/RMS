@@ -14,16 +14,16 @@ namespace HH.RMS.Repository.EntityFramework.Interface
     {
         void Delete(ApplicationDbContext db, T t);
         T Find(ApplicationDbContext db, long id);
-        ResultType Insert(ApplicationDbContext db, T entity);
+        int Insert(ApplicationDbContext db, T entity);
         long userId { get; set; }
         IQueryable<T> Query(ApplicationDbContext db, Expression<Func<T, bool>> express = null, bool isNoTracking = true);
         IQueryable<T> Query(ApplicationDbContext db, string include);
         IEnumerable<T> SqlQuery(ApplicationDbContext db, string sql, params object[] parameters);
         int ExecuteSql(ApplicationDbContext db, string sql, params object[] parameters);
-        ResultType Update(ApplicationDbContext db, Expression<Func<T, T>> updater, Expression<Func<T, bool>> condition);
+        int Update(ApplicationDbContext db, Expression<Func<T, T>> updater, Expression<Func<T, bool>> condition);
         void Dispose(ApplicationDbContext db);
         Expression<Func<T, T>> DeleteEntity();
-        ResultType Update(ApplicationDbContext db, T entity);
+        int Update(ApplicationDbContext db, T entity);
 
     }
 }

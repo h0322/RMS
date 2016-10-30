@@ -8,11 +8,6 @@ using System.Web;
 
 namespace HH.RMS.Service.Web.Model
 {
-    public class AccountListModel : PagerModel
-    {
-        public List<AccountModel> accountList { get; set; }
-        
-    }
     public class AccountModel
     {
         public static AccountModel Session
@@ -37,7 +32,7 @@ namespace HH.RMS.Service.Web.Model
                 }
             }
         }
-        public long accountId { get; set; }
+        public long id { get; set; }
         public string accountName { get; set; }
         public string password { get; set; }
         public AccountStatusType statusType { get; set; }

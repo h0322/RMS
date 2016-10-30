@@ -98,19 +98,11 @@ namespace HH.RMS.Repository.EntityFramework
         {
             return db.Set<T>().Where(m => m.isActive).Include(include);
         }
-        public ResultType Update(ApplicationDbContext db, Expression<Func<T, T>> updater, Expression<Func<T, bool>> condition)
+        public int Update(ApplicationDbContext db, Expression<Func<T, T>> updater, Expression<Func<T, bool>> condition)
         {
-            int result = db.Set<T>().Update(condition,updater);
-            if (result > 0)
-            {
-                return ResultType.Success;
-            }
-            else
-            {
-                return ResultType.Fail;
-            }
+            return db.Set<T>().Where(condition).Update(updater);
         }
-        public ResultType Update(ApplicationDbContext db,T entity)
+        public int Update(ApplicationDbContext db,T entity)
         {
             //if (!entity.UpdatedBy.HasValue)
             //{
@@ -121,15 +113,7 @@ namespace HH.RMS.Repository.EntityFramework
             //var entry = db.Entry<T>(entity);
             //entry.State = EntityState.Modified;
             db.Entry(entity).State = EntityState.Modified;
-            int result = db.SaveChanges();
-            if (result > 0)
-            {
-                return ResultType.Success;
-            }
-            else
-            {
-                return ResultType.Fail;
-            }
+            return  db.SaveChanges();
             //RepositoryTrigger.Execute(t, this.dbContext);
         }
 
@@ -145,7 +129,7 @@ namespace HH.RMS.Repository.EntityFramework
         }
 
 
-        public ResultType Insert(ApplicationDbContext db, T t)
+        public int Insert(ApplicationDbContext db, T t)
         {
             if (t.createBy == 0)
             {
@@ -161,15 +145,7 @@ namespace HH.RMS.Repository.EntityFramework
             db.Set<T>().Attach(t);
             var entity = db.Entry(t);
             entity.State = EntityState.Added;
-            int result = db.SaveChanges();
-            if (result > 0)
-            {
-                return ResultType.Success;
-            }
-            else
-            {
-                return ResultType.Fail;
-            }
+            return db.SaveChanges();
         }
 
         #region sp

@@ -56,10 +56,10 @@ namespace HH.RMS.MVC.Controllers
 
         [HttpPost]
         [RMSAuthorize(excuteType = (int)ExcuteType.Delete, menuCode = "Account")]
-        public JsonResult DeleteAccountById(string ids)
+        public JsonResult DeleteAccountById(string idString)
         {
-            List<string> idList = ids.Split(',').ToList();
-            var account = _accountService.DeleteAccountMassById(idList);
+            long[] ids = (long[])ConvertHelper.StringToArray(idString, DataType.Int64);
+            var account = _accountService.DeleteAccountMassById(ids);
             return Json(account, JsonRequestBehavior.AllowGet);
         }
 

@@ -35,7 +35,7 @@ namespace HH.RMS.Service.Web
                         code = m.code,
                         createTime = m.createTime,
                         description = m.description,
-                        menuId = m.id,
+                        id = m.id,
                         menuName = m.menuName,
                         menuOrder = m.menuOrder,
                         menuType = m.menuType,
@@ -81,7 +81,7 @@ namespace HH.RMS.Service.Web
             {
                 return null;
             }
-            long roleId = AccountModel.Session.role.roleId;
+            long roleId = AccountModel.Session.role.id;
 
             using(var db = new ApplicationDbContext())
             {

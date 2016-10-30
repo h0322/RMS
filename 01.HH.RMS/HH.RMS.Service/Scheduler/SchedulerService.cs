@@ -55,14 +55,17 @@ namespace HH.RMS.Service.Web
         {
             try
             {
-               // Expression<Func<SchedulerEntity, SchedulerEntity>> dd = (m => new SchedulerEntity() {  updateTime= DateTime.Now}.);//(m => new SchedulerEntity() { second = 4 });
-                
-               // var ss = new SchedulerEntity();
-               // ss.second=1;
                 using (var db = new ApplicationDbContext())
                 {
-                    return _schedulerRepository.Update(db, m => new SchedulerEntity { second = 1, day = 3, stopTime = DateTime.Now }, m => m.id == id);
-                    //return _schedulerRepository.Update(db, _schedulerRepository.DeleteEntity(), m => m.id == id);
+                   int result = _schedulerRepository.Update(db, _schedulerRepository.DeleteEntity(), m => m.id == id);
+                   if (result > 0)
+                   {
+                       return ResultType.Success;
+                   }
+                   else
+                   {
+                       return ResultType.Fail;
+                   }
                 }
                 
             }

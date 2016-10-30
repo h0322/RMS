@@ -5,6 +5,7 @@ using HH.RMS.Repository.EntityFramework;
 using HH.RMS.Repository.EntityFramework.Interface;
 using HH.RMS.Service.Web.Interface;
 using HH.RMS.Service.Web.Model;
+using Nelibur.ObjectMapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +29,7 @@ namespace HH.RMS.Service.Web
                     List<LevelModel> list = null;
                     if (pager != null)
                     {
-                        list = LevelModel.ListCache.OrderByDescending(m => m.levelId).Take(pager.rows * pager.page).Skip(pager.rows * (pager.page - 1)).ToList();
+                        list = LevelModel.ListCache.OrderByDescending(m => m.id).Take(pager.rows * pager.page).Skip(pager.rows * (pager.page - 1)).ToList();
                     }
                     GridModel gridModel = new GridModel()
                     {
@@ -49,15 +50,8 @@ namespace HH.RMS.Service.Web
             {
                 using (var db = new ApplicationDbContext())
                 {
-                    var q = from a in _levelRepository.Query(db)
-                            select new LevelModel()
-                            {
-                                levelId = a.id,
-                                levelName = a.levelName,
-                                levelOrder = a.levelOrder,
-                                createTime = a.createTime
-                            };
-                    return q.ToList();
+                    var list = _levelRepository.Query(db).ToList();
+                    return TinyMapper.Map<List<LevelModel>>(list);
                 }
             }
             catch (Exception ex)
@@ -69,13 +63,10 @@ namespace HH.RMS.Service.Web
         public ResultType CreateLevel(LevelModel model)
         {
             try {
+                var entity = TinyMapper.Map<LevelEntity>(model);
                 using (var db = new ApplicationDbContext())
                 {
-                    _levelRepository.Insert(db, new LevelEntity()
-                    {
-                        levelName = model.levelName,
-                        levelOrder = model.levelOrder
-                    });
+                    _levelRepository.Insert(db, entity);
                     CacheHelper.RemoveCache(Config.levelCache);
                     return ResultType.Success;
                 }
@@ -92,17 +83,10 @@ namespace HH.RMS.Service.Web
         {
             try
             {
+                var entity = TinyMapper.Map<LevelEntity>(model);
                 using (var db = new ApplicationDbContext())
                 {
-                    _levelRepository.Update(db, m => new LevelEntity()
-                    {
-                        levelName = model.levelName,
-                        levelOrder = model.levelOrder,
-                        updateTime = DateTime.Now,
-                        updateBy = AccountModel.Session.accountId
-                    },
-                    m => m.id == model.levelId
-                    );
+                    _levelRepository.Update(db, entity);
                 }
                 CacheHelper.RemoveCache(Config.levelCache);
                 return ResultType.Success;
@@ -118,7 +102,7 @@ namespace HH.RMS.Service.Web
         {
             try
             {
-                return LevelModel.ListCache.Where(m => m.levelId == id).FirstOrDefault();
+                return LevelModel.ListCache.Where(m => m.id == id).FirstOrDefault();
             }
             catch (Exception ex)
             {
@@ -133,14 +117,7 @@ namespace HH.RMS.Service.Web
             {
                 using (var db = new ApplicationDbContext())
                 {
-                    _levelRepository.Update(db, m => new LevelEntity()
-                    {
-                        isActive = false,
-                        updateTime = DateTime.Now,
-                        updateBy = AccountModel.Session.accountId
-                    },
-                    m => ids.Contains(m.id)
-                    );
+                    _levelRepository.Update(db, _levelRepository.DeleteEntity(), m => ids.Contains(m.id));
                 }
                 CacheHelper.RemoveCache(Config.levelCache);
                 return ResultType.Success;

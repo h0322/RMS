@@ -30,7 +30,7 @@ namespace HH.RMS.Service.Web.Model
                 }
             }
         }
-        public long provinceId { get; set; }
+        public long id { get; set; }
         public long countryId { get; set; }
         public string countryDescription { get; set; }
         public string code { get; set; }
@@ -41,7 +41,7 @@ namespace HH.RMS.Service.Web.Model
             List<SelectModel> selectList = new List<SelectModel>();
             var provinceList = ProvinceModel.ListCache;
             selectList.Add(new SelectModel() { text = "---请选择---", value = "-1" });
-            provinceList.ForEach(m => selectList.Add(new SelectModel() { text = m.name, value = m.provinceId.ToString() }));
+            provinceList.ForEach(m => selectList.Add(new SelectModel() { text = m.name, value = m.id.ToString() }));
             JsonResult json = new JsonResult();
             json.Data = selectList;
             json.JsonRequestBehavior = JsonRequestBehavior.AllowGet;

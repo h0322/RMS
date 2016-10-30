@@ -33,21 +33,6 @@ namespace HH.RMS.Service.Scheduler.Model
         public DateTime runTime { get; set; }
         public DateTime stopTime { get; set; }
 
-        public static T ModelMapper<T>(object entity)
-        {
-            TinyMapper.Bind<SchedulerEntity, SchedulerModel>(config =>
-            {
-                config.Bind(x => x.id, y => y.schedulerId);
-            });
-            return TinyMapper.Map<T>(entity);
-        }
-        public static T EntityMapper<T>(object model)
-        {
-            TinyMapper.Bind<SchedulerModel, SchedulerEntity>(config =>
-            {
-                config.Bind(x => x.schedulerId, y => y.id);
-            });
-            return TinyMapper.Map<T>(model);
-        }
+
     }
 }

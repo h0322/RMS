@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 using System.Web;
 using HH.RMS.Service.Model;
 using System.Web.Security;
+using Nelibur.ObjectMapper;
 
 namespace HH.RMS.Service.Web
 {
@@ -51,12 +52,12 @@ namespace HH.RMS.Service.Web
                              select new AccountModel
                              {
                                  accountName = a.accountName,
-                                 accountId = a.id,
+                                 id = a.id,
                                  score = a.score,
                                  amount = a.amount,
-                                 person = new PersonModel() { name = d.name, birthday = d.birthday, cityId = d.cityId, provinceId = d.provinceId, sex = d.sex, countryId = d.countryId, personId = d.id, nickName = d.nickName },
-                                 role = new RoleModel() { roleName = c.roleName, roleId = c.id, roleOrder = c.roleOrder, roleType = c.roleType },
-                                 level = new LevelModel() { levelName = e.levelName, levelId = e.id, remark = e.remark }
+                                 person = new PersonModel() { name = d.name, birthday = d.birthday, id = d.id, provinceId = d.provinceId, sex = d.sex, countryId = d.countryId, cityId = d.cityId, nickName = d.nickName },
+                                 role = new RoleModel() { roleName = c.roleName, id = c.id, roleOrder = c.roleOrder, roleType = c.roleType },
+                                 level = new LevelModel() { levelName = e.levelName, id = e.id, remark = e.remark }
                              });
                     result.resultObj = q.FirstOrDefault();
                 }

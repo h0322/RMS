@@ -49,7 +49,7 @@ namespace HH.RMS.MVC.Controllers
                        DateTime.Now,
                        DateTime.Now.AddMinutes(20),
                        true,
-                       result.resultObj.role.roleId.ToString(),
+                       result.resultObj.role.id.ToString(),
                        "/"
                    );
                     SessionHelper.SetSession(Config.loginSession, result.resultObj);

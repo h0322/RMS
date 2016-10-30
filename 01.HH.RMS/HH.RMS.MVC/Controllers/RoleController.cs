@@ -1,4 +1,5 @@
 ﻿using HH.RMS.Common.Constant;
+using HH.RMS.Common.Utilities;
 using HH.RMS.Service;
 using HH.RMS.Service.Web;
 using HH.RMS.Service.Web.Interface;
@@ -57,7 +58,7 @@ namespace HH.RMS.MVC.Controllers
         [HttpPost]
         public JsonResult DeleteRoleByIds(string idString)
         {
-            long[] ids = Array.ConvertAll<string, long>(idString.Split(','), s => int.Parse(s));
+            long[] ids = (long[])ConvertHelper.StringToArray(idString);
             var result = _roleService.DeleteRoleByIds(ids);
             return Json(result, JsonRequestBehavior.AllowGet);
         }

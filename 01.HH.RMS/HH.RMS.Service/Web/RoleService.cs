@@ -33,7 +33,7 @@ namespace HH.RMS.Service.Web
                 List<RoleModel> list = null;
                 if (pager != null)
                 {
-                    list = RoleModel.ListCache.OrderByDescending(m => m.roleId).Take(pager.rows * pager.page).Skip(pager.rows * (pager.page - 1)).ToList();
+                    list = RoleModel.ListCache.OrderByDescending(m => m.id).Take(pager.rows * pager.page).Skip(pager.rows * (pager.page - 1)).ToList();
                 }
                 GridModel gridModel = new GridModel()
                 {
@@ -54,7 +54,8 @@ namespace HH.RMS.Service.Web
             {
                 using (var db = new ApplicationDbContext())
                 {
-                    return RoleModel.ModelMapper<List<RoleModel>>(_roleRepository.Query(db).ToList());
+                    var list = _roleRepository.Query(db).ToList();
+                    return TinyMapper.Map<List<RoleModel>>(list);
                 }
             }
             catch (Exception ex)
@@ -69,7 +70,7 @@ namespace HH.RMS.Service.Web
             {
                 using (var db = new ApplicationDbContext())
                 {
-                    _roleRepository.Insert(db, RoleModel.EntityMapper<RoleEntity>(model));
+                    _roleRepository.Insert(db, TinyMapper.Map<RoleEntity>(model));
                     CacheHelper.RemoveCache(Config.roleCache);
                     return ResultType.Success;
                 }
@@ -87,12 +88,9 @@ namespace HH.RMS.Service.Web
             try
             {
                 var entity = TinyMapper.Map<RoleEntity>(model);
-                entity.updateTime = DateTime.Now;
                 using (var db = new ApplicationDbContext())
                 {
-                    _roleRepository.Update(db, m => entity,
-                    m => m.id == model.roleId
-                    );
+                    _roleRepository.Update(db, entity);
                 }
                 CacheHelper.RemoveCache(Config.roleCache);
                 return ResultType.Success;
@@ -108,7 +106,7 @@ namespace HH.RMS.Service.Web
         {
             try
             {
-                return RoleModel.ListCache.Where(m => m.roleId == id).FirstOrDefault();
+                return RoleModel.ListCache.Where(m => m.id == id).FirstOrDefault();
             }
             catch (Exception ex)
             {
@@ -139,14 +137,13 @@ namespace HH.RMS.Service.Web
         {
              try
              {
-                 MenuRoleModel.EntityMapper();
                  var entity = TinyMapper.Map<MenuRoleEntity>(model);
                  entity.updateTime = DateTime.Now;
-                 entity.updateBy = AccountModel.Session.accountId;
+                 entity.updateBy = AccountModel.Session.id;
                 using (var db = new ApplicationDbContext())
                 {
                     _menuRoleRepository.Update(db, m => entity,
-                    m => m.id == model.menuRoleId
+                    m => m.id == model.id
                     );
                 }
                 return ResultType.Success;
@@ -161,7 +158,6 @@ namespace HH.RMS.Service.Web
         {
             try
             {
-                MenuRoleModel.EntityMapper();
                 var entity = TinyMapper.Map<MenuRoleEntity>(model);
                 using (var db = new ApplicationDbContext())
                 {
@@ -231,7 +227,7 @@ namespace HH.RMS.Service.Web
                                 menuOrder = a.menuOrder, 
                                 parentId = a.parentId,
                                 treeLevel = a.treeLevel,
-                                menuRoleId = m == null ? 0 : m.id,
+                                id = m == null ? 0 : m.id,
                                 excuteType = m == null ? 0 : m.excuteType
                             };
                     return q.OrderBy(m=>m.menuOrder).ToList();

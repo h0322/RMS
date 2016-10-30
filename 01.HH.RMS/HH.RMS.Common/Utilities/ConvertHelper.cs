@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HH.RMS.Common.Constant;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -167,6 +168,20 @@ namespace HH.RMS.Common.Utilities
             return new decimal?(ObjToDecimal(obj));
         } 
         #endregion
-
+        public static Array StringToArray(string str,DataType type = DataType.String)
+        {
+            if (type == DataType.Int32)
+            {
+                return Array.ConvertAll<string, int>(str.Split(','), s => int.Parse(s));
+            }
+            if (type == DataType.Int64)
+            {
+                return Array.ConvertAll<string, long>(str.Split(','), s => long.Parse(s));
+            }
+            else
+            {
+                return str.Split(',');
+            }
+        }
     }
 }

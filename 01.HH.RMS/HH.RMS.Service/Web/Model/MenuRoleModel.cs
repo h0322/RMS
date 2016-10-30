@@ -21,13 +21,13 @@ namespace HH.RMS.Service.Web.Model
                 if (SessionHelper.GetSession(Config.menuRoleSession) == null)
                 {
                     IRoleService roleService = UnityManager.instance.GetService<IRoleService>();
-                    SessionHelper.SetSession(Config.menuRoleSession, roleService.QueryMenuByRoleIdList(AccountModel.Session.role.roleId));
+                    SessionHelper.SetSession(Config.menuRoleSession, roleService.QueryMenuByRoleIdList(AccountModel.Session.role.id));
                 }
                 return (List<MenuRoleModel>)SessionHelper.GetSession(Config.menuRoleSession);
             }
             //get { List<MenuRoleModel> QueryMenuByRoleIdList(long roleId)}
         }
-        public long menuRoleId { get; set; }
+        public long id { get; set; }
         public long menuId { get; set; }
         public string code { get; set; }
         public string menuName { get; set; }
@@ -41,20 +41,6 @@ namespace HH.RMS.Service.Web.Model
         public bool isUpdate { get; set; }
         public bool isInsert { get; set; }
         public bool isDelete { get; set; }
-        public static void ModelMapper()
-        {
-            TinyMapper.Bind<MenuRoleEntity, MenuRoleModel>(config =>
-            {
-                config.Bind(x => x.id, y => y.menuRoleId);
-            });
-        }
-        public static void EntityMapper()
-        {
-            TinyMapper.Bind<MenuRoleModel, MenuRoleEntity>(config =>
-            {
-                config.Bind(x => x.menuRoleId, y => y.id);
-            });
-        }
 
     }
 }

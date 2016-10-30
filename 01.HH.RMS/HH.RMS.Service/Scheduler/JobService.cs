@@ -32,7 +32,7 @@ namespace HH.RMS.Service.Web
                 using (var db = new ApplicationDbContext())
                 {
                     var jobList = _jobRepository.Query(db).Where(m => m.fromDate <= DateTime.Now && m.toDate >= DateTime.Now).ToList();
-                    return JobModel.ModelMapper<List<JobModel>>(jobList); //TinyMapper.Map<List<JobModel>>(jobList);
+                    return TinyMapper.Map<List<JobModel>>(jobList); //TinyMapper.Map<List<JobModel>>(jobList);
                 }
             }
             catch (Exception ex)
@@ -49,7 +49,7 @@ namespace HH.RMS.Service.Web
                 using (var db = new ApplicationDbContext())
                 {
                     var jobList = _jobRepository.Query(db).Where(m => m.fromDate <= DateTime.Now && m.toDate >= DateTime.Now && m.schedulerId == id).ToList();
-                    return JobModel.ModelMapper<List<JobModel>>(jobList);
+                    return TinyMapper.Map<List<JobModel>>(jobList);//JobModel.ModelMapper<List<JobModel>>(jobList);
                 }
             }
             catch (Exception ex)
@@ -66,7 +66,7 @@ namespace HH.RMS.Service.Web
                 using (var db = new ApplicationDbContext())
                 {
                     var list = _jobParameterRepository.Query(db).Where(m=>m.jobId==id).ToList();
-                    return TinyMapper.Map<List<JobParameterModel>>(list);
+                    return TinyMapper.Map<List<JobParameterModel>>(list);//TinyMapper.Map<List<JobParameterModel>>(list);
                 }
             }
             catch (Exception ex)

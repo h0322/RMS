@@ -72,7 +72,7 @@
             $("#personList").datagrid('uncheckAll');
             $.post("/Person/QueryPersonById", { id: personId }, function (d) {
                 SetFormValue("from_update", d);
-                $('#sel_city_update').combobox("setValue", d.cityId);
+                $('#sel_city_update').combobox("setValue", d.id);
                 $('#accountName').textbox('disable');
             }, "json")
             //$.post("/Person/QueryPersonById", { id: personId }, function (d) {

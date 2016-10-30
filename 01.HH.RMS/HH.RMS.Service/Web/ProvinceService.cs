@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Nelibur.ObjectMapper;
 
 namespace HH.RMS.Service.Web
 {
@@ -26,14 +27,9 @@ namespace HH.RMS.Service.Web
             { 
                 using (var db = new ApplicationDbContext())
                 {
-                    var q = from a in _provinceRepository.Query(db)
-                            select new ProvinceModel()
-                            {
-                                name = a.name,
-                                provinceId = a.id,
-                                order = a.order
-                            };
-                    return q.ToList();
+                    var list = _provinceRepository.Query(db).ToList();
+
+                    return TinyMapper.Map<List<ProvinceModel>>(list);
                 }
                 
             }

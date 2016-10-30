@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Nelibur.ObjectMapper;
 
 namespace HH.RMS.Service.Web
 {
@@ -24,15 +25,11 @@ namespace HH.RMS.Service.Web
         {
             try
             {
-                if (CacheHelper.GetCache(Config.countryCache) == null)
+                using (var db = new ApplicationDbContext())
                 {
-                    using (var db = new ApplicationDbContext())
-                    {
-                        CacheHelper.SetCache(Config.countryCache, _countryRepository.Query(db).ToList());
-                    }
+                    var list = TinyMapper.Map<List<CountryModel>>(_countryRepository.Query(db).ToList());
+                    return list;
                 }
-                List<CountryModel> countryList = (List<CountryModel>)CacheHelper.GetCache(Config.countryCache);
-                return countryList;
             }
             catch (Exception ex)
             {
