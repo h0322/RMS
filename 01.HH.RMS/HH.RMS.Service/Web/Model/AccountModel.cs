@@ -1,5 +1,7 @@
 ﻿using HH.RMS.Common.Constant;
 using HH.RMS.Common.Utilities;
+using HH.RMS.Entity.Web;
+using Nelibur.ObjectMapper;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -49,6 +51,23 @@ namespace HH.RMS.Service.Web.Model
         {
             return JsonConvert.SerializeObject(this);
         }
-
+        public static T ModelMapper<T>(object entity)
+        {
+            TinyMapper.Bind<AccountEntity, AccountModel>(config =>
+            {
+                config.Bind(x => x.levelId, y => y.level.id);
+                config.Bind(x => x.personId, y => y.person.id);
+            });
+            return TinyMapper.Map<T>(entity);
+        }
+        public static T EntityMapper<T>(object model)
+        {
+            TinyMapper.Bind<AccountModel, AccountEntity>(config =>
+            {
+                config.Bind(x => x.level.id, y => y.levelId);
+                config.Bind(x => x.person.id, y => y.personId);
+            });
+            return TinyMapper.Map<T>(model);
+        }
     }
 }

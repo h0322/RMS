@@ -1,18 +1,15 @@
 ﻿<div id="dlg_Add" class="easyui-dialog" title="修改账户信息" closed="true" style="width:300px" data-options=" iconCls: 'icon-save',	buttons: [{	text:'保存',	iconCls:'icon-ok',	handler:Save},{text:'取消',iconCls:'icon-cancel',handler:cancel}]">
     <div title="Register" style="width:98%;">
         <form id="from_account">
-            <input type="hidden" name="accountId" id="accountId" />
-            <input type="hidden" name="person.personId" id="personId" />
+            <input type="hidden" name="id" id="accountId" />
+            <input type="hidden" name="person.id" id="personId" />
             <ul><li style="width:30%">账户名称:</li><li style="width:60%"><input id="accountName" name="accountName" class="easyui-textbox"></li></ul>@*data-options="prompt:'Enter a email address...',validType:'email'"*@
             <ul><li style="width:30%">积分:</li><li style="width:60%"><input id="score" name="score" class="easyui-numberbox"></li></ul>
             <ul><li style="width:30%">充值:</li><li style="width:60%"><input id="amount" name="amount" class="easyui-numberbox"></li></ul>
             <ul>
                 <li style="width:30%">等级:</li>
                 <li style="width:60%">
-                    <select id="sel_level" class="easyui-combobox" name="level">
-                        <option value="1">level1</option>
-                        <option value="2">level2</option>
-                    </select>
+                    <input id="sel_level" name="level.id"/>
                 </li>
             </ul>
             <ul>
@@ -28,32 +25,14 @@
             <ul>
                 <li style="width:30%">角色:</li>
                 <li style="width:60%">
-                    <input name="role.roleId" id="sel_role"/>
+                    <input name="role.id" id="sel_role"/>
                 </li>
             </ul>
         </form>
     </div>
 </div>
 <script>
-    function edit(accountId) {
-        //var row = $('#accountList').datagrid('getSelected');
-        //$("#from_account")[0].reset();
-        $('#from_account').form('clear'); //清表单
-        $("#accountList").datagrid('uncheckAll');
-        $(".panel-title panel-with-icon").text("修改账户信息");
-        $.post("/Account/QueryAccountById", { id: accountId }, function (d) {
-            $('#accountId').val(d.accountId);
-            $('#accountName').textbox('setValue', d.accountName);
-            $('#score').numberbox('setValue', d.score);
-            $('#amount').numberbox('setValue', d.amount);
-            $('#sel_level').combobox('setValue', d.level);
-            $("#sel_statusType").combobox('setValue', d.statusType);
-            $('#accountName').textbox('disable');
-            $("#sel_role").combobox('setValue', d.role.roleId);
-            $('#dlg_Add').dialog('open');
-        }, "json");
 
-    }
     function Save() {
         $('#dlg_Add').dialog('close');
         loadingBox.show("正在保存中...")
@@ -75,6 +54,22 @@
 
         })
     }
+    $("#sel_role").combobox({
+        url: '/Account/QueryRoleList',
+        valueField: 'value',
+        textField: 'text',
+        required: false,
+        editable: false,
+        value: 0
+    });
+    $("#sel_level").combobox({
+        url: '/Account/QueryLevelList',
+        valueField: 'value',
+        textField: 'text',
+        required: false,
+        editable: false,
+        value: 0
+    });
     function cancel() {
         $('#dlg_Add').dialog('close');
     }

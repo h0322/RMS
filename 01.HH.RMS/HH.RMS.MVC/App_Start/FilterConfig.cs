@@ -30,19 +30,7 @@ namespace HH.RMS.MVC
             {
                 return false;
             }
-            if (excuteType > 0 && !string.IsNullOrEmpty(menuCode))
-            {
-                MenuRoleModel role = MenuRoleModel.ListSession.Where(m => m.code == menuCode && (m.excuteType & excuteType)== excuteType).FirstOrDefault();
-                if (role == null)
-                {
-                    return false;
-                }
-                else
-                {
-                    return true;
-                }
-            }
-            return true;
+            return CheckRole();
             //return base.AuthorizeCore(context);
         }
         protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext)
@@ -57,7 +45,27 @@ namespace HH.RMS.MVC
             }
             filterContext.Result = new JsonResult() { Data = new { access = ResultType.NoAccess } };
             
-        }  
+        }
+        private bool CheckRole()
+        {
+            if (AccountModel.Session.role.roleType == RoleType.Admin)
+            {
+                return true;
+            }
+            if (excuteType > 0 && !string.IsNullOrEmpty(menuCode))
+            {
+                MenuRoleModel role = MenuRoleModel.ListSession.Where(m => m.code == menuCode && (m.excuteType & excuteType) == excuteType).FirstOrDefault();
+                if (role == null)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            return true;
+        }
 
     }
 }

@@ -16,7 +16,7 @@ using HH.RMS.Service;
 
 namespace HH.RMS.MVC.Controllers
 {
-    
+    [RMSAuthorize]
     public class AccountController : ControllerService
     {
         private IAccountService _accountService;
@@ -80,6 +80,10 @@ namespace HH.RMS.MVC.Controllers
         public JsonResult QueryRoleList()
         {
             return RoleModel.ToSelect();
+        }
+        public JsonResult QueryLevelList()
+        {
+            return LevelModel.ToSelect();
         }
 
     }

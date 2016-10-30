@@ -19,7 +19,7 @@
                 collapsible: true,//是否可折叠的  
                 fit: true,//自动大小  
                 url: '/Account/QueryAccountToGrid@(ViewBag.personId)',
-                idField: 'rows.accountId',
+                idField: 'rows.id',
                 singleSelect: false,//是否单选  
                 loadMsg: "正在加载，请稍等...",
                 pagination: true,//分页控件  
@@ -57,7 +57,7 @@
                     },
                     {
                         field: 'edit', title: '操作', width: 100, align: 'center', formatter: function (value, row) {
-                            return "<a style='color:blue;cursor:pointer' onclick='javascript:edit(" + row.accountId + ")'>编辑</a>";
+                            return "<a style='color:blue;cursor:pointer' onclick='javascript:edit(" + row.id + ")'>编辑</a>";
                         }
                     }
                 ]] ,
@@ -72,10 +72,9 @@
             var accountIds = "";
             for (index in rows)
             {
-                console.log(rows[index].accountId)
-                accountIds += rows[index].accountId + ",";
+                console.log(rows[index].id)
+                accountIds += rows[index].id + ",";
             }
-            console.log(accountIds)
             accountIds = accountIds.substring(0, accountIds.length - 1);
             $.post("/Account/DeleteAccountById", { idString: accountIds }, function (data) {
                 if (data.access == "@((int)ResultType.NoAccess)")
@@ -122,15 +121,28 @@
                 $.cookie("searchRole", role, { path: "/" });
             $("#accountList").datagrid();
         });
+        function edit(accountId) {
+            //var row = $('#accountList').datagrid('getSelected');
+            //$("#from_account")[0].reset();
+            $('#from_account').form('clear'); //清表单
+            $("#accountList").datagrid('uncheckAll');
+            $(".panel-title panel-with-icon").text("修改账户信息");
+            $.post("/Account/QueryAccountById", { id: accountId }, function (d) {
+                $('#accountId').val(d.id);
+                $('#personId').val(d.person.id);
+                $('#accountName').textbox('setValue', d.accountName);
+                $('#score').numberbox('setValue', d.score);
+                $('#amount').numberbox('setValue', d.amount);
+                $('#sel_level').combobox('setValue', d.level.id);
+                $("#sel_statusType").combobox('setValue', d.statusType);
+                $('#accountName').textbox('disable');
+                $("#sel_role").combobox('setValue', d.role.id);
+                $('#dlg_Add').dialog('open');
+            }, "json");
+
+        }
+
         $("#search_sel_role").combobox({
-            url: '/Account/QueryRoleList',
-            valueField: 'value',
-            textField: 'text',
-            required: false,
-            editable: false,
-            value: 0
-        });
-        $("#sel_roleId").combobox({
             url: '/Account/QueryRoleList',
             valueField: 'value',
             textField: 'text',

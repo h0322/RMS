@@ -23,6 +23,7 @@ using Nelibur.ObjectMapper;
 
 namespace HH.RMS.Service.Web
 {
+    
     public class AccountService : ServiceBase, IAccountService
     {
         //private IRepository<AccountEntity> _accountRepository;
@@ -132,8 +133,8 @@ namespace HH.RMS.Service.Web
                                 score = a.score,
                                 amount = a.amount,
                                 createTime = a.createTime,
-                                person = TinyMapper.Map<PersonModel>(d),//new PersonModel() { id = d.id, birthday = d.birthday, id = d.id, countryId = d.countryId, createTime = d.createTime, name = d.name, nickName = d.nickName, provinceId = d.provinceId, sex = d.sex },
-                                level = TinyMapper.Map<LevelModel>(e)//new LevelModel() { id = d.id, levelName = e.levelName, levelOrder = e.levelOrder }
+                                person = new PersonModel() { id = d.id, birthday = d.birthday, cityId = d.cityId, countryId = d.countryId, createTime = d.createTime, name = d.name, nickName = d.nickName, provinceId = d.provinceId, sex = d.sex },
+                                level = new LevelModel() { id = d.id, levelName = e.levelName, levelOrder = e.levelOrder }
                             });
                     IQueryable<AccountModel> qPager = null;
                     if (pager != null)
@@ -191,7 +192,7 @@ namespace HH.RMS.Service.Web
         {
             try
             {
-                var entity = TinyMapper.Map<AccountEntity>(model);
+                var entity = AccountModel.EntityMapper<AccountEntity>(model);
                 using (var db = new ApplicationDbContext())
                 {
                     int result = _accountRepository.Update(db, entity);

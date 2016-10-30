@@ -104,15 +104,15 @@ namespace HH.RMS.Repository.EntityFramework
         }
         public int Update(ApplicationDbContext db,T entity)
         {
-            //if (!entity.UpdatedBy.HasValue)
-            //{
-            //    entity.UpdatedBy = this.UserID;
-            //}
+            if (!entity.updateBy.HasValue)
+            {
+                entity.updateBy = this.userId;
+            }
             entity.updateTime = DateTime.Now;
-            //db.Set<T>().Attach(entity);
-            //var entry = db.Entry<T>(entity);
-            //entry.State = EntityState.Modified;
-            db.Entry(entity).State = EntityState.Modified;
+            db.Set<T>().Attach(entity);
+            var entry = db.Entry<T>(entity);
+            entry.State = EntityState.Modified;
+            //db.Entry(entity).State = EntityState.Modified;
             return  db.SaveChanges();
             //RepositoryTrigger.Execute(t, this.dbContext);
         }

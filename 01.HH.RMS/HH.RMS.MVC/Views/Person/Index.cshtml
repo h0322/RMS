@@ -1,5 +1,4 @@
-﻿@using HH.RMS.Common.Constant
-@{
+﻿@{
     ViewBag.Title = "用户管理";
 }
 @section Heads{
@@ -30,7 +29,6 @@
                 pageList: [5, 10, 20, 50],   //设置分页大小
                 checkbox: true,
                 columns: [[
-                    //<th data-options="field:'ck',checkbox:true"></th>
                     { field: 'personId', checkbox: true },
                     {
                         field: 'name', title: '姓名', width: 120, align: 'center'
@@ -67,7 +65,6 @@
 
         function edit(personId)
         {
-            //var row = $('#personList').datagrid('getSelected');
             $("#dlg_Update").dialog('open');
             $("#personList").datagrid('uncheckAll');
             $.post("/Person/QueryPersonById", { id: personId }, function (d) {
@@ -75,10 +72,6 @@
                 $('#sel_city_update').combobox("setValue", d.id);
                 $('#accountName').textbox('disable');
             }, "json")
-            //$.post("/Person/QueryPersonById", { id: personId }, function (d) {
-            //    console.log(d)
-            //})
-
         }
         
         function Add()
@@ -169,12 +162,12 @@
 @Html.Partial("_UpdatePartial")
 }
 <div style="width:100%; height:400px;">
-    <table class="easyui-datagrid" id="personList" style="width:600px; height:200px;"></table>
+    <table class="easyui-datagrid" id="personList" style="width: 600px; height: 200px; display: none"></table>
 </div>
 
 
 
-<div id="toolbar" style="padding:5px;height:auto">
+<div id="toolbar" style="padding:5px;height:auto; display:none">
     <div>
         <a href="#" class="easyui-linkbutton" iconcls="icon-add" plain="true" onclick="Add()">添加</a> &nbsp;
         <a href="#" class="easyui-linkbutton" iconcls="icon-remove" plain="true" onclick="del()">删除</a> &nbsp;
