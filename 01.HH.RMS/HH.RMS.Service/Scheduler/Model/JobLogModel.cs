@@ -25,5 +25,6 @@ namespace HH.RMS.Service.Scheduler.Model
         public DateTime endTime { get; set; }
         public ResultType resultType { get; set; }
         public string resultMessage { get; set; }
+        public string remark { get; set; }
     }
 }

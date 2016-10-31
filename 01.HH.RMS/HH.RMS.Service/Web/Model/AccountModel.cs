@@ -55,6 +55,7 @@ namespace HH.RMS.Service.Web.Model
         {
             TinyMapper.Bind<AccountEntity, AccountModel>(config =>
             {
+                config.Bind(x => x.id, y => y.id);
                 config.Bind(x => x.levelId, y => y.level.id);
                 config.Bind(x => x.personId, y => y.person.id);
             });
@@ -64,8 +65,9 @@ namespace HH.RMS.Service.Web.Model
         {
             TinyMapper.Bind<AccountModel, AccountEntity>(config =>
             {
-                config.Bind(x => x.level.id, y => y.levelId);
-                config.Bind(x => x.person.id, y => y.personId);
+                config.Bind(x => x.id, y => y.id);
+                config.Bind(x => x.level.id, y => y.levelId);//忽略ID字段
+                config.Bind(x => x.person.id, y => y.personId);//忽略ID字段
             });
             return TinyMapper.Map<T>(model);
         }

@@ -193,6 +193,7 @@ namespace HH.RMS.Service.Web
             try
             {
                 var entity = AccountModel.EntityMapper<AccountEntity>(model);
+                
                 using (var db = new ApplicationDbContext())
                 {
                     int result = _accountRepository.Update(db, entity);

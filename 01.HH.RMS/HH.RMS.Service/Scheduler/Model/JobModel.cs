@@ -12,7 +12,7 @@ namespace HH.RMS.Service.Scheduler.Model
 {
     public class JobModel
     {
-        public long jobId { get; set; }
+        public long id { get; set; }
         public long schedulerId { get; set; }
         public string jobGroup { get; set; }
         public string jobName { get; set; }
