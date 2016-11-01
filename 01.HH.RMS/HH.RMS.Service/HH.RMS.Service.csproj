@@ -57,6 +57,7 @@
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Transactions" />
@@ -98,6 +99,7 @@
     <Compile Include="Web\LoginService.cs" />
     <Compile Include="Web\MenuService.cs" />
     <Compile Include="Web\Model\AccountModel.cs" />
+    <Compile Include="Web\Model\AccountRoleModel.cs" />
     <Compile Include="Web\Model\CityModel.cs" />
     <Compile Include="Web\Model\CommandModel.cs" />
     <Compile Include="Web\Model\ConditionBuilderModel.cs" />

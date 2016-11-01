@@ -55,9 +55,22 @@ namespace HH.RMS.Service.Web
                                  id = a.id,
                                  score = a.score,
                                  amount = a.amount,
-                                 person = new PersonModel() { name = d.name, birthday = d.birthday, id = d.id, provinceId = d.provinceId, sex = d.sex, countryId = d.countryId, cityId = d.cityId, nickName = d.nickName },
-                                 role = new RoleModel() { roleName = c.roleName, id = c.id, roleOrder = c.roleOrder, roleType = c.roleType },
-                                 level = new LevelModel() { levelName = e.levelName, id = e.id, remark = e.remark }
+                                 name = d.name, 
+                                 birthday = d.birthday, 
+                                 personId = d.id, 
+                                 provinceId = d.provinceId, 
+                                 sex = d.sex, 
+                                 countryId = d.countryId, 
+                                 cityId = d.cityId, 
+                                 nickName = d.nickName,
+                                 roleName = c.roleName, 
+                                 roleId = c.id, 
+                                 roleOrder = c.roleOrder, 
+                                 roleType = c.roleType,
+                                 levelName = e.levelName,
+                                 levelId = e.id,
+                                 status = a.status,
+                                 remark = e.remark
                              });
                     result.resultObj = q.FirstOrDefault();
                 }

@@ -33,12 +33,12 @@ namespace HH.RMS.Service.Web
                 List<RoleModel> list = null;
                 if (pager != null)
                 {
-                    list = RoleModel.ListCache.OrderByDescending(m => m.id).Take(pager.rows * pager.page).Skip(pager.rows * (pager.page - 1)).ToList();
+                    list = RoleModel.CurrentListCache.OrderByDescending(m => m.id).Take(pager.rows * pager.page).Skip(pager.rows * (pager.page - 1)).ToList();
                 }
                 GridModel gridModel = new GridModel()
                 {
                     rows = list.ToList(),
-                    total = RoleModel.ListCache.Count
+                    total = RoleModel.CurrentListCache.Count
                 };
                 return gridModel;
             }
@@ -106,7 +106,7 @@ namespace HH.RMS.Service.Web
         {
             try
             {
-                return RoleModel.ListCache.Where(m => m.id == id).FirstOrDefault();
+                return RoleModel.CurrentListCache.Where(m => m.id == id).FirstOrDefault();
             }
             catch (Exception ex)
             {
@@ -139,7 +139,7 @@ namespace HH.RMS.Service.Web
              {
                  var entity = TinyMapper.Map<MenuRoleEntity>(model);
                  entity.updateTime = DateTime.Now;
-                 entity.updateBy = AccountModel.Session.id;
+                 entity.updateBy = AccountModel.CurrentSession.id;
                 using (var db = new ApplicationDbContext())
                 {
                     _menuRoleRepository.Update(db, m => entity,

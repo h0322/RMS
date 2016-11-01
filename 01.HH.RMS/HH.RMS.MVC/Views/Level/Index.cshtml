@@ -61,7 +61,7 @@
                 $('#score').numberbox('setValue', d.score);
                 $('#amount').numberbox('setValue', d.amount);
                 $('#sel_level').combobox('setValue', d.level);
-                $("#sel_statusType").combobox('setValue', d.statusType);
+                $("#sel_status").combobox('setValue', d.status);
                 $('#accountName').textbox('disable');
                 $("#sel_role").combobox('setValue', d.role.roleId);
                 $('#dlg_Add').dialog('open');
@@ -171,7 +171,7 @@
         角色:
         <select class="easyui-combobox" panelheight="auto" style="width:100px" id="search_sel_role"></select>
         状态
-        <select id="search_sel_statusType" class="easyui-combobox" name="statusType">
+        <select id="search_sel_status" class="easyui-combobox" name="status">
             <option value="1">Normal</option>
             <option value="2">Disable</option>
             <option value="3">Black</option>

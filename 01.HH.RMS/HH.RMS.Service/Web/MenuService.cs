@@ -77,11 +77,11 @@ namespace HH.RMS.Service.Web
         }
         private List<MenuEntity> QueryMenuByRole()
         {
-            if (AccountModel.Session == null)
+            if (AccountModel.CurrentSession == null)
             {
                 return null;
             }
-            long roleId = AccountModel.Session.role.id;
+            long roleId = AccountModel.CurrentSession.roleId;
 
             using(var db = new ApplicationDbContext())
             {

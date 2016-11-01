@@ -20,6 +20,8 @@ namespace HH.RMS.Entity.Web
         public long personId { get; set; }
         [ForeignKey("personId")]
         public virtual PersonEntity person { get; set; }
+        [MaxLength(50)]
+        public string email { get; set; }
         public decimal amount { get; set; }
         public decimal score { get; set; }
         public long levelId { get; set; }

@@ -13,7 +13,7 @@ namespace HH.RMS.Service.Web.Model
 {
     public class LevelModel
     {
-        public static List<LevelModel> ListCache
+        public static List<LevelModel> CurrentListCache
         {
             get
             {
@@ -38,8 +38,8 @@ namespace HH.RMS.Service.Web.Model
         public static JsonResult ToSelect()
         {
             List<SelectModel> selectList = new List<SelectModel>();
-            var levelList = LevelModel.ListCache;
-            selectList.Add(new SelectModel() { text = "---请选择---", value = "-1" });
+            var levelList = LevelModel.CurrentListCache;
+            selectList.Add(new SelectModel() { text = "---请选择---", value = "0" });
             levelList.ForEach(m => selectList.Add(new SelectModel() { text = m.levelName, value = m.id.ToString() }));
             JsonResult json = new JsonResult();
             json.Data = selectList;

@@ -12,7 +12,7 @@ namespace HH.RMS.Service.Web.Model
 {
     public class MenuModel
     {
-        public static string Session
+        public static string CurrentSession
         {
             get {
                 if (SessionHelper.GetSession(Config.menuSession) == null)
@@ -23,7 +23,7 @@ namespace HH.RMS.Service.Web.Model
                 return SessionHelper.GetSession(Config.menuSession).ToString();
             }
         }
-        public static List<MenuModel> ListCache
+        public static List<MenuModel> CurrentListCache
         {
             get
             {

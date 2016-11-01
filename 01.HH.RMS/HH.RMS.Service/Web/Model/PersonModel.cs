@@ -7,10 +7,6 @@ using System.Threading.Tasks;
 
 namespace HH.RMS.Service.Web.Model
 {
-    public class PersonListModel : PagerModel
-    {
-        public List<PersonModel> personList { get; set; }
-    }
     public class PersonModel
     {
         public long id { get; set; }
@@ -26,7 +22,6 @@ namespace HH.RMS.Service.Web.Model
         public string birthday { get; set; }
         public SexType sex { get; set; }
         public string mobile { get; set; }
-        public string email { get; set; }
         public DateTime createTime { get; set; }
         public long createBy { get; set; }
         public List<AccountModel> accountList { get; set; }

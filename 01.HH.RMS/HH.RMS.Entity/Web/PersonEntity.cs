@@ -19,8 +19,7 @@ namespace HH.RMS.Entity.Web
         public string nickName { get; set; }
         [MaxLength(11)]
         public string mobile { get; set; }
-        [MaxLength(50)]
-        public string email { get; set; }
+
         public SexType sex { get; set; }
         [MaxLength(10)]
         public string birthday { get; set; }

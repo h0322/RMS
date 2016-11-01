@@ -13,7 +13,7 @@ namespace HH.RMS.Service.Web.Model
 {
     public class CityModel
     {
-        public static List<CityModel> ListCache
+        public static List<CityModel> CurrentListCache
         {
             get
             {
@@ -39,8 +39,8 @@ namespace HH.RMS.Service.Web.Model
         public static JsonResult ToSelect(long id)
         {
             List<SelectModel> selectList = new List<SelectModel>();
-            var cityList = CityModel.ListCache.Where(m=>m.provinceId == id).ToList();
-            selectList.Add(new SelectModel() { text = "---请选择---", value = "-1" });
+            var cityList = CityModel.CurrentListCache.Where(m => m.provinceId == id).ToList();
+            selectList.Add(new SelectModel() { text = "---请选择---", value = "0" });
             cityList.ForEach(m => selectList.Add(new SelectModel() { text = m.name, value = m.id.ToString() }));
             JsonResult json = new JsonResult();
             json.Data = selectList;
