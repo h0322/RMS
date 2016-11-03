@@ -46,6 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DesignPattern\AbstrcatFactory.cs" />
+    <Compile Include="DesignPattern\Adaptor.cs" />
+    <Compile Include="DesignPattern\Builder.cs" />
+    <Compile Include="DesignPattern\Prototype.cs" />
+    <Compile Include="DesignPattern\Singleton.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

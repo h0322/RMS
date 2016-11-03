@@ -141,6 +141,7 @@
     <Compile Include="Wechat\Model\WechatResponseModel.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Wechat\WechatMessageService.cs" />
     <Compile Include="Wechat\WechatService.cs">
       <SubType>Code</SubType>
     </Compile>
