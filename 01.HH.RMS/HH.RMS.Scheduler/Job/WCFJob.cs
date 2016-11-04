@@ -82,7 +82,7 @@ namespace HH.RMS.Scheduler.Job
                 stopwatch.Stop();
                 resultType = ResultType.SystemError;
                 resultMessage = ex.Message;
-                log.Error("WCFJob.Execute", ex);
+                Config.log.Error("WCFJob.Execute", ex);
             }
             finally
             {

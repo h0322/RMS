@@ -24,7 +24,7 @@ using Nelibur.ObjectMapper;
 namespace HH.RMS.Service.Web
 {
     
-    public class AccountService : ServiceBase, IAccountService
+    public class AccountService :  IAccountService
     {
         //private IRepository<AccountEntity> _accountRepository;
         private IRepository<AccountEntity> _accountRepository;
@@ -80,7 +80,7 @@ namespace HH.RMS.Service.Web
             }
             catch (Exception ex)
             {
-                log.Error("AccountService.QueryPersonById", ex);
+                Config.log.Error("AccountService.QueryPersonById", ex);
                 return null;
             }
         }
@@ -111,7 +111,7 @@ namespace HH.RMS.Service.Web
             }
             catch (Exception ex)
             {
-                log.Error("AccountService.InsertAccount", ex);
+                Config.log.Error("AccountService.InsertAccount", ex);
                 return ResultType.SystemError;
             }
         }
@@ -172,7 +172,7 @@ namespace HH.RMS.Service.Web
             }
             catch (Exception ex)
             {
-                log.Error("AccountService.QueryAccountByRole", ex);
+                Config.log.Error("AccountService.QueryAccountByRole", ex);
                 return null;
             }
         }
@@ -221,7 +221,7 @@ namespace HH.RMS.Service.Web
             }
             catch (Exception ex)
             {
-                log.Error("AccountService.UpdateAccount", ex);
+                Config.log.Error("AccountService.UpdateAccount", ex);
                 return ResultType.SystemError;
             }
         }
@@ -242,7 +242,7 @@ namespace HH.RMS.Service.Web
             }
             catch (Exception ex)
             {
-                log.Error("AccountService.DeleteAccountMassById", ex);
+                Config.log.Error("AccountService.DeleteAccountMassById", ex);
                 return ResultType.SystemError;
             }
         }
@@ -258,7 +258,7 @@ namespace HH.RMS.Service.Web
             }
             catch (Exception ex)
             {
-                log.Error("AccountService.CountAccount", ex);
+                Config.log.Error("AccountService.CountAccount", ex);
                 return 0;
             }
  

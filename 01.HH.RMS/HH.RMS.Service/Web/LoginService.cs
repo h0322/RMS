@@ -18,7 +18,7 @@ using Nelibur.ObjectMapper;
 
 namespace HH.RMS.Service.Web
 {
-    public class LoginService : ServiceBase,ILoginService
+    public class LoginService : ILoginService
     {
         private IRepository<AccountEntity> _accountRepository;
         private IRepository<RoleEntity> _roleRepository;
@@ -87,7 +87,7 @@ namespace HH.RMS.Service.Web
             }
             catch (Exception ex)
             {
-                log.Error("LoginService.ResultModel", ex);
+                Config.log.Error("LoginService.ResultModel", ex);
                 result.resultType = ResultType.SystemError;
                 result.resultMsg = "Login Fail";
             }

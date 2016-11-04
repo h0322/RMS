@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HH.RMS.Service.Wechat.Model
+namespace HH.RMS.Wechat.Model
 {
     public class WechatResponseModel
     {

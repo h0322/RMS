@@ -15,7 +15,7 @@ using Nelibur.ObjectMapper;
 
 namespace HH.RMS.Service.Web
 {
-    public class RoleService : ServiceBase, IRoleService
+    public class RoleService :  IRoleService
     {
         private IRepository<RoleEntity> _roleRepository;
         private IRepository<MenuEntity> _menuRepository;
@@ -44,7 +44,7 @@ namespace HH.RMS.Service.Web
             }
             catch (Exception ex)
             {
-                log.Error("RoleService.QueryRoleToGrid", ex);
+                Config.log.Error("RoleService.QueryRoleToGrid", ex);
                 return null;
             }
         }
@@ -60,7 +60,7 @@ namespace HH.RMS.Service.Web
             }
             catch (Exception ex)
             {
-                log.Error("RoleService.QueryRoleList", ex);
+                Config.log.Error("RoleService.QueryRoleList", ex);
                 return null;
             }
         }
@@ -77,7 +77,7 @@ namespace HH.RMS.Service.Web
             }
             catch (Exception ex)
             {
-                log.Error("roleService.Inserrole", ex);
+                Config.log.Error("roleService.Inserrole", ex);
                 return ResultType.SystemError;
             }
 
@@ -97,7 +97,7 @@ namespace HH.RMS.Service.Web
             }
             catch (Exception ex)
             {
-                log.Error("roleService.Updaterole", ex);
+                Config.log.Error("roleService.Updaterole", ex);
                 return ResultType.SystemError;
             }
 
@@ -110,7 +110,7 @@ namespace HH.RMS.Service.Web
             }
             catch (Exception ex)
             {
-                log.Error("roleService.QueryRoleById", ex);
+                Config.log.Error("roleService.QueryRoleById", ex);
                 return null;
             }
         }
@@ -129,7 +129,7 @@ namespace HH.RMS.Service.Web
             }
             catch (Exception ex)
             {
-                log.Error("roleService.DeleteRoleByIds", ex);
+                Config.log.Error("roleService.DeleteRoleByIds", ex);
                 return ResultType.SystemError;
             }
         }
@@ -150,7 +150,7 @@ namespace HH.RMS.Service.Web
             }
             catch (Exception ex)
             {
-                log.Error("roleService.UpdateMenuRoleById", ex);
+                Config.log.Error("roleService.UpdateMenuRoleById", ex);
                 return ResultType.SystemError;
             }
         }
@@ -167,7 +167,7 @@ namespace HH.RMS.Service.Web
             }
             catch (Exception ex)
             {
-                log.Error("roleService.InsertMenuRole", ex);
+                Config.log.Error("roleService.InsertMenuRole", ex);
                 return ResultType.SystemError;
             }
         }
@@ -186,7 +186,7 @@ namespace HH.RMS.Service.Web
             }
             catch (Exception ex)
             {
-                log.Error("roleService.DeleteMenuRoleByIds", ex);
+                Config.log.Error("roleService.DeleteMenuRoleByIds", ex);
                 return ResultType.SystemError;
             }
         }
@@ -204,7 +204,7 @@ namespace HH.RMS.Service.Web
             }
             catch (Exception ex)
             {
-                log.Error("roleService.DeleteMenuRoleById", ex);
+                Config.log.Error("roleService.DeleteMenuRoleById", ex);
                 return ResultType.SystemError;
             }
         }
@@ -235,7 +235,7 @@ namespace HH.RMS.Service.Web
             }
             catch (Exception ex)
             {
-                log.Error("roleService.QueryMenuByRoleIdList", ex);
+                Config.log.Error("roleService.QueryMenuByRoleIdList", ex);
                 return null;
             }
         }

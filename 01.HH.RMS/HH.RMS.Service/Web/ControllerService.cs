@@ -7,11 +7,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
-namespace HH.RMS.Service
+namespace HH.RMS.Service.Web
 {
     public class ControllerService : Controller
     {
-        protected static readonly log4net.ILog _log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         public string searchText
         {
             get

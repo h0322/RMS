@@ -3,16 +3,18 @@ using System.Data;
 using System.Configuration;
 using System.Web;
 using System.Xml;
+using System.Xml.Serialization;
+using System.IO;
 
 namespace HH.RMS.Common.Utilities
 {
     /// <summary>
     ///XMlHelper 的摘要说明
     /// </summary>
-    public class XMlHelper
+    public class XMLHelper
     {
        
-        public XMlHelper()
+        public XMLHelper()
         {
         }
         /// <summary>
@@ -238,39 +240,76 @@ namespace HH.RMS.Common.Utilities
         }
 
 
-        //==================================================
-        //XmlFile.xml：
-        //<?xml version="1.0" encoding="utf-8"?>
-        //<Root />
-        //==================================================
-        //使用方法：
-        //string xml = Server.MapPath("XmlFile.xml");
-        //插入元素
-        //XmlHelper.Insert(xml, "/Root", "Studio", "", "");
-        //插入元素/属性
-        //XmlHelper.Insert(xml, "/Root/Studio", "Site", "Name", "小路工作室");
-        //XmlHelper.Insert(xml, "/Root/Studio", "Site", "Name", "丁香鱼工作室");
-        //XmlHelper.Insert(xml, "/Root/Studio", "Site", "Name", "谱天城工作室");
-        //XmlHelper.Insert(xml, "/Root/Studio/Site[@Name='谱天城工作室']", "Master", "", "红尘静思");
-        //插入属性
-        //XmlHelper.Insert(xml, "/Root/Studio/Site[@Name='小路工作室']", "", "Url", "http://www.wzlu.com/");
-        //XmlHelper.Insert(xml, "/Root/Studio/Site[@Name='丁香鱼工作室']", "", "Url", "http://www.luckfish.net/");
-        //XmlHelper.Insert(xml, "/Root/Studio/Site[@Name='谱天城工作室']", "", "Url", "http://www.putiancheng.com/");
-        //修改元素值
-        //XmlHelper.Update(xml, "/Root/Studio/Site[@Name='谱天城工作室']/Master", "", "RedDust");
-        //修改属性值
-        //XmlHelper.Update(xml, "/Root/Studio/Site[@Name='谱天城工作室']", "Url", "http://www.putiancheng.net/");
-        //XmlHelper.Update(xml, "/Root/Studio/Site[@Name='谱天城工作室']", "Name", "PuTianCheng Studio");
-        //读取元素值
-        //Response.Write("<div>" + XmlHelper.Read(xml, "/Root/Studio/Site/Master", "") + "</div>");
-        //读取属性值
-        //Response.Write("<div>" + XmlHelper.Read(xml, "/Root/Studio/Site", "Url") + "</div>");
-        //读取特定属性值
-        //Response.Write("<div>" + XmlHelper.Read(xml, "/Root/Studio/Site[@Name='丁香鱼工作室']", "Url") + "</div>");
-        //删除属性
-        //XmlHelper.Delete(xml, "/Root/Studio/Site[@Name='小路工作室']", "Url");
-        //删除元素
-        //XmlHelper.Delete(xml, "/Root/Studio", "");
+
+        #region 序列化
+        /// <summary>
+        /// 序列化
+        /// </summary>
+        /// <param name="type">类型</param>
+        /// <param name="obj">对象</param>
+        /// <returns></returns>
+        public static string Serializer(Type type, object obj)
+        {
+            MemoryStream Stream = new MemoryStream();
+            XmlSerializer xml = new XmlSerializer(type);
+            try
+            {
+                //序列化对象
+                xml.Serialize(Stream, obj);
+            }
+            catch (InvalidOperationException)
+            {
+                throw;
+            }
+            Stream.Position = 0;
+            StreamReader sr = new StreamReader(Stream);
+            string str = sr.ReadToEnd();
+
+            sr.Dispose();
+            Stream.Dispose();
+
+            return str;
+        }
+        #endregion
+
+
+        #region 反序列化
+        /// <summary>
+        /// 反序列化
+        /// </summary>
+        /// <param name="type">类型</param>
+        /// <param name="xml">XML字符串</param>
+        /// <returns></returns>
+        public static T Deserialize<T>(string xml)
+        {
+            try
+            {
+                using (StringReader sr = new StringReader(xml))
+                {
+                    XmlSerializer xmldes = new XmlSerializer(typeof(T));
+                    T t = (T)xmldes.Deserialize(sr);
+                    return t;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                return default(T);
+            }
+        }
+        /// <summary>
+        /// 反序列化
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="xml"></param>
+        /// <returns></returns>
+        public static T Deserialize<T>(Stream stream)
+        {
+            XmlSerializer xmldes = new XmlSerializer(typeof(T));
+            T t = (T)xmldes.Deserialize(stream);
+            return t;
+        }
+        #endregion
 
     }
 }

@@ -15,7 +15,7 @@ using Nelibur.ObjectMapper;
 
 namespace HH.RMS.Service.Web
 {
-    public class PersonService:ServiceBase,IPersonService
+    public class PersonService:IPersonService
     {
         private IRepository<PersonEntity> _personRepository;
         private IRepository<CountryEntity> _countryRepository;
@@ -77,7 +77,7 @@ namespace HH.RMS.Service.Web
             }
             catch (Exception ex)
             {
-                log.Error("PersonService.QueryPersonToGrid", ex);
+                Config.log.Error("PersonService.QueryPersonToGrid", ex);
                 return null;
             }
         }
@@ -94,7 +94,7 @@ namespace HH.RMS.Service.Web
             }
             catch (Exception ex)
             {
-                log.Error("PersonService.QueryPersonById", ex);
+                Config.log.Error("PersonService.QueryPersonById", ex);
             }
             return null;
         }
@@ -130,7 +130,7 @@ namespace HH.RMS.Service.Web
                 }
                 catch (Exception ex)
                 {
-                    log.Error("PersonService.CreatePersonAccount", ex);
+                    Config.log.Error("PersonService.CreatePersonAccount", ex);
                     return new ResultModel<ResultType>(ResultType.SystemError);
                 }
             }
@@ -150,7 +150,7 @@ namespace HH.RMS.Service.Web
             }
             catch (Exception ex)
             {
-                log.Error("PersonService.UpdatePerson", ex);
+                Config.log.Error("PersonService.UpdatePerson", ex);
                 return ResultType.SystemError;
             }
         }

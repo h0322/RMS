@@ -1,7 +1,8 @@
 ﻿using HH.RMS.Common.Constant;
 using HH.RMS.Common.Unity;
 using HH.RMS.Common.Utilities;
-using HH.RMS.Service.Wechat.Interface;
+using HH.RMS.Wechat.Interface;
+using HH.RMS.Wechat.Model;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,7 @@ namespace HH.RMS.Service.Wechat.Model
                 int remainSecond = 1000;
                 if (AccessTokenModel.Cache == null)
                 {
-                    IAccessTokenService service = UnityManager.instance.GetService<IAccessTokenService>();
+                    IAccessTokenManager service = UnityManager.instance.GetService<IAccessTokenManager>();
                     var result = service.GetAccessToken(new WechatRequestModel() { appId = Config.wechatAppId, appSecret = Config.wechatAppSecret, wechatUrlType = WechatUrlType.GetAccessToken });
                     CacheHelper.SetCache(Config.accessTokenCache, result.resultObj, TimeSpan.FromSeconds(result.resultObj.expires - remainSecond));
                     return result.resultObj;
@@ -28,7 +29,7 @@ namespace HH.RMS.Service.Wechat.Model
                 model = (AccessTokenModel)AccessTokenModel.Cache;
                 if (DateTime.Now > model.createTime.AddSeconds(model.expires - remainSecond))
                 {
-                    IAccessTokenService service = UnityManager.instance.GetService<IAccessTokenService>();
+                    IAccessTokenManager service = UnityManager.instance.GetService<IAccessTokenManager>();
                     var result = service.GetAccessToken(new WechatRequestModel() { appId = Config.wechatAppId, appSecret = Config.wechatAppSecret, wechatUrlType = WechatUrlType.GetAccessToken });
                     CacheHelper.SetCache(Config.accessTokenCache, result.resultObj, TimeSpan.FromSeconds(result.resultObj.expires - remainSecond));
                     return result.resultObj;

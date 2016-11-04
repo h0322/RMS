@@ -1,8 +1,9 @@
 ﻿using HH.RMS.Common.Constant;
 using HH.RMS.Common.Utilities;
 using HH.RMS.Service.Model;
-using HH.RMS.Service.Wechat.Interface;
 using HH.RMS.Service.Wechat.Model;
+using HH.RMS.Wechat.Interface;
+using HH.RMS.Wechat.Model;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -10,10 +11,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HH.RMS.Service.Wechat
+namespace HH.RMS.Wechat
 {
-    public class AccessTokenService :ServiceBase, IAccessTokenService
+    public class AccessTokenManager : IAccessTokenManager
     {
+        protected static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public ResultModel<AccessTokenModel> GetAccessToken(WechatRequestModel model)
         {
             try
@@ -34,7 +36,7 @@ namespace HH.RMS.Service.Wechat
             }
             catch (Exception ex)
             {
-                log.Error("AccessTokenService.GetAccessToken", ex);
+                Config.log.Error("AccessTokenService.GetAccessToken", ex);
                 return null;
             }
             //model.GetWechatUrl

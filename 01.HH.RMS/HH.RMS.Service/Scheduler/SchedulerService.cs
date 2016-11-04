@@ -16,7 +16,7 @@ using System.Linq.Expressions;
 
 namespace HH.RMS.Service.Web
 {
-    public class SchedulerService :ServiceBase, ISchedulerService
+    public class SchedulerService : ISchedulerService
     {
         private IRepository<SchedulerEntity> _schedulerRepository;
         public SchedulerService(IRepository<SchedulerEntity> schedulerRepository)
@@ -47,7 +47,7 @@ namespace HH.RMS.Service.Web
             }
             catch (Exception ex)
             {
-                log.Error("SchedulerService.QueryRunningScheduler", ex);
+                Config.log.Error("SchedulerService.QueryRunningScheduler", ex);
                 return null;
             }
         }
@@ -71,7 +71,7 @@ namespace HH.RMS.Service.Web
             }
             catch (Exception ex)
             {
-                log.Error("SchedulerService.DeleteSchedulerById", ex);
+                Config.log.Error("SchedulerService.DeleteSchedulerById", ex);
                 return ResultType.Fail;
             }
         }

@@ -14,7 +14,7 @@ using Nelibur.ObjectMapper;
 
 namespace HH.RMS.Service.Web
 {
-    public class CountryService : ServiceBase, ICountryService
+    public class CountryService :  ICountryService
     {
         private IRepository<CountryEntity> _countryRepository;
         public CountryService(IRepository<CountryEntity> countryRepository)
@@ -33,7 +33,7 @@ namespace HH.RMS.Service.Web
             }
             catch (Exception ex)
             {
-                log.Error("CountryService.QueryCountryList", ex);
+                Config.log.Error("CountryService.QueryCountryList", ex);
                 return null;
             }
         }

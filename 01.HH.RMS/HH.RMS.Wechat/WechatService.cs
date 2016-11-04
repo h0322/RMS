@@ -1,7 +1,7 @@
 ﻿using HH.RMS.Common.Constant;
 using HH.RMS.Common.Utilities;
 using HH.RMS.Service.Model;
-using HH.RMS.Service.Wechat.Interface;
+using HH.RMS.Wechat.Interface;
 using HH.RMS.Service.Wechat.Model;
 using System;
 using System.Collections.Generic;
@@ -9,11 +9,13 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using HH.RMS.Wechat.Model;
 
-namespace HH.RMS.Service.Wechat
+namespace HH.RMS.Wechat
 {
-    public class WechatService:ServiceBase,IWechatService
+    public class WechatService
     {
+        protected static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public ResultModel<WechatResponseModel> PostData(WechatRequestModel model)
         {
             try
@@ -21,7 +23,7 @@ namespace HH.RMS.Service.Wechat
                 string url = model.GetWechatUrl();
                 if (string.IsNullOrEmpty(url))
                 {
-                    log.Info("WechatService.PostToWechat:功能不存在("+model.wechatUrlType.ToString()+")");
+                    Config.log.Info("WechatService.PostToWechat:功能不存在("+model.wechatUrlType.ToString()+")");
                     return new ResultModel<WechatResponseModel>(ResultType.NotExists, "该功能不存在");
                 }
                 string result = NetHelper.Post(url,model.data);
@@ -29,7 +31,7 @@ namespace HH.RMS.Service.Wechat
             }
             catch (Exception ex)
             {
-                log.Error("WechatService.PostToWechat", ex);
+                Config.log.Error("WechatService.PostToWechat", ex);
                 return null;
             }
         }
@@ -40,7 +42,7 @@ namespace HH.RMS.Service.Wechat
                 string url = model.GetWechatUrl();
                 if (string.IsNullOrEmpty(url))
                 {
-                    log.Info("WechatService.PostToWechat:功能不存在(" + model.wechatUrlType.ToString() + ")");
+                    Config.log.Info("WechatService.PostToWechat:功能不存在(" + model.wechatUrlType.ToString() + ")");
                     return new ResultModel<WechatResponseModel>(ResultType.NotExists, "该功能不存在");
                 }
                 string accessToken = AccessTokenModel.Cache.accessToken;
@@ -49,14 +51,14 @@ namespace HH.RMS.Service.Wechat
             }
             catch (Exception ex)
             {
-                log.Error("WechatService.PostToWechat", ex);
+                Config.log.Error("WechatService.PostToWechat", ex);
                 return null;
             }
         }
         public void GetOpenIdTest(string a, int b, DateTime date)
         {
             Thread.Sleep(10000);
-            log.Info("This is a Job Test:A:" + a + ";B:" + b+";DateTime:"+date);
+            Config.log.Info("This is a Job Test:A:" + a + ";B:" + b+";DateTime:"+date);
             return;
  
         }

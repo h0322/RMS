@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace HH.RMS.Service.Web
 {
-    public class MenuService : ServiceBase, IMenuService
+    public class MenuService :  IMenuService
     {
         private IRepository<MenuEntity> _menuRepository;
         private IRepository<MenuRoleEntity> _menuRoleRepository;
@@ -48,7 +48,7 @@ namespace HH.RMS.Service.Web
             }
             catch (Exception ex)
             {
-                log.Error("MenuService.QueryMenuALL", ex);
+                Config.log.Error("MenuService.QueryMenuALL", ex);
                 return null;
             }
         }

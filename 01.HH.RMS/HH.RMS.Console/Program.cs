@@ -1,4 +1,5 @@
 ﻿using HH.RMS.Console.DesignPattern;
+using HH.RMS.Console.Wechat;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -15,7 +16,8 @@ namespace HH.RMS.Consoles
     {
         static void Main(string[] args)
         {
-            KFC kfc = new KFC();
+            //SendMessage send1 = new SendMessage();
+            SendMessageDefine send1 = new SendMessageDefine();
             System.Console.ReadLine();
         }
 
