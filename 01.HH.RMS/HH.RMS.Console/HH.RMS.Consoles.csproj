@@ -46,12 +46,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DesignPattern\AbstrcatFactory.cs" />
+    <Compile Include="DesignPattern\Adaptor.cs" />
+    <Compile Include="DesignPattern\Builder.cs" />
+    <Compile Include="DesignPattern\FactoryMethod.cs" />
+    <Compile Include="DesignPattern\Prototype.cs" />
+    <Compile Include="DesignPattern\Singleton.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Wechat\SendMessage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HH.RMS.Wechat\HH.RMS.Wechat.csproj">
+      <Project>{5388dd3e-77c9-4f3d-bd2e-4bd8d2847762}</Project>
+      <Name>HH.RMS.Wechat</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

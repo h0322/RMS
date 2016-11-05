@@ -24,7 +24,7 @@ using Nelibur.ObjectMapper;
 namespace HH.RMS.Service.Web
 {
     
-    public class AccountService : ServiceBase, IAccountService
+    public class AccountService :  IAccountService
     {
         //private IRepository<AccountEntity> _accountRepository;
         private IRepository<AccountEntity> _accountRepository;
@@ -35,15 +35,18 @@ namespace HH.RMS.Service.Web
         public AccountService(IRepository<LevelEntity> levelRepository,IRepository<RoleEntity> roleRepository, IRepository<AccountRoleEntity> accountRoleRepository, IRepository<AccountEntity> accountRepository, IRepository<PersonEntity> personRepository)
         {
             _roleRepository = roleRepository;
-            _roleRepository.userId = AccountModel.Session.id;
             _accountRoleRepository = accountRoleRepository;
-            _accountRoleRepository.userId = AccountModel.Session.id;
             _accountRepository = accountRepository;
-            _accountRepository.userId = AccountModel.Session.id;
             _personRepository = personRepository;
-            _personRepository.userId = AccountModel.Session.id;
             _levelRepository = levelRepository;
-            _levelRepository.userId = AccountModel.Session.id;
+            if (AccountModel.CurrentSession != null)
+            {
+                _roleRepository.userId = AccountModel.CurrentSession.id;
+                _accountRoleRepository.userId = AccountModel.CurrentSession.id;
+                _accountRepository.userId = AccountModel.CurrentSession.id;
+                _personRepository.userId = AccountModel.CurrentSession.id;
+                _levelRepository.userId = AccountModel.CurrentSession.id;
+            }
         }
         public AccountModel QueryAccountById(long id)
         {
@@ -52,28 +55,32 @@ namespace HH.RMS.Service.Web
                 using (var db = new ApplicationDbContext())
                 {
                     var q = from a in _accountRepository.Query(db)
-                            join b in _accountRoleRepository.Query(db) on a.id equals b.accountId
-                            join c in _roleRepository.Query(db) on b.roleId equals c.id
-                            join d in _levelRepository.Query(db) on a.levelId equals d.id
+                            join b in _accountRoleRepository.Query(db) on a.id equals b.accountId into t1
+                            from tt1 in t1.DefaultIfEmpty()
+                            join c in _levelRepository.Query(db) on a.levelId equals c.id into t2
+                            from tt2 in t2.DefaultIfEmpty()
                             where a.id == id
                             select new AccountModel
                             {
                                 id = a.id,
                                 accountName = a.accountName,
+                                email = a.email,
                                 score = a.score,
                                 amount = a.amount,
-                                statusType = a.status,
+                                status = a.status,
                                 remark = a.remark,
-                                person = new PersonModel() { id = a.personId },
-                                role = new RoleModel() { id = b.roleId, roleName = c.roleName },
-                                level = new LevelModel() { id = d.id, levelName = d.levelName, levelOrder = d.levelOrder }
+                                personId =  a.personId,
+                                levelId = a.levelId,
+                                roleId = tt1 == null ? 0 : tt1.roleId,
+                                levelName = tt2 == null ? "" : tt2.levelName, 
+                                levelOrder = tt2 == null ? 0 : tt2.levelOrder
                             };
                     return q.FirstOrDefault();
                 }
             }
             catch (Exception ex)
             {
-                log.Error("AccountService.QueryPersonById", ex);
+                Config.log.Error("AccountService.QueryPersonById", ex);
                 return null;
             }
         }
@@ -81,27 +88,30 @@ namespace HH.RMS.Service.Web
         {
             try
             {
-                AccountEntity account = new AccountEntity()
-                {
-                    accountName = model.accountName,
-                    password = model.password,
-                    levelId = model.level.id,
-                    score = model.score,
-                    amount = model.amount,
-                    status = model.statusType,
-                    remark = model.remark
-                };
-
+                var account = AccountModel.EntityMapper<AccountEntity>(model);
                 using (var db = new ApplicationDbContext())
                 {
-                    _accountRepository.Insert(db, account);
+                    int result = _accountRepository.Insert(db, account);
+                    if(result>0)
+                    {
+                        var accountRoleEntity = new AccountRoleEntity() { accountId = account.id, roleId = model.roleId };
+                        result = _accountRoleRepository.Insert(db, accountRoleEntity);
+                        if (result > 0)
+                        {
+                            return ResultType.Success;
+                        }
+                        else
+                        {
+                            return ResultType.Fail;
+                        }
+                    }
                 }
 
                 return ResultType.Success;
             }
             catch (Exception ex)
             {
-                log.Error("AccountService.InsertAccount", ex);
+                Config.log.Error("AccountService.InsertAccount", ex);
                 return ResultType.SystemError;
             }
         }
@@ -109,32 +119,43 @@ namespace HH.RMS.Service.Web
 
         public GridModel QueryAccountToGridByRole(PagerModel pager = null)
         {
-            int roleOrder = AccountModel.Session.role.roleOrder;
+            int roleOrder = AccountModel.CurrentSession.roleOrder;
             try
             {
                 using (var db = new ApplicationDbContext())
                 {
                     var q = (from a in _accountRepository.Query(db)
-                            join b in _accountRoleRepository.Query(db) on a.id equals b.id
-                            join c in _roleRepository.Query(db) on b.roleId equals c.id
-                            join d in _personRepository.Query(db) on a.personId equals d.id
-                            join e in _levelRepository.Query(db) on a.levelId equals e.id
-                            where c.roleOrder >= roleOrder
-                            && (string.IsNullOrEmpty(pager.searchText) || a.accountName.Contains(pager.searchText))
+                            join b in _personRepository.Query(db) on a.personId equals b.id
+                            join c in _accountRoleRepository.Query(db) on a.id equals c.accountId into t1
+                            from tt1 in t1.DefaultIfEmpty() 
+                            join d in _levelRepository.Query(db) on a.levelId equals d.id into t2
+                            from tt2 in t2.DefaultIfEmpty()
+                            where  (string.IsNullOrEmpty(pager.searchText) || a.accountName.Contains(pager.searchText))
                             && (pager.searchStatus == 0 || a.status == (AccountStatusType)pager.searchStatus)
                             && (pager.searchDateFrom == null || a.createTime > pager.searchDateFrom)
                             && (pager.searchDateTo == null || a.createTime < pager.searchDateTo)
-                            && (pager.searchRole == 0 || b.roleId == pager.searchRole)
+                            && (pager.searchRole == 0 || tt1.roleId == pager.searchRole)
+                            && (pager.personId == 0 || a.personId == pager.personId)
                             select new AccountModel()
                             {
                                 id = a.id,
                                 accountName = a.accountName,
-                                statusType = a.status,
+                                email = a.email,
+                                status = a.status,
                                 score = a.score,
                                 amount = a.amount,
                                 createTime = a.createTime,
-                                person = new PersonModel() { id = d.id, birthday = d.birthday, cityId = d.cityId, countryId = d.countryId, createTime = d.createTime, name = d.name, nickName = d.nickName, provinceId = d.provinceId, sex = d.sex },
-                                level = new LevelModel() { id = d.id, levelName = e.levelName, levelOrder = e.levelOrder }
+                                personId = b.id, 
+                                birthday = b.birthday, 
+                                cityId = b.cityId, 
+                                countryId = b.countryId, 
+                                name = b.name, 
+                                nickName = b.nickName, 
+                                provinceId = b.provinceId, 
+                                sex = b.sex,
+                                levelId = a.id,
+                                levelName = tt1 == null ? "" : tt2.levelName,
+                                levelOrder = tt2 == null ? 0 : tt2.levelOrder
                             });
                     IQueryable<AccountModel> qPager = null;
                     if (pager != null)
@@ -151,54 +172,46 @@ namespace HH.RMS.Service.Web
             }
             catch (Exception ex)
             {
-                log.Error("AccountService.QueryAccountByRole", ex);
+                Config.log.Error("AccountService.QueryAccountByRole", ex);
                 return null;
             }
         }
-
-        //public AccountListModel QueryAccountListByPersonId(long id)
-        //{
-        //    try
-        //    {
-        //        using (var db = new ApplicationDbContext())
-        //        {
-        //            var entity = _accountRepository.Query(db).Where(m => m.personId == id);
-        //            var q = from a in _accountRepository.Query(db)
-        //                    where a.personId == id
-        //                    select new AccountModel()
-        //                    {
-        //                        id = a.id,
-        //                        accountName = a.accountName,
-        //                        statusType = a.status,
-        //                        score = a.score,
-        //                        amount = a.amount,
-        //                        createTime = a.createTime,
-        //                    };
-        //            AccountModel
-        //            AccountListModel list = new AccountListModel()
-        //            {
-        //                accountList = q.ToList()
-        //            };
-        //            return list;
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        log.Error("AccountService.QueryAccountListByPersonId", ex);
-        //        return null;
-        //    }
-        //}
         public ResultType UpdateAccount(AccountModel model)
         {
             try
             {
                 var entity = AccountModel.EntityMapper<AccountEntity>(model);
+                
                 using (var db = new ApplicationDbContext())
                 {
-                    int result = _accountRepository.Update(db, entity);
+                    int result = _accountRepository.Update(db, m => new AccountEntity()
+                    {
+                        amount = model.amount,
+                        score = model.score,
+                        levelId = model.levelId,
+                        status = model.status,
+                        updateBy = AccountModel.CurrentSession.id,
+                        updateTime = DateTime.Now
+                    }, m => m.id == model.id);
                     if (result > 0)
                     {
-                        return ResultType.Success;
+                        result = _accountRoleRepository.Update(db, m => new AccountRoleEntity()
+                        {
+                            roleId = model.roleId,
+                            updateBy = AccountModel.CurrentSession.id,
+                            updateTime = DateTime.Now
+                        }, m => m.accountId == model.id);
+                        if (result > 0)
+                        {
+                            return ResultType.Success;
+                        }
+                        var accountRoleEntity = new AccountRoleEntity() { accountId = model.id, roleId = model.roleId };
+                        result = _accountRoleRepository.Insert(db, accountRoleEntity);
+                        if(result>0)
+                        {
+                            return ResultType.Success;
+                        }
+                        return ResultType.Fail;
                     }
                     else
                     {
@@ -208,7 +221,7 @@ namespace HH.RMS.Service.Web
             }
             catch (Exception ex)
             {
-                log.Error("AccountService.UpdateAccount", ex);
+                Config.log.Error("AccountService.UpdateAccount", ex);
                 return ResultType.SystemError;
             }
         }
@@ -229,7 +242,7 @@ namespace HH.RMS.Service.Web
             }
             catch (Exception ex)
             {
-                log.Error("AccountService.DeleteAccountMassById", ex);
+                Config.log.Error("AccountService.DeleteAccountMassById", ex);
                 return ResultType.SystemError;
             }
         }
@@ -245,7 +258,7 @@ namespace HH.RMS.Service.Web
             }
             catch (Exception ex)
             {
-                log.Error("AccountService.CountAccount", ex);
+                Config.log.Error("AccountService.CountAccount", ex);
                 return 0;
             }
  

@@ -57,6 +57,7 @@
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Transactions" />
@@ -81,7 +82,7 @@
     <Compile Include="Web\AddressService.cs" />
     <Compile Include="Web\CountryService.cs" />
     <Compile Include="Web\CityService.cs" />
-    <Compile Include="ControllerService.cs" />
+    <Compile Include="Web\ControllerService.cs" />
     <Compile Include="Web\Interface\IAccountService.cs" />
     <Compile Include="Web\Interface\ICityService.cs" />
     <Compile Include="Scheduler\Interface\IJobService.cs" />
@@ -98,6 +99,7 @@
     <Compile Include="Web\LoginService.cs" />
     <Compile Include="Web\MenuService.cs" />
     <Compile Include="Web\Model\AccountModel.cs" />
+    <Compile Include="Web\Model\AccountRoleModel.cs" />
     <Compile Include="Web\Model\CityModel.cs" />
     <Compile Include="Web\Model\CommandModel.cs" />
     <Compile Include="Web\Model\ConditionBuilderModel.cs" />
@@ -119,29 +121,7 @@
     <Compile Include="Web\ProvinceService.cs" />
     <Compile Include="Web\RoleService.cs" />
     <Compile Include="Scheduler\SchedulerService.cs" />
-    <Compile Include="ServiceBase.cs" />
     <Compile Include="UnityService.cs" />
-    <Compile Include="Wechat\AccessTokenService.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Wechat\Interface\IAccessTokenService.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Wechat\Interface\IWechatService.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Wechat\Model\AccessTokenModel.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Wechat\Model\WechatRequestModel.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Wechat\Model\WechatResponseModel.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Wechat\WechatService.cs">
-      <SubType>Code</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HH.RMS.Common\HH.RMS.Common.csproj">
@@ -163,7 +143,10 @@
     <None Include="Web\Model\packages.config" />
     <None Include="Web\packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Wechat\Interface\" />
+    <Folder Include="Wechat\Model\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

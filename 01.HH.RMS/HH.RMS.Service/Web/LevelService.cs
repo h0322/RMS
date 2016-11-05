@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace HH.RMS.Service.Web
 {
-    public class LevelService : ServiceBase, ILevelService
+    public class LevelService :  ILevelService
     {
         private IRepository<LevelEntity> _levelRepository;
         public LevelService(IRepository<LevelEntity> levelRepository)
@@ -29,18 +29,18 @@ namespace HH.RMS.Service.Web
                     List<LevelModel> list = null;
                     if (pager != null)
                     {
-                        list = LevelModel.ListCache.OrderByDescending(m => m.id).Take(pager.rows * pager.page).Skip(pager.rows * (pager.page - 1)).ToList();
+                        list = LevelModel.CurrentListCache.OrderByDescending(m => m.id).Take(pager.rows * pager.page).Skip(pager.rows * (pager.page - 1)).ToList();
                     }
                     GridModel gridModel = new GridModel()
                     {
                         rows = list,
-                        total = LevelModel.ListCache.Count()
+                        total = LevelModel.CurrentListCache.Count()
                     };
                     return gridModel;
             }
             catch (Exception ex)
             {
-                log.Error("LevelService.QueryLevelToGrid", ex);
+                Config.log.Error("LevelService.QueryLevelToGrid", ex);
                 return null;
             }
         }
@@ -56,7 +56,7 @@ namespace HH.RMS.Service.Web
             }
             catch (Exception ex)
             {
-                log.Error("LevelService.QueryLevelList", ex);
+                Config.log.Error("LevelService.QueryLevelList", ex);
                 return null;
             }
         }
@@ -73,7 +73,7 @@ namespace HH.RMS.Service.Web
             }
             catch (Exception ex)
             {
-                log.Error("LevelService.InserLevel", ex);
+                Config.log.Error("LevelService.InserLevel", ex);
                 return ResultType.SystemError;
             }
  
@@ -93,7 +93,7 @@ namespace HH.RMS.Service.Web
             }
             catch (Exception ex)
             {
-                log.Error("LevelService.UpdateLevel", ex);
+                Config.log.Error("LevelService.UpdateLevel", ex);
                 return ResultType.SystemError;
             }
 
@@ -102,11 +102,11 @@ namespace HH.RMS.Service.Web
         {
             try
             {
-                return LevelModel.ListCache.Where(m => m.id == id).FirstOrDefault();
+                return LevelModel.CurrentListCache.Where(m => m.id == id).FirstOrDefault();
             }
             catch (Exception ex)
             {
-                log.Error("levelService.QueryLevelById", ex);
+                Config.log.Error("levelService.QueryLevelById", ex);
                 return null;
             }
         }
@@ -124,7 +124,7 @@ namespace HH.RMS.Service.Web
             }
             catch (Exception ex)
             {
-                log.Error("levelService.DeleteLevelById", ex);
+                Config.log.Error("levelService.DeleteLevelById", ex);
                 return ResultType.SystemError;
             }
         }

@@ -30,7 +30,7 @@ namespace HH.RMS.MVC
         protected void Application_Error(object sender, EventArgs e)
         {
             var ex = Server.GetLastError().GetBaseException();
-            log.Error("Application.Error:"+Request.Url, ex);
+            Config.log.Error("Application.Error:"+Request.Url, ex);
             //Response.Redirect("/Error.html");
         }
     }

@@ -40,12 +40,11 @@ namespace HH.RMS.Scheduler
                 var schedulerList = _schedulerService.QueryRunningScheduler();
                 foreach (var scheduler in schedulerList)
                 {
-                    _schedulerService.DeleteSchedulerById(scheduler.schedulerId);
                     Console.WriteLine(scheduler.scheduleName + "Scheduler Exectue...");
                     var jobList = _jobService.QueryRunningJobBySchedulerId(scheduler.schedulerId);
                     if (jobList == null)
                     {
-                        _log.Info("SchedulerManager.Initialize: JobList Is Null;schedulerId:" + scheduler.schedulerId);
+                        Config.log.Info("SchedulerManager.Initialize: JobList Is Null;schedulerId:" + scheduler.schedulerId);
                         continue;
                     }
                     foreach (var job in jobList)
@@ -53,7 +52,7 @@ namespace HH.RMS.Scheduler
                         var jobAssembly = Assembly.GetExecutingAssembly().GetType(job.jobGroup,true,true);
                         if (jobAssembly == null)
                         {
-                            _log.Info("SchedulerManager.Initialize:JobAssembly Is Null;JobId:"+job.jobId);
+                            Config.log.Info("SchedulerManager.Initialize:JobAssembly Is Null;JobId:"+job.id);
                             continue;
                         }
                         IJobDetail jobDetail = JobBuilder.Create(jobAssembly).WithDescription(job.jobDescription).WithIdentity(job.jobName, job.jobGroup).Build();
@@ -61,7 +60,7 @@ namespace HH.RMS.Scheduler
                         ICronTrigger trigger = (ICronTrigger)TriggerBuilder.Create().WithDescription(scheduler.scheduleDescription)
 .WithIdentity(job.jobName, scheduler.scheduleName)
 .WithCronSchedule(scheduler.cronExpression, x => x.WithMisfireHandlingInstructionIgnoreMisfires()).Build();
-                        jobDetail.JobDataMap.Put(Config.jobId, job.jobId);
+                        jobDetail.JobDataMap.Put(Config.jobId, job.id);
                         jobDetail.JobDataMap.Put(Config.schedulerId, job.schedulerId);
                         switch (job.jobType)
                         {
@@ -91,7 +90,7 @@ namespace HH.RMS.Scheduler
             }
             catch(Exception ex)
             {
-                _log.Error("SchedulerManager.Initialize", ex);
+                Config.log.Error("SchedulerManager.Initialize", ex);
                 return;
             }
         }
@@ -141,7 +140,7 @@ namespace HH.RMS.Scheduler
             }
             catch (Exception ex)
             {
-                _log.Error("SchedulerManager.Start", ex);
+                Config.log.Error("SchedulerManager.Start", ex);
             }
 
         }
@@ -152,7 +151,7 @@ namespace HH.RMS.Scheduler
             var type = Assembly.GetExecutingAssembly().GetType(entity.job.jobAssembly, false, true);
             if (type == null)
             {
-                _log.Debug("SchedulerManager.Start:Job " + entity.job.jobAssembly + " Is Not Exists");
+                Config.log.Debug("SchedulerManager.Start:Job " + entity.job.jobAssembly + " Is Not Exists");
                 return ResultType.NotExists;
             }
             try
@@ -178,7 +177,7 @@ namespace HH.RMS.Scheduler
             }
             catch (Exception ex)
             {
-                _log.Error("SchedulerHelper.ExecuteScheduler", ex);
+                Config.log.Error("SchedulerHelper.ExecuteScheduler", ex);
                 return ResultType.SystemError;
             }
         }
@@ -193,7 +192,7 @@ namespace HH.RMS.Scheduler
             }
             catch (Exception ex)
             {
-                _log.Error("SchedulerManager.SimpleSchedule", ex);
+                Config.log.Error("SchedulerManager.SimpleSchedule", ex);
                 return ResultType.SystemError;
             }
         }

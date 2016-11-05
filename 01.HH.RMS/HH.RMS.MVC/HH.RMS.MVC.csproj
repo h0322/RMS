@@ -574,9 +574,6 @@
     <Content Include="Views\Account\_UpdatePartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Person\_CreateAccountPartial.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\Level\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>

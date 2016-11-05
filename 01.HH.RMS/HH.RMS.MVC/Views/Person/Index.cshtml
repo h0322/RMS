@@ -29,7 +29,7 @@
                 pageList: [5, 10, 20, 50],   //设置分页大小
                 checkbox: true,
                 columns: [[
-                    { field: 'personId', checkbox: true },
+                    { field: 'id', checkbox: true },
                     {
                         field: 'name', title: '姓名', width: 120, align: 'center'
                     },
@@ -55,7 +55,7 @@
                     },
                     {
                         field: 'edit', title: '操作', width: 100, align: 'center', formatter: function (value, row) {
-                            return "<a style='color:blue;cursor:pointer' onclick='javascript:edit(" + row.personId + ")'>编辑</a>&nbsp;&nbsp;<a style='color:blue;cursor:pointer' onclick='javascript:ManageAccount(" + row.personId + ")'>账号管理</a>";
+                            return "<a style='color:blue;cursor:pointer' onclick='javascript:edit(" + row.personId + ")'>编辑</a>&nbsp;&nbsp;<a style='color:blue;cursor:pointer' onclick='javascript:ManageAccount(" + row.id + ")'>账号管理</a>";
                         }
                     }
                 ]] ,
@@ -169,7 +169,7 @@
 
 <div id="toolbar" style="padding:5px;height:auto; display:none">
     <div>
-        <a href="#" class="easyui-linkbutton" iconcls="icon-add" plain="true" onclick="Add()">添加</a> &nbsp;
+        <a href="#" class="easyui-linkbutton" iconcls="icon-add" plain="true" onclick="Add()">添加</a>  &nbsp;
         <a href="#" class="easyui-linkbutton" iconcls="icon-remove" plain="true" onclick="del()">删除</a> &nbsp;
         From: <input class="easyui-datebox" style="width:80px" id="date_from">
         To: <input class="easyui-datebox" style="width:80px" id="date_to">

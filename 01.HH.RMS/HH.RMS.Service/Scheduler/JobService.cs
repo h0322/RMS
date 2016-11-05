@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace HH.RMS.Service.Web
 {
-    public class JobService : ServiceBase, IJobService
+    public class JobService :  IJobService
     {
         private IRepository<JobEntity> _jobRepository;
         private IRepository<JobParameterEntity> _jobParameterRepository;
@@ -37,7 +37,7 @@ namespace HH.RMS.Service.Web
             }
             catch (Exception ex)
             {
-                log.Error("JobService.QueryRunningJobBy", ex);
+                Config.log.Error("JobService.QueryRunningJobBy", ex);
                 return null;
             }
         }
@@ -54,7 +54,7 @@ namespace HH.RMS.Service.Web
             }
             catch (Exception ex)
             {
-                log.Error("JobService.QueryRunningJobBySchedulerId", ex);
+                Config.log.Error("JobService.QueryRunningJobBySchedulerId", ex);
                 return null;
             }
         }
@@ -71,7 +71,7 @@ namespace HH.RMS.Service.Web
             }
             catch (Exception ex)
             {
-                log.Error("JobService.QueryJobParameterByJobId", ex);
+                Config.log.Error("JobService.QueryJobParameterByJobId", ex);
                 return null;
             }
         }
@@ -88,7 +88,7 @@ namespace HH.RMS.Service.Web
             }
             catch (Exception ex)
             {
-                log.Error("JobService.InsertJobLog", ex);
+                Config.log.Error("JobService.InsertJobLog", ex);
                 return ResultType.SystemError;
             }
         }

@@ -40,7 +40,7 @@ namespace HH.RMS.MVC.Controllers
             ResultModel<AccountModel> result = _loginService.UserLogin(model.accountName, model.password);
             if (result.resultType == ResultType.Success)
             {
-                if (result.resultObj.statusType == AccountStatusType.Normal)
+                if (result.resultObj.status == AccountStatusType.Normal)
                 {
                     FormsAuthentication.SetAuthCookie(result.resultObj.accountName, true);
                     FormsAuthenticationTicket ticket = new FormsAuthenticationTicket
@@ -49,7 +49,7 @@ namespace HH.RMS.MVC.Controllers
                        DateTime.Now,
                        DateTime.Now.AddMinutes(20),
                        true,
-                       result.resultObj.role.id.ToString(),
+                       result.resultObj.roleId.ToString(),
                        "/"
                    );
                     SessionHelper.SetSession(Config.loginSession, result.resultObj);
@@ -58,9 +58,6 @@ namespace HH.RMS.MVC.Controllers
             }
             return Json(new { msg = ResultType.Fail });
         }
-
-
-
         public ActionResult Exit()
         {
             _loginService.ExitLogin();

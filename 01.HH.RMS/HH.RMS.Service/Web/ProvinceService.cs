@@ -14,7 +14,7 @@ using Nelibur.ObjectMapper;
 
 namespace HH.RMS.Service.Web
 {
-    public class ProvinceService : ServiceBase, IProvinceService
+    public class ProvinceService :  IProvinceService
     {
         private IRepository<ProvinceEntity> _provinceRepository;
         public ProvinceService(IRepository<ProvinceEntity> provinceRepository)
@@ -35,7 +35,7 @@ namespace HH.RMS.Service.Web
             }
             catch (Exception ex)
             {
-                log.Error("ProvinceService.QueryProvinceList", ex);
+                Config.log.Error("ProvinceService.QueryProvinceList", ex);
                 return null;
             }
         }

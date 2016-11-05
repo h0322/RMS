@@ -14,7 +14,7 @@ namespace HH.RMS.HttpServer
         public void Start()
         {
             listener = new HttpListener();
-            listener.Prefixes.Add("http://localhost:8888/");
+            listener.Prefixes.Add("www.qq.com");
             listener.AuthenticationSchemes = AuthenticationSchemes.IntegratedWindowsAuthentication | AuthenticationSchemes.Anonymous;
 
             listener.Start();

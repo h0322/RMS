@@ -21,7 +21,7 @@ namespace HH.RMS.Service.Web.Model
                 if (SessionHelper.GetSession(Config.menuRoleSession) == null)
                 {
                     IRoleService roleService = UnityManager.instance.GetService<IRoleService>();
-                    SessionHelper.SetSession(Config.menuRoleSession, roleService.QueryMenuByRoleIdList(AccountModel.Session.role.id));
+                    SessionHelper.SetSession(Config.menuRoleSession, roleService.QueryMenuByRoleIdList(AccountModel.CurrentSession.roleId));
                 }
                 return (List<MenuRoleModel>)SessionHelper.GetSession(Config.menuRoleSession);
             }

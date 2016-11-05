@@ -15,7 +15,7 @@ using Nelibur.ObjectMapper;
 
 namespace HH.RMS.Service.Web
 {
-    public class PersonService:ServiceBase,IPersonService
+    public class PersonService:IPersonService
     {
         private IRepository<PersonEntity> _personRepository;
         private IRepository<CountryEntity> _countryRepository;
@@ -41,7 +41,7 @@ namespace HH.RMS.Service.Web
                              join b in _countryRepository.Query(db) on a.countryId equals b.id
                              join c in _provinceRepository.Query(db) on a.provinceId equals c.id
                              join d in _cityRepository.Query(db) on a.id equals d.id
-                             where (string.IsNullOrEmpty(pager.searchText) || a.name.Contains(pager.searchText) || a.mobile.Contains(pager.searchText) || a.email.Contains(pager.searchText))
+                             where (string.IsNullOrEmpty(pager.searchText) || a.name.Contains(pager.searchText) || a.mobile.Contains(pager.searchText))
                                 && (pager.searchDateFrom == null || a.createTime > pager.searchDateFrom)
                                 && (pager.searchDateTo == null || a.createTime < pager.searchDateTo)
                              select new PersonModel
@@ -49,7 +49,6 @@ namespace HH.RMS.Service.Web
                                 id = a.id,
                                 birthday = a.birthday,
                                 mobile = a.mobile,
-                                email = a.email,
                                 cityId = d.id,
                                 cityName = d.name,
                                 countryId = a.countryId,
@@ -78,7 +77,7 @@ namespace HH.RMS.Service.Web
             }
             catch (Exception ex)
             {
-                log.Error("PersonService.QueryPersonToGrid", ex);
+                Config.log.Error("PersonService.QueryPersonToGrid", ex);
                 return null;
             }
         }
@@ -95,7 +94,7 @@ namespace HH.RMS.Service.Web
             }
             catch (Exception ex)
             {
-                log.Error("PersonService.QueryPersonById", ex);
+                Config.log.Error("PersonService.QueryPersonById", ex);
             }
             return null;
         }
@@ -108,7 +107,7 @@ namespace HH.RMS.Service.Web
                 {
                     using (TransactionScope transaction = new TransactionScope())
                     {
-                        var person = TinyMapper.Map<PersonEntity>(model.person);
+                        var person = TinyMapper.Map<PersonEntity>(model);
                         _personRepository.Insert(db, person);
                         if (person.id < 1)
                         {
@@ -120,7 +119,7 @@ namespace HH.RMS.Service.Web
                         {
                             return new ResultModel<ResultType>(ResultType.NotExecute, "Account Insert Fail");
                         }
-                        AccountRoleEntity accountRole = TinyMapper.Map<AccountRoleEntity>(model.role);
+                        AccountRoleEntity accountRole = TinyMapper.Map<AccountRoleEntity>(model);
                         _accountRoleRepository.Insert(db, accountRole);
                         if (accountRole.id < 1)
                         {
@@ -131,7 +130,7 @@ namespace HH.RMS.Service.Web
                 }
                 catch (Exception ex)
                 {
-                    log.Error("PersonService.CreatePersonAccount", ex);
+                    Config.log.Error("PersonService.CreatePersonAccount", ex);
                     return new ResultModel<ResultType>(ResultType.SystemError);
                 }
             }
@@ -151,7 +150,7 @@ namespace HH.RMS.Service.Web
             }
             catch (Exception ex)
             {
-                log.Error("PersonService.UpdatePerson", ex);
+                Config.log.Error("PersonService.UpdatePerson", ex);
                 return ResultType.SystemError;
             }
         }

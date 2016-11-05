@@ -95,7 +95,7 @@ namespace HH.RMS.Scheduler.Job
                 stopwatch.Stop();
                 resultType = ResultType.SystemError;
                 resultMessage = ex.Message;
-                log.Error("AssemblyJob.Execute", ex);
+                Config.log.Error("AssemblyJob.Execute", ex);
             }
             finally
             {

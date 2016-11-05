@@ -1,4 +1,5 @@
 ﻿using HH.RMS.Common.Utilities;
+using log4net;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -10,8 +11,16 @@ namespace HH.RMS.Common.Constant
 {
     public class Config
     {
+        #region log
+        public static readonly log4net.ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        #endregion
+
+        #region ConnectionString
         public static string sqlConnStr = ConfigurationManager.ConnectionStrings["DefaultConnection"].ToString();
         public static string sqlLogConnStr = ConfigurationManager.ConnectionStrings["LogConnection"].ToString();
+        #endregion
+
+        #region AppSetting
         public static readonly string emailSender = ConfigHelper.GetConfigString("EmailSender");
         public static readonly string emailSenderPwd = ConfigHelper.GetConfigString("EmailSenderPwd");
         public static readonly string smtpServer = ConfigHelper.GetConfigString("SmtpServer");
@@ -25,6 +34,9 @@ namespace HH.RMS.Common.Constant
         public static readonly string webProxyDomain = ConfigHelper.GetConfigString("WebProxyDomain");
         public static readonly string wechatAppId = ConfigHelper.GetConfigString("WechatAppId");
         public static readonly string wechatAppSecret = ConfigHelper.GetConfigString("WechatAppSecret");
+        #endregion
+
+        #region Constant
         public readonly static string loginSession = "AccountDetailsSession";
         public readonly static string menuSession = "SystemMenusSession";
         public readonly static string menuRoleSession = "MenuRoleSession";
@@ -35,6 +47,8 @@ namespace HH.RMS.Common.Constant
         public readonly static string menuCache = "MenuCache";
         public readonly static string roleCache = "RoleCache";
         public readonly static string accessTokenCache = "AccessTokenCache";
+        #endregion
+
         #region WechatUrl
         private static Dictionary<WechatUrlType, string> _wechatUrlDictionary = null;
         public static Dictionary<WechatUrlType, string> wechatUrlDictionary
@@ -135,6 +149,7 @@ namespace HH.RMS.Common.Constant
         }
   
         #endregion
+
         #region Job
         public const string jobAssemblyFullName = "jobAssemblyFullName";
         public const string jobAssembly = "jobAssembly";

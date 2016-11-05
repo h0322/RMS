@@ -31,6 +31,11 @@ namespace HH.RMS.MVC.Controllers
         
         public ActionResult Index()
         {
+            ViewBag.personId = 0;
+            if (Request.QueryString["personId"] != null && Convert.ToInt64(Request.QueryString["personId"]) > 0)
+            {
+                ViewBag.personId = Convert.ToInt64(Request.QueryString["personId"]);
+            }
             return View();
         }
         [HttpPost]
@@ -74,7 +79,16 @@ namespace HH.RMS.MVC.Controllers
         [RMSAuthorize(excuteType = (int)ExcuteType.Update, menuCode = "Account")]
         public JsonResult UpdateAccount(AccountModel model)
         {
-            var result = _accountService.UpdateAccount(model);
+            ResultType result = ResultType.Fail;
+            if (model.id > 0)
+            {
+                result = _accountService.UpdateAccount(model);
+            }
+            else
+            {
+                result = _accountService.InsertAccount(model);
+            }
+           
             return Json(new { result = (int)result }, JsonRequestBehavior.AllowGet);
         }
         public JsonResult QueryRoleList()

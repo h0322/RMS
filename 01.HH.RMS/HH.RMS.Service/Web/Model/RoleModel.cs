@@ -14,7 +14,7 @@ namespace HH.RMS.Service.Web.Model
 {
     public class RoleModel
     {
-        public static List<RoleModel> ListCache
+        public static List<RoleModel> CurrentListCache
         {
             get
             {
@@ -40,8 +40,8 @@ namespace HH.RMS.Service.Web.Model
         public static JsonResult ToSelect()
         {
             List<SelectModel> selectList = new List<SelectModel>();
-            var roleList = RoleModel.ListCache;
-            selectList.Add(new SelectModel() { text = "---请选择---", value = "-1" });
+            var roleList = RoleModel.CurrentListCache;
+            selectList.Add(new SelectModel() { text = "---请选择---", value = "0" });
             roleList.ForEach(m => selectList.Add(new SelectModel() { text = m.roleName, value = m.id.ToString() }));
             JsonResult json = new JsonResult();
             json.Data = selectList;

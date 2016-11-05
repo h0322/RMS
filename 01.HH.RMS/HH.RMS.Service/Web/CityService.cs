@@ -14,7 +14,7 @@ using Nelibur.ObjectMapper;
 
 namespace HH.RMS.Service.Web
 {
-    public class CityService : ServiceBase, ICityService
+    public class CityService :  ICityService
     {
         private IRepository<CityEntity> _cityRepository;
         public CityService(IRepository<CityEntity> cityRepository)
@@ -33,7 +33,7 @@ namespace HH.RMS.Service.Web
             }
             catch (Exception ex)
             {
-                log.Error("CityService.QueryCityListAll", ex);
+                Config.log.Error("CityService.QueryCityListAll", ex);
                 return null;
             }
         }

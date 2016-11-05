@@ -2,20 +2,22 @@
     <div title="Register" style="width:98%;">
         <form id="from_account">
             <input type="hidden" name="id" id="accountId" />
-            <input type="hidden" name="person.id" id="personId" />
+            <input type="hidden" name="personId" id="personId" />
             <ul><li style="width:30%">账户名称:</li><li style="width:60%"><input id="accountName" name="accountName" class="easyui-textbox"></li></ul>@*data-options="prompt:'Enter a email address...',validType:'email'"*@
+            <ul><li style="width:30%">邮箱:</li><li style="width:60%"><input id="email" name="email" class="easyui-textbox"></li></ul>
             <ul><li style="width:30%">积分:</li><li style="width:60%"><input id="score" name="score" class="easyui-numberbox"></li></ul>
             <ul><li style="width:30%">充值:</li><li style="width:60%"><input id="amount" name="amount" class="easyui-numberbox"></li></ul>
             <ul>
                 <li style="width:30%">等级:</li>
                 <li style="width:60%">
-                    <input id="sel_level" name="level.id"/>
+                    <input id="sel_level" name="levelId"/>
                 </li>
             </ul>
             <ul>
                 <li style="width:30%">状态:</li>
                 <li style="width:60%">
-                    <select id="sel_statusType" class="easyui-combobox" name="statusType">
+                    <select id="sel_status" class="easyui-combobox" name="status">
+                        <option value="0">请选择</option>
                         <option value="1">Normal</option>
                         <option value="2">Disable</option>
                         <option value="3">Black</option>
@@ -25,7 +27,7 @@
             <ul>
                 <li style="width:30%">角色:</li>
                 <li style="width:60%">
-                    <input name="role.id" id="sel_role"/>
+                    <input name="roleId" id="sel_role"/>
                 </li>
             </ul>
         </form>
@@ -53,6 +55,36 @@
             $("#accountList").datagrid('uncheckAll');
 
         })
+    }
+    function edit(accountId) {
+        //var row = $('#accountList').datagrid('getSelected');
+        //$("#from_account")[0].reset();
+        $('#from_account').form('clear'); //清表单
+        $("#accountList").datagrid('uncheckAll');
+        $(".panel-title panel-with-icon").text("修改账户信息");
+        $.post("/Account/QueryAccountById", { id: accountId }, function (d) {
+            SetFormValue("from_account", d);
+            //$('#accountId').val(d.id);
+            //$('#personId').val(d.personId);
+            //$('#accountName').textbox('setValue', d.accountName);
+            //$('#email').textbox('setValue', d.email);
+            //$('#score').numberbox('setValue', d.score);
+            //$('#amount').numberbox('setValue', d.amount);
+            //$('#sel_level').combobox('setValue', d.levelId);
+            //$("#sel_statusType").combobox('setValue', d.statusType);
+            $('#accountName').textbox('disable');
+            //$("#sel_role").combobox('setValue', 1);
+            $('#dlg_Add').dialog('open');
+        }, "json");
+
+    }
+    function Add() {
+        $('#accountName').textbox('enable');
+        $('#from_account').form('clear'); //清表单
+        $("#accountList").datagrid('uncheckAll');
+        $("#personId").val("@ViewBag.personId");
+        $(".panel-title panel-with-icon").text("新增账户");
+        $('#dlg_Add').dialog('open');
     }
     $("#sel_role").combobox({
         url: '/Account/QueryRoleList',

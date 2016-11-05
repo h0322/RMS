@@ -44,7 +44,7 @@ namespace HH.RMS.Scheduler.Job
             {
                 if (string.IsNullOrEmpty(jobUrl))
                 {
-                    log.Info("WebJob.Execute:Job Url Is NULL;JobID:" + jobId);
+                    Config.log.Info("WebJob.Execute:Job Url Is NULL;JobID:" + jobId);
                     return;
                 }
                 HttpWebRequest httpWebRequest = (HttpWebRequest)System.Net.WebRequest.Create(jobUrl);
@@ -57,7 +57,7 @@ namespace HH.RMS.Scheduler.Job
                 stopwatch.Stop();
                 resultType = ResultType.SystemError;
                 resultMessage = ex.Message;
-                log.Error("WebJob.Execute", ex);
+                Config.log.Error("WebJob.Execute", ex);
                 
             }
             finally {

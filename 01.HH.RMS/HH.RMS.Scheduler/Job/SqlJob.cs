@@ -91,7 +91,7 @@ namespace HH.RMS.Scheduler.Job
                 stopwatch.Stop();
                 resultType = ResultType.SystemError;
                 resultMessage = ex.Message;
-                log.Error("SqlJob.Execute", ex);
+                Config.log.Error("SqlJob.Execute", ex);
                 
             }
             finally

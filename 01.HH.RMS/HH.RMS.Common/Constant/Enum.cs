@@ -36,12 +36,12 @@ namespace HH.RMS.Common.Constant
     }
     public enum IntervalType
     {
-        CronExpression = 0,
-        OnlyOnce = 1,
-        Daily = 2,
-        Weekly = 3,
-        Monthly = 4,
-        Yearly = 5,
+        CronExpression = 1,
+        OnlyOnce = 2,
+        Daily = 3,
+        Weekly = 4,
+        Monthly = 5,
+        Yearly = 6,
     }
     public enum SqlScriptType
     {
@@ -51,9 +51,9 @@ namespace HH.RMS.Common.Constant
     }
     public enum AccountStatusType
     {
-        Normal =0,
-        Disable =1,
-        Black=2
+        Normal =1,
+        Disable =2,
+        Black=3
     }
     public enum RoleType
     {
@@ -86,8 +86,7 @@ namespace HH.RMS.Common.Constant
     }
     public enum WechatUrlType
     {
-        GetAccessToken = 0,
-        CreateMenuUrl=1,
+        GetAccessToken = 1,
         GetJsapiTicketUrl=2,
         GetCardapiTicketUrl=3,
         GetMenuDataUrl=4,
@@ -171,7 +170,38 @@ namespace HH.RMS.Common.Constant
         GetMediaUrl=82,
         GetPreviewUrl=83,
         InvitationCustomUrl=84,
-        
+        CreateMenuUrl = 85,
+    }
+
+    public enum WechatMsgSearchType
+    {
+        [Description("默认匹配(全包含)")]
+        None = 0,
+        /// <summary>
+        /// x=y
+        /// </summary>
+        [Description("精确匹配")]
+        Equal = 1,
+        /// <summary>
+        /// x like y + '%'
+        /// </summary>
+        [Description("开头匹配")]
+        StartWith=2,
+        /// <summary>
+        /// x like '%' + y
+        /// </summary>
+        [Description("结尾匹配")]
+        EndWith=4,
+        /// <summary>
+        /// x like '%' + y + '%'
+        /// </summary>
+        [Description("关键词包含用户输入匹配")]
+        Contain=8,
+        /// <summary>
+        /// y like '%' + x + '%'
+        /// </summary>
+        [Description("用户输入包含关键词匹配")]
+        Include=16,
     }
     public enum ExcuteType
     {
