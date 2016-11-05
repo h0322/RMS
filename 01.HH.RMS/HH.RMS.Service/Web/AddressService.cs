@@ -8,5 +8,6 @@ namespace HH.RMS.Service.Web
 {
     public class AddressService
     {
+
     }
 }
