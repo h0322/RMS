@@ -13,24 +13,28 @@ namespace HH.RMS.Console.Wechat
     {
         public SendMessage()
         {
-            string postString = "<xml><ToUserName><![CDATA[gh_f9717ac9e758]]></ToUserName> <FromUserName><![CDATA[o2Xz5s7gsaUAVuk_lte_iOPdDPwk]]></FromUserName> <CreateTime>1467876889</CreateTime> <MsgType><![CDATA[text]]></MsgType> <Content><![CDATA[明星产品]]></Content> <MsgId>6304483233223097116</MsgId> </xml>";
-            MessageManager.instance.Manager(postString);
+            //string postString = "<xml><ToUserName><![CDATA[gh_f9717ac9e758]]></ToUserName> <FromUserName><![CDATA[o2Xz5s7gsaUAVuk_lte_iOPdDPwk]]></FromUserName> <CreateTime>1467876889</CreateTime> <MsgType><![CDATA[text]]></MsgType> <Content><![CDATA[明星产品]]></Content> <MsgId>6304483233223097116</MsgId> </xml>";
+            //MessageManager.instance.Manager(postString);
 
         }
 
         
 
     }
-    public class SendMessageDefine : ProcessText
+    public class SendMessageDefine :MessageManager
     {
         public SendMessageDefine()
         {
             string postString = "<xml><ToUserName><![CDATA[gh_f9717ac9e758]]></ToUserName> <FromUserName><![CDATA[o2Xz5s7gsaUAVuk_lte_iOPdDPwk]]></FromUserName> <CreateTime>1467876889</CreateTime> <MsgType><![CDATA[text]]></MsgType> <Content><![CDATA[明星产品]]></Content> <MsgId>6304483233223097116</MsgId> </xml>";
-            MessageManager.instance.Manager(postString);
+            Manager(postString);
         }
-        public override void ProcessMsg(WechatPostModel model)
+        public override void ProcessMsg(BaseProcess processMsg, WechatPostModel postModel)
         {
-            throw new NotImplementedException();
+            if (postModel.msgType == "text")
+            {
+                return;
+            }
+            base.ProcessMsg(processMsg, postModel);
         }
     }
 }

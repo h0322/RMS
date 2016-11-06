@@ -84,3 +84,5 @@ D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Entity\obj\Debug\HH.RMS.Entity.dll
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Entity\obj\Debug\HH.RMS.Entity.pdb
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Entity\bin\Debug\log4net.dll
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Entity\bin\Debug\log4net.xml
+F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Entity\bin\Debug\log4net.dll
+F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Entity\bin\Debug\log4net.xml

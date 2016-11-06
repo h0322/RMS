@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Algorithm\Recursive .cs" />
     <Compile Include="DesignPattern\AbstrcatFactory.cs" />
     <Compile Include="DesignPattern\Adaptor.cs" />
     <Compile Include="DesignPattern\Builder.cs" />
@@ -66,6 +67,7 @@
       <Name>HH.RMS.Wechat</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
