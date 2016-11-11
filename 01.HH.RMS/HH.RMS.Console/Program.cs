@@ -1,4 +1,5 @@
-﻿using HH.RMS.Console.DesignPattern;
+﻿using HH.RMS.Console.Algorithm;
+using HH.RMS.Console.DesignPattern;
 using HH.RMS.Console.Wechat;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -17,7 +18,8 @@ namespace HH.RMS.Consoles
         static void Main(string[] args)
         {
             //SendMessage send1 = new SendMessage();
-            SendMessageDefine send1 = new SendMessageDefine();
+            //SendMessageDefine send1 = new SendMessageDefine();
+            new Recursive();
             System.Console.ReadLine();
         }
 

@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Algorithm\Orders.cs" />
     <Compile Include="Algorithm\Recursive .cs" />
     <Compile Include="DesignPattern\AbstrcatFactory.cs" />
     <Compile Include="DesignPattern\Adaptor.cs" />
