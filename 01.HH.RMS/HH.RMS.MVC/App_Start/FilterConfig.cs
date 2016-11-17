@@ -48,7 +48,7 @@ namespace HH.RMS.MVC
         }
         private bool CheckRole()
         {
-            if (AccountModel.CurrentSession.roleType == RoleType.Admin)
+            if (AccountModel.CurrentSession.accountType == AccountType.Admin)
             {
                 return true;
             }

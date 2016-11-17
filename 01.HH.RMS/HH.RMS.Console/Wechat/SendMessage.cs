@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using HH.RMS.Wechat;
 using HH.RMS.Wechat.Message;
 using HH.RMS.Wechat.Model;
+using HH.RMS.Service.Wechat.Interface;
+using HH.RMS.Service.Wechat;
 
 namespace HH.RMS.Console.Wechat
 {
@@ -13,28 +15,41 @@ namespace HH.RMS.Console.Wechat
     {
         public SendMessage()
         {
-            //string postString = "<xml><ToUserName><![CDATA[gh_f9717ac9e758]]></ToUserName> <FromUserName><![CDATA[o2Xz5s7gsaUAVuk_lte_iOPdDPwk]]></FromUserName> <CreateTime>1467876889</CreateTime> <MsgType><![CDATA[text]]></MsgType> <Content><![CDATA[明星产品]]></Content> <MsgId>6304483233223097116</MsgId> </xml>";
+            string postString = "<xml><ToUserName><![CDATA[gh_f9717ac9e758]]></ToUserName> <FromUserName><![CDATA[o2Xz5s7gsaUAVuk_lte_iOPdDPwk]]></FromUserName> <CreateTime>1467876889</CreateTime> <MsgType><![CDATA[text]]></MsgType> <Content><![CDATA[明星产品]]></Content> <MsgId>6304483233223097116</MsgId> </xml>";
             //MessageManager.instance.Manager(postString);
+            IResponseMessageService ms = new SendMessageDefine();
+            ms.Manager(postString);
 
         }
 
         
 
     }
-    public class SendMessageDefine :MessageManager
+    public class SendMessageDefine :ResponseMessageService
     {
-        public SendMessageDefine()
-        {
-            string postString = "<xml><ToUserName><![CDATA[gh_f9717ac9e758]]></ToUserName> <FromUserName><![CDATA[o2Xz5s7gsaUAVuk_lte_iOPdDPwk]]></FromUserName> <CreateTime>1467876889</CreateTime> <MsgType><![CDATA[text]]></MsgType> <Content><![CDATA[明星产品]]></Content> <MsgId>6304483233223097116</MsgId> </xml>";
-            Manager(postString);
-        }
         public override void ProcessMsg(BaseProcess processMsg, WechatPostModel postModel)
         {
             if (postModel.msgType == "text")
             {
-                return;
+                var aa = new ProcessTextDefine();
+                aa.Process(postModel);
             }
             base.ProcessMsg(processMsg, postModel);
+        }
+    }
+    public class ProcessTextDefine : ProcessText
+    {
+        public override void Process(WechatPostModel model)
+        {
+            base.Process(model);
+        }
+        public override void ResponseMsg(List<WechatResponseMsgModel> model, string from, string to)
+        {
+            base.ResponseMsg(model, from, to);
+        }
+        public override void SendMessage()
+        {
+            base.SendMessage();
         }
     }
 }

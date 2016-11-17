@@ -94,7 +94,6 @@
     <Compile Include="EntityFramework\ApplicationDbContext.cs" />
     <Compile Include="EntityFramework\Interface\IRepository.cs" />
     <Compile Include="EntityFramework\Mapping\AccountMapping.cs" />
-    <Compile Include="EntityFramework\Mapping\AccountRoleMapping.cs" />
     <Compile Include="EntityFramework\Mapping\RoleMapping.cs" />
     <Compile Include="EntityFramework\Mapping\JobMapping.cs" />
     <Compile Include="EntityFramework\Mapping\LogMapping.cs" />

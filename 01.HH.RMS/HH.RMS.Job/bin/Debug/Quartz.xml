@@ -9626,7 +9626,7 @@
             <param name="threadPool">The thread pool for executing jobs</param>
             <param name="jobStore">The type of job store</param>
         </member>
-        <member name="M:Quartz.Impl.DirectSchedulerFactory.CreateScheduler(System.String,System.String,Quartz.Spi.IThreadPool,Quartz.Spi.IJobStore,System.TimeSpan,System.TimeSpan)">
+        <member name="M:Quartz.Impl.DirectSchedulerFactory.CreateScheduler(System.String,System.String,Quartz.Spi.IThreadPool,Quartz.Spi.IJobStore,System.TimeSpan)">
             <summary>
             Creates a scheduler using the specified thread pool and job store and
             binds it for remote access.
@@ -9637,9 +9637,8 @@
             <param name="jobStore">The type of job store</param>
             <param name="idleWaitTime">The idle wait time. You can specify "-1" for
             the default value, which is currently 30000 ms.</param>
-            <param name="dbFailureRetryInterval">The db failure retry interval.</param>
         </member>
-        <member name="M:Quartz.Impl.DirectSchedulerFactory.CreateScheduler(System.String,System.String,Quartz.Spi.IThreadPool,Quartz.Spi.IJobStore,System.Collections.Generic.IDictionary{System.String,Quartz.Spi.ISchedulerPlugin},System.TimeSpan,System.TimeSpan)">
+        <member name="M:Quartz.Impl.DirectSchedulerFactory.CreateScheduler(System.String,System.String,Quartz.Spi.IThreadPool,Quartz.Spi.IJobStore,System.Collections.Generic.IDictionary{System.String,Quartz.Spi.ISchedulerPlugin},System.TimeSpan)">
             <summary>
             Creates a scheduler using the specified thread pool and job store and
             binds it for remote access.
@@ -9651,9 +9650,8 @@
             <param name="schedulerPluginMap"></param>
             <param name="idleWaitTime">The idle wait time. You can specify TimeSpan.Zero for
             the default value, which is currently 30000 ms.</param>
-            <param name="dbFailureRetryInterval">The db failure retry interval.</param>
         </member>
-        <member name="M:Quartz.Impl.DirectSchedulerFactory.CreateScheduler(System.String,System.String,Quartz.Spi.IThreadPool,Quartz.Spi.IThreadExecutor,Quartz.Spi.IJobStore,System.Collections.Generic.IDictionary{System.String,Quartz.Spi.ISchedulerPlugin},System.TimeSpan,System.TimeSpan)">
+        <member name="M:Quartz.Impl.DirectSchedulerFactory.CreateScheduler(System.String,System.String,Quartz.Spi.IThreadPool,Quartz.Spi.IThreadExecutor,Quartz.Spi.IJobStore,System.Collections.Generic.IDictionary{System.String,Quartz.Spi.ISchedulerPlugin},System.TimeSpan)">
             <summary>
             Creates a scheduler using the specified thread pool and job store and
             binds it for remote access.
@@ -9666,7 +9664,6 @@
             <param name="schedulerPluginMap"></param>
             <param name="idleWaitTime">The idle wait time. You can specify TimeSpan.Zero for
             the default value, which is currently 30000 ms.</param>
-            <param name="dbFailureRetryInterval">The db failure retry interval.</param>
         </member>
         <member name="M:Quartz.Impl.DirectSchedulerFactory.CreateScheduler(System.String,System.String,Quartz.Spi.IThreadPool,Quartz.Spi.IThreadExecutor,Quartz.Spi.IJobStore,System.Collections.Generic.IDictionary{System.String,Quartz.Spi.ISchedulerPlugin},System.TimeSpan,System.Int32,System.TimeSpan)">
             <summary>

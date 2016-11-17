@@ -522,10 +522,6 @@
       <Project>{73b8ac6f-5953-4f02-a10c-13744db73c8f}</Project>
       <Name>HH.RMS.Entity</Name>
     </ProjectReference>
-    <ProjectReference Include="..\HH.RMS.Scheduler\HH.RMS.Scheduler.csproj">
-      <Project>{8788eb19-47cd-42a0-ba63-bb0875f7fb4e}</Project>
-      <Name>HH.RMS.Scheduler</Name>
-    </ProjectReference>
     <ProjectReference Include="..\HH.RMS.Service\HH.RMS.Service.csproj">
       <Project>{e535a624-40b0-460f-a91b-69384d3f24e3}</Project>
       <Name>HH.RMS.Service</Name>

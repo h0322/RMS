@@ -16,6 +16,10 @@ namespace HH.RMS.Common.Utilities
         /// <returns></returns>
         public static object GetSession(string name)
         {
+            if (HttpContext.Current== null)
+            {
+                return null;
+            }
             return HttpContext.Current.Session[name];
         }
 
@@ -26,6 +30,10 @@ namespace HH.RMS.Common.Utilities
         /// <param name="val">session 值</param>
         public static void SetSession(string name, object val)
         {
+            if (HttpContext.Current == null)
+            {
+                return;
+            }
             HttpContext.Current.Session.Remove(name);
             HttpContext.Current.Session.Add(name, val);
         }
@@ -37,6 +45,10 @@ namespace HH.RMS.Common.Utilities
         /// <param name="strValue">Session值</param>
         public static void Add(string strSessionName, string strValue)
         {
+            if (HttpContext.Current == null)
+            {
+                return;
+            }
             HttpContext.Current.Session[strSessionName] = strValue;
             HttpContext.Current.Session.Timeout = 20;
         }
@@ -48,6 +60,10 @@ namespace HH.RMS.Common.Utilities
         /// <param name="strValues">Session值数组</param>
         public static void Adds(string strSessionName, string[] strValues)
         {
+            if (HttpContext.Current == null)
+            {
+                return;
+            }
             HttpContext.Current.Session[strSessionName] = strValues;
             HttpContext.Current.Session.Timeout = 20;
         }
@@ -60,6 +76,10 @@ namespace HH.RMS.Common.Utilities
         /// <param name="iExpires">调动有效期（分钟）</param>
         public static void Add(string strSessionName, string strValue, int iExpires)
         {
+            if (HttpContext.Current == null)
+            {
+                return;
+            }
             HttpContext.Current.Session[strSessionName] = strValue;
             HttpContext.Current.Session.Timeout = iExpires;
         }
@@ -72,6 +92,10 @@ namespace HH.RMS.Common.Utilities
         /// <param name="iExpires">调动有效期（分钟）</param>
         public static void Adds(string strSessionName, string[] strValues, int iExpires)
         {
+            if (HttpContext.Current == null)
+            {
+                return;
+            }
             HttpContext.Current.Session[strSessionName] = strValues;
             HttpContext.Current.Session.Timeout = iExpires;
         }
@@ -83,6 +107,10 @@ namespace HH.RMS.Common.Utilities
         /// <returns>Session对象值</returns>
         public static string Get(string strSessionName)
         {
+            if (HttpContext.Current == null)
+            {
+                return null;
+            }
             if (HttpContext.Current.Session[strSessionName] == null)
             {
                 return null;
@@ -100,6 +128,10 @@ namespace HH.RMS.Common.Utilities
         /// <returns>Session对象值数组</returns>
         public static string[] Gets(string strSessionName)
         {
+            if (HttpContext.Current == null)
+            {
+                return null;
+            }
             if (HttpContext.Current.Session[strSessionName] == null)
             {
                 return null;
@@ -116,10 +148,18 @@ namespace HH.RMS.Common.Utilities
         /// <param name="strSessionName">Session对象名称</param>
         public static void Del(string strSessionName)
         {
+            if (HttpContext.Current == null)
+            {
+                return;
+            }
             HttpContext.Current.Session[strSessionName] = null;
         }
         public static void SessionClear()
         {
+            if (HttpContext.Current == null)
+            {
+                return;
+            }
             HttpContext.Current.Session.Clear();
         }
     }

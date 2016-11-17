@@ -29,20 +29,17 @@ namespace HH.RMS.Service.Web
         //private IRepository<AccountEntity> _accountRepository;
         private IRepository<AccountEntity> _accountRepository;
         private IRepository<RoleEntity> _roleRepository;
-        private IRepository<AccountRoleEntity> _accountRoleRepository;
         private IRepository<LevelEntity> _levelRepository;
         private IRepository<PersonEntity> _personRepository;
-        public AccountService(IRepository<LevelEntity> levelRepository,IRepository<RoleEntity> roleRepository, IRepository<AccountRoleEntity> accountRoleRepository, IRepository<AccountEntity> accountRepository, IRepository<PersonEntity> personRepository)
+        public AccountService(IRepository<LevelEntity> levelRepository,IRepository<RoleEntity> roleRepository, IRepository<AccountEntity> accountRepository, IRepository<PersonEntity> personRepository)
         {
             _roleRepository = roleRepository;
-            _accountRoleRepository = accountRoleRepository;
             _accountRepository = accountRepository;
             _personRepository = personRepository;
             _levelRepository = levelRepository;
             if (AccountModel.CurrentSession != null)
             {
                 _roleRepository.userId = AccountModel.CurrentSession.id;
-                _accountRoleRepository.userId = AccountModel.CurrentSession.id;
                 _accountRepository.userId = AccountModel.CurrentSession.id;
                 _personRepository.userId = AccountModel.CurrentSession.id;
                 _levelRepository.userId = AccountModel.CurrentSession.id;
@@ -55,10 +52,8 @@ namespace HH.RMS.Service.Web
                 using (var db = new ApplicationDbContext())
                 {
                     var q = from a in _accountRepository.Query(db)
-                            join b in _accountRoleRepository.Query(db) on a.id equals b.accountId into t1
+                            join b in _levelRepository.Query(db) on a.levelId equals b.id into t1
                             from tt1 in t1.DefaultIfEmpty()
-                            join c in _levelRepository.Query(db) on a.levelId equals c.id into t2
-                            from tt2 in t2.DefaultIfEmpty()
                             where a.id == id
                             select new AccountModel
                             {
@@ -71,9 +66,8 @@ namespace HH.RMS.Service.Web
                                 remark = a.remark,
                                 personId =  a.personId,
                                 levelId = a.levelId,
-                                roleId = tt1 == null ? 0 : tt1.roleId,
-                                levelName = tt2 == null ? "" : tt2.levelName, 
-                                levelOrder = tt2 == null ? 0 : tt2.levelOrder
+                                levelName = tt1 == null ? "" : tt1.levelName, 
+                                levelOrder = tt1 == null ? 0 : tt1.levelOrder
                             };
                     return q.FirstOrDefault();
                 }
@@ -92,19 +86,6 @@ namespace HH.RMS.Service.Web
                 using (var db = new ApplicationDbContext())
                 {
                     int result = _accountRepository.Insert(db, account);
-                    if(result>0)
-                    {
-                        var accountRoleEntity = new AccountRoleEntity() { accountId = account.id, roleId = model.roleId };
-                        result = _accountRoleRepository.Insert(db, accountRoleEntity);
-                        if (result > 0)
-                        {
-                            return ResultType.Success;
-                        }
-                        else
-                        {
-                            return ResultType.Fail;
-                        }
-                    }
                 }
 
                 return ResultType.Success;
@@ -119,22 +100,21 @@ namespace HH.RMS.Service.Web
 
         public GridModel QueryAccountToGridByRole(PagerModel pager = null)
         {
-            int roleOrder = AccountModel.CurrentSession.roleOrder;
+            int roleOrder = (int)AccountModel.CurrentSession.accountType;
             try
             {
                 using (var db = new ApplicationDbContext())
                 {
                     var q = (from a in _accountRepository.Query(db)
                             join b in _personRepository.Query(db) on a.personId equals b.id
-                            join c in _accountRoleRepository.Query(db) on a.id equals c.accountId into t1
-                            from tt1 in t1.DefaultIfEmpty() 
-                            join d in _levelRepository.Query(db) on a.levelId equals d.id into t2
-                            from tt2 in t2.DefaultIfEmpty()
+                            join c in _levelRepository.Query(db) on a.levelId equals c.id into t1
+                            from tt1 in t1.DefaultIfEmpty()
                             where  (string.IsNullOrEmpty(pager.searchText) || a.accountName.Contains(pager.searchText))
+                            && (int)a.accountType >= (int)AccountModel.CurrentSession.accountType
                             && (pager.searchStatus == 0 || a.status == (AccountStatusType)pager.searchStatus)
                             && (pager.searchDateFrom == null || a.createTime > pager.searchDateFrom)
                             && (pager.searchDateTo == null || a.createTime < pager.searchDateTo)
-                            && (pager.searchRole == 0 || tt1.roleId == pager.searchRole)
+                            && (pager.searchRole == 0 || (a.roleBitMap & pager.searchRole) == pager.searchRole)
                             && (pager.personId == 0 || a.personId == pager.personId)
                             select new AccountModel()
                             {
@@ -154,8 +134,8 @@ namespace HH.RMS.Service.Web
                                 provinceId = b.provinceId, 
                                 sex = b.sex,
                                 levelId = a.id,
-                                levelName = tt1 == null ? "" : tt2.levelName,
-                                levelOrder = tt2 == null ? 0 : tt2.levelOrder
+                                levelName = tt1 == null ? "" : tt1.levelName,
+                                levelOrder = tt1 == null ? 0 : tt1.levelOrder
                             });
                     IQueryable<AccountModel> qPager = null;
                     if (pager != null)
@@ -193,30 +173,35 @@ namespace HH.RMS.Service.Web
                         updateBy = AccountModel.CurrentSession.id,
                         updateTime = DateTime.Now
                     }, m => m.id == model.id);
-                    if (result > 0)
+                    if (result == 0)
                     {
-                        result = _accountRoleRepository.Update(db, m => new AccountRoleEntity()
-                        {
-                            roleId = model.roleId,
-                            updateBy = AccountModel.CurrentSession.id,
-                            updateTime = DateTime.Now
-                        }, m => m.accountId == model.id);
-                        if (result > 0)
-                        {
-                            return ResultType.Success;
-                        }
-                        var accountRoleEntity = new AccountRoleEntity() { accountId = model.id, roleId = model.roleId };
-                        result = _accountRoleRepository.Insert(db, accountRoleEntity);
-                        if(result>0)
-                        {
-                            return ResultType.Success;
-                        }
-                        return ResultType.Fail;
+                        return ResultType.Success;
                     }
-                    else
-                    {
-                        return ResultType.Fail;
-                    }
+                    return ResultType.Fail;
+                    //if (result > 0)
+                    //{
+                    //    result = _accountRoleRepository.Update(db, m => new AccountRoleEntity()
+                    //    {
+                    //        roleId = model.roleId,
+                    //        updateBy = AccountModel.CurrentSession.id,
+                    //        updateTime = DateTime.Now
+                    //    }, m => m.accountId == model.id);
+                    //    if (result > 0)
+                    //    {
+                    //        return ResultType.Success;
+                    //    }
+                    //    var accountRoleEntity = new AccountRoleEntity() { accountId = model.id, roleId = model.roleId };
+                    //    result = _accountRoleRepository.Insert(db, accountRoleEntity);
+                    //    if(result>0)
+                    //    {
+                    //        return ResultType.Success;
+                    //    }
+                    //    return ResultType.Fail;
+                    //}
+                    //else
+                    //{
+                    //    return ResultType.Fail;
+                    //}
                 }
             }
             catch (Exception ex)

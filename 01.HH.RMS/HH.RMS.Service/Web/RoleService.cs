@@ -208,14 +208,14 @@ namespace HH.RMS.Service.Web
                 return ResultType.SystemError;
             }
         }
-        public List<MenuRoleModel> QueryMenuByRoleIdList(long roleId)
+        public List<MenuRoleModel> QueryMenuByRoleIdList(long roleBitMap)
         {
             try
             {
                 using (var db = new ApplicationDbContext())
                 {
                     var q = from a in _menuRepository.Query(db)
-                            join b in _menuRoleRepository.Query(db).Where(m=>m.roleId==roleId) on a.id equals b.menuId
+                            join b in _menuRoleRepository.Query(db).Where(m =>(m.roleId & roleBitMap)==m.roleId) on a.id equals b.menuId
                              into ss
                             from m in ss.DefaultIfEmpty()
                             select new MenuRoleModel

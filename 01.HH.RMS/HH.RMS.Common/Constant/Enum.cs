@@ -55,13 +55,13 @@ namespace HH.RMS.Common.Constant
         Disable =2,
         Black=3
     }
-    public enum RoleType
+    public enum AccountType
     {
         [DescriptionAttribute("系统管理员")]
         Admin=1,
         [DescriptionAttribute("超级用户")]
         SuperUser=2,
-        [DescriptionAttribute("普通会员")]
+        [DescriptionAttribute("普通用户")]
         NormalUser=3
     }
     public enum ObjectType

@@ -21,7 +21,6 @@ namespace HH.RMS.Repository.EntityFramework
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new AccountMapping());
-            modelBuilder.Configurations.Add(new AccountRoleMapping());
             modelBuilder.Configurations.Add(new PersonMapping());
             modelBuilder.Configurations.Add(new LogMapping());
             modelBuilder.Configurations.Add(new SchedulerMapping());

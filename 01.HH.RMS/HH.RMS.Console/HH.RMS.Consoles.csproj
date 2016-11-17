@@ -39,6 +39,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -48,6 +49,7 @@
   <ItemGroup>
     <Compile Include="Algorithm\Orders.cs" />
     <Compile Include="Algorithm\Recursive .cs" />
+    <Compile Include="Algorithm\Search.cs" />
     <Compile Include="DesignPattern\AbstrcatFactory.cs" />
     <Compile Include="DesignPattern\Adaptor.cs" />
     <Compile Include="DesignPattern\Builder.cs" />
@@ -63,12 +65,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\HH.RMS.Wechat\HH.RMS.Wechat.csproj">
-      <Project>{5388dd3e-77c9-4f3d-bd2e-4bd8d2847762}</Project>
-      <Name>HH.RMS.Wechat</Name>
+    <ProjectReference Include="..\HH.RMS.Service\HH.RMS.Service.csproj">
+      <Project>{e535a624-40b0-460f-a91b-69384d3f24e3}</Project>
+      <Name>HH.RMS.Service</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

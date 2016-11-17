@@ -6,7 +6,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HH.RMS.HttpServer
+namespace HH.RMS.Common.Utilities
 {
     public class HttpSearch : IDisposable
     {

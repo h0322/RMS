@@ -10,6 +10,7 @@ using System.Linq.Expressions;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace HH.RMS.Consoles
 {
@@ -17,11 +18,13 @@ namespace HH.RMS.Consoles
     {
         static void Main(string[] args)
         {
+            new SendMessage();
+            return;
             //SendMessage send1 = new SendMessage();
             //SendMessageDefine send1 = new SendMessageDefine();
             new Recursive();
+
             System.Console.ReadLine();
         }
-
     }
 }

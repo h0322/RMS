@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 using Topshelf;
 using System.Linq.Expressions;
 using Topshelf.Runtime;
-using HH.RMS.HttpServer;
+using HH.RMS.Service;
 namespace HH.RMS.Job
 {
     class Program
@@ -23,7 +23,7 @@ namespace HH.RMS.Job
         {
 
             LogRegister();
-            new UnityScheduler(UnityManager.instance);
+            new UnityService(UnityManager.instance);
 
             HostFactory.Run(x => 
             {

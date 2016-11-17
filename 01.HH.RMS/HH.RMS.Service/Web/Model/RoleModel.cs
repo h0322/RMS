@@ -33,7 +33,7 @@ namespace HH.RMS.Service.Web.Model
         }
         public long id { get; set; }
         public string roleName { get; set; }
-        public RoleType roleType { get; set; }
+        public long bitMap { get; set; }
         public int roleOrder { get; set; }
         public DateTime createTime { get; set; }
         public List<MenuModel> menuList { get; set; }

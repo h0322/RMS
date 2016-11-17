@@ -112,11 +112,15 @@ F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Common\bin\Debug\Microsoft.Practices
 F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Common\bin\Debug\Newtonsoft.Json.xml
 F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Common\obj\Debug\HH.RMS.Common.dll
 F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Common\obj\Debug\HH.RMS.Common.pdb
+F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Common\bin\Debug\log4net.dll
+F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Common\bin\Debug\log4net.xml
+F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Common\obj\Debug\HH.RMS.Common.csprojResolveAssemblyReference.cache
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Common\bin\Debug\HH.RMS.Common.dll.config
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Common\bin\Debug\HH.RMS.Common.dll
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Common\bin\Debug\HH.RMS.Common.pdb
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Common\bin\Debug\EntityFramework.dll
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Common\bin\Debug\EntityFramework.SqlServer.dll
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Common\bin\Debug\log4net.dll
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Common\bin\Debug\Microsoft.Practices.ServiceLocation.dll
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Common\bin\Debug\Microsoft.Practices.Unity.Configuration.dll
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Common\bin\Debug\Microsoft.Practices.Unity.dll
@@ -124,6 +128,7 @@ D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Common\bin\Debug\Microsoft.Practices.Unity
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Common\bin\Debug\Newtonsoft.Json.dll
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Common\bin\Debug\EntityFramework.xml
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Common\bin\Debug\EntityFramework.SqlServer.xml
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Common\bin\Debug\log4net.xml
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Common\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Common\bin\Debug\Microsoft.Practices.ServiceLocation.xml
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Common\bin\Debug\Microsoft.Practices.Unity.xml
@@ -132,8 +137,3 @@ D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Common\bin\Debug\Microsoft.Practices.Unity
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Common\bin\Debug\Newtonsoft.Json.xml
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Common\obj\Debug\HH.RMS.Common.dll
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Common\obj\Debug\HH.RMS.Common.pdb
-D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Common\bin\Debug\log4net.dll
-D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Common\bin\Debug\log4net.xml
-F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Common\bin\Debug\log4net.dll
-F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Common\bin\Debug\log4net.xml
-F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Common\obj\Debug\HH.RMS.Common.csprojResolveAssemblyReference.cache

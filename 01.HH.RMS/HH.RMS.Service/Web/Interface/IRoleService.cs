@@ -20,6 +20,6 @@ namespace HH.RMS.Service.Web.Interface
         ResultType InsertMenuRole(MenuRoleModel model);
         ResultType DeleteMenuRoleByIds(long[] ids);
         ResultType DeleteMenuRoleByRoleId(long roleId);
-        List<MenuRoleModel> QueryMenuByRoleIdList(long roleId);
+        List<MenuRoleModel> QueryMenuByRoleIdList(long roleBitMap);
     }
 }

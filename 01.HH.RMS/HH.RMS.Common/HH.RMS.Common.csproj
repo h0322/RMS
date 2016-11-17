@@ -103,6 +103,7 @@
     <Compile Include="Utilities\CookieHelper.cs" />
     <Compile Include="Utilities\DownFile.cs" />
     <Compile Include="Utilities\FileUpload.cs" />
+    <Compile Include="Utilities\HttpSearch.cs" />
     <Compile Include="Utilities\JScript.cs" />
     <Compile Include="Utilities\NetHelper.cs" />
     <Compile Include="Utilities\PageValidate.cs" />

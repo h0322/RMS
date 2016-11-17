@@ -18,15 +18,16 @@ namespace HH.RMS.Entity.Web
         [MaxLength(32)]
         public string password { get; set; }
         public long personId { get; set; }
-        [ForeignKey("personId")]
-        public virtual PersonEntity person { get; set; }
+        //[ForeignKey("personId")]
+        //public virtual PersonEntity person { get; set; }
         [MaxLength(50)]
         public string email { get; set; }
         public decimal amount { get; set; }
         public decimal score { get; set; }
         public long levelId { get; set; }
+        public long roleBitMap { get; set; }
+        public AccountType accountType { get; set; }
         public AccountStatusType status { get; set; }
-        [ForeignKey("levelId")]
-        public virtual LevelEntity level { get; set; }
+
     }
 }

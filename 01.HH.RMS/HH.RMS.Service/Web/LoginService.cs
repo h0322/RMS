@@ -22,14 +22,12 @@ namespace HH.RMS.Service.Web
     {
         private IRepository<AccountEntity> _accountRepository;
         private IRepository<RoleEntity> _roleRepository;
-        private IRepository<AccountRoleEntity> _accountRoleRepository;
         private IRepository<PersonEntity> _personRepository;
         private IRepository<LevelEntity> _levelRepository;
-        public LoginService(IRepository<LevelEntity> levelRepository,IRepository<AccountEntity> accountRepository, IRepository<RoleEntity> roleRepository, IRepository<AccountRoleEntity> accountRoleRepository, IRepository<PersonEntity> personRepository)
+        public LoginService(IRepository<LevelEntity> levelRepository,IRepository<AccountEntity> accountRepository, IRepository<RoleEntity> roleRepository, IRepository<PersonEntity> personRepository)
         {
             _accountRepository = accountRepository;
             _roleRepository = roleRepository;
-            _accountRoleRepository = accountRoleRepository;
             _personRepository = personRepository;
             _levelRepository = levelRepository;
         }
@@ -41,36 +39,28 @@ namespace HH.RMS.Service.Web
                 using (var db = new ApplicationDbContext())
                 {
                     var q = (from a in _accountRepository.Query(db)
-                             join b in _accountRoleRepository.Query(db)
-                             on a.id equals b.accountId
-                             join c in _roleRepository.Query(db)
-                             on b.roleId equals c.id
-                             join d in _personRepository.Query(db)
-                             on a.personId equals d.id
-                             join e in _levelRepository.Query(db) on a.levelId equals e.id
-                             where a.accountName == accountName && a.password == password && (c.roleType == RoleType.Admin || c.roleType == RoleType.SuperUser)
+                             join b in _personRepository.Query(db) on a.personId equals b.id
+                             join c in _levelRepository.Query(db) on a.levelId equals c.id
+                             where a.accountName == accountName && a.password == password && (a.accountType == AccountType.Admin || a.accountType == AccountType.SuperUser)
                              select new AccountModel
                              {
                                  accountName = a.accountName,
                                  id = a.id,
                                  score = a.score,
                                  amount = a.amount,
-                                 name = d.name, 
-                                 birthday = d.birthday, 
-                                 personId = d.id, 
-                                 provinceId = d.provinceId, 
-                                 sex = d.sex, 
-                                 countryId = d.countryId, 
-                                 cityId = d.cityId, 
-                                 nickName = d.nickName,
-                                 roleName = c.roleName, 
-                                 roleId = c.id, 
-                                 roleOrder = c.roleOrder, 
-                                 roleType = c.roleType,
-                                 levelName = e.levelName,
-                                 levelId = e.id,
+                                 name = b.name, 
                                  status = a.status,
-                                 remark = e.remark
+                                 remark = a.remark,
+                                 birthday = b.birthday, 
+                                 personId = b.id, 
+                                 provinceId = b.provinceId, 
+                                 sex = b.sex, 
+                                 countryId = b.countryId, 
+                                 cityId = b.cityId, 
+                                 nickName = b.nickName,
+                                 levelName = c.levelName,
+                                 levelId = c.id
+
                              });
                     result.resultObj = q.FirstOrDefault();
                 }

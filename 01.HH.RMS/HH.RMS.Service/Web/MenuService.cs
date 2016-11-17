@@ -81,14 +81,14 @@ namespace HH.RMS.Service.Web
             {
                 return null;
             }
-            long roleId = AccountModel.CurrentSession.roleId;
+            long roleBitMap = AccountModel.CurrentSession.roleBitMap;
 
             using(var db = new ApplicationDbContext())
             {
                 var q = (from a in _menuRepository.Query(db)
                          join b in _menuRoleRepository.Query(db) on a.id equals b.menuId into t1
                          from t in t1.DefaultIfEmpty()
-                         where (t.roleId == roleId || roleId == (int)RoleType.Admin)
+                         where ((t.roleId & roleBitMap) == t.roleId || AccountModel.CurrentSession.accountType == AccountType.Admin)
                          select a).Distinct();
                 return q.OrderBy(m => m.menuOrder).ToList();
             }

@@ -13,8 +13,8 @@ namespace HH.RMS.Entity.Web
     public class ProvinceEntity:EntityBase
     {
         public long countryId { get; set; }
-        [ForeignKey("countryId")]
-        public virtual CountryEntity country { get; set; }
+        //[ForeignKey("countryId")]
+        //public virtual CountryEntity country { get; set; }
         [MaxLength(20)]
         public string code { get; set; }
          [MaxLength(50)]

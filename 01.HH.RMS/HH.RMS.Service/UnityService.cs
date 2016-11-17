@@ -11,12 +11,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using HH.RMS.Service.Web;
 
-namespace HH.RMS.Service.Web
+namespace HH.RMS.Service
 {
     public class UnityService
     {
         public UnityManager unityManager;
+
         public UnityService(UnityManager unityManager)
         {
             this.unityManager = unityManager;
@@ -49,6 +51,8 @@ namespace HH.RMS.Service.Web
             unityManager.RegisterType<IRoleService, RoleService>();
             unityManager.RegisterType<ICountryService, CountryService>();
             unityManager.RegisterType<ILevelService, LevelService>();
+            unityManager.RegisterType<ISchedulerService, SchedulerService>();
+            unityManager.RegisterType<IJobService, JobService>();
             //unityManager.RegisterType<IADOUnit, ADOUnit>();
         }
         public virtual void ContorllerRegister()

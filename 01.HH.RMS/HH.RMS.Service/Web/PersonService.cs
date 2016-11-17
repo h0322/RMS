@@ -22,10 +22,8 @@ namespace HH.RMS.Service.Web
         private IRepository<ProvinceEntity> _provinceRepository;
         private IRepository<CityEntity> _cityRepository;
         private IRepository<AccountEntity> _accountRepository;
-        private IRepository<AccountRoleEntity> _accountRoleRepository;
-        public PersonService(IRepository<AccountRoleEntity> accountRoleRepository, IRepository<AccountEntity> accountRepository, IRepository<PersonEntity> personRepository, IRepository<CountryEntity> countryRepository, IRepository<ProvinceEntity> provinceRepository, IRepository<CityEntity> cityRepository)
+        public PersonService(IRepository<AccountEntity> accountRepository, IRepository<PersonEntity> personRepository, IRepository<CountryEntity> countryRepository, IRepository<ProvinceEntity> provinceRepository, IRepository<CityEntity> cityRepository)
         {
-            _accountRoleRepository = accountRoleRepository;
             _accountRepository = accountRepository;
             _personRepository = personRepository;
             _countryRepository = countryRepository;
@@ -119,12 +117,12 @@ namespace HH.RMS.Service.Web
                         {
                             return new ResultModel<ResultType>(ResultType.NotExecute, "Account Insert Fail");
                         }
-                        AccountRoleEntity accountRole = TinyMapper.Map<AccountRoleEntity>(model);
-                        _accountRoleRepository.Insert(db, accountRole);
-                        if (accountRole.id < 1)
-                        {
-                            return new ResultModel<ResultType>(ResultType.NotExecute, "Account Role Insert Fail");
-                        }
+                        //AccountRoleEntity accountRole = TinyMapper.Map<AccountRoleEntity>(model);
+                        //_accountRoleRepository.Insert(db, accountRole);
+                        //if (accountRole.id < 1)
+                        //{
+                        //    return new ResultModel<ResultType>(ResultType.NotExecute, "Account Role Insert Fail");
+                        //}
                         transaction.Complete();
                     }
                 }
