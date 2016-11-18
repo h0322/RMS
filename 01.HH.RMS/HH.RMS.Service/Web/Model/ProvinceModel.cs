@@ -13,7 +13,7 @@ namespace HH.RMS.Service.Web.Model
 {
     public class ProvinceModel
     {
-        public static List<ProvinceModel> CurrentListCache
+        public static List<ProvinceModel> CurrentCacheList
         {
             get
             {
@@ -39,7 +39,7 @@ namespace HH.RMS.Service.Web.Model
         public static JsonResult ToSelect()
         {
             List<SelectModel> selectList = new List<SelectModel>();
-            var provinceList = ProvinceModel.CurrentListCache;
+            var provinceList = ProvinceModel.CurrentCacheList;
             selectList.Add(new SelectModel() { text = "---请选择---", value = "0" });
             provinceList.ForEach(m => selectList.Add(new SelectModel() { text = m.name, value = m.id.ToString() }));
             JsonResult json = new JsonResult();

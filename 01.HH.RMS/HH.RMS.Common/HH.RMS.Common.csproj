@@ -76,6 +76,7 @@
     <Compile Include="Attributes\MappingTableAttribute.cs" />
     <Compile Include="Unity\UnityControllerActivator.cs" />
     <Compile Include="Unity\UnityManager.cs" />
+    <Compile Include="Utilities\BitMapHelper.cs" />
     <Compile Include="Utilities\CacheHelper.cs" />
     <Compile Include="Constant\Config.cs" />
     <Compile Include="Constant\Enum.cs" />

@@ -4,22 +4,29 @@ using HH.RMS.Service.Web.Interface;
 using HH.RMS.Common.Unity;
 using HH.RMS.Service.Web.Model;
 using HH.RMS.Common.Constant;
+using System.Web;
+using HH.RMS.Service.Model;
+using HH.RMS.Common.Utilities;
 
 namespace HH.RMS.UnitTest.HH.RMS.Service.Test.Web
 {
     [TestClass]
     public class AccountServiceTest:TestServiceBase
     {
-        IAccountService accountService { get; set; }
+        private IAccountService _accountService { get; set; }
+        private ILoginService _loginService { get; set; }
         private long accountId = 2;
         public AccountServiceTest()
         {
-            accountService = UnityManager.instance.GetService<IAccountService>();
+            _accountService = UnityManager.instance.GetService<IAccountService>();
+            _loginService = UnityManager.instance.GetService<ILoginService>();
+            ResultModel<AccountModel> result = _loginService.UserLogin(loginName, password);
+            SessionHelper.SetSession(Config.loginSession, result.resultObj);
         }
         [TestMethod]
         public void QueryAccountById()
         {
-            AccountModel accountModel = accountService.QueryAccountById(accountId);
+            AccountModel accountModel = _accountService.QueryAccountById(accountId);
             Assert.AreNotEqual(accountModel, null);
         }
         [TestMethod]
@@ -40,13 +47,13 @@ namespace HH.RMS.UnitTest.HH.RMS.Service.Test.Web
             account.provinceId=1;
             account.roleBitMap = 1;
             account.status = AccountStatusType.Normal;
-            ResultType resultType = accountService.InsertAccount(account);
+            ResultType resultType = _accountService.InsertAccount(account);
             Assert.AreEqual(resultType, ResultType.Success);
         }
         [TestMethod]
         public void QueryAccountToGridByRole()
         {
-            var result = accountService.QueryAccountToGridByRole();
+            var result = _accountService.QueryAccountToGridByRole();
             Assert.AreNotEqual(result, null);
         }
         [TestMethod]
@@ -66,7 +73,7 @@ namespace HH.RMS.UnitTest.HH.RMS.Service.Test.Web
             account.provinceId = 1;
             account.status = AccountStatusType.Normal;
             account.personId = 9;
-            ResultType resultType = accountService.UpdateAccount(account);
+            ResultType resultType = _accountService.UpdateAccount(account);
             Assert.AreEqual(resultType, ResultType.Success);
         }
         [TestMethod]
@@ -80,7 +87,7 @@ namespace HH.RMS.UnitTest.HH.RMS.Service.Test.Web
         [TestMethod]
         public void CountAccount()
         {
-            int result = accountService.CountAccount();
+            int result = _accountService.CountAccount();
             Assert.AreNotEqual(result, 0);
         }
     }

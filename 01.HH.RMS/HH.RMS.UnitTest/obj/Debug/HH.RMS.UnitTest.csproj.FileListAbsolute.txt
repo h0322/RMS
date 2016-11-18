@@ -81,3 +81,5 @@ D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\obj\Debug\HH.RMS.UnitTest.pdb
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\HH.RMS.UnitTest.dll.config
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\EntityFramework.SqlServer.dll
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\EntityFramework.SqlServer.xml
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\WebTest1.webtest
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\LoadTest1.loadtest

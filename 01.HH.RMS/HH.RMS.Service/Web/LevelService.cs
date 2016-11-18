@@ -29,12 +29,12 @@ namespace HH.RMS.Service.Web
                     List<LevelModel> list = null;
                     if (pager != null)
                     {
-                        list = LevelModel.CurrentListCache.OrderByDescending(m => m.id).Take(pager.rows * pager.page).Skip(pager.rows * (pager.page - 1)).ToList();
+                        list = LevelModel.CurrentCacheList.OrderByDescending(m => m.id).Take(pager.rows * pager.page).Skip(pager.rows * (pager.page - 1)).ToList();
                     }
                     GridModel gridModel = new GridModel()
                     {
                         rows = list,
-                        total = LevelModel.CurrentListCache.Count()
+                        total = LevelModel.CurrentCacheList.Count()
                     };
                     return gridModel;
             }
@@ -102,7 +102,7 @@ namespace HH.RMS.Service.Web
         {
             try
             {
-                return LevelModel.CurrentListCache.Where(m => m.id == id).FirstOrDefault();
+                return LevelModel.CurrentCacheList.Where(m => m.id == id).FirstOrDefault();
             }
             catch (Exception ex)
             {

@@ -30,8 +30,12 @@ namespace HH.RMS.Service.Web
             _provinceRepository = provinceRepository;
             _cityRepository = cityRepository;
         }
-        public GridModel QueryPersonToGrid(PagerModel pager)
+        public GridModel QueryPersonToGrid(PagerModel pager=null)
         {
+            if (pager == null)
+            {
+                pager = new PagerModel();
+            }
             try{
                 using (var db = new ApplicationDbContext())
                 {
@@ -59,17 +63,17 @@ namespace HH.RMS.Service.Web
                                 createTime = a.createTime,
                                 sex = a.sex
                              });
-                    IQueryable<PersonModel> qPager = null;
-                    if (pager != null)
+                    if (pager.rows>0 && pager.page>0)
                     {
-                        qPager = q.OrderByDescending(m => m.id).Take(pager.rows * pager.page).Skip(pager.rows * (pager.page - 1));
+                            q = q.OrderByDescending(m => m.id).Take(pager.rows * pager.page).Skip(pager.rows * (pager.page - 1));
                     }
                     GridModel gridModel = new GridModel()
                     {
-                        rows = qPager.ToList(),
+                        rows = q.ToList(),
                         total = q.Count()
                     };
                     return gridModel;
+                    
                     //return null;
                 }
             }

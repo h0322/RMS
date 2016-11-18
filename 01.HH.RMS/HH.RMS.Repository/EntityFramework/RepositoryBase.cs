@@ -182,22 +182,16 @@ namespace HH.RMS.Repository.EntityFramework
                 throw new NotImplementedException();
             }
         }
-        public ResultType ExecuteDataSetSql<T>(string sqlString,SqlScriptType sqlType,SqlParameter[] sqlParameters)
+
+        public int ExecuteNonQuerySql(ApplicationDbContext db, string sqlString, SqlScriptType sqlType, SqlParameter[] sqlParameters)
         {
-            return ResultType.Success;
-        }
-        public ResultType ExecuteNonQuerySql<T>(string sqlString, SqlScriptType sqlType, SqlParameter[] sqlParameters)
-        {
-            return ResultType.Success;
+            return 0;
 
         }
-        public ResultType ExecuteReaderSql<T>(string sqlString, SqlScriptType sqlType, SqlParameter[] sqlParameters)
-        {
-            return ResultType.Success;
 
-        }
-        public ResultType ExecuteScalarSql<T>(string sqlString, SqlScriptType sqlType, SqlParameter[] sqlParameters)
+        public object ExecuteScalarSql(string sqlString, SqlScriptType sqlType, SqlParameter[] sqlParameters)
         {
+
             return ResultType.Success;
 
         }

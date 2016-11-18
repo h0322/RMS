@@ -40,6 +40,8 @@ namespace HH.RMS.MVC.Controllers
         [HttpPost]
         public JsonResult CreateRole(RoleModel model)
         {
+            long[] bitMap = RoleModel.CurrentCacheList.Select(m=>m.bitMap).ToArray();
+            model.bitMap = BitMapHelper.GetBitMap(bitMap);
             ResultType result = _roleService.CreateRole(model);
             return Json(result);
         }

@@ -48,9 +48,11 @@ namespace HH.RMS.Service.Web
                                  id = a.id,
                                  score = a.score,
                                  amount = a.amount,
-                                 name = b.name, 
+                                 roleBitMap = a.roleBitMap,
                                  status = a.status,
                                  remark = a.remark,
+                                 accountType = a.accountType,
+                                 name = b.name, 
                                  birthday = b.birthday, 
                                  personId = b.id, 
                                  provinceId = b.provinceId, 
@@ -59,8 +61,7 @@ namespace HH.RMS.Service.Web
                                  cityId = b.cityId, 
                                  nickName = b.nickName,
                                  levelName = c.levelName,
-                                 levelId = c.id
-
+                                 levelId = c.id,
                              });
                     result.resultObj = q.FirstOrDefault();
                 }

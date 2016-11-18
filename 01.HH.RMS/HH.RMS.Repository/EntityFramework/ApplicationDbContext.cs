@@ -4,7 +4,9 @@ using HH.RMS.Entity.Web;
 using HH.RMS.Repository.EntityFramework.Mapping;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,6 +42,22 @@ namespace HH.RMS.Repository.EntityFramework
         {
  
         }
+        //public DataSet ExecuteDataSetSql(ApplicationDbContext db, string sqlString, SqlScriptType sqlType, SqlParameter[] sqlParameters)
+        //{
+        //    return null;
+        //}
+        //public int ExecuteNonQuerySql(string sqlString, SqlScriptType sqlType, SqlParameter[] sqlParameters)
+        //{
+        //    this.sq
+        //    return 0;
+
+        //}
+        //public object ExecuteScalarSql(string sqlString, SqlScriptType sqlType, SqlParameter[] sqlParameters)
+        //{
+
+        //    return ResultType.Success;
+
+        //}
         //public DbSet<AccountEntity> Account { get; set; }
         //public DbSet<PersonEntity> Person { get; set; }
         //public DbSet<SchedulerLogEntity> Scheduler { get; set; }

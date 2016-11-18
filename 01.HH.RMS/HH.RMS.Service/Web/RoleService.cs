@@ -17,11 +17,13 @@ namespace HH.RMS.Service.Web
 {
     public class RoleService :  IRoleService
     {
+        private IRepository<AccountEntity> _accountRepository;
         private IRepository<RoleEntity> _roleRepository;
         private IRepository<MenuEntity> _menuRepository;
         private IRepository<MenuRoleEntity> _menuRoleRepository;
-        public RoleService(IRepository<RoleEntity> roleRepository, IRepository<MenuRoleEntity> menuRoleRepository, IRepository<MenuEntity> menuRepository)
+        public RoleService(IRepository<AccountEntity> accountRepository, IRepository<RoleEntity> roleRepository, IRepository<MenuRoleEntity> menuRoleRepository, IRepository<MenuEntity> menuRepository)
         {
+            _accountRepository = accountRepository;
             _roleRepository = roleRepository;
             _menuRepository = menuRepository;
             _menuRoleRepository = menuRoleRepository;
@@ -33,12 +35,12 @@ namespace HH.RMS.Service.Web
                 List<RoleModel> list = null;
                 if (pager != null)
                 {
-                    list = RoleModel.CurrentListCache.OrderByDescending(m => m.id).Take(pager.rows * pager.page).Skip(pager.rows * (pager.page - 1)).ToList();
+                    list = RoleModel.CurrentCacheList.OrderByDescending(m => m.id).Take(pager.rows * pager.page).Skip(pager.rows * (pager.page - 1)).ToList();
                 }
                 GridModel gridModel = new GridModel()
                 {
                     rows = list.ToList(),
-                    total = RoleModel.CurrentListCache.Count
+                    total = RoleModel.CurrentCacheList.Count
                 };
                 return gridModel;
             }
@@ -70,6 +72,7 @@ namespace HH.RMS.Service.Web
             {
                 using (var db = new ApplicationDbContext())
                 {
+                    
                     _roleRepository.Insert(db, TinyMapper.Map<RoleEntity>(model));
                     CacheHelper.RemoveCache(Config.roleCache);
                     return ResultType.Success;
@@ -87,10 +90,18 @@ namespace HH.RMS.Service.Web
         {
             try
             {
-                var entity = TinyMapper.Map<RoleEntity>(model);
+                //var entity = TinyMapper.Map<RoleEntity>(model);
                 using (var db = new ApplicationDbContext())
                 {
-                    _roleRepository.Update(db, entity);
+                    //_roleRepository.Update(db, entity);
+                    //_roleRepository.Update(db, 
+                    //    new RoleEntity() {roleName=model.roleName, updateBy = AccountModel.CurrentSession.id, updateTime = DateTime.Now},
+                    //    m => m.id == model.id
+                    //    );
+                    _roleRepository.Update(db,
+                    m => new RoleEntity() { roleName = model.roleName,roleOrder = model.roleOrder, updateBy = AccountModel.CurrentSession.id, updateTime = DateTime.Now },
+                    m => m.id == model.id
+                    );
                 }
                 CacheHelper.RemoveCache(Config.roleCache);
                 return ResultType.Success;
@@ -106,7 +117,7 @@ namespace HH.RMS.Service.Web
         {
             try
             {
-                return RoleModel.CurrentListCache.Where(m => m.id == id).FirstOrDefault();
+                return RoleModel.CurrentCacheList.Where(m => m.id == id).FirstOrDefault();
             }
             catch (Exception ex)
             {
@@ -120,9 +131,12 @@ namespace HH.RMS.Service.Web
             {
                 using (var db = new ApplicationDbContext())
                 {
+                    long[] bitMapArray = _roleRepository.Query(db).Where(m=>ids.Contains(m.bitMap)).Select(m=>m.bitMap).ToArray();
                     _roleRepository.Update(db, _roleRepository.DeleteEntity(),
                     m => ids.Contains(m.id)
                     );
+                    string sqlString = "update account set roleBitMap = roleBitMap - (roleBitMap & @bitMap) where (roleBitMap & @bitMap) <> 0";
+                    //db.
                 }
                 CacheHelper.RemoveCache(Config.roleCache);
                 return ResultType.Success;

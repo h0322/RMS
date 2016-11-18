@@ -45,6 +45,7 @@ namespace HH.RMS.Service.Web
                 _levelRepository.userId = AccountModel.CurrentSession.id;
             }
         }
+
         public AccountModel QueryAccountById(long id)
         {
             try
@@ -74,7 +75,7 @@ namespace HH.RMS.Service.Web
             }
             catch (Exception ex)
             {
-                Config.log.Error("AccountService.QueryPersonById", ex);
+                Config.log.Error("AccountService.QueryPersonById;Id:"+id, ex);
                 return null;
             }
         }
@@ -86,9 +87,19 @@ namespace HH.RMS.Service.Web
                 using (var db = new ApplicationDbContext())
                 {
                     int result = _accountRepository.Insert(db, account);
+                    if (result > 0)
+                    {
+                        return ResultType.Success;
+                    }
+                    else
+                    {
+                        Config.log.Info("AccountService.InsertAccount:Fail;accountName:"+model.accountName);
+                        return ResultType.Fail;
+                    }
                 }
 
-                return ResultType.Success;
+
+                
             }
             catch (Exception ex)
             {
@@ -98,8 +109,12 @@ namespace HH.RMS.Service.Web
         }
 
 
-        public GridModel QueryAccountToGridByRole(PagerModel pager = null)
+        public GridModel QueryAccountToGridByRole(PagerModel pager)
         {
+            if (pager == null)
+            {
+                pager = new PagerModel();
+            }
             int roleOrder = (int)AccountModel.CurrentSession.accountType;
             try
             {
@@ -138,16 +153,17 @@ namespace HH.RMS.Service.Web
                                 levelOrder = tt1 == null ? 0 : tt1.levelOrder
                             });
                     IQueryable<AccountModel> qPager = null;
-                    if (pager != null)
+                    if (pager.rows>0 && pager.page>0)
                     {
                         qPager = q.OrderByDescending(m => m.id).Take(pager.rows * pager.page).Skip(pager.rows * (pager.page - 1));
+                        GridModel list = new GridModel()
+                        {
+                            rows = qPager.ToList(),
+                            total = q.Count()
+                        };
+                        return list;
                     }
-                    GridModel list = new GridModel()
-                    {
-                        rows = qPager.ToList(),
-                        total = q.Count()
-                    };
-                    return list;
+                    return new GridModel() { rows = q.ToList(), total = q.Count()};
                 }
             }
             catch (Exception ex)

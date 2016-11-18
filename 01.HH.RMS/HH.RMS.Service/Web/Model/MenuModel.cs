@@ -23,7 +23,7 @@ namespace HH.RMS.Service.Web.Model
                 return SessionHelper.GetSession(Config.menuSession).ToString();
             }
         }
-        public static List<MenuModel> CurrentListCache
+        public static List<MenuModel> CurrentCacheList
         {
             get
             {

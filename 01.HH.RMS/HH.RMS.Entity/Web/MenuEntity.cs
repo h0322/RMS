@@ -23,6 +23,5 @@ namespace HH.RMS.Entity.Web
         [MaxLength(100)]
         public string url { get; set; }
         public int treeLevel { get; set; }
-        public long roleBitMap { get; set; }
     }
 }

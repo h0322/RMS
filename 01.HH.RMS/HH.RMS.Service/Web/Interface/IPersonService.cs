@@ -12,7 +12,7 @@ namespace HH.RMS.Service.Web.Interface
 {
     public interface IPersonService
     {
-        GridModel QueryPersonToGrid(PagerModel pager);
+        GridModel QueryPersonToGrid(PagerModel pager=null);
         ResultModel<ResultType> CreatePersonAccount(AccountModel model);
         PersonModel QueryPersonById(long id);
         ResultType UpdatePersonById(PersonModel model);
