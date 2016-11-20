@@ -40,7 +40,7 @@ namespace HH.RMS.MVC.Controllers
         [HttpPost]
         public JsonResult CreateRole(RoleModel model)
         {
-            long[] bitMap = RoleModel.CurrentCacheList.Select(m=>m.bitMap).ToArray();
+            long[] bitMap = _roleService.QueryRoleList().Select(m => m.bitMap).ToArray();
             model.bitMap = BitMapHelper.GetBitMap(bitMap);
             ResultType result = _roleService.CreateRole(model);
             return Json(result);
@@ -60,36 +60,36 @@ namespace HH.RMS.MVC.Controllers
         [HttpPost]
         public JsonResult DeleteRoleByIds(string idString)
         {
-            long[] ids = (long[])ConvertHelper.StringToArray(idString);
+            long[] ids = (long[])ConvertHelper.StringToArray(idString,DataType.Int64);
             var result = _roleService.DeleteRoleByIds(ids);
             return Json(result, JsonRequestBehavior.AllowGet);
         }
         [HttpPost]
         public JsonResult UpdateMenuRole(string menuRoleString, long roleId)
         {
-            var result = _roleService.DeleteMenuRoleByRoleId(roleId);
+            var result = ResultType.Success;// _roleService.DeleteMenuRoleByRoleId(roleId);
             List<MenuRoleModel> list = JsonConvert.DeserializeObject<List<MenuRoleModel>>(menuRoleString);
             if(result == ResultType.Success)
             {
                 foreach (var item in list)
                 {
                     item.roleId = roleId;
-                    if (item.isSelect)
-                    {
-                        item.excuteType = item.excuteType | (int)ExcuteType.Select; 
-                    }
-                    if (item.isInsert)
-                    {
-                        item.excuteType = item.excuteType | (int)ExcuteType.Insert;
-                    }
-                    if (item.isUpdate)
-                    {
-                        item.excuteType = item.excuteType | (int)ExcuteType.Update;
-                    }
-                    if (item.isDelete)
-                    {
-                        item.excuteType = item.excuteType | (int)ExcuteType.Delete;
-                    }
+                    //if (item.isSelect)
+                    //{
+                    //    item.excuteType = item.excuteType | (int)ExcuteType.Select; 
+                    //}
+                    //if (item.isInsert)
+                    //{
+                    //    item.excuteType = item.excuteType | (int)ExcuteType.Insert;
+                    //}
+                    //if (item.isUpdate)
+                    //{
+                    //    item.excuteType = item.excuteType | (int)ExcuteType.Update;
+                    //}
+                    //if (item.isDelete)
+                    //{
+                    //    item.excuteType = item.excuteType | (int)ExcuteType.Delete;
+                    //}
                     result = _roleService.InsertMenuRole(item);
                     if (result != ResultType.Success)
                     {

@@ -27,7 +27,6 @@ F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Console\obj\Debug\HH.RMS.Console.pdb
 F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Console\obj\Debug\HH.RMS.Consoles.csprojResolveAssemblyReference.cache
 F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Console\bin\Debug\HH.RMS.Console.exe
 F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Console\bin\Debug\HH.RMS.Console.pdb
-F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Console\bin\Debug\HH.RMS.Wechat.dll
 F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Console\bin\Debug\Newtonsoft.Json.dll
 F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Console\bin\Debug\HH.RMS.Service.dll
 F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Console\bin\Debug\log4net.dll
@@ -40,7 +39,6 @@ F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Console\bin\Debug\Microsoft.Practice
 F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Console\bin\Debug\EntityFramework.dll
 F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Console\bin\Debug\EntityFramework.Extended.dll
 F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Console\bin\Debug\Microsoft.Practices.ServiceLocation.dll
-F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Console\bin\Debug\HH.RMS.Wechat.pdb
 F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Console\bin\Debug\Newtonsoft.Json.xml
 F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Console\bin\Debug\HH.RMS.Service.pdb
 F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Console\bin\Debug\log4net.xml
@@ -95,3 +93,10 @@ D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Console\bin\Debug\Common.Logging.Core.pdb
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Console\bin\Debug\Common.Logging.Core.xml
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Console\bin\Debug\Common.Logging.pdb
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Console\bin\Debug\Common.Logging.xml
+F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Console\bin\Debug\Quartz.dll
+F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Console\bin\Debug\Topshelf.dll
+F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Console\bin\Debug\Common.Logging.Core.dll
+F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Console\bin\Debug\Common.Logging.dll
+F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Console\bin\Debug\Quartz.xml
+F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Console\bin\Debug\Common.Logging.Core.xml
+F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Console\bin\Debug\Common.Logging.xml

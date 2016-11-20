@@ -121,13 +121,6 @@ namespace HH.RMS.Service.Web
                         {
                             return new ResultModel<ResultType>(ResultType.NotExecute, "Account Insert Fail");
                         }
-                        //AccountRoleEntity accountRole = TinyMapper.Map<AccountRoleEntity>(model);
-                        //_accountRoleRepository.Insert(db, accountRole);
-                        //if (accountRole.id < 1)
-                        //{
-                        //    return new ResultModel<ResultType>(ResultType.NotExecute, "Account Role Insert Fail");
-                        //}
-                        transaction.Complete();
                     }
                 }
                 catch (Exception ex)

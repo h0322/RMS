@@ -36,7 +36,7 @@ namespace HH.RMS.Service.Web.Model
         public long parentId { get; set; }
         public int treeLevel { get; set; }
         public long roleId { get; set; }
-        public int excuteType { get; set; }
+        public ExcuteType excuteType { get; set; }
         public bool isSelect { get; set; }
         public bool isUpdate { get; set; }
         public bool isInsert { get; set; }

@@ -297,7 +297,6 @@ F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.MVC\bin\HH.RMS.MVC.dll
 F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.MVC\bin\HH.RMS.MVC.pdb
 F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.MVC\bin\HH.RMS.Common.dll
 F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.MVC\bin\HH.RMS.Entity.dll
-F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.MVC\bin\HH.RMS.Scheduler.dll
 F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.MVC\bin\HH.RMS.Service.dll
 F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.MVC\bin\log4.net.Layout.JsonLayout.dll
 F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.MVC\bin\log4net.dll
@@ -327,7 +326,6 @@ F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.MVC\bin\TinyMapper.dll
 F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.MVC\bin\EntityFramework.Extended.dll
 F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.MVC\bin\HH.RMS.Common.pdb
 F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.MVC\bin\HH.RMS.Entity.pdb
-F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.MVC\bin\HH.RMS.Scheduler.pdb
 F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.MVC\bin\HH.RMS.Service.pdb
 F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.MVC\bin\log4.net.Layout.JsonLayout.xml
 F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.MVC\bin\log4net.xml
@@ -346,11 +344,8 @@ F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.MVC\bin\System.Web.Razor.xml
 F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.MVC\bin\System.Web.WebPages.xml
 F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.MVC\bin\System.Web.WebPages.Deployment.xml
 F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.MVC\bin\System.Web.WebPages.Razor.xml
-F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.MVC\bin\Quartz.pdb
 F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.MVC\bin\Quartz.xml
-F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.MVC\bin\Common.Logging.Core.pdb
 F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.MVC\bin\Common.Logging.Core.xml
-F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.MVC\bin\Common.Logging.pdb
 F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.MVC\bin\Common.Logging.xml
 F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.MVC\bin\HH.RMS.Repository.pdb
 F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.MVC\bin\EntityFramework.xml

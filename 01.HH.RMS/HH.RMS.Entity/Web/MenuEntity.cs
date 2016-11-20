@@ -23,5 +23,9 @@ namespace HH.RMS.Entity.Web
         [MaxLength(100)]
         public string url { get; set; }
         public int treeLevel { get; set; }
+        public long selectBitMap { get; set; }
+        public long deleteBitMap { get; set; }
+        public long insertBitMap { get; set; }
+        public long updateBitMap { get; set; }
     }
 }

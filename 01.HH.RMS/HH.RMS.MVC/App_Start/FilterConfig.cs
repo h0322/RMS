@@ -54,7 +54,7 @@ namespace HH.RMS.MVC
             }
             if (excuteType > 0 && !string.IsNullOrEmpty(menuCode))
             {
-                MenuRoleModel role = MenuRoleModel.ListSession.Where(m => m.code == menuCode && (m.excuteType & excuteType) == excuteType).FirstOrDefault();
+                MenuRoleModel role = MenuRoleModel.ListSession.Where(m => m.code == menuCode && ((int)m.excuteType & excuteType) == excuteType).FirstOrDefault();
                 if (role == null)
                 {
                     return false;

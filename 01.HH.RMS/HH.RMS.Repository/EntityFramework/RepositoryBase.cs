@@ -22,19 +22,7 @@ namespace HH.RMS.Repository.EntityFramework
 {
     public class RepositoryBase<T> : IRepository<T> where T : EntityBase,new()
     {
-        //private DbContext _dbContext { get; set; }
         public long userId { get; set; }
-        //public T SetDefaultValue()
-        //{
-        //    T t = new T();
-        //    t.up
-        //    return t;
-        //}
-        //public RepositoryBase(DbContext _dbContext)
-        //{
-        //    this._dbContext = _dbContext;
-        //    //this._dbContext.Configuration.AutoDetectChangesEnabled = false;
-        //}
         public RepositoryBase()
         {
             
@@ -61,22 +49,6 @@ namespace HH.RMS.Repository.EntityFramework
 
         public IQueryable<T> Query(ApplicationDbContext db, Expression<Func<T, bool>> express = null, bool isNoTracking = true)
         {
-            //if (isNoTracking)
-            //{
-            //    if (express != null)
-            //    {
-            //        return this._dbContext.Set<T>().Where(express).Where(m => m.isActive).AsNoTracking();
-            //    }
-            //    return this._dbContext.Set<T>().Where(m => m.isActive).AsNoTracking();
-            //}
-            //else
-            //{
-            //    if (express != null)
-            //    {
-            //        return this._dbContext.Set<T>().Where(express).Where(m => m.isActive);
-            //    }
-            //    return this._dbContext.Set<T>().Where(m=>m.isActive);
-            //}
             if (isNoTracking)
             {
                 if (express != null)
@@ -112,23 +84,13 @@ namespace HH.RMS.Repository.EntityFramework
             db.Set<T>().Attach(entity);
             var entry = db.Entry<T>(entity);
             entry.State = EntityState.Modified;
-            //db.Entry(entity).State = EntityState.Modified;
             return  db.SaveChanges();
-            //RepositoryTrigger.Execute(t, this.dbContext);
         }
 
         public Expression<Func<T, T>> DeleteEntity()
         {
             return m => new T() { updateBy = 1 ,updateTime = DateTime.Now, isActive=false};
         }
-        public Expression<Func<T, T>> UpdateEntity()
-        {
-            //t.updateBy = 2;
-            //t.updateTime = DateTime.Now;
-            return m => new T() { updateBy = 1, updateTime = DateTime.Now};
-        }
-
-
         public int Insert(ApplicationDbContext db, T t)
         {
             if (t.createBy == 0)
@@ -157,6 +119,10 @@ namespace HH.RMS.Repository.EntityFramework
 
         public int ExecuteSql(ApplicationDbContext db,string sql, params object[] parameters)
         {
+            if (parameters == null)
+            {
+                parameters = new object[0];
+            }
             return db.Database.ExecuteSqlCommand(sql, parameters);
         }
 
@@ -182,7 +148,7 @@ namespace HH.RMS.Repository.EntityFramework
                 throw new NotImplementedException();
             }
         }
-
+        #region ADO.NET
         public int ExecuteNonQuerySql(ApplicationDbContext db, string sqlString, SqlScriptType sqlType, SqlParameter[] sqlParameters)
         {
             return 0;
@@ -195,6 +161,7 @@ namespace HH.RMS.Repository.EntityFramework
             return ResultType.Success;
 
         }
+        #endregion
     }
 
 }

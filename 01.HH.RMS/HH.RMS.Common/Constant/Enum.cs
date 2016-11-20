@@ -205,6 +205,7 @@ namespace HH.RMS.Common.Constant
     }
     public enum ExcuteType
     {
+        NoAccsess=0,
         Select = 1,
         Insert = 2,
         Update = 4,

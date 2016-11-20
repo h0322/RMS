@@ -19,7 +19,7 @@
                 collapsible: true,//是否可折叠的
                 fit: true,//自动大小
                 url: '/Role/QueryRoleToGrid',
-                idField: 'roleId',
+                idField: 'id',
                 singleSelect: false,//是否单选
                 loadMsg: "正在加载，请稍等...",
                 pagination: true,//分页控件
@@ -30,7 +30,7 @@
                 checkbox: true,
                 columns: [[
                     //<th data-options="field:'ck',checkbox:true"></th>
-                    { field: 'roleId', checkbox: true },
+                    { field: 'id', checkbox: true },
                     {
                         field: 'roleName', title: '角色名称', width: 120, align: 'center'
                     },
@@ -42,7 +42,7 @@
                     },
                     {
                         field: 'edit', title: '操作', width: 100, align: 'center', formatter: function (value, row) {
-                            return "<a style='color:blue;cursor:pointer' onclick='javascript:edit(" + row.roleId + ")'>编辑</a>&nbsp;<a style='color:blue;cursor:pointer' onclick='javascript:MenuRole(" + row.roleId + ")'>权限</a>";
+                            return "<a style='color:blue;cursor:pointer' onclick='javascript:edit(" + row.roleId + ")'>编辑</a>&nbsp;<a style='color:blue;cursor:pointer' onclick='javascript:MenuRole(" + row.id + ")'>权限</a>";
                         }
                     }
                 ]] ,
@@ -104,8 +104,8 @@
             var roleIds = "";
             for (index in rows)
             {
-                console.log(rows[index].roleId)
-                roleIds += rows[index].roleId + ",";
+                console.log(rows[index].id)
+                roleIds += rows[index].id + ",";
             }
             if (roleIds == "")
             {
@@ -113,7 +113,7 @@
                 return;
             }
             roleIds = roleIds.substring(0, roleIds.length - 1);
-            $.post("/Role/DeleteRoleByIds", { ids: roleIds }, function (data) {
+            $.post("/Role/DeleteRoleByIds", { idString: roleIds }, function (data) {
                 $("#table_roleList").datagrid();
                 $("#table_roleList").datagrid('uncheckAll');
                 alert("删除成功");

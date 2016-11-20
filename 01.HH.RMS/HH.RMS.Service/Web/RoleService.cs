@@ -12,6 +12,8 @@ using System.Threading.Tasks;
 using HH.RMS.Common.Constant;
 using HH.RMS.Common.Utilities;
 using Nelibur.ObjectMapper;
+using System.Data.SqlClient;
+using System.Transactions;
 
 namespace HH.RMS.Service.Web
 {
@@ -125,18 +127,20 @@ namespace HH.RMS.Service.Web
                 return null;
             }
         }
-        public ResultType DeleteRoleByIds(long[] ids)
+        public ResultType DeleteRoleByIds(long[] idArray)
         {
+            string idString = string.Join(",", idArray);
             try
             {
                 using (var db = new ApplicationDbContext())
                 {
-                    long[] bitMapArray = _roleRepository.Query(db).Where(m=>ids.Contains(m.bitMap)).Select(m=>m.bitMap).ToArray();
-                    _roleRepository.Update(db, _roleRepository.DeleteEntity(),
-                    m => ids.Contains(m.id)
-                    );
-                    string sqlString = "update account set roleBitMap = roleBitMap - (roleBitMap & @bitMap) where (roleBitMap & @bitMap) <> 0";
-                    //db.
+                    string sqlString = "declare @roleBitMap bigint=0;";
+                    sqlString += " select @roleBitMap = sum(bitMap) from SystemRole where id in (" + idString + ");";
+                    sqlString += " begin tran";
+                    sqlString += " update SystemRole set isActive=0 where id in (" + idString + ");";
+                    sqlString += " update account set roleBitMap = roleBitMap - (roleBitMap & @roleBitMap) where (roleBitMap & @roleBitMap) <> 0;";
+                    sqlString += " commit tran";
+                    _roleRepository.ExecuteSql(db, sqlString, null);
                 }
                 CacheHelper.RemoveCache(Config.roleCache);
                 return ResultType.Success;
@@ -222,16 +226,14 @@ namespace HH.RMS.Service.Web
                 return ResultType.SystemError;
             }
         }
-        public List<MenuRoleModel> QueryMenuByRoleIdList(long roleBitMap)
+        public List<MenuRoleModel> QueryMenuByRoleIdList(long roleId)
         {
             try
             {
                 using (var db = new ApplicationDbContext())
                 {
                     var q = from a in _menuRepository.Query(db)
-                            join b in _menuRoleRepository.Query(db).Where(m =>(m.roleId & roleBitMap)==m.roleId) on a.id equals b.menuId
-                             into ss
-                            from m in ss.DefaultIfEmpty()
+                            join b in _roleRepository.Query(db) on roleId equals b.id
                             select new MenuRoleModel
                             {
                                 menuId = a.id, 
@@ -241,8 +243,10 @@ namespace HH.RMS.Service.Web
                                 menuOrder = a.menuOrder, 
                                 parentId = a.parentId,
                                 treeLevel = a.treeLevel,
-                                id = m == null ? 0 : m.id,
-                                excuteType = m == null ? 0 : m.excuteType
+                                isSelect = (a.selectBitMap & b.bitMap) == b.bitMap ? true : false,
+                                isInsert = (a.insertBitMap & b.bitMap) == b.bitMap ? true : false,
+                                isUpdate = (a.updateBitMap & b.bitMap) == b.bitMap ? true : false,
+                                isDelete = (a.deleteBitMap & b.bitMap) == b.bitMap ? true : false,
                             };
                     return q.OrderBy(m=>m.menuOrder).ToList();
                 }
