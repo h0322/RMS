@@ -7,26 +7,36 @@ using System.Threading.Tasks;
 
 namespace HH.RMS.Entity.Wechat
 {
-    public class WechatSetting:EntityBase
+    public class WechatConfigEntity:EntityBase
     {
-        [MaxLength(20)]
+        [MaxLength(50)]
         public string name { get; set; }
         [MaxLength(100)]
         public string description { get; set; }
         [MaxLength(20)]
         public string openId { get; set; }
-        [MaxLength(20)]
+        [MaxLength(50)]
         public string appId { get; set; }
-        [MaxLength(20)]
+        [MaxLength(50)]
         public string appName { get; set; }
         [MaxLength(50)]
         public string appSecret { get; set; }
-        [MaxLength(50)]
+        [MaxLength(100)]
         public string accessToken { get; set; }
-        [MaxLength(20)]
-        public string key { get; set; }
+        [MaxLength(50)]
+        public string token { get; set; }
         [MaxLength(50)]
         public string security { get; set; }
+        [MaxLength(50)]
+        public string ticket { get; set; }
+        [MaxLength(50)]
+        public string componentName { get; set; }
+        [MaxLength(50)]
+        public string componentAppId { get; set; }
+        [MaxLength(50)]
+        public string componentAppSecret { get; set; }
+        [MaxLength(100)]
+        public string componentAccessToken { get; set; }
         [MaxLength(100)]
         public string url { get; set; }
         [MaxLength(100)]

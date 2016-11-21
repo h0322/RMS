@@ -18,7 +18,7 @@ namespace HH.RMS.Consoles
     {
         static void Main(string[] args)
         {
-            int i = 1 | 4;
+            int i = 1 | 2;
             System.Console.Write(i);
             System.Console.ReadLine();
             new SendMessage();

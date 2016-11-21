@@ -54,7 +54,7 @@ namespace HH.RMS.MVC.Controllers
             return Json(person, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult DeleteRoleByIds(string idString)
+        public JsonResult DeleteLevelByIds(string idString)
         {
             long[] ids = Array.ConvertAll<string, long>(idString.Split(','), s => int.Parse(s));
             var result = _levelService.DeleteLevelByIds(ids);

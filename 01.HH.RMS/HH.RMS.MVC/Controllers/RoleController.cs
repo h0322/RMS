@@ -65,38 +65,9 @@ namespace HH.RMS.MVC.Controllers
             return Json(result, JsonRequestBehavior.AllowGet);
         }
         [HttpPost]
-        public JsonResult UpdateMenuRole(string menuRoleString, long roleId)
+        public JsonResult UpdateMenuRole(RoleMenuModel model)
         {
-            var result = ResultType.Success;// _roleService.DeleteMenuRoleByRoleId(roleId);
-            List<MenuRoleModel> list = JsonConvert.DeserializeObject<List<MenuRoleModel>>(menuRoleString);
-            if(result == ResultType.Success)
-            {
-                foreach (var item in list)
-                {
-                    item.roleId = roleId;
-                    //if (item.isSelect)
-                    //{
-                    //    item.excuteType = item.excuteType | (int)ExcuteType.Select; 
-                    //}
-                    //if (item.isInsert)
-                    //{
-                    //    item.excuteType = item.excuteType | (int)ExcuteType.Insert;
-                    //}
-                    //if (item.isUpdate)
-                    //{
-                    //    item.excuteType = item.excuteType | (int)ExcuteType.Update;
-                    //}
-                    //if (item.isDelete)
-                    //{
-                    //    item.excuteType = item.excuteType | (int)ExcuteType.Delete;
-                    //}
-                    result = _roleService.InsertMenuRole(item);
-                    if (result != ResultType.Success)
-                    {
-                        return Json(result, JsonRequestBehavior.AllowGet);
-                    }
-                }
-            }
+            var result = _roleService.UpdateMenuRole(model);
             return Json(result, JsonRequestBehavior.AllowGet);
         }
         public JsonResult QueryMenuRole(long roleId)

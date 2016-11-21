@@ -13,7 +13,7 @@ using HH.RMS.Wechat.Model;
 
 namespace HH.RMS.Service.Wechat
 {
-    public class WechatService:IWechatService
+    public class WechatRequestService : IWechatRequestService
     {
         protected static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public ResultModel<WechatResponseModel> PostData(WechatRequestModel model)

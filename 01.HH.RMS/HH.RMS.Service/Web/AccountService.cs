@@ -67,6 +67,7 @@ namespace HH.RMS.Service.Web
                                 remark = a.remark,
                                 personId =  a.personId,
                                 levelId = a.levelId,
+                                roleBitMap = a.roleBitMap,
                                 levelName = tt1 == null ? "" : tt1.levelName, 
                                 levelOrder = tt1 == null ? 0 : tt1.levelOrder
                             };
@@ -186,10 +187,11 @@ namespace HH.RMS.Service.Web
                         score = model.score,
                         levelId = model.levelId,
                         status = model.status,
+                        roleBitMap = model.roleBitMap,
                         updateBy = AccountModel.CurrentSession.id,
                         updateTime = DateTime.Now
                     }, m => m.id == model.id);
-                    if (result == 0)
+                    if (result > 0)
                     {
                         return ResultType.Success;
                     }

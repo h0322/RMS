@@ -18,8 +18,8 @@
                 border: true,
                 collapsible: true,//是否可折叠的
                 fit: true,//自动大小
-                url: '/Account/QueryAccountToGrid@(ViewBag.personId)',
-                idField: 'rows.accountId',
+                url: '/Level/QueryLevelToGrid',
+                idField: 'rows.id',
                 singleSelect: false,//是否单选
                 loadMsg: "正在加载，请稍等...",
                 pagination: true,//分页控件
@@ -42,7 +42,7 @@
                     },
                     {
                         field: 'edit', title: '操作', width: 100, align: 'center', formatter: function (value, row) {
-                            return "<a style='color:blue;cursor:pointer' onclick='javascript:edit(" + row.accountId + ")'>编辑</a>";
+                            return "<a style='color:blue;cursor:pointer' onclick='javascript:edit(" + row.id + ")'>编辑</a>";
                         }
                     }
                 ]] ,
@@ -50,20 +50,13 @@
             });
         });
 
-        function edit(accountId)
+        function edit(levelId)
         {
             $('#from_level').form('clear'); //清表单
             $("#levelList").datagrid('uncheckAll');
             $(".panel-title panel-with-icon").text("修改等级信息");
-            $.post("/Level/QueryAccountById", { id: accountId }, function (d) {
-                $('#accountId').val(d.accountId);
-                $('#accountName').textbox('setValue', d.accountName);
-                $('#score').numberbox('setValue', d.score);
-                $('#amount').numberbox('setValue', d.amount);
-                $('#sel_level').combobox('setValue', d.level);
-                $("#sel_status").combobox('setValue', d.status);
-                $('#accountName').textbox('disable');
-                $("#sel_role").combobox('setValue', d.role.roleId);
+            $.post("/Level/QueryLevelById", { id: levelId }, function (d) {
+                $('#from_account').form('load', d);
                 $('#dlg_Add').dialog('open');
             }, "json");
 
@@ -74,7 +67,7 @@
             loadingBox.show("正在保存中...")
             var data = $("#from_level").serialize();
             var accountId = $("#accountId").val();
-            var url = "/Account/UpdateAccount";
+            var url = "/Level/UpdateLevel";
             $.post(url, data, function (d) {
                 loadingBox.hide();
                 if (d.result == "@((int)ResultType.Success)") {
@@ -94,15 +87,19 @@
         function del()
         {
             var rows = $('#levelList').datagrid('getSelections')
-            var accountIds = "";
+            var levelIds = "";
             for (index in rows)
             {
-                console.log(rows[index].accountId)
-                accountIds += rows[index].accountId + ",";
+                console.log(rows[index].id)
+                levelIds += rows[index].id + ",";
             }
-            console.log(accountIds)
-            accountIds = accountIds.substring(0, accountIds.length - 1);
-            $.post("/Account/DeleteAccountById", { ids: accountIds }, function (data) {
+            if (levelIds.length == 0)
+            {
+                alert("请选择删除项");
+                return;
+            }
+            accountIds = accountIds.substring(0, levelIds.length - 1);
+            $.post("/Level/DeleteLevelById", { ids: levelIds }, function (data) {
                 $("#levelList").datagrid();
                 $("#levelList").datagrid('uncheckAll');
                 alert("删除成功");
@@ -122,39 +119,7 @@
                 $.cookie("searchText", search, { path: "/" });
             else
                 $.cookie("searchText", null, { path: "/" });
-            if (status >0)
-                $.cookie("searchStatus", status, { path: "/" });
-            else
-                $.cookie("searchStatus", null, { path: "/" });
-            if (dateFrom != "")
-                $.cookie("searchDateFrom", dateFrom, { path: "/" });
-            else
-                $.cookie("searchDateFrom", null, { path: "/" });
-            if (dateTo != "")
-                $.cookie("searchDateTo", dateTo, { path: "/" });
-            else
-                $.cookie("searchDateTo", null, { path: "/" });
-            if (role > 0)
-                $.cookie("searchRole", role, { path: "/" });
-            else
-                $.cookie("searchRole", role, { path: "/" });
             $("#levelList").datagrid();
-        });
-        $("#search_sel_role").combobox({
-            url: '/Account/QueryRoleList',
-            valueField: 'value',
-            textField: 'text',
-            required: false,
-            editable: false,
-            value: 0
-        });
-        $("#sel_roleId").combobox({
-            url: '/Account/QueryRoleList',
-            valueField: 'value',
-            textField: 'text',
-            required: false,
-            editable: false,
-            value: 0
         });
     </script>
 }

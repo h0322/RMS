@@ -29,21 +29,8 @@ namespace HH.RMS.Service.Web
             {
                 using (var db = new ApplicationDbContext())
                 {
-                    var List = _menuRepository.Query(db).ToList();
-                    List.ForEach(m => menuList.Add(new MenuModel()
-                    {
-                        code = m.code,
-                        createTime = m.createTime,
-                        description = m.description,
-                        id = m.id,
-                        menuName = m.menuName,
-                        menuOrder = m.menuOrder,
-                        menuType = m.menuType,
-                        parentId = m.parentId,
-                        treeLevel = m.treeLevel,
-                        url = m.url
-                    }));
-                    return menuList;
+                    var list = _menuRepository.Query(db).ToList();
+                    return MenuModel.ModelMapper<List<MenuModel>>(list);
                 }
             }
             catch (Exception ex)

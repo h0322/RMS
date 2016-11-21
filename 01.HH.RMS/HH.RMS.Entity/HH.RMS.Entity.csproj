@@ -56,7 +56,7 @@
     <Compile Include="Web\RoleEntity.cs" />
     <Compile Include="Scheduler\SchedulerEntity.cs" />
     <Compile Include="Scheduler\JobLogEntity.cs" />
-    <Compile Include="Wechat\WechatSetting.cs" />
+    <Compile Include="Wechat\WechatConfigEntity.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HH.RMS.Common\HH.RMS.Common.csproj">

@@ -16,6 +16,7 @@ namespace HH.RMS.Service.Wechat
     public class AccessTokenService : IAccessTokenService
     {
         protected static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+       
         public ResultModel<AccessTokenModel> GetAccessToken(WechatRequestModel model)
         {
             try
@@ -32,6 +33,7 @@ namespace HH.RMS.Service.Wechat
                     return new ResultModel<AccessTokenModel>(ResultType.Fail, "微信访问失败");
                 }
                 AccessTokenModel accessToken = JsonConvert.DeserializeObject<AccessTokenModel>(result);
+
                 return new ResultModel<AccessTokenModel>(ResultType.Success, accessToken);
             }
             catch (Exception ex)

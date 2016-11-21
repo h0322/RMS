@@ -147,20 +147,23 @@
     <Compile Include="Wechat\Interface\IAccessTokenService.cs" />
     <Compile Include="Wechat\Interface\IResponseMessageService.cs" />
     <Compile Include="Wechat\Interface\IRequestMessageService.cs" />
-    <Compile Include="Wechat\Interface\IWechatService.cs" />
+    <Compile Include="Wechat\Interface\IWechatConfigService.cs" />
+    <Compile Include="Wechat\Interface\IWechatRequestService.cs" />
     <Compile Include="Wechat\Message\BaseProcess.cs" />
     <Compile Include="Wechat\Message\ProcessEvent.cs" />
     <Compile Include="Wechat\Message\ProcessImage.cs" />
     <Compile Include="Wechat\Message\ProcessLocation.cs" />
     <Compile Include="Wechat\Message\ProcessText.cs" />
     <Compile Include="Wechat\Model\AccessTokenModel.cs" />
+    <Compile Include="Wechat\Model\WechatConfigModel.cs" />
+    <Compile Include="Wechat\WechatConfigService.cs" />
     <Compile Include="Wechat\Model\WechatPostModel.cs" />
     <Compile Include="Wechat\Model\WechatRequestModel.cs" />
     <Compile Include="Wechat\Model\WechatResponseModel.cs" />
     <Compile Include="Wechat\Model\WechatResponseMsgModel.cs" />
     <Compile Include="Wechat\ResponseMessageService.cs" />
     <Compile Include="Wechat\RequestMessageService.cs" />
-    <Compile Include="Wechat\WechatService.cs" />
+    <Compile Include="Wechat\WechatRequestService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HH.RMS.Common\HH.RMS.Common.csproj">

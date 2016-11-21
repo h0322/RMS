@@ -2,6 +2,7 @@
 using HH.RMS.Common.Unity;
 using HH.RMS.Common.Utilities;
 using HH.RMS.Service.Web.Interface;
+using Nelibur.ObjectMapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -51,5 +52,18 @@ namespace HH.RMS.Service.Web.Model
         public string url { get; set; }
         public int treeLevel { get; set; }
         public DateTime createTime { get; set; }
+        public long selectBitMap { get; set; }
+        public long insertBitMap { get; set; }
+        public long updateBitMap { get; set; }
+        public long deleteBitMap { get; set; }
+        public static T ModelMapper<T>(object entity)
+        {
+            return TinyMapper.Map<T>(entity);
+        }
+        public static T EntityMapper<T>(object model)
+        {
+            return TinyMapper.Map<T>(model);
+        }
     }
+
 }

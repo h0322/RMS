@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace HH.RMS.Wechat.Interface
 {
-    public interface IWechatService
+    public interface IWechatRequestService
     {
         ResultModel<WechatResponseModel> PostData(WechatRequestModel model);
         ResultModel<WechatResponseModel> GetData(WechatRequestModel model);
