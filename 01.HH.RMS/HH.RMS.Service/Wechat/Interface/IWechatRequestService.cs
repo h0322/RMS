@@ -11,7 +11,7 @@ namespace HH.RMS.Wechat.Interface
 {
     public interface IWechatRequestService
     {
-        ResultModel<WechatResponseModel> PostData(WechatRequestModel model);
-        ResultModel<WechatResponseModel> GetData(WechatRequestModel model);
+        ResultModel<string> PostData(WechatRequestModel model);
+        ResultModel<string> GetData(WechatRequestModel model);
     }
 }

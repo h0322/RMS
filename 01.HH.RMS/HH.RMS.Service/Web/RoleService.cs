@@ -94,21 +94,22 @@ namespace HH.RMS.Service.Web
         {
             try
             {
-                //var entity = TinyMapper.Map<RoleEntity>(model);
                 using (var db = new ApplicationDbContext())
                 {
-                    //_roleRepository.Update(db, entity);
-                    //_roleRepository.Update(db, 
-                    //    new RoleEntity() {roleName=model.roleName, updateBy = AccountModel.CurrentSession.id, updateTime = DateTime.Now},
-                    //    m => m.id == model.id
-                    //    );
-                    _roleRepository.Update(db,
+                    int result = _roleRepository.Update(db,
                     m => new RoleEntity() { roleName = model.roleName,roleOrder = model.roleOrder, updateBy = AccountModel.CurrentSession.id, updateTime = DateTime.Now },
                     m => m.id == model.id
                     );
+                    CacheHelper.RemoveCache(Config.roleCache);
+                    if (result > 0)
+                    {
+                        return ResultType.Success;
+                    }
+                    else
+                    {
+                        return ResultType.Fail;
+                    }
                 }
-                CacheHelper.RemoveCache(Config.roleCache);
-                return ResultType.Success;
             }
             catch (Exception ex)
             {

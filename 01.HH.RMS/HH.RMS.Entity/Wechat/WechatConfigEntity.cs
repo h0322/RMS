@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HH.RMS.Common.Attributes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -7,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace HH.RMS.Entity.Wechat
 {
+    [MappingTable(tableName = "WechatConfig")]
     public class WechatConfigEntity:EntityBase
     {
         [MaxLength(50)]

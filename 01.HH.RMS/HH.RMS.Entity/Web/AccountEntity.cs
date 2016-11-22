@@ -13,7 +13,7 @@ namespace HH.RMS.Entity.Web
     [MappingTable(tableName = "Account")]
     public class AccountEntity : EntityBase
     {
-        [MaxLength(32)]
+        [MaxLength(50)]
         public string accountName { get; set; }
         [MaxLength(32)]
         public string password { get; set; }

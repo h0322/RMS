@@ -1,4 +1,8 @@
-﻿using Nelibur.ObjectMapper;
+﻿using HH.RMS.Common.Constant;
+using HH.RMS.Common.Unity;
+using HH.RMS.Common.Utilities;
+using HH.RMS.Service.Wechat.Interface;
+using Nelibur.ObjectMapper;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -12,8 +16,20 @@ namespace HH.RMS.Entity.Wechat
     {
         public static WechatConfigModel CurrentCache
         {
-
+            get
+            {
+                if (CacheHelper.GetCache(Config.accessTokenCache) != null)
+                {
+                    return (WechatConfigModel)CacheHelper.GetCache(Config.accessTokenCache);
+                }
+                IWechatConfigService service = UnityManager.instance.GetService<IWechatConfigService>();
+                var result = service.QueryWechatConfig();
+                CacheHelper.SetCache(Config.accessTokenCache, result);
+                return result;
+                
+            }
         }
+        public long id { get; set; }
         public string name { get; set; }
         public string description { get; set; }
         public string openId { get; set; }

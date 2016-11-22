@@ -1,6 +1,7 @@
 ﻿using HH.RMS.Common.Constant;
 using HH.RMS.Entity.Scheduler;
 using HH.RMS.Entity.Web;
+using HH.RMS.Entity.Wechat;
 using HH.RMS.Repository.EntityFramework.Mapping;
 using System;
 using System.Collections.Generic;
@@ -36,6 +37,7 @@ namespace HH.RMS.Repository.EntityFramework
             modelBuilder.Configurations.Add(new MappingTableBase<CityEntity>());
             modelBuilder.Configurations.Add(new MappingTableBase<LevelEntity>());
             modelBuilder.Configurations.Add(new MappingTableBase<JobParameterEntity>());
+            modelBuilder.Configurations.Add(new MappingTableBase<WechatConfigEntity>());
             base.OnModelCreating(modelBuilder);
         }
         public void CreateExcute()

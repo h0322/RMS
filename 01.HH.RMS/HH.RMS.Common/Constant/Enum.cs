@@ -86,6 +86,7 @@ namespace HH.RMS.Common.Constant
     }
     public enum WechatUrlType
     {
+        CreateMenuUrl = 0,
         GetAccessToken = 1,
         GetJsapiTicketUrl=2,
         GetCardapiTicketUrl=3,
@@ -170,9 +171,17 @@ namespace HH.RMS.Common.Constant
         GetMediaUrl=82,
         GetPreviewUrl=83,
         InvitationCustomUrl=84,
-        CreateMenuUrl = 85,
+        
     }
-
+    public enum WechatScopeType
+    {
+        Base=1,
+        UserInfo=2
+    }
+    public enum WechatResponseType
+    {
+        Code=1
+    }
     public enum WechatMsgSearchType
     {
         [Description("默认匹配(全包含)")]

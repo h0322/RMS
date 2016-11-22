@@ -183,5 +183,13 @@ namespace HH.RMS.Common.Utilities
                 return str.Split(',');
             }
         }
+        public static object StringToDB(string str)
+        {
+            if (str == null)
+            {
+                return DBNull.Value;
+            }
+            return str;
+        }
     }
 }

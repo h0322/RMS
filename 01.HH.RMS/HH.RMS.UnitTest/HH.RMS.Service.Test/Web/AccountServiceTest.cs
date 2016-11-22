@@ -19,9 +19,7 @@ namespace HH.RMS.UnitTest.HH.RMS.Service.Test.Web
         public AccountServiceTest()
         {
             _accountService = UnityManager.instance.GetService<IAccountService>();
-            _loginService = UnityManager.instance.GetService<ILoginService>();
-            ResultModel<AccountModel> result = _loginService.UserLogin(loginName, password);
-            SessionHelper.SetSession(Config.loginSession, result.resultObj);
+            Login();
         }
         [TestMethod]
         public void QueryAccountById()
@@ -60,8 +58,11 @@ namespace HH.RMS.UnitTest.HH.RMS.Service.Test.Web
         public void UpdateAccount()
         {
             AccountModel account = new AccountModel();
+            account.id = 38;
             account.accountName = Guid.NewGuid().ToString() + "_test";
             account.amount = 0;
+            account.accountType = AccountType.Admin;
+            account.roleBitMap = 1;
             account.birthday = "1970-01-01";
             account.cityId = 1;
             account.countryId = 1;

@@ -68,25 +68,20 @@ namespace HH.RMS.Service.Wechat
                 return ResultType.SystemError;
             }
         }
-
-        public ResultModel<AccessTokenModel> GetAccessToken(WechatRequestModel model)
+        public ResultModel<AccessTokenModel> GetAccessToken()
         {
+            WechatConfigModel wechatConfigModel = WechatConfigModel.CurrentCache;
+            string wechatUrl = string.Format(Config.getAccessToken, wechatConfigModel.appId, wechatConfigModel.appSecret);
             try
             {
-                string url = model.GetWechatUrl();
-                if (url == null)
-                {
-                    return new ResultModel<AccessTokenModel>(ResultType.NotExists, "该功能不存在");
-                }
-                string wechatUrl = string.Format(url, model.appId, model.appSecret);
                 string result = NetHelper.Get(wechatUrl);
                 if (string.IsNullOrEmpty(result))
                 {
                     return new ResultModel<AccessTokenModel>(ResultType.Fail, "微信访问失败");
                 }
-                AccessTokenModel accessToken = JsonConvert.DeserializeObject<AccessTokenModel>(result);
-
-                return new ResultModel<AccessTokenModel>(ResultType.Success, accessToken);
+                AccessTokenModel token = JsonConvert.DeserializeObject<AccessTokenModel>(result);
+                UpdateWechatConfig(wechatConfigModel);
+                return new ResultModel<AccessTokenModel>(ResultType.Success, token);
             }
             catch (Exception ex)
             {

@@ -68,11 +68,15 @@
   </Choose>
   <ItemGroup>
     <Compile Include="HH.RMS.Service.Test\TestServiceBase.cs" />
+    <Compile Include="HH.RMS.Service.Test\Web\LevelServiceTest.cs" />
     <Compile Include="HH.RMS.Service.Test\Web\LoginServiceTest.cs" />
     <Compile Include="HH.RMS.Service.Test\Web\AccountServiceTest.cs" />
+    <Compile Include="HH.RMS.Service.Test\Web\MenuServiceTest.cs" />
     <Compile Include="HH.RMS.Service.Test\Web\PersonServiceTest.cs" />
     <Compile Include="HH.RMS.Service.Test\Web\RoleServiceTest.cs" />
     <Compile Include="HH.RMS.Service.Test\Wechat\ResponseMessageTest.cs" />
+    <Compile Include="HH.RMS.Service.Test\Wechat\WechatOAuthTest.cs" />
+    <Compile Include="HH.RMS.Service.Test\Wechat\WechatConfigTest.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

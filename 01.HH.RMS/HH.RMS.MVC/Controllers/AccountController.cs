@@ -2,7 +2,6 @@
 using HH.RMS.Service.Web.Model;
 using HH.RMS.Common.Utilities;
 using HH.RMS.Entity.Web;
-using HH.RMS.Service.Web.Model;
 using HH.RMS.MVC.Models;
 using HH.RMS.Service.Web.Interface;
 using System;

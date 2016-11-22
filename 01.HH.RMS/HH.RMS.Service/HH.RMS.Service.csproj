@@ -143,10 +143,9 @@
     <Compile Include="Web\RoleService.cs" />
     <Compile Include="Scheduler\SchedulerService.cs" />
     <Compile Include="UnityService.cs" />
-    <Compile Include="Wechat\AccessTokenService.cs" />
-    <Compile Include="Wechat\Interface\IAccessTokenService.cs" />
     <Compile Include="Wechat\Interface\IResponseMessageService.cs" />
-    <Compile Include="Wechat\Interface\IRequestMessageService.cs" />
+    <Compile Include="Wechat\Interface\IWechatOAuthService.cs" />
+    <Compile Include="Wechat\Interface\IWechatReceiveService.cs" />
     <Compile Include="Wechat\Interface\IWechatConfigService.cs" />
     <Compile Include="Wechat\Interface\IWechatRequestService.cs" />
     <Compile Include="Wechat\Message\BaseProcess.cs" />
@@ -156,13 +155,16 @@
     <Compile Include="Wechat\Message\ProcessText.cs" />
     <Compile Include="Wechat\Model\AccessTokenModel.cs" />
     <Compile Include="Wechat\Model\WechatConfigModel.cs" />
+    <Compile Include="Wechat\Model\WechatOAuthModel.cs" />
+    <Compile Include="Wechat\Model\WechatReceiveModel.cs" />
     <Compile Include="Wechat\WechatConfigService.cs" />
     <Compile Include="Wechat\Model\WechatPostModel.cs" />
     <Compile Include="Wechat\Model\WechatRequestModel.cs" />
     <Compile Include="Wechat\Model\WechatResponseModel.cs" />
     <Compile Include="Wechat\Model\WechatResponseMsgModel.cs" />
     <Compile Include="Wechat\ResponseMessageService.cs" />
-    <Compile Include="Wechat\RequestMessageService.cs" />
+    <Compile Include="Wechat\WechatOAuthService.cs" />
+    <Compile Include="Wechat\WechatReceiveService.cs" />
     <Compile Include="Wechat\WechatRequestService.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -13,7 +13,7 @@ namespace HH.RMS.Common.Utilities
     {
         public static WebProxy CreateWebProxy()
         {
-            if ("1".Equals(Config.isWebProxy))
+            if (Config.isWebProxy == 1)
             {
                 WebProxy proxyObject = new WebProxy(Config.webProxyUrl, int.Parse(Config.webProxyPort));
                 proxyObject.Credentials = new NetworkCredential(Config.webProxyUserName, Config.webProxyPassword, Config.webProxyDomain);

@@ -16,44 +16,44 @@ namespace HH.RMS.Service.Wechat
     public class WechatRequestService : IWechatRequestService
     {
         protected static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        public ResultModel<WechatResponseModel> PostData(WechatRequestModel model)
+        public ResultModel<string> PostData(WechatRequestModel model)
         {
-            try
-            {
-                string url = model.GetWechatUrl();
-                if (string.IsNullOrEmpty(url))
-                {
-                    Config.log.Info("WechatService.PostToWechat:功能不存在("+model.wechatUrlType.ToString()+")");
-                    return new ResultModel<WechatResponseModel>(ResultType.NotExists, "该功能不存在");
-                }
-                string result = NetHelper.Post(url,model.data);
-                return new ResultModel<WechatResponseModel>(ResultType.Success, result, "Post数据成功");
-            }
-            catch (Exception ex)
-            {
-                Config.log.Error("WechatService.PostToWechat", ex);
-                return null;
-            }
+            return null;
+            //try
+            //{
+            //    if (string.IsNullOrEmpty(model.url))
+            //    {
+            //        Config.log.Info("WechatService.PostToWechat:功能不存在("+model.data+")");
+            //        return new ResultModel<string>(ResultType.NotExists, "Url 为空","");
+            //    }
+            //    string result = NetHelper.Post(model.url, model.data);
+            //    return new ResultModel<string>(ResultType.Success, result, "Post数据成功","");
+            //}
+            //catch (Exception ex)
+            //{
+            //    Config.log.Error("WechatService.PostToWechat", ex);
+            //    return new ResultModel<string>(ResultType.SystemError, "", ex.Message);
+            //}
         }
-        public ResultModel<WechatResponseModel> GetData(WechatRequestModel model)
+        public ResultModel<string> GetData(WechatRequestModel model)
         {
-            try
-            {
-                string url = model.GetWechatUrl();
-                if (string.IsNullOrEmpty(url))
-                {
-                    Config.log.Info("WechatService.PostToWechat:功能不存在(" + model.wechatUrlType.ToString() + ")");
-                    return new ResultModel<WechatResponseModel>(ResultType.NotExists, "该功能不存在");
-                }
-                string accessToken = AccessTokenModel.Cache.accessToken;
-                string result = string.Format(url, accessToken);
-                return new ResultModel<WechatResponseModel>(ResultType.Success, result, "Get数据成功");
-            }
-            catch (Exception ex)
-            {
-                Config.log.Error("WechatService.PostToWechat", ex);
-                return null;
-            }
+            return null;
+            //try
+            //{
+            //    string url = model.GetWechatUrl();
+            //    if (string.IsNullOrEmpty(url))
+            //    {
+            //        Config.log.Info("WechatService.PostToWechat:功能不存在(" + model.wechatUrlType.ToString() + ")");
+            //        return new ResultModel<string>(ResultType.NotExists, "该功能不存在","");
+            //    }
+            //    string result = NetHelper.Get(url);
+            //    return new ResultModel<string>(ResultType.Success, result, "Get数据成功","");
+            //}
+            //catch (Exception ex)
+            //{
+            //    Config.log.Error("WechatService.PostToWechat", ex);
+            //    return new ResultModel<string>(ResultType.SystemError,  ex.Message,"");
+            //}
         }
         public void GetOpenIdTest(string a, int b, DateTime date)
         {
