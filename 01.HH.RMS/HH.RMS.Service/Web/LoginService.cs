@@ -52,29 +52,42 @@ namespace HH.RMS.Service.Web
                                  status = a.status,
                                  remark = a.remark,
                                  accountType = a.accountType,
-                                 name = b.name, 
-                                 birthday = b.birthday, 
-                                 personId = b.id, 
-                                 provinceId = b.provinceId, 
-                                 sex = b.sex, 
-                                 countryId = b.countryId, 
-                                 cityId = b.cityId, 
+                                 name = b.name,
+                                 birthday = b.birthday,
+                                 personId = b.id,
+                                 provinceId = b.provinceId,
+                                 sex = b.sex,
+                                 countryId = b.countryId,
+                                 cityId = b.cityId,
                                  nickName = b.nickName,
                                  levelName = c.levelName,
                                  levelId = c.id,
                              });
+                    //var q = (from a in _accountRepository.Query(db)
+                    //         where a.accountName == accountName && a.password == password && (a.accountType == AccountType.Admin || a.accountType == AccountType.SuperUser)
+                    //         select new AccountModel
+                    //         {
+                    //             accountName = a.accountName,
+                    //             id = a.id,
+                    //             score = a.score,
+                    //             amount = a.amount,
+                    //             roleBitMap = a.roleBitMap,
+                    //             status = a.status,
+                    //             remark = a.remark,
+                    //             accountType = a.accountType,
+
+                    //         });
                     result.resultObj = q.FirstOrDefault();
                 }
                 if (result.resultObj != null)
                 {
                     result.resultType = ResultType.Success;
                     result.resultMsg = "Login Success";
+                    return result;
                 }
-                else
-                {
-                    result.resultType = ResultType.Fail;
-                    result.resultMsg = "Login Fail";
-                }
+                result.resultType = ResultType.Fail;
+                result.resultMsg = "Login Fail";
+                return result;
             }
             catch (Exception ex)
             {
