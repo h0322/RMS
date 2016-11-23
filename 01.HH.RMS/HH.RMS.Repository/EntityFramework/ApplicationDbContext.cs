@@ -24,6 +24,7 @@ namespace HH.RMS.Repository.EntityFramework
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new AccountMapping());
+            modelBuilder.Configurations.Add(new LevelMapping());
             modelBuilder.Configurations.Add(new PersonMapping());
             modelBuilder.Configurations.Add(new LogMapping());
             modelBuilder.Configurations.Add(new SchedulerMapping());
@@ -35,34 +36,15 @@ namespace HH.RMS.Repository.EntityFramework
             modelBuilder.Configurations.Add(new MappingTableBase<CountryEntity>());
             modelBuilder.Configurations.Add(new MappingTableBase<ProvinceEntity>());
             modelBuilder.Configurations.Add(new MappingTableBase<CityEntity>());
-            modelBuilder.Configurations.Add(new MappingTableBase<LevelEntity>());
+            //modelBuilder.Configurations.Add(new MappingTableBase<LevelEntity>());
             modelBuilder.Configurations.Add(new MappingTableBase<JobParameterEntity>());
             modelBuilder.Configurations.Add(new MappingTableBase<WechatConfigEntity>());
+
             base.OnModelCreating(modelBuilder);
         }
         public void CreateExcute()
         {
  
-        }
-        //public DataSet ExecuteDataSetSql(ApplicationDbContext db, string sqlString, SqlScriptType sqlType, SqlParameter[] sqlParameters)
-        //{
-        //    return null;
-        //}
-        //public int ExecuteNonQuerySql(string sqlString, SqlScriptType sqlType, SqlParameter[] sqlParameters)
-        //{
-        //    this.sq
-        //    return 0;
-
-        //}
-        //public object ExecuteScalarSql(string sqlString, SqlScriptType sqlType, SqlParameter[] sqlParameters)
-        //{
-
-        //    return ResultType.Success;
-
-        //}
-        //public DbSet<AccountEntity> Account { get; set; }
-        //public DbSet<PersonEntity> Person { get; set; }
-        //public DbSet<SchedulerLogEntity> Scheduler { get; set; }
-        
+        }       
     }
 }

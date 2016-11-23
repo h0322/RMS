@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace HH.RMS.Entity.Web
 {
-    [MappingTable(tableName = "Account")]
+    //[MappingTable(tableName = "Account")]
     public class AccountEntity : EntityBase
     {
         [MaxLength(50)]

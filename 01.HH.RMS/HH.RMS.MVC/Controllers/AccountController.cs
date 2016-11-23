@@ -71,6 +71,7 @@ namespace HH.RMS.MVC.Controllers
         [RMSAuthorize(excuteType = (int)ExcuteType.Insert, menuCode = "Account")]
         public JsonResult SaveAccount(AccountModel model)
         {
+          model.password = SecurityHelper.Hash(model.password);
            var result = _accountService.InsertAccount(model);
            return Json(new { result= (int)result}, JsonRequestBehavior.AllowGet);
         }

@@ -11,18 +11,21 @@ using HH.RMS.Common.Utilities;
 namespace HH.RMS.UnitTest.HH.RMS.Service.Test.Web
 {
     [TestClass]
-    public class LoginServiceTest : TestServiceBase
+    public class LoginServiceTest:TestServiceBase
     {
         private ILoginService _loginService { get; set; }
         public LoginServiceTest()
         {
             _loginService = UnityManager.instance.GetService<ILoginService>();
+            ServiceLogin();
         }
         [TestMethod]
+
         public void Login()
         {
-            ResultModel<AccountModel> loginResult = _loginService.UserLogin(loginName, password);
+            var loginResult = _loginService.UserLogin(loginName, password);
             Assert.AreEqual(loginResult.resultType, ResultType.Success);
         }
+
     }
 }

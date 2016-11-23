@@ -20,7 +20,7 @@ namespace HH.RMS.UnitTest.HH.RMS.Service.Test.Web
         public RoleServiceTest()
         {
             _roleService = UnityManager.instance.GetService<IRoleService>();
-            Login();
+            ServiceLogin();
         }
         [TestMethod]
         public void DeleteRoleByIds()

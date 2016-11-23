@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Security;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace HH.RMS.Common.Utilities
 {
@@ -64,5 +65,25 @@ namespace HH.RMS.Common.Utilities
                 throw;
             }
         }
+
+        public static void DownLoadFile(string fileUrl, string savePath)
+        {
+            try
+            {
+                using (WebClient wc = new WebClient())
+                {
+                    wc.Proxy = CreateWebProxy();
+                    wc.Encoding = Encoding.UTF8;
+                    //保存路径
+                    string SaveFilePath = HttpContext.Current.Server.MapPath(savePath);
+                    //下载并保存文件
+                    wc.DownloadFile(fileUrl, SaveFilePath);
+                }
+            }
+            catch
+            {
+                throw;
+            }
+        } 
     }
 }

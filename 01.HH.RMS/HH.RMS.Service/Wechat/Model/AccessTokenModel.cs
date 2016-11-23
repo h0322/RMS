@@ -2,7 +2,6 @@
 using HH.RMS.Common.Unity;
 using HH.RMS.Common.Utilities;
 using HH.RMS.Service.Wechat.Interface;
-using HH.RMS.Wechat.Interface;
 using HH.RMS.Wechat.Model;
 using Newtonsoft.Json;
 using System;

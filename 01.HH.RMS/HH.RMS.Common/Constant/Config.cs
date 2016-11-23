@@ -48,6 +48,7 @@ namespace HH.RMS.Common.Constant
         public readonly static string menuCache = "MenuCache";
         public readonly static string roleCache = "RoleCache";
         public readonly static string accessTokenCache = "AccessTokenCache";
+        public const string wechatSDKTikcet = "WechatSDKTikcet";
         #endregion
 
         #region Wechat

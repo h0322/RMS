@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HH.RMS.Wechat.Interface
+namespace HH.RMS.Service.Wechat.Interface
 {
     public interface IWechatRequestService
     {

@@ -31,6 +31,47 @@ namespace HH.RMS.Service.Web
             _personRepository = personRepository;
             _levelRepository = levelRepository;
         }
+        public AccountModel UserLogin2(string accountName, string password)
+        {
+            try
+            {
+                using (var db = new ApplicationDbContext())
+                {
+                    var q = (from a in _accountRepository.Query(db)
+                             join b in _personRepository.Query(db) on a.personId equals b.id
+                             join c in _levelRepository.Query(db) on a.levelId equals c.id
+                             where a.accountName == accountName && a.password == password && (a.accountType == AccountType.Admin || a.accountType == AccountType.SuperUser)
+                             select new AccountModel
+                             {
+                                 accountName = a.accountName,
+                                 id = a.id,
+                                 score = a.score,
+                                 amount = a.amount,
+                                 roleBitMap = a.roleBitMap,
+                                 status = a.status,
+                                 remark = a.remark,
+                                 accountType = a.accountType,
+                                 name = b.name,
+                                 birthday = b.birthday,
+                                 personId = b.id,
+                                 provinceId = b.provinceId,
+                                 sex = b.sex,
+                                 countryId = b.countryId,
+                                 cityId = b.cityId,
+                                 nickName = b.nickName,
+                                 levelName = c.levelName,
+                                 levelId = c.id,
+                             });
+
+                    return q.FirstOrDefault();
+                }
+            }
+            catch (Exception ex)
+            {
+                Config.log.Error("LoginService.ResultModel", ex);
+                return null;
+            }
+        }
         public ResultModel<AccountModel> UserLogin(string accountName, string password)
         {
             ResultModel<AccountModel> result = new ResultModel<AccountModel>();
@@ -63,20 +104,7 @@ namespace HH.RMS.Service.Web
                                  levelName = c.levelName,
                                  levelId = c.id,
                              });
-                    //var q = (from a in _accountRepository.Query(db)
-                    //         where a.accountName == accountName && a.password == password && (a.accountType == AccountType.Admin || a.accountType == AccountType.SuperUser)
-                    //         select new AccountModel
-                    //         {
-                    //             accountName = a.accountName,
-                    //             id = a.id,
-                    //             score = a.score,
-                    //             amount = a.amount,
-                    //             roleBitMap = a.roleBitMap,
-                    //             status = a.status,
-                    //             remark = a.remark,
-                    //             accountType = a.accountType,
 
-                    //         });
                     result.resultObj = q.FirstOrDefault();
                 }
                 if (result.resultObj != null)

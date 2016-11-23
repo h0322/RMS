@@ -37,6 +37,7 @@ namespace HH.RMS.MVC.Controllers
         [ValidateAntiForgeryToken]
         public JsonResult Index(LoginModel model)
         {
+            model.password = SecurityHelper.Hash(model.password);
             ResultModel<AccountModel> result = _loginService.UserLogin(model.accountName, model.password);
             if (result.resultType == ResultType.Success)
             {

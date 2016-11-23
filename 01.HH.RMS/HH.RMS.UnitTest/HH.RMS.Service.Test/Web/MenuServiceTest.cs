@@ -16,7 +16,7 @@ namespace HH.RMS.UnitTest.HH.RMS.Service.Test.Web
         public MenuServiceTest()
         {
             _menuService = UnityManager.instance.GetService<IMenuService>();
-            Login();
+            ServiceLogin();
         }
         [TestMethod]
         public void QueryMenuALL()

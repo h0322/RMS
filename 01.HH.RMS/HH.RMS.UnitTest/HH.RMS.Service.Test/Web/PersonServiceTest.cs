@@ -17,7 +17,7 @@ namespace HH.RMS.UnitTest.HH.RMS.Service.Test.Web
         public PersonServiceTest()
         {
             _personService = UnityManager.instance.GetService<IPersonService>();
-            Login();
+            ServiceLogin();
         }
         [TestMethod]
         public void QueryPersonToGrid()

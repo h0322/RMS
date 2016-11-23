@@ -17,7 +17,7 @@ namespace HH.RMS.UnitTest.HH.RMS.Service.Test.Web
         public LevelServiceTest()
         {
             _levelService = UnityManager.instance.GetService<ILevelService>();
-            Login();
+            ServiceLogin();
         }
         [TestMethod]
         public void QueryLevelToGrid()

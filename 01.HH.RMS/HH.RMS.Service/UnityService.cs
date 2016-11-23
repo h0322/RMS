@@ -58,6 +58,13 @@ namespace HH.RMS.Service
             //unityManager.RegisterType<IADOUnit, ADOUnit>();
             #region wechat
             unityManager.RegisterType<IWechatConfigService, WechatConfigService>();
+            unityManager.RegisterType<IResponseMessageService, ResponseMessageService>();
+            unityManager.RegisterType<IWechatJsSdkService, WechatJsSdkService>();
+            unityManager.RegisterType<IWechatOAuthService, WechatOAuthService>();
+            unityManager.RegisterType<IWechatQRCodeService, WechatQRCodeService>();
+            unityManager.RegisterType<IWechatReceiveService, WechatReceiveService>();
+            unityManager.RegisterType<IWechatRequestService, WechatRequestService>();
+            unityManager.RegisterType<IWechatUserService, WechatUserService>();
             #endregion
         }
         public virtual void ContorllerRegister()

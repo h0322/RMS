@@ -8,13 +8,11 @@ using System.Threading.Tasks;
 
 namespace HH.RMS.Repository.EntityFramework.Mapping
 {
-    public class AccountMapping : EntityTypeConfiguration<AccountEntity>
+    public class LevelMapping : EntityTypeConfiguration<LevelEntity>
     {
-        public AccountMapping()
+        public LevelMapping()
         {
-            //this.Property(t => t.personId).IsRequired();
-            //base.TableProperty();
-            this.ToTable("Account");
+            this.ToTable("AccountLevel");
         }
     }
 }

@@ -19,6 +19,7 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using System.Linq.Expressions;
 using Nelibur.ObjectMapper;
+using HH.RMS.Service.Model;
 
 
 namespace HH.RMS.Service.Web
@@ -46,10 +47,12 @@ namespace HH.RMS.Service.Web
             }
         }
 
+
         public AccountModel QueryAccountById(long id)
         {
             try
             {
+                AccountModel model = new AccountModel();
                 using (var db = new ApplicationDbContext())
                 {
                     var q = from a in _accountRepository.Query(db)
@@ -65,13 +68,49 @@ namespace HH.RMS.Service.Web
                                 amount = a.amount,
                                 status = a.status,
                                 remark = a.remark,
-                                personId =  a.personId,
+                                personId = a.personId,
                                 levelId = a.levelId,
                                 roleBitMap = a.roleBitMap,
-                                levelName = tt1 == null ? "" : tt1.levelName, 
+                                levelName = tt1 == null ? "" : tt1.levelName,
                                 levelOrder = tt1 == null ? 0 : tt1.levelOrder
                             };
                     return q.FirstOrDefault();
+
+                    //var account = _accountRepository.Query(db).Where(m => m.id == 2).FirstOrDefault();
+                    //model.levelId = account.levelId;
+                    //model.accountName = account.accountName;
+                    //if (model.levelId > 0)
+                    //{
+                    //    var level = _levelRepository.Query(db).Where(m => m.id == model.levelId).FirstOrDefault();
+                    //    model.levelName = level.levelName;
+                    //    model.levelOrder = level.levelOrder;
+                    //}
+                    //return model;
+                    //string sql = "select * from account A left join accountLevel B on A.levelId = B.id  where A.id=2";
+                    //var accountEntity = _accountRepository.SqlQuery(db, sql, null).FirstOrDefault();
+                    //return AccountModel.ModelMapper<AccountModel>(accountEntity);
+
+                    //string sql = "select * from account A left join accountLevel B on A.levelId = B.id  where A.id=2";
+                    //AccountModel model = new AccountModel();
+                    //using (SqlConnection conn = new SqlConnection(Config.sqlConnStr))
+                    //{
+                    //    conn.Open();
+                    //    SqlCommand comm = new SqlCommand(sql, conn);
+                    //    SqlDataReader sdr = comm.ExecuteReader();
+                    //    while (sdr.Read())
+                    //    {
+                    //        model.accountName = sdr["accountName"].ToString();
+                    //        model.email = sdr["email"].ToString();
+                    //        model.score = Convert.ToDecimal(sdr["score"]);
+                    //        model.amount = Convert.ToDecimal(sdr["amount"]);
+                    //        model.personId = Convert.ToInt64(sdr["personId"]);
+                    //        model.levelId = Convert.ToInt64(sdr["levelId"]);
+                    //        model.roleBitMap = Convert.ToInt64(sdr["roleBitMap"]);
+                    //        model.levelName = sdr["levelName"].ToString();
+                    //        model.levelOrder = Convert.ToInt32(sdr["levelOrder"]);
+                    //    }
+                    //    return model;
+                    //}
                 }
             }
             catch (Exception ex)

@@ -14,12 +14,11 @@ namespace HH.RMS.UnitTest.HH.RMS.Service.Test.Web
     public class AccountServiceTest:TestServiceBase
     {
         private IAccountService _accountService { get; set; }
-        private ILoginService _loginService { get; set; }
         private long accountId = 2;
         public AccountServiceTest()
         {
             _accountService = UnityManager.instance.GetService<IAccountService>();
-            Login();
+            ServiceLogin();
         }
         [TestMethod]
         public void QueryAccountById()

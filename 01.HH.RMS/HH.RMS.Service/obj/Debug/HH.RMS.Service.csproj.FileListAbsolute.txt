@@ -145,8 +145,15 @@ F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\EntityFramework.Ex
 F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\obj\Debug\HH.RMS.Service.csprojResolveAssemblyReference.cache
 F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\obj\Debug\HH.RMS.Service.dll
 F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\obj\Debug\HH.RMS.Service.pdb
-D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\HH.RMS.Service.dll
+F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\Common.Logging.Core.dll
+F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\Common.Logging.dll
+F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\Quartz.dll
+F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\Topshelf.dll
+F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\Common.Logging.xml
+F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\Common.Logging.Core.xml
+F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\Quartz.xml
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\HH.RMS.Service.dll.config
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\HH.RMS.Service.dll
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\HH.RMS.Service.pdb
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\Common.Logging.Core.dll
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\Common.Logging.dll
@@ -187,10 +194,3 @@ D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\EntityFramework.Extended
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\obj\Debug\HH.RMS.Service.csprojResolveAssemblyReference.cache
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\obj\Debug\HH.RMS.Service.dll
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\obj\Debug\HH.RMS.Service.pdb
-F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\Common.Logging.Core.dll
-F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\Common.Logging.dll
-F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\Quartz.dll
-F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\Topshelf.dll
-F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\Common.Logging.xml
-F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\Common.Logging.Core.xml
-F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\Quartz.xml
