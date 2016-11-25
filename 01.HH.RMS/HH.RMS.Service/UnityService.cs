@@ -55,7 +55,7 @@ namespace HH.RMS.Service
             unityManager.RegisterType<ILevelService, LevelService>();
             unityManager.RegisterType<ISchedulerService, SchedulerService>();
             unityManager.RegisterType<IJobService, JobService>();
-            //unityManager.RegisterType<IADOUnit, ADOUnit>();
+            unityManager.RegisterType<ICollcetService, CollcetService>();
             #region wechat
             unityManager.RegisterType<IWechatConfigService, WechatConfigService>();
             unityManager.RegisterType<IResponseMessageService, ResponseMessageService>();
@@ -63,8 +63,8 @@ namespace HH.RMS.Service
             unityManager.RegisterType<IWechatOAuthService, WechatOAuthService>();
             unityManager.RegisterType<IWechatQRCodeService, WechatQRCodeService>();
             unityManager.RegisterType<IWechatReceiveService, WechatReceiveService>();
-            unityManager.RegisterType<IWechatRequestService, WechatRequestService>();
             unityManager.RegisterType<IWechatUserService, WechatUserService>();
+            unityManager.RegisterType<IWechatRequestService, WechatRequestService>();
             #endregion
         }
         public virtual void ContorllerRegister()

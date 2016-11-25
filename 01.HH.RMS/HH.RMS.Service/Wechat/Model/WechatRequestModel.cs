@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HH.RMS.Wechat.Model
+namespace HH.RMS.Service.Wechat.Model
 {
     public class WechatRequestModel
     {

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HH.RMS.Service.Wechat.Model
 {
-    public class WechatUserModel
+    public class WechatUserResponseModel
     {
         public WechatSubscribeType subscribe { get; set; }
         public string openId { get; set; }
@@ -24,5 +24,24 @@ namespace HH.RMS.Service.Wechat.Model
         public string unionid { get; set; }
         public string remark { get; set; }
         public int groupId { get; set; }
+    }
+    public class WechatUserRequestModel
+    {
+        public string openId { get; set; }
+        public string lang { get; set; }
+    }
+    public class WechatOpenIdListResponseModel
+    {
+        public int total { get; set; }
+        public int count { get; set; }
+        public OpenIdListModel data { get; set; }
+
+        [JsonProperty("next_openid")]
+        public string nextOpenId { get; set; }
+    }
+    public class OpenIdListModel
+    {
+        [JsonProperty("openid")]
+        public List<string> openIdList { get; set; }
     }
 }

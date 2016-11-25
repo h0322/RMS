@@ -12,7 +12,7 @@ namespace HH.RMS.Wechat.Message
     {
         public ProcessEvent()
        { }
-        public override void Process(WechatPostModel model)
+        public override void Process(WechatReceiveModel model)
         {
             List<WechatResponseMsgModel> list =new List<WechatResponseMsgModel>();
             ResponseMsg(list, "", "");

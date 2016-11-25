@@ -10,7 +10,7 @@ namespace HH.RMS.Wechat.Message
 {
     public abstract class BaseProcess
     {
-        public abstract void Process(WechatPostModel model);
+        public abstract void Process(WechatReceiveModel model);
         public virtual void ResponseMsg(List<WechatResponseMsgModel> model, string from, string to)
         {
 

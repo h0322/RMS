@@ -11,37 +11,37 @@ namespace HH.RMS.Entity.Wechat
     [MappingTable(tableName = "WechatConfig")]
     public class WechatConfigEntity:EntityBase
     {
-        [MaxLength(50)]
-        public string name { get; set; }
         [MaxLength(100)]
+        public string name { get; set; }
+        [MaxLength(500)]
         public string description { get; set; }
         [MaxLength(20)]
         public string openId { get; set; }
-        [MaxLength(50)]
+        [MaxLength(100)]
         public string appId { get; set; }
-        [MaxLength(50)]
+        [MaxLength(100)]
         public string appName { get; set; }
-        [MaxLength(50)]
+        [MaxLength(100)]
         public string appSecret { get; set; }
-        [MaxLength(100)]
+        [MaxLength(500)]
         public string accessToken { get; set; }
-        [MaxLength(50)]
+        [MaxLength(100)]
         public string token { get; set; }
-        [MaxLength(50)]
+        [MaxLength(100)]
         public string security { get; set; }
-        [MaxLength(50)]
+        [MaxLength(100)]
         public string ticket { get; set; }
-        [MaxLength(50)]
+        [MaxLength(100)]
         public string componentName { get; set; }
-        [MaxLength(50)]
+        [MaxLength(100)]
         public string componentAppId { get; set; }
-        [MaxLength(50)]
+        [MaxLength(100)]
         public string componentAppSecret { get; set; }
-        [MaxLength(100)]
+        [MaxLength(500)]
         public string componentAccessToken { get; set; }
-        [MaxLength(100)]
+        [MaxLength(500)]
         public string url { get; set; }
-        [MaxLength(100)]
+        [MaxLength(500)]
         public string imageUrl { get; set; }
     }
 }

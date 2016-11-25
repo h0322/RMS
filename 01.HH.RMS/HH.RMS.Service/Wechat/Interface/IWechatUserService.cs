@@ -9,6 +9,8 @@ namespace HH.RMS.Service.Wechat.Interface
 {
     public interface IWechatUserService
     {
-        WechatUserModel GetWechatUserByOpenId(string openId, string lang = "zh_CN");
+        WechatUserResponseModel GetWechatUserByOpenId(WechatUserRequestModel requestModel);
+        List<WechatUserResponseModel> BatchGetWechatUserByOpenId(List<WechatUserRequestModel> requestModel);
+        WechatOpenIdListResponseModel GetWechatOpenIdList(string nextOpenId = "");
     }
 }

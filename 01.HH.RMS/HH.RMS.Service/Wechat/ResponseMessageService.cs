@@ -1,6 +1,7 @@
 ﻿using HH.RMS.Common.Constant;
 using HH.RMS.Common.Utilities;
 using HH.RMS.Service.Wechat.Interface;
+using HH.RMS.Service.Wechat.Model;
 using HH.RMS.Wechat.Message;
 using HH.RMS.Wechat.Model;
 using System;
@@ -13,7 +14,7 @@ namespace HH.RMS.Service.Wechat
 {
     public class ResponseMessageService : IResponseMessageService
     {
-        public virtual void ProcessMsg(BaseProcess processMsg, WechatPostModel postModel)
+        public virtual void ProcessMsg(BaseProcess processMsg, WechatReceiveModel postModel)
         {
             try
             {
@@ -28,7 +29,7 @@ namespace HH.RMS.Service.Wechat
         {
             try
             {
-                WechatPostModel postModel = XMLHelper.Deserialize<WechatPostModel>(postString);
+                WechatReceiveModel postModel = XMLHelper.Deserialize<WechatReceiveModel>(postString);
                 if (postModel == null)
                 {
                     Config.log.Info("MessageManager.Manager:postModel Is NULL" + postString);

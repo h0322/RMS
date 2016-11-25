@@ -9,6 +9,6 @@ namespace HH.RMS.Service.Wechat.Interface
 {
     public interface IWechatReceiveService
     {
-        string ReturnEchostr(WechatReceiveModel model);
+        string ReturnEchostr(string signature, string timestamp, string nonce, string echostr);
     }
 }

@@ -8,6 +8,7 @@ using HH.RMS.Wechat.Message;
 using HH.RMS.Wechat.Model;
 using HH.RMS.Service.Wechat.Interface;
 using HH.RMS.Service.Wechat;
+using HH.RMS.Service.Wechat.Model;
 
 namespace HH.RMS.Console.Wechat
 {
@@ -27,7 +28,7 @@ namespace HH.RMS.Console.Wechat
     }
     public class SendMessageDefine :ResponseMessageService
     {
-        public override void ProcessMsg(BaseProcess processMsg, WechatPostModel postModel)
+        public override void ProcessMsg(BaseProcess processMsg, WechatReceiveModel postModel)
         {
             if (postModel.msgType == "text")
             {
@@ -39,7 +40,7 @@ namespace HH.RMS.Console.Wechat
     }
     public class ProcessTextDefine : ProcessText
     {
-        public override void Process(WechatPostModel model)
+        public override void Process(WechatReceiveModel model)
         {
             base.Process(model);
         }

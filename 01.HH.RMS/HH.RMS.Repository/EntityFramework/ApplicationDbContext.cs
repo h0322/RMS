@@ -16,8 +16,8 @@ namespace HH.RMS.Repository.EntityFramework
 {
     public class ApplicationDbContext:DbContext
     {
-        public ApplicationDbContext()
-            : base(Config.sqlConnStr)
+        public ApplicationDbContext(string sqlConnStr="")
+            : base(string.IsNullOrEmpty(sqlConnStr)?Config.sqlConnStr:sqlConnStr)
         {
             this.Database.Initialize(false);
         }

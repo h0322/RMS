@@ -74,7 +74,9 @@
     <Compile Include="HH.RMS.Service.Test\Web\MenuServiceTest.cs" />
     <Compile Include="HH.RMS.Service.Test\Web\PersonServiceTest.cs" />
     <Compile Include="HH.RMS.Service.Test\Web\RoleServiceTest.cs" />
+    <Compile Include="HH.RMS.Service.Test\Web\CollcetServiceTest.cs" />
     <Compile Include="HH.RMS.Service.Test\Wechat\ResponseMessageTest.cs" />
+    <Compile Include="HH.RMS.Service.Test\Wechat\WechatSendMessageTest.cs" />
     <Compile Include="HH.RMS.Service.Test\Wechat\WechatUserTest.cs" />
     <Compile Include="HH.RMS.Service.Test\Wechat\WechatQRCodeTest.cs" />
     <Compile Include="HH.RMS.Service.Test\Wechat\WechatOAuthTest.cs" />

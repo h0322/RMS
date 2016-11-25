@@ -89,8 +89,8 @@ namespace HH.RMS.Common.Constant
         public static readonly string createCustomUrl= "https://api.weixin.qq.com/customservice/kfaccount/add?access_token={0}";
         public static readonly string updateCustomUrl= "https://api.weixin.qq.com/customservice/kfaccount/update?access_token={0}";
         public static readonly string deleteCustomUrl= "https://api.weixin.qq.com/customservice/kfaccount/del?access_token={0}&kf_account={1}";
-        public static readonly string sendMsgByUserGroupUrl= "https://api.weixin.qq.com/cgi-bin/message/mass/sendall?access_token={0}";
-        public static readonly string sendMsgByOpenidUrl= "https://api.weixin.qq.com/cgi-bin/message/mass/send?access_token={0}";
+        public static readonly string sendMsgMassByUserGroupUrl= "https://api.weixin.qq.com/cgi-bin/message/mass/sendall?access_token={0}";
+        public static readonly string sendMsgMassByOpenidUrl= "https://api.weixin.qq.com/cgi-bin/message/mass/send?access_token={0}";
         public static readonly string deleteGroupMsgUrl= "https://api.weixin.qq.com/cgi-bin/message/mass/delete?access_token={0}";
         public static readonly string getUserSummaryUrl= "https://api.weixin.qq.com/datacube/getusersummary?access_token={0}";
         public static readonly string getUserCumulateUrl= "https://api.weixin.qq.com/datacube/getusercumulate?access_token={0}";
