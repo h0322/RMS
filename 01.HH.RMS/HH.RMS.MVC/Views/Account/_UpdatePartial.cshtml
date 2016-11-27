@@ -8,6 +8,17 @@
             <ul><li style="width:30%">积分:</li><li style="width:60%"><input id="score" name="score" class="easyui-numberbox"></li></ul>
             <ul><li style="width:30%">充值:</li><li style="width:60%"><input id="amount" name="amount" class="easyui-numberbox"></li></ul>
             <ul>
+                <li style="width:30%">账号类型:</li>
+                <li style="width:60%">
+                    <select id="sel_accountType" class="easyui-combobox" name="accountType">
+                        <option value="0" selected>请选择</option>
+                        <option value="1">管理员</option>
+                        <option value="2">超级用户</option>
+                        <option value="3">普通用户</option>
+                    </select>
+                </li>
+            </ul>
+            <ul>
                 <li style="width:30%">等级:</li>
                 <li style="width:60%">
                     <input id="sel_level" name="levelId"/>
@@ -17,7 +28,7 @@
                 <li style="width:30%">状态:</li>
                 <li style="width:60%">
                     <select id="sel_status" class="easyui-combobox" name="status">
-                        <option value="0">请选择</option>
+                        <option value="0" selected>请选择</option>
                         <option value="1">Normal</option>
                         <option value="2">Disable</option>
                         <option value="3">Black</option>
@@ -97,7 +108,7 @@
     }
     function Add() {
         $('#accountName').textbox('enable');
-        $('#from_account').form('clear'); //清表单
+        ClearFrom();
         $("#accountList").datagrid('uncheckAll');
         $("#personId").val("@ViewBag.personId");
         $(".panel-title panel-with-icon").text("新增账户");
@@ -121,5 +132,12 @@
     });
     function cancel() {
         $('#dlg_Add').dialog('close');
+    }
+    function ClearFrom()
+    {
+        $('#from_account').form('clear'); //清表单
+        $("#sel_level").combobox({ value: 0 });
+        $("#sel_status").combobox({ value: 0 });
+        $("#sel_accountType").combobox({ value: 0 });
     }
 </script>

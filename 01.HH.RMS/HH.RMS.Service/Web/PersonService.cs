@@ -40,9 +40,12 @@ namespace HH.RMS.Service.Web
                 using (var db = new ApplicationDbContext())
                 {
                     var q = (from a in _personRepository.Query(db)
-                             join b in _countryRepository.Query(db) on a.countryId equals b.id
-                             join c in _provinceRepository.Query(db) on a.provinceId equals c.id
-                             join d in _cityRepository.Query(db) on a.id equals d.id
+                             join b in _countryRepository.Query(db) on a.countryId equals b.id into t1
+                             from tt1 in t1.DefaultIfEmpty()
+                             join c in _provinceRepository.Query(db) on a.provinceId equals c.id into t2
+                             from tt2 in t2.DefaultIfEmpty()
+                             join d in _cityRepository.Query(db) on a.cityId equals d.id into t3
+                             from tt3 in t3.DefaultIfEmpty()
                              where (string.IsNullOrEmpty(pager.searchText) || a.name.Contains(pager.searchText) || a.mobile.Contains(pager.searchText))
                                 && (pager.searchDateFrom == null || a.createTime > pager.searchDateFrom)
                                 && (pager.searchDateTo == null || a.createTime < pager.searchDateTo)
@@ -51,17 +54,17 @@ namespace HH.RMS.Service.Web
                                 id = a.id,
                                 birthday = a.birthday,
                                 mobile = a.mobile,
-                                cityId = d.id,
-                                cityName = d.name,
-                                countryId = a.countryId,
-                                countryDescription = b.name,
                                 name = a.name,
                                 nickName = a.nickName,
-                                provinceId = a.provinceId,
-                                provinceName = c.name,
                                 remark = a.remark,
                                 createTime = a.createTime,
-                                sex = a.sex
+                                sex = a.sex,
+                                countryId = tt1==null?0:tt1.id,
+                                countryName = tt1 == null ? "" : tt1.name,
+                                provinceId = tt2 == null ? 0 : tt2.id,
+                                provinceName = tt2 == null ? "" : tt2.name,
+                                cityId = tt3 == null ? 0 : tt3.id,
+                                cityName = tt3 == null ? "" : tt3.name,
                              });
                     if (pager.rows>0 && pager.page>0)
                     {

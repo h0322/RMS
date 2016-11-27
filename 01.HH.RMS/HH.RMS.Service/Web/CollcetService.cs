@@ -17,11 +17,12 @@ namespace HH.RMS.Service.Web
             try
             {
                 string result = NetHelper.GetHtmlPage(model.url);
-                QueryString.GetString(result, "<p><b>", "</b></p>");
+                QueryString.GetStringRange(result, model.fromString, model.toString);
                 return ResultType.Success;
             }
             catch (Exception ex)
             {
+                Config.log.Error("CollcetService.CollcetMessage", ex);
                 return ResultType.SystemError;
             }
         }

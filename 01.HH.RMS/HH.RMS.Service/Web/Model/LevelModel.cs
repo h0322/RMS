@@ -17,16 +17,16 @@ namespace HH.RMS.Service.Web.Model
         {
             get
             {
-                if (CacheHelper.GetCache(Config.cityCache) == null)
+                if (CacheHelper.GetCache(Config.levelCache) == null)
                 {
                     ILevelService levelService = UnityManager.instance.GetService<ILevelService>();
                     var levelList = levelService.QueryLevelList();
-                    CacheHelper.SetCache(Config.cityCache, levelList);
+                    CacheHelper.SetCache(Config.levelCache, levelList);
                     return levelList;
                 }
                 else
                 {
-                    return (List<LevelModel>)CacheHelper.GetCache(Config.cityCache);
+                    return (List<LevelModel>)CacheHelper.GetCache(Config.levelCache);
                 }
             }
         }

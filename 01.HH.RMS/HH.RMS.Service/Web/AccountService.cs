@@ -69,6 +69,7 @@ namespace HH.RMS.Service.Web
                                 status = a.status,
                                 remark = a.remark,
                                 personId = a.personId,
+                                accountType =a.accountType,
                                 levelId = a.levelId,
                                 roleBitMap = a.roleBitMap,
                                 levelName = tt1 == null ? "" : tt1.levelName,
