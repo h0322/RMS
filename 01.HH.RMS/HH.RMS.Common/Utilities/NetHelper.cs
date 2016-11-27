@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Security;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace HH.RMS.Common.Utilities
 {
@@ -13,7 +14,7 @@ namespace HH.RMS.Common.Utilities
     {
         public static WebProxy CreateWebProxy()
         {
-            if ("1".Equals(Config.isWebProxy))
+            if (Config.isWebProxy == 1)
             {
                 WebProxy proxyObject = new WebProxy(Config.webProxyUrl, int.Parse(Config.webProxyPort));
                 proxyObject.Credentials = new NetworkCredential(Config.webProxyUserName, Config.webProxyPassword, Config.webProxyDomain);
@@ -28,14 +29,17 @@ namespace HH.RMS.Common.Utilities
         {
             ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(delegate { return true; });
         }
-        public static string Post(string url,string data)
+        public static string Post(string url, string data, Encoding encode = null)
         {
             try
             {
                 using (WebClient wc = new WebClient())
                 {
                     wc.Proxy = CreateWebProxy();
-                    wc.Encoding = Encoding.UTF8;
+                    if (encode == null)
+                        wc.Encoding = Encoding.UTF8;
+                    else
+                        wc.Encoding = encode;
                     CancelCertificateValidate();
                     var respones = wc.UploadString(url, "POST", data);
                     return respones;
@@ -46,14 +50,17 @@ namespace HH.RMS.Common.Utilities
                 throw;
             }
         }
-        public static string Get(string url)
+        public static string Get(string url, Encoding encode = null)
         {
             try
             {
                 using (WebClient wc = new WebClient())
                 {
                     wc.Proxy = CreateWebProxy();
-                    wc.Encoding = Encoding.UTF8;
+                    if (encode == null)
+                        wc.Encoding = Encoding.UTF8;
+                    else
+                        wc.Encoding = encode;
                     CancelCertificateValidate();
                     var respones = wc.DownloadString(url);
                     return respones;
@@ -63,6 +70,53 @@ namespace HH.RMS.Common.Utilities
             {
                 throw;
             }
+        }
+
+        public static void DownLoadFile(string fileUrl, string savePath, Encoding encode = null)
+        {
+            try
+            {
+                using (WebClient wc = new WebClient())
+                {
+                    wc.Proxy = CreateWebProxy();
+                    if (encode == null)
+                        wc.Encoding = Encoding.UTF8;
+                    else
+                        wc.Encoding = encode;
+                    //保存路径
+                    string SaveFilePath = HttpContext.Current.Server.MapPath(savePath);
+                    //下载并保存文件
+                    wc.DownloadFile(fileUrl, SaveFilePath);
+                }
+            }
+            catch
+            {
+                throw;
+            }
+        }
+        public static string GetHtmlPage(string url,Encoding encode = null)
+        {
+            string result = "";
+            byte[] bytes = null;
+            if (encode == null)
+                encode = Encoding.UTF8;               
+            try
+            {
+                using(WebClient wc = new WebClient())
+                {
+                    wc.Proxy = CreateWebProxy();
+                    wc.Encoding = encode;
+                    bytes = wc.DownloadData(url);
+                    
+                }
+                result = encode.GetString(bytes); 
+                return result;
+            }
+            catch
+            {
+                throw;
+            }
+
         }
     }
 }

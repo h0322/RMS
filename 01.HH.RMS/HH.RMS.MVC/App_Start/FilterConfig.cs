@@ -48,21 +48,33 @@ namespace HH.RMS.MVC
         }
         private bool CheckRole()
         {
+            if (excuteType == 0 || string.IsNullOrEmpty(menuCode))
+            {
+                return true;
+            }
             if (AccountModel.CurrentSession.accountType == AccountType.Admin)
             {
                 return true;
             }
-            if (excuteType > 0 && !string.IsNullOrEmpty(menuCode))
+            MenuModel menu = null;
+            switch (excuteType)
             {
-                MenuRoleModel role = MenuRoleModel.ListSession.Where(m => m.code == menuCode && ((int)m.excuteType & excuteType) == excuteType).FirstOrDefault();
-                if (role == null)
-                {
-                    return false;
-                }
-                else
-                {
-                    return true;
-                }
+                case (int)ExcuteType.Insert:
+                    menu = MenuModel.CurrentCacheList.Where(m => m.code == menuCode && (m.insertBitMap & AccountModel.CurrentSession.roleBitMap) == AccountModel.CurrentSession.roleBitMap).FirstOrDefault();
+                    break;
+                case (int)ExcuteType.Update:
+                    menu = MenuModel.CurrentCacheList.Where(m => m.code == menuCode && (m.updateBitMap & AccountModel.CurrentSession.roleBitMap) == AccountModel.CurrentSession.roleBitMap).FirstOrDefault();
+                    break;
+                case (int)ExcuteType.Select:
+                    menu = MenuModel.CurrentCacheList.Where(m => m.code == menuCode && (m.selectBitMap & AccountModel.CurrentSession.roleBitMap) == AccountModel.CurrentSession.roleBitMap).FirstOrDefault();
+                    break;
+                case (int)ExcuteType.Delete:
+                    menu = MenuModel.CurrentCacheList.Where(m => m.code == menuCode && (m.deleteBitMap & AccountModel.CurrentSession.roleBitMap) == AccountModel.CurrentSession.roleBitMap).FirstOrDefault();
+                    break;
+            }
+            if (menu == null)
+            {
+                return false;
             }
             return true;
         }

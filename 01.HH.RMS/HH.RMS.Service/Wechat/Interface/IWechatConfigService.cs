@@ -1,4 +1,5 @@
 ﻿using HH.RMS.Common.Constant;
+using HH.RMS.Entity.Wechat;
 using HH.RMS.Service.Model;
 using HH.RMS.Service.Wechat.Model;
 using HH.RMS.Wechat.Model;
@@ -8,10 +9,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HH.RMS.Wechat.Interface
+namespace HH.RMS.Service.Wechat.Interface
 {
-    public interface IAccessTokenService
+    public interface IWechatConfigService
     {
-        ResultModel<AccessTokenModel> GetAccessToken(WechatRequestModel model);
+        WechatConfigModel QueryWechatConfig();
+        ResultModel<AccessTokenModel> GetAccessToken();
     }
 }

@@ -14,19 +14,6 @@ namespace HH.RMS.Service.Web.Model
 {
     public class MenuRoleModel
     {
-        public static List<MenuRoleModel> ListSession
-        {
-            get
-            {
-                if (SessionHelper.GetSession(Config.menuRoleSession) == null)
-                {
-                    IRoleService roleService = UnityManager.instance.GetService<IRoleService>();
-                    SessionHelper.SetSession(Config.menuRoleSession, roleService.QueryMenuByRoleIdList(AccountModel.CurrentSession.roleBitMap));
-                }
-                return (List<MenuRoleModel>)SessionHelper.GetSession(Config.menuRoleSession);
-            }
-            //get { List<MenuRoleModel> QueryMenuByRoleIdList(long roleId)}
-        }
         public long id { get; set; }
         public long menuId { get; set; }
         public string code { get; set; }
@@ -42,5 +29,13 @@ namespace HH.RMS.Service.Web.Model
         public bool isInsert { get; set; }
         public bool isDelete { get; set; }
 
+    }
+    public class RoleMenuModel
+    {
+        public long roleId { get; set; }
+        public long[] isSelect { get; set; }
+        public long[] isUpdate { get; set; }
+        public long[] isInsert { get; set; }
+        public long[] isDelete { get; set; }
     }
 }

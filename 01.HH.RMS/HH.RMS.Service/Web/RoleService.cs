@@ -23,8 +23,10 @@ namespace HH.RMS.Service.Web
         private IRepository<RoleEntity> _roleRepository;
         private IRepository<MenuEntity> _menuRepository;
         private IRepository<MenuRoleEntity> _menuRoleRepository;
-        public RoleService(IRepository<AccountEntity> accountRepository, IRepository<RoleEntity> roleRepository, IRepository<MenuRoleEntity> menuRoleRepository, IRepository<MenuEntity> menuRepository)
+        private IMenuService _menuService { get; set; }
+        public RoleService(IMenuService menuService,IRepository<AccountEntity> accountRepository, IRepository<RoleEntity> roleRepository, IRepository<MenuRoleEntity> menuRoleRepository, IRepository<MenuEntity> menuRepository)
         {
+            _menuService = menuService;
             _accountRepository = accountRepository;
             _roleRepository = roleRepository;
             _menuRepository = menuRepository;
@@ -92,21 +94,22 @@ namespace HH.RMS.Service.Web
         {
             try
             {
-                //var entity = TinyMapper.Map<RoleEntity>(model);
                 using (var db = new ApplicationDbContext())
                 {
-                    //_roleRepository.Update(db, entity);
-                    //_roleRepository.Update(db, 
-                    //    new RoleEntity() {roleName=model.roleName, updateBy = AccountModel.CurrentSession.id, updateTime = DateTime.Now},
-                    //    m => m.id == model.id
-                    //    );
-                    _roleRepository.Update(db,
+                    int result = _roleRepository.Update(db,
                     m => new RoleEntity() { roleName = model.roleName,roleOrder = model.roleOrder, updateBy = AccountModel.CurrentSession.id, updateTime = DateTime.Now },
                     m => m.id == model.id
                     );
+                    CacheHelper.RemoveCache(Config.roleCache);
+                    if (result > 0)
+                    {
+                        return ResultType.Success;
+                    }
+                    else
+                    {
+                        return ResultType.Fail;
+                    }
                 }
-                CacheHelper.RemoveCache(Config.roleCache);
-                return ResultType.Success;
             }
             catch (Exception ex)
             {
@@ -119,7 +122,11 @@ namespace HH.RMS.Service.Web
         {
             try
             {
-                return RoleModel.CurrentCacheList.Where(m => m.id == id).FirstOrDefault();
+                using (var db = new ApplicationDbContext())
+                {
+                    var entity = _roleRepository.Query(db).Where(m=>m.id==id).FirstOrDefault();
+                    return TinyMapper.Map<RoleModel>(entity);
+                }
             }
             catch (Exception ex)
             {
@@ -138,6 +145,10 @@ namespace HH.RMS.Service.Web
                     sqlString += " select @roleBitMap = sum(bitMap) from SystemRole where id in (" + idString + ");";
                     sqlString += " begin tran";
                     sqlString += " update SystemRole set isActive=0 where id in (" + idString + ");";
+                    sqlString += " update SystemMenu set updateBitMap = updateBitMap - (updateBitMap & @roleBitMap) where (updateBitMap & @roleBitMap) <> 0;";
+                    sqlString += " update SystemMenu set insertBitMap = insertBitMap - (insertBitMap & @roleBitMap) where (insertBitMap & @roleBitMap) <> 0;";
+                    sqlString += " update SystemMenu set deleteBitMap = deleteBitMap - (deleteBitMap & @roleBitMap) where (deleteBitMap & @roleBitMap) <> 0;";
+                    sqlString += " update SystemMenu set selectBitMap = selectBitMap - (selectBitMap & @roleBitMap) where (selectBitMap & @roleBitMap) <> 0;";
                     sqlString += " update account set roleBitMap = roleBitMap - (roleBitMap & @roleBitMap) where (roleBitMap & @roleBitMap) <> 0;";
                     sqlString += " commit tran";
                     _roleRepository.ExecuteSql(db, sqlString, null);
@@ -151,78 +162,120 @@ namespace HH.RMS.Service.Web
                 return ResultType.SystemError;
             }
         }
-        public ResultType UpdateMenuRoleById(MenuRoleModel model)
+        //public ResultType UpdateMenuRole(MenuModel model)
+        //{
+        //     try
+        //     {
+        //        // var entity = TinyMapper.Map<MenuRoleEntity>(model);
+        //        // entity.updateTime = DateTime.Now;
+        //        // entity.updateBy = AccountModel.CurrentSession.id;
+        //        //using (var db = new ApplicationDbContext())
+        //        //{
+        //        //    _menuRoleRepository.Update(db, m => entity,
+        //        //    m => m.id == model.id
+        //        //    );
+        //        //}
+        //        return ResultType.Success;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Config.log.Error("roleService.UpdateMenuRoleById", ex);
+        //        return ResultType.SystemError;
+        //    }
+        //}
+        public ResultType UpdateMenuRole(RoleMenuModel model)
         {
-             try
-             {
-                 var entity = TinyMapper.Map<MenuRoleEntity>(model);
-                 entity.updateTime = DateTime.Now;
-                 entity.updateBy = AccountModel.CurrentSession.id;
-                using (var db = new ApplicationDbContext())
+            try
+            {
+                var result = ResultType.Success;
+                var role = QueryRoleById(model.roleId);
+                if (role == null)
                 {
-                    _menuRoleRepository.Update(db, m => entity,
-                    m => m.id == model.id
-                    );
+                    Config.log.Info("roleService.UpdateMenuRole:Role Is NULL");
+                    return ResultType.Fail;
                 }
-                return ResultType.Success;
+                MenuModel menu = new MenuModel();
+                List<MenuModel> menuList = _menuService.QueryMenuALL();
+                bool isUpdate = false;
+                foreach (var item in menuList)
+                {
+                    if (model.isInsert != null && model.isInsert.Contains(item.id))
+                    {
+                        item.insertBitMap = item.insertBitMap | role.bitMap;
+                        isUpdate = true;
+                    }
+                    else if ((item.insertBitMap & role.bitMap) == role.bitMap)
+                    {
+                        item.insertBitMap = item.insertBitMap - role.bitMap;
+                        isUpdate = true;
+                    }
+                    if (model.isUpdate != null && model.isUpdate.Contains(item.id))
+                    {
+                        item.updateBitMap = item.updateBitMap | role.bitMap;
+                        isUpdate = true;
+                    }
+                    else if ((item.updateBitMap & role.bitMap) == role.bitMap)
+                    {
+                        item.updateBitMap = item.updateBitMap - role.bitMap;
+                        isUpdate = true;
+                    }
+                    if (model.isDelete != null && model.isDelete.Contains(item.id))
+                    {
+                        item.deleteBitMap = item.deleteBitMap | role.bitMap;
+                        isUpdate = true;
+                    }
+                    else if ((item.deleteBitMap & role.bitMap) == role.bitMap)
+                    {
+                        item.deleteBitMap = item.deleteBitMap - role.bitMap;
+                        isUpdate = true;
+                    }
+                    if (model.isSelect != null && model.isSelect.Contains(item.id))
+                    {
+                        item.selectBitMap = item.selectBitMap | role.bitMap;
+                        isUpdate = true;
+                    }
+                    else if ((item.selectBitMap & role.bitMap) == role.bitMap)
+                    {
+                        item.selectBitMap = item.selectBitMap - role.bitMap;
+                        isUpdate = true;
+                    }
+                    if (isUpdate)
+                    {
+                        result = UpdateMenuRoleByMenuId(item);
+                        if (result != ResultType.Success)
+                        {
+                            break;
+                        }
+                    }
+                }
+                CacheHelper.RemoveCache(Config.menuCache);
+                return result;
             }
             catch (Exception ex)
             {
-                Config.log.Error("roleService.UpdateMenuRoleById", ex);
+                Config.log.Error("roleService.UpdateMenuRole", ex);
                 return ResultType.SystemError;
             }
         }
-        public ResultType InsertMenuRole(MenuRoleModel model)
+        public ResultType UpdateMenuRoleByMenuId(MenuModel model)
         {
             try
             {
                 var entity = TinyMapper.Map<MenuRoleEntity>(model);
                 using (var db = new ApplicationDbContext())
                 {
-                    _menuRoleRepository.Insert(db, entity);
+                    _menuRepository.Update(db, m => new MenuEntity() {
+                        selectBitMap = model.selectBitMap,
+                        updateBitMap = model.updateBitMap,
+                        deleteBitMap = model.deleteBitMap,
+                        insertBitMap = model.insertBitMap
+                    }, m=>m.id == model.id);
                 }
                 return ResultType.Success;
             }
             catch (Exception ex)
             {
                 Config.log.Error("roleService.InsertMenuRole", ex);
-                return ResultType.SystemError;
-            }
-        }
-        public ResultType DeleteMenuRoleByIds(long[] ids)
-        {
-            try
-            {
-                using (var db = new ApplicationDbContext())
-                {
-                    _menuRoleRepository.Update(db, _menuRoleRepository.DeleteEntity(),
-                    m => ids.Contains(m.id)
-                    );
-                }
-                CacheHelper.RemoveCache(Config.roleCache);
-                return ResultType.Success;
-            }
-            catch (Exception ex)
-            {
-                Config.log.Error("roleService.DeleteMenuRoleByIds", ex);
-                return ResultType.SystemError;
-            }
-        }
-        public ResultType DeleteMenuRoleByRoleId(long roleId)
-        {
-            try
-            {
-                using (var db = new ApplicationDbContext())
-                {
-                    _menuRoleRepository.Update(db, _menuRoleRepository.DeleteEntity(),
-                    m => m.roleId == roleId
-                    );
-                }
-                return ResultType.Success;
-            }
-            catch (Exception ex)
-            {
-                Config.log.Error("roleService.DeleteMenuRoleById", ex);
                 return ResultType.SystemError;
             }
         }

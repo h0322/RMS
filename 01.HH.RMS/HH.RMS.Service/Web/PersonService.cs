@@ -113,14 +113,16 @@ namespace HH.RMS.Service.Web
                         _personRepository.Insert(db, person);
                         if (person.id < 1)
                         {
-                            return new ResultModel<ResultType>(ResultType.NotExecute,  "Person Insert Fail");
+                            return new ResultModel<ResultType>(ResultType.NotExecute, "Person Insert Fail");
                         }
                         AccountEntity account = TinyMapper.Map<AccountEntity>(model);
+                        account.personId = person.id;
                         _accountRepository.Insert(db, account);
                         if (account.id < 1)
                         {
                             return new ResultModel<ResultType>(ResultType.NotExecute, "Account Insert Fail");
                         }
+                        transaction.Complete();
                     }
                 }
                 catch (Exception ex)
@@ -136,10 +138,24 @@ namespace HH.RMS.Service.Web
         {
             try
             {
-                var entity = TinyMapper.Map<PersonEntity>(model);
                 using (var db = new ApplicationDbContext())
                 {
-                    _personRepository.Update(db, entity);
+                    _personRepository.Update(db, m => new PersonEntity()
+                    {
+                        mobile = model.mobile,
+                        address = model.address,
+                        birthday = model.birthday,
+                        cityId = model.cityId,
+                        countryId=model.countryId,
+                        name = model.name,
+                        nickName = model.nickName,
+                        sex = model.sex,
+                        provinceId = model.provinceId,
+                        remark = model.remark??"",
+                        updateBy = AccountModel.CurrentSession.id,
+                        updateTime = DateTime.Now
+                    },
+                    m=>m.id == model.id);
                 }
                 return ResultType.Success;
             }

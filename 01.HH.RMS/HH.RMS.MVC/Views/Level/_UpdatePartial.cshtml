@@ -1,5 +1,48 @@
-﻿@{
-    ViewBag.Title = "_UpdatePartial";
-}
+﻿<div id="dlg_Add" class="easyui-dialog" title="添加用户等级" closed="true" style="width:300px" data-options=" iconCls: 'icon-save',	buttons: [{	text:'保存',	iconCls:'icon-ok',	handler:Save},{text:'取消',iconCls:'icon-cancel',handler:cancel}]">
+    <div title="Register" style="width:98%;">
+        <form id="form_level">
+            <input type="hidden" name="id" id="hid_levelId" />
+            <ul><li style="width:30%">等级名称:</li><li style="width:60%"><input id="txt_levelName" name="levelName" class="easyui-textbox"></li></ul>@*data-options="prompt:'Enter a email address...',validType:'email'"*@
+            <ul>
+                <li style="width:30%">等级排序:</li>
+                <li style="width:60%">
+                    <select id="sel_levelOrder" class="easyui-combobox" name="levelOrder">
+                        <option value="-1" selected="selected">请选择</option>
+                        @for (int i = 1; i < 99; i++)
+                        {
+                            <option value="@i">@i</option>
+                        }
+                    </select>
+                </li>
+            </ul>
+        </form>
+    </div>
+</div>
+<script>
+    function Save() {
+        $('#dlg_Add').dialog('close');
+        loadingBox.show("正在保存中...");
+        var data = $("#form_level").serialize();
+        var levelId = $("#hid_levelId").val();
+        var url = "/Level/CreateRole";
+        if (levelId > 0) {
+            url = "/Role/UpdateRole"
+        }
+        $.post(url, data, function (d) {
+            loadingBox.hide();
+            if (d == "@((int)ResultType.Success)") {
+                alert("保存成功");
+                $("#table_levelList").datagrid();
+                if (levelId > 0) {
+                    $('#dlg_Add').dialog('open');
+                }
+            }
+            else {
+                alert("保存失败");
+                $('#dlg_Add').dialog('open');
+            }
+            $("#table_levelList").datagrid('uncheckAll');
 
-<h2>_UpdatePartial</h2>
+        })
+    }
+</script>

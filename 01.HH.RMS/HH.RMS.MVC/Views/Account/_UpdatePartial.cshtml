@@ -27,7 +27,11 @@
             <ul>
                 <li style="width:30%">角色:</li>
                 <li style="width:60%">
-                    <input name="roleId" id="sel_role"/>
+                    @foreach (var item in RoleModel.CurrentCacheList)
+                    {
+                         <input name="accountRole" type="checkbox" value="@item.bitMap"/> @(item.roleName) 
+                    }
+                    <input name="roleBitMap" id="hid_bitMap" type="hidden" />
                 </li>
             </ul>
         </form>
@@ -38,6 +42,14 @@
     function Save() {
         $('#dlg_Add').dialog('close');
         loadingBox.show("正在保存中...")
+        var roleBitMap = 0;
+        $('[name="accountRole"]').each(function () {
+            if (this.checked)
+            {
+                roleBitMap += parseInt(this.value);
+            }
+        });
+        $("#hid_bitMap").val(roleBitMap);
         var data = $("#from_account").serialize();
         var accountId = $("#accountId").val();
         var url = "/Account/UpdateAccount";
@@ -63,15 +75,20 @@
         $("#accountList").datagrid('uncheckAll');
         $(".panel-title panel-with-icon").text("修改账户信息");
         $.post("/Account/QueryAccountById", { id: accountId }, function (d) {
-            SetFormValue("from_account", d);
-            //$('#accountId').val(d.id);
-            //$('#personId').val(d.personId);
-            //$('#accountName').textbox('setValue', d.accountName);
-            //$('#email').textbox('setValue', d.email);
-            //$('#score').numberbox('setValue', d.score);
-            //$('#amount').numberbox('setValue', d.amount);
-            //$('#sel_level').combobox('setValue', d.levelId);
-            //$("#sel_statusType").combobox('setValue', d.statusType);
+            //$("#from_account").form('load', {
+            //    accountName: d.accountName,
+            //    email:d.email
+            //});
+            $('#from_account').form('load', d);
+            $('[name="accountRole"]').each(function () {
+                if ((this.value & d.roleBitMap) == this.value) {
+                    this.checked = true;
+                }
+                else {
+                    this.checked = false;
+                }
+            });
+            //SetFormValue("from_account", d);
             $('#accountName').textbox('disable');
             //$("#sel_role").combobox('setValue', 1);
             $('#dlg_Add').dialog('open');
@@ -86,14 +103,14 @@
         $(".panel-title panel-with-icon").text("新增账户");
         $('#dlg_Add').dialog('open');
     }
-    $("#sel_role").combobox({
-        url: '/Account/QueryRoleList',
-        valueField: 'value',
-        textField: 'text',
-        required: false,
-        editable: false,
-        value: 0
-    });
+    //$("#sel_role").combobox({
+    //    url: '/Account/QueryRoleList',
+    //    valueField: 'value',
+    //    textField: 'text',
+    //    required: false,
+    //    editable: false,
+    //    value: 0
+    //});
     $("#sel_level").combobox({
         url: '/Account/QueryLevelList',
         valueField: 'value',

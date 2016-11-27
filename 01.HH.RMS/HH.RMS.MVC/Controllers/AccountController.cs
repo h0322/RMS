@@ -2,7 +2,6 @@
 using HH.RMS.Service.Web.Model;
 using HH.RMS.Common.Utilities;
 using HH.RMS.Entity.Web;
-using HH.RMS.Service.Web.Model;
 using HH.RMS.MVC.Models;
 using HH.RMS.Service.Web.Interface;
 using System;
@@ -72,6 +71,7 @@ namespace HH.RMS.MVC.Controllers
         [RMSAuthorize(excuteType = (int)ExcuteType.Insert, menuCode = "Account")]
         public JsonResult SaveAccount(AccountModel model)
         {
+          model.password = SecurityHelper.Hash(model.password);
            var result = _accountService.InsertAccount(model);
            return Json(new { result= (int)result}, JsonRequestBehavior.AllowGet);
         }

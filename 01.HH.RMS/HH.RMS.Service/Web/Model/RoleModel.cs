@@ -48,5 +48,13 @@ namespace HH.RMS.Service.Web.Model
             json.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
             return json;
         }
+        public static T ModelMapper<T>(object entity)
+        {
+            return TinyMapper.Map<T>(entity);
+        }
+        public static T EntityMapper<T>(object model)
+        {
+            return TinyMapper.Map<T>(model);
+        }
     }
 }

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HH.RMS.Service.Wechat.Interface
+namespace HH.RMS.Service.Wechat.Model
 {
-    public interface IRequestMessageService
+    public class WechatCardModel
     {
     }
 }

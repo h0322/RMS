@@ -7,11 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HH.RMS.Wechat.Interface
+namespace HH.RMS.Service.Wechat.Interface
 {
-    public interface IWechatService
+    public interface IWechatRequestService
     {
-        ResultModel<WechatResponseModel> PostData(WechatRequestModel model);
-        ResultModel<WechatResponseModel> GetData(WechatRequestModel model);
+        ResultModel<string> PostData(WechatRequestModel model);
+        ResultModel<string> GetData(WechatRequestModel model);
     }
 }

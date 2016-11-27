@@ -12,15 +12,15 @@ namespace HH.RMS.Wechat.Message
     {
         public ProcessText()
         { }
-        public override void Process(WechatPostModel model)
+        public override void Process(WechatReceiveModel model)
         {
             string content = model.content;
             List<WechatResponseMsgModel> list = new List<WechatResponseMsgModel>();
-            ResponseMsg(list, model.from, model.to);
+            ResponseMsg(list, model.fromUserName, model.toUserName);
         }
-        public override void ResponseMsg(List<WechatResponseMsgModel> model, string from, string to)
+        public override void ResponseMsg(List<WechatResponseMsgModel> model, string fromUserName, string toUserName)
         {
-            base.ResponseMsg(model, from, to);
+            base.ResponseMsg(model, fromUserName, toUserName);
         }
         public virtual void  SendMessage()
         {

@@ -1,4 +1,5 @@
-﻿using HH.RMS.Console.Algorithm;
+﻿using HH.RMS.Common.Utilities;
+using HH.RMS.Console.Algorithm;
 using HH.RMS.Console.DesignPattern;
 using HH.RMS.Console.Wechat;
 using Newtonsoft.Json;
@@ -11,6 +12,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.Security;
 
 namespace HH.RMS.Consoles
 {
@@ -18,7 +20,11 @@ namespace HH.RMS.Consoles
     {
         static void Main(string[] args)
         {
-            int i = 1 | 4;
+            string aa = null;
+            var ss = aa ?? "";
+            System.Console.Write(ss);
+            return;
+            int i = 1 | 2;
             System.Console.Write(i);
             System.Console.ReadLine();
             new SendMessage();

@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using HH.RMS.Service.Model;
 using HH.RMS.Service;
+using HH.RMS.Common.Utilities;
 
 namespace HH.RMS.MVC.Controllers
 {
@@ -67,6 +68,7 @@ namespace HH.RMS.MVC.Controllers
         [RMSAuthorize(menuCode = "Person", excuteType = (int)ExcuteType.Insert)]
         public JsonResult CreatePersonAccount(AccountModel model)
         {
+            model.password = SecurityHelper.Hash(model.password);
             ResultModel<ResultType> result =  _personService.CreatePersonAccount(model);
             return Json(result);
         }

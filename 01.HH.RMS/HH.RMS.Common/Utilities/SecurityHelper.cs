@@ -182,7 +182,7 @@ namespace HH.RMS.Common.Utilities
         /// </summary>
         /// <param name="message">要进行哈希计算的字符串</param>
         /// <returns></returns>
-        public static string Hash(string message)
+        public static string Hash(string message, string d = "x2")
         {
             if (string.IsNullOrEmpty(message))
             {
@@ -197,12 +197,15 @@ namespace HH.RMS.Common.Utilities
 
                 for (int i = 0; i < result.Length; i++)
                 {
-                    buffer.Append(result[i].ToString("x"));//将byte值转换成十六进制字符串
+                    buffer.Append(result[i].ToString(d));
                 }
                 return buffer.ToString();
             }
 
         }
+
+
+
         #endregion
     }
 }

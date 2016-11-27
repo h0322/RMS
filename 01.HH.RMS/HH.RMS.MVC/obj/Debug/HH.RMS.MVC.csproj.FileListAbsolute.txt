@@ -353,7 +353,6 @@ F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.MVC\bin\EntityFramework.Extended.xml
 F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.MVC\obj\Debug\HH.RMS.MVC.csprojResolveAssemblyReference.cache
 F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.MVC\obj\Debug\HH.RMS.MVC.dll
 F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.MVC\obj\Debug\HH.RMS.MVC.pdb
-D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.MVC\obj\Debug\HH.RMS.MVC.csprojResolveAssemblyReference.cache
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.MVC\bin\HH.RMS.MVC.dll.config
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.MVC\bin\HH.RMS.MVC.dll
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.MVC\bin\HH.RMS.MVC.pdb
@@ -415,5 +414,6 @@ D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.MVC\bin\Common.Logging.pdb
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.MVC\bin\Common.Logging.xml
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.MVC\bin\EntityFramework.xml
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.MVC\bin\EntityFramework.Extended.xml
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.MVC\obj\Debug\HH.RMS.MVC.csprojResolveAssemblyReference.cache
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.MVC\obj\Debug\HH.RMS.MVC.dll
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.MVC\obj\Debug\HH.RMS.MVC.pdb

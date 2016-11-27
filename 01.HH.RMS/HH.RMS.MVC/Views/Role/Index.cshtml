@@ -42,7 +42,7 @@
                     },
                     {
                         field: 'edit', title: '操作', width: 100, align: 'center', formatter: function (value, row) {
-                            return "<a style='color:blue;cursor:pointer' onclick='javascript:edit(" + row.roleId + ")'>编辑</a>&nbsp;<a style='color:blue;cursor:pointer' onclick='javascript:MenuRole(" + row.id + ")'>权限</a>";
+                            return "<a style='color:blue;cursor:pointer' onclick='javascript:edit(" + row.id + ")'>编辑</a>&nbsp;<a style='color:blue;cursor:pointer' onclick='javascript:MenuRole(" + row.id + ")'>权限</a>";
                         }
                     }
                 ]] ,
@@ -56,7 +56,7 @@
             $("#table_roleList").datagrid('uncheckAll');
             $(".panel-title panel-with-icon").text("修改角色信息");
             $.post("/Role/QueryRoleById", { id: roleId }, function (d) {
-                SetFormValue("from_role", d);
+                $('#from_role').form('load', d);
                 $('#dlg_Add').dialog('open');
             }, "json");
 
@@ -68,35 +68,7 @@
             $("#sel_roleOrder").combobox('setValue', -1);
             $('#dlg_Add').dialog('open');
         }
-        function Save()
-        {
-            $('#dlg_Add').dialog('close');
-            loadingBox.show("正在保存中...")
-            var data = $("#from_role").serialize();
-            var roleId = $("#hid_roleId").val();
-            var url = "/Role/CreateRole";
-            if (roleId > 0)
-            {
-                url = "/Role/UpdateRole"
-            }
-            $.post(url, data, function (d) {
-                loadingBox.hide();
-                if (d == "@((int)ResultType.Success)") {
-                    alert("保存成功");
-                    $("#table_roleList").datagrid();
-                    if (roleId > 0)
-                    {
-                        $('#dlg_Add').dialog('open');
-                    }
-                }
-                else {
-                    alert("保存失败");
-                    $('#dlg_Add').dialog('open');
-                }
-                $("#table_roleList").datagrid('uncheckAll');
 
-            })
-        }
 
         function del()
         {

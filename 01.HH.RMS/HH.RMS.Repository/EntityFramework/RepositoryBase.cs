@@ -114,6 +114,10 @@ namespace HH.RMS.Repository.EntityFramework
 
         public IEnumerable<T> SqlQuery(ApplicationDbContext db,string sql, params object[] parameters)
         {
+            if (parameters == null)
+            {
+                parameters = new object[0];
+            }
             return db.Database.SqlQuery<T>(sql, parameters);
         }
 

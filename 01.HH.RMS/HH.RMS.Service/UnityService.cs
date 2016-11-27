@@ -12,6 +12,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using HH.RMS.Service.Web;
+using HH.RMS.Service.Wechat.Interface;
+using HH.RMS.Service.Wechat;
 
 namespace HH.RMS.Service
 {
@@ -53,7 +55,17 @@ namespace HH.RMS.Service
             unityManager.RegisterType<ILevelService, LevelService>();
             unityManager.RegisterType<ISchedulerService, SchedulerService>();
             unityManager.RegisterType<IJobService, JobService>();
-            //unityManager.RegisterType<IADOUnit, ADOUnit>();
+            unityManager.RegisterType<ICollcetService, CollcetService>();
+            #region wechat
+            unityManager.RegisterType<IWechatConfigService, WechatConfigService>();
+            unityManager.RegisterType<IResponseMessageService, ResponseMessageService>();
+            unityManager.RegisterType<IWechatJsSdkService, WechatJsSdkService>();
+            unityManager.RegisterType<IWechatOAuthService, WechatOAuthService>();
+            unityManager.RegisterType<IWechatQRCodeService, WechatQRCodeService>();
+            unityManager.RegisterType<IWechatReceiveService, WechatReceiveService>();
+            unityManager.RegisterType<IWechatUserService, WechatUserService>();
+            unityManager.RegisterType<IWechatRequestService, WechatRequestService>();
+            #endregion
         }
         public virtual void ContorllerRegister()
         {

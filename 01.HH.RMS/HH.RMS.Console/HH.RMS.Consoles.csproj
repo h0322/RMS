@@ -65,6 +65,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\HH.RMS.Common\HH.RMS.Common.csproj">
+      <Project>{b1aea69d-ca7d-46b2-9d58-067231ec5749}</Project>
+      <Name>HH.RMS.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HH.RMS.Service\HH.RMS.Service.csproj">
       <Project>{e535a624-40b0-460f-a91b-69384d3f24e3}</Project>
       <Name>HH.RMS.Service</Name>

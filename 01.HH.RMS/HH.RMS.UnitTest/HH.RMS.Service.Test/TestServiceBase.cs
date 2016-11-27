@@ -20,7 +20,7 @@ namespace HH.RMS.UnitTest.HH.RMS.Service.Test
     public class TestServiceBase
     {
         protected string loginName = "admin";
-        protected string password = "123456";
+        protected string password = "e10adc3949ba59abbe56e057f20f883e";
         private ILoginService _loginService { get; set; }
         public TestServiceBase()
         {
@@ -47,10 +47,10 @@ namespace HH.RMS.UnitTest.HH.RMS.Service.Test
                                                 .Invoke(new object[] { sessionContainer });
             HttpContext.Current = httpContext;
         }
-        public virtual void Login()
+        public virtual void ServiceLogin()
         {
             _loginService = UnityManager.instance.GetService<ILoginService>();
-            ResultModel<AccountModel> result = _loginService.UserLogin(loginName, password);
+            var result = _loginService.UserLogin(loginName, password);
             SessionHelper.SetSession(Config.loginSession, result.resultObj);
         }
     }

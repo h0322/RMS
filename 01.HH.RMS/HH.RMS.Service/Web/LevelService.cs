@@ -20,6 +20,7 @@ namespace HH.RMS.Service.Web
         public LevelService(IRepository<LevelEntity> levelRepository)
         {
             _levelRepository = levelRepository;
+
         }
 
         public GridModel QueryLevelToGrid(PagerModel pager)
@@ -86,7 +87,14 @@ namespace HH.RMS.Service.Web
                 var entity = TinyMapper.Map<LevelEntity>(model);
                 using (var db = new ApplicationDbContext())
                 {
-                    _levelRepository.Update(db, entity);
+                    _levelRepository.Update(db, m => new LevelEntity()
+                    {
+                        levelName = model.levelName,
+                        levelOrder = model.levelOrder,
+                        remark = model.remark ?? "",
+                        updateBy = AccountModel.CurrentSession.id,
+                        updateTime = DateTime.Now
+                    }, m => m.id == model.id);
                 }
                 CacheHelper.RemoveCache(Config.levelCache);
                 return ResultType.Success;

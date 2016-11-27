@@ -12,7 +12,7 @@ namespace HH.RMS.Wechat.Message
     {
         public ProcessLocation()
         { }
-        public override void Process(WechatPostModel model)
+        public override void Process(WechatReceiveModel model)
         {
             throw new NotImplementedException();
         }

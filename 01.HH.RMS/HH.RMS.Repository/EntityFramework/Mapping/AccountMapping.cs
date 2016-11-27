@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace HH.RMS.Repository.EntityFramework.Mapping
 {
-    public class AccountMapping : MappingTableBase<AccountEntity>
+    public class AccountMapping : EntityTypeConfiguration<AccountEntity>
     {
-        public int i = 0;
-        public override void TableProperty()
+        public AccountMapping()
         {
-            this.Property(t => t.personId).IsRequired();
-            base.TableProperty();
+            //this.Property(t => t.personId).IsRequired();
+            //base.TableProperty();
+            this.ToTable("Account");
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Web;
 using System.Text.RegularExpressions;
+using System.Collections.Generic;
 
 namespace HH.RMS.Common.Utilities
 {
@@ -108,5 +109,31 @@ namespace HH.RMS.Common.Utilities
             get { return Current.Response; }
         }
         #endregion
+
+
+//        Macth m = Regex.Match(html, "<strong style=\"font-size: 14px\">(?<CompanyName>.*?)</strong>", ...);
+//if (m.Success)
+//{
+//    string companyName = m.Group["CompanyName"].Value;
+//}
+        public static List<string> GetString(string text,string from,string to)
+        {
+            List<string> list = new List<string>();
+            //string regText = from + "(?<CompanyName>.*?)" + to;
+            //Regex reg = new Regex(regText,RegexOptions.IgnoreCase); 
+            //MatchCollection matches = reg.Matches(text);
+            //foreach (Match match in matches)
+            //{
+            //    list.Add(match.Value);
+            //}
+
+            Match m = Regex.Match(text, @"\<title[^\>]*\>\s*(?<Title>.*?)\s*\</title\>");
+            if (m.Success)
+            {
+                string companyName = m.Groups["Title"].Value;
+            }
+            return list;
+
+        }
     }
 }
