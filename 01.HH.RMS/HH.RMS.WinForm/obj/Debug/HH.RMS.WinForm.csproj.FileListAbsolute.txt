@@ -37,3 +37,12 @@ D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.WinForm\obj\Debug\HH.RMS.WinForm.exe
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.WinForm\obj\Debug\HH.RMS.WinForm.pdb
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.WinForm\obj\Debug\HH.RMS.WinForm.csprojResolveAssemblyReference.cache
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.WinForm\obj\Debug\HH.RMS.WinForm.Collect.resources
+F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.WinForm\bin\Debug\HH.RMS.WinForm.exe.config
+F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.WinForm\obj\Debug\HH.RMS.WinForm.exe
+F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.WinForm\obj\Debug\HH.RMS.WinForm.pdb
+F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.WinForm\bin\Debug\HH.RMS.WinForm.exe
+F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.WinForm\bin\Debug\HH.RMS.WinForm.pdb
+F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.WinForm\obj\Debug\HH.RMS.WinForm.csprojResolveAssemblyReference.cache
+F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.WinForm\obj\Debug\HH.RMS.WinForm.Collect.resources
+F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.WinForm\obj\Debug\HH.RMS.WinForm.Properties.Resources.resources
+F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.WinForm\obj\Debug\HH.RMS.WinForm.csproj.GenerateResource.Cache

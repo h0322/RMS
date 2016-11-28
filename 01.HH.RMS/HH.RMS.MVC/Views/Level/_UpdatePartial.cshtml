@@ -1,4 +1,4 @@
-﻿<div id="dlg_Add" class="easyui-dialog" title="添加用户等级" closed="true" style="width:300px" data-options=" iconCls: 'icon-save',	buttons: [{	text:'保存',	iconCls:'icon-ok',	handler:Save},{text:'取消',iconCls:'icon-cancel',handler:cancel}]">
+﻿<div id="dlg_Add" class="easyui-dialog" title="添加用户等级" closed="true" style="width:600px" data-options=" iconCls: 'icon-save',	buttons: [{	text:'保存',	iconCls:'icon-ok',	handler:Save},{text:'取消',iconCls:'icon-cancel',handler:cancel}]">
     <div title="Register" style="width:98%;">
         <form id="form_level">
             <input type="hidden" name="id" id="hid_levelId" />
@@ -14,6 +14,12 @@
                         }
                     </select>
                 </li>
+                <ul>
+                    <li style="width:30%">备注:</li>
+                    <li style="width:60%">
+                        <input id="txt_remark" name="remark" class="easyui-textbox" style="width:400px;">
+                    </li>
+                </ul>
             </ul>
         </form>
     </div>
@@ -24,25 +30,25 @@
         loadingBox.show("正在保存中...");
         var data = $("#form_level").serialize();
         var levelId = $("#hid_levelId").val();
-        var url = "/Level/CreateRole";
+        var url = "/Level/CreateLevel";
         if (levelId > 0) {
-            url = "/Role/UpdateRole"
+            url = "/Level/UpdateLevel"
         }
         $.post(url, data, function (d) {
             loadingBox.hide();
+            console.log(d);
             if (d == "@((int)ResultType.Success)") {
                 alert("保存成功");
-                $("#table_levelList").datagrid();
+                $("#levelList").datagrid();
                 if (levelId > 0) {
-                    $('#dlg_Add').dialog('open');
+                    $('#dlg_Add').dialog('close');
                 }
             }
             else {
                 alert("保存失败");
                 $('#dlg_Add').dialog('open');
             }
-            $("#table_levelList").datagrid('uncheckAll');
-
+            $("#levelList").datagrid('uncheckAll');
         })
     }
 </script>

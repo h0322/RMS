@@ -55,7 +55,7 @@
                     },
                     {
                         field: 'edit', title: '操作', width: 100, align: 'center', formatter: function (value, row) {
-                            return "<a style='color:blue;cursor:pointer' onclick='javascript:edit(" + row.personId + ")'>编辑</a>&nbsp;&nbsp;<a style='color:blue;cursor:pointer' onclick='javascript:ManageAccount(" + row.id + ")'>账号管理</a>";
+                            return "<a style='color:blue;cursor:pointer' onclick='javascript:edit(" + row.id + ")'>编辑</a>&nbsp;&nbsp;<a style='color:blue;cursor:pointer' onclick='javascript:ManageAccount(" + row.id + ")'>账号管理</a>";
                         }
                     }
                 ]] ,
@@ -95,19 +95,7 @@
 
             });
         }
-        function UpdateSave()
-        {
-            $("#dlg_Update").dialog('close');
-            loadingBox.show("正在提交...");
-            var data = $("#from_update").serialize();
-            $.post("/Person/UpdatePerson", data, function (d) {
-                if (d == 0) {
-                    alert("保存成功");
-                }
-                $("#dlg_Update").dialog('open');
-                loadingBox.hide();
-            });
-        }
+
         function UpdateCancel()
         {
             $("#dlg_Update").dialog('close');

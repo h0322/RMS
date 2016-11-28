@@ -116,7 +116,7 @@ namespace HH.RMS.Common.Utilities
 //{
 //    string companyName = m.Group["CompanyName"].Value;
 //}
-        public static List<string> GetString(string text,string from,string to)
+        public static List<string> GetStringRange(string text, string from, string to)
         {
             List<string> list = new List<string>();
             //string regText = from + "(?<CompanyName>.*?)" + to;
@@ -126,11 +126,20 @@ namespace HH.RMS.Common.Utilities
             //{
             //    list.Add(match.Value);
             //}
-
-            Match m = Regex.Match(text, @"\<title[^\>]*\>\s*(?<Title>.*?)\s*\</title\>");
-            if (m.Success)
+            string regText = from+"\\s*(?<Value>.*?)\\s*"+to;
+            Match m = Regex.Match(text, regText);
+            while (m.Success)
             {
-                string companyName = m.Groups["Title"].Value;
+                string value = m.Groups["Value"].Value;
+                list.Add(value);
+                if (m.NextMatch().Success)
+                {
+                    m = m.NextMatch();
+                }
+                else
+                {
+                    break;
+                }
             }
             return list;
 
