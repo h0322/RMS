@@ -1,0 +1,28 @@
+﻿using HH.RMS.Common.Attributes;
+using Nelibur.ObjectMapper;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HH.RMS.Entity.Web
+{
+    [MappingTable(tableName = "Vote")]
+    public class VoteModel : EntityBase
+    {
+        [MaxLength(50)]
+        public string name { get; set; }
+        [MaxLength(1000)]
+        public string description { get; set; }
+        public static T ModelMapper<T>(object entity)
+        {
+            return TinyMapper.Map<T>(entity);
+        }
+        public static T EntityMapper<T>(object model)
+        {
+            return TinyMapper.Map<T>(model);
+        }
+    }
+}

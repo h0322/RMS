@@ -33,6 +33,7 @@ namespace HH.RMS.Common.Constant
         Executing = 10,
         Executed = 11,
         NoAccess=12,
+        FieldError=13,
         SystemError = 500,
     }
     public enum IntervalType
@@ -52,9 +53,15 @@ namespace HH.RMS.Common.Constant
     }
     public enum AccountStatusType
     {
+        Normal = 1,
+        Disable = 2,
+        Black = 3,
+        
+    }
+    public enum PasswordType
+    {
         Normal =1,
-        Disable =2,
-        Black=3
+        ResetPwd = 2
     }
     public enum AccountType
     {
@@ -143,5 +150,23 @@ namespace HH.RMS.Common.Constant
         Sql =2,
         Web=3,
         WCF=4,
+    }
+    public enum PrizeType
+    {
+        Score=1,
+        Material=2,
+        Cash=3
+    }
+    public enum EncodeType
+    {
+        UTF8=1,
+        GB=2,
+        Other=99
+    }
+    public enum EmailSendStatus
+    {
+        Success=0,
+        Fail=1,
+        Sending=2
     }
 }

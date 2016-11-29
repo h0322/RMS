@@ -59,6 +59,10 @@ namespace HH.RMS.MVC.Controllers
             }
             return Json(new { msg = ResultType.Fail });
         }
+        //public JsonResult ForgetPassword(string email)
+        //{
+            
+        //}
         public ActionResult Exit()
         {
             _loginService.ExitLogin();

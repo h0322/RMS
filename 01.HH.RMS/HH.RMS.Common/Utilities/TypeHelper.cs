@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HH.RMS.Common.Constant;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -63,7 +64,23 @@ namespace HH.RMS.Common.Utilities
                throw new Exception(ex.Message);
            }
        }
-
+       public static Encoding GetEncoding(EncodeType type)
+       {
+           Encoding encoding = null;
+           switch (type)
+           {
+               case EncodeType.GB:
+                   encoding = Encoding.GetEncoding("GB2312");
+                   break;
+               case EncodeType.UTF8:
+                   encoding = Encoding.UTF8;
+                   break;
+               default:
+                   encoding = Encoding.Default;
+                   break;
+           }
+           return encoding;
+       }
      
 
     }

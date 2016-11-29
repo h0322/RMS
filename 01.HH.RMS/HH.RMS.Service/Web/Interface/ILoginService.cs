@@ -1,4 +1,5 @@
-﻿using HH.RMS.Service.Model;
+﻿using HH.RMS.Common.Constant;
+using HH.RMS.Service.Model;
 using HH.RMS.Service.Web.Model;
 using System;
 using System.Collections.Generic;
@@ -12,5 +13,6 @@ namespace HH.RMS.Service.Web.Interface
     {
         ResultModel<AccountModel> UserLogin(string accountName, string password);
         void ExitLogin();
+        ResultModel<ResultType> ForgetPassword(AccountModel model);
     }
 }

@@ -103,6 +103,7 @@
     <Compile Include="Utilities\ConvertHtmlPage.cs" />
     <Compile Include="Utilities\CookieHelper.cs" />
     <Compile Include="Utilities\DownFile.cs" />
+    <Compile Include="Utilities\EmailHelper.cs" />
     <Compile Include="Utilities\FileUpload.cs" />
     <Compile Include="Utilities\HttpSearch.cs" />
     <Compile Include="Utilities\JScript.cs" />
@@ -112,9 +113,9 @@
     <Compile Include="Utilities\QueryString.cs" />
     <Compile Include="Utilities\RegexHelper.cs" />
     <Compile Include="Utilities\SessionHelper.cs" />
-    <Compile Include="Utilities\SMTP.cs" />
     <Compile Include="Utilities\Tools.cs" />
     <Compile Include="Utilities\TypeHelper.cs" />
+    <Compile Include="Utilities\WechatHelper.cs" />
     <Compile Include="Utilities\XMLHelper.cs" />
     <Compile Include="Utilities\YZMHelper.cs" />
     <Compile Include="Utilities\SecurityHelper.cs" />

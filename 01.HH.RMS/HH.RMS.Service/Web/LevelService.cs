@@ -27,17 +27,17 @@ namespace HH.RMS.Service.Web
         {
             try
             {
-                    List<LevelModel> list = null;
-                    if (pager != null)
-                    {
-                        list = LevelModel.CurrentCacheList.OrderByDescending(m => m.id).Take(pager.rows * pager.page).Skip(pager.rows * (pager.page - 1)).ToList();
-                    }
-                    GridModel gridModel = new GridModel()
-                    {
-                        rows = list,
-                        total = LevelModel.CurrentCacheList.Count()
-                    };
-                    return gridModel;
+                List<LevelModel> list = null;
+                if (pager != null)
+                {
+                    list = LevelModel.CurrentCacheList.OrderByDescending(m => m.id).Take(pager.rows * pager.page).Skip(pager.rows * (pager.page - 1)).ToList();
+                }
+                GridModel gridModel = new GridModel()
+                {
+                    rows = list,
+                    total = LevelModel.CurrentCacheList.Count()
+                };
+                return gridModel;
             }
             catch (Exception ex)
             {

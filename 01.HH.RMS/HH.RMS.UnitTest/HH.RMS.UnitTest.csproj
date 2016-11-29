@@ -75,6 +75,7 @@
     <Compile Include="HH.RMS.Service.Test\Web\PersonServiceTest.cs" />
     <Compile Include="HH.RMS.Service.Test\Web\RoleServiceTest.cs" />
     <Compile Include="HH.RMS.Service.Test\Web\CollcetServiceTest.cs" />
+    <Compile Include="HH.RMS.Service.Test\Web\EmailServiceTest.cs" />
     <Compile Include="HH.RMS.Service.Test\Wechat\ResponseMessageTest.cs" />
     <Compile Include="HH.RMS.Service.Test\Wechat\WechatSendMessageTest.cs" />
     <Compile Include="HH.RMS.Service.Test\Wechat\WechatUserTest.cs" />
@@ -98,7 +99,9 @@
     <Folder Include="HH.RMS.Service.Test\Scheduler\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="LoadTest1.loadtest">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

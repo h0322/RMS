@@ -47,6 +47,7 @@ namespace HH.RMS.Service.Web.Model
         public decimal amount { get; set; }
         public long roleBitMap { get; set; }
         public AccountType accountType { get; set; }
+        public PasswordType passwordType { get; set; }
         public string remark { get; set; }
         public DateTime createTime { get; set; }
         public long createBy { get; set; }

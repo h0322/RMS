@@ -32,12 +32,14 @@ namespace HH.RMS.Service.Web
         private IRepository<RoleEntity> _roleRepository;
         private IRepository<LevelEntity> _levelRepository;
         private IRepository<PersonEntity> _personRepository;
-        public AccountService(IRepository<LevelEntity> levelRepository,IRepository<RoleEntity> roleRepository, IRepository<AccountEntity> accountRepository, IRepository<PersonEntity> personRepository)
+        private IRepository<ResetPasswordLogEntity> _resetPasswordLogRepository;
+        public AccountService(IRepository<ResetPasswordLogEntity> resetPasswordLogRepository,IRepository<LevelEntity> levelRepository,IRepository<RoleEntity> roleRepository, IRepository<AccountEntity> accountRepository, IRepository<PersonEntity> personRepository)
         {
             _roleRepository = roleRepository;
             _accountRepository = accountRepository;
             _personRepository = personRepository;
             _levelRepository = levelRepository;
+            _resetPasswordLogRepository = resetPasswordLogRepository;
             if (AccountModel.CurrentSession != null)
             {
                 _roleRepository.userId = AccountModel.CurrentSession.id;
@@ -305,6 +307,47 @@ namespace HH.RMS.Service.Web
                 return 0;
             }
  
+        }
+        public ResultType ResetPassword(ResetPasswordModel model)
+        {
+            var entity = ResetPasswordModel.EntityMapper<ResetPasswordLogEntity>(model);
+            try
+            {
+                using (var db = new ApplicationDbContext())
+                {
+                    var logList = _resetPasswordLogRepository.Query(db).Where(m => m.accountId == model.accountId).OrderByDescending(m => m.id).ToList();
+                    if (model.times > logList.Count)
+                    {
+                        model.times = logList.Count;
+                    }
+                    for (int i = 0; i < model.times; i++)
+                    {
+                        if (logList[i].password == model.password)
+                        {
+                            return ResultType.IsExists;
+                        }
+                    }
+                    int result = _accountRepository.Update(db,
+                        m => new AccountEntity() { password = model.password },
+                        m => m.id == model.accountId);
+                    if (result < 1)
+                    {
+                        return ResultType.Fail;
+                    }
+                    result = _resetPasswordLogRepository.Insert(db, entity);
+                    if (result < 1)
+                    {
+                        return ResultType.Fail;
+                    }
+
+                    return ResultType.Success;
+                }
+            }
+            catch (Exception ex)
+            {
+                Config.log.Error("LoginService.ForgetPassword", ex);
+                return ResultType.SystemError;
+            }
         }
 
     }

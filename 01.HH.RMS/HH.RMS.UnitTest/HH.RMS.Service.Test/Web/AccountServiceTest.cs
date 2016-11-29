@@ -90,5 +90,8 @@ namespace HH.RMS.UnitTest.HH.RMS.Service.Test.Web
             int result = _accountService.CountAccount();
             Assert.AreNotEqual(result, 0);
         }
+        [TestMethod]
+        public void ResetPassword()
+        { }
     }
 }

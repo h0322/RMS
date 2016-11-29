@@ -39,7 +39,16 @@ namespace HH.RMS.Repository.EntityFramework
             //modelBuilder.Configurations.Add(new MappingTableBase<LevelEntity>());
             modelBuilder.Configurations.Add(new MappingTableBase<JobParameterEntity>());
             modelBuilder.Configurations.Add(new MappingTableBase<WechatConfigEntity>());
-
+            modelBuilder.Configurations.Add(new MappingTableBase<LuckyDrawEntity>());
+            modelBuilder.Configurations.Add(new MappingTableBase<LuckyLogEntity>());
+            modelBuilder.Configurations.Add(new MappingTableBase<LuckyPrizeEntity>());
+            modelBuilder.Configurations.Add(new MappingTableBase<LuckyResultEntity>());
+            modelBuilder.Configurations.Add(new MappingTableBase<VoteEntity>());
+            modelBuilder.Configurations.Add(new MappingTableBase<VoteBoxEntity>());
+            modelBuilder.Configurations.Add(new MappingTableBase<VoteLogEntity>());
+            modelBuilder.Configurations.Add(new MappingTableBase<ResetPasswordLogEntity>());
+            modelBuilder.Configurations.Add(new MappingTableBase<EmailLogEntity>());
+            modelBuilder.Configurations.Add(new MappingTableBase<EmailEntity>());
             base.OnModelCreating(modelBuilder);
         }
         public void CreateExcute()
