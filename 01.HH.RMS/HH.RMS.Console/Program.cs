@@ -18,17 +18,21 @@ namespace HH.RMS.Consoles
 {
     class Program
     {
+        const int aa =2;
         static void Main(string[] args)
         {
-            string aa = null;
-            var ss = aa ?? "";
-            System.Console.Write(ss);
-            return;
-            int i = 1 | 2;
-            System.Console.Write(i);
-            System.Console.ReadLine();
-            new SendMessage();
-            return;
+             
+            System.Console.Write(aa);
+            System.Console.Read();
+            //string aa = null;
+            //var ss = aa ?? "";
+            //System.Console.Write(ss);
+            //return;
+            //int i = 1 | 2;
+            //System.Console.Write(i);
+            //System.Console.ReadLine();
+            //new SendMessage();
+            //return;
             //SendMessage send1 = new SendMessage();
             //SendMessageDefine send1 = new SendMessageDefine();
             new Recursive();

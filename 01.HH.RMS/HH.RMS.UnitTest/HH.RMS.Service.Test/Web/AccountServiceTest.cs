@@ -23,8 +23,13 @@ namespace HH.RMS.UnitTest.HH.RMS.Service.Test.Web
         [TestMethod]
         public void QueryAccountById()
         {
-            AccountModel accountModel = _accountService.QueryAccountById(accountId);
-            Assert.AreNotEqual(accountModel, null);
+            for(int i=0;i<10000;i++)
+            {
+
+                AccountModel accountModel = _accountService.QueryAccountById(accountId);
+            }
+            
+            //Assert.AreNotEqual(accountModel, null);
         }
         [TestMethod]
         public void InsertAccount()

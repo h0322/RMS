@@ -7,12 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HH.RMS.Entity.Web
+namespace HH.RMS.Service.Web.Model
 {
-    public class VoteBoxModel : EntityBase
+    public class VoteBoxModel
     {
+        public long id { get; set; }
         public long voteId { get; set; }
-        [MaxLength(100)]
         public string voteTitle { get; set; }
         public int voteCount { get; set; }
         public decimal rate { get; set; }

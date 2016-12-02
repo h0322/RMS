@@ -12,6 +12,7 @@ namespace HH.RMS.Service.Web.Model
         public long id { get; set; }
         public long accountId { get; set; }
         public string password { get; set; }
+        public string repassword { get; set; }
         public int times { get; set; }
         public static T ModelMapper<T>(object entity)
         {

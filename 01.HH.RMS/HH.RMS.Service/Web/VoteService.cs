@@ -4,6 +4,7 @@ using HH.RMS.Repository.EntityFramework;
 using HH.RMS.Repository.EntityFramework.Interface;
 using HH.RMS.Service.Model;
 using HH.RMS.Service.Web.Interface;
+using HH.RMS.Service.Web.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -69,9 +70,39 @@ namespace HH.RMS.Service.Web
 
 
         #region Vote
-        public virtual ResultType Vote(long accountId,long voteId)
+        public virtual ResultModel<ResultType> Vote(long accountId,VoteBoxModel model)
         {
-            return ResultType.Success;
+            try
+            {
+                using (var db = new ApplicationDbContext())
+                {
+                    var voteBoxEntity = _voteBoxRepository.Query(db).Where(m => m.id == model.id).FirstOrDefault();
+                    if (voteBoxEntity == null)
+                    {
+                        return new ResultModel<ResultType>(ResultType.NotExists, "内容不存在", "");
+                    }
+                    VoteLogEntity voteLogEntity = new VoteLogEntity();
+                    voteLogEntity.accountId = accountId;
+                    voteLogEntity.voteId = model.voteId;
+                    voteLogEntity.voteBoxId = model.id;
+                    int result = _voteLogRepository.Insert(db, voteLogEntity);
+                    if (result > 0)
+                    {
+                        voteBoxEntity.voteCount += model.voteCount;
+                        result = _voteBoxRepository.Update(db, voteBoxEntity);
+                        if (result > 0)
+                        {
+                            return new ResultModel<ResultType>(ResultType.Success, "投票成功", "");
+                        }
+                    }
+                    return new ResultModel<ResultType>(ResultType.Success, "投票失败", "");
+                }
+            }
+            catch (Exception ex)
+            {
+                Config.log.Error("VoteService.Vote", ex);
+                return new ResultModel<ResultType>(ResultType.SystemError, "系统出错", "");
+            }
         }
         public List<VoteModel> QueryVote()
         {

@@ -11,6 +11,7 @@ namespace HH.RMS.Entity.Web
     public class VoteLogEntity : EntityBase
     {
          public long voteId { get; set; }
+         public long voteBoxId { get; set; }
          public long accountId { get; set; }
     }
 }

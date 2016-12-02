@@ -6,19 +6,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HH.RMS.Entity.Web
+namespace HH.RMS.Service.Web.Model
 {
-    public class VoteLogModel : EntityBase
+    public class VoteLogModel
     {
-         public long voteId { get; set; }
-         public long accountId { get; set; }
-         public static T ModelMapper<T>(object entity)
-         {
-             return TinyMapper.Map<T>(entity);
-         }
-         public static T EntityMapper<T>(object model)
-         {
-             return TinyMapper.Map<T>(model);
-         }
+        public long id { get; set; }
+        public long voteId { get; set; }
+        public long accountId { get; set; }
+        public static T ModelMapper<T>(object entity)
+        {
+            return TinyMapper.Map<T>(entity);
+        }
+        public static T EntityMapper<T>(object model)
+        {
+            return TinyMapper.Map<T>(model);
+        }
     }
 }

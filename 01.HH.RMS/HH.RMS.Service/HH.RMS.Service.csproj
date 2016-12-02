@@ -116,6 +116,7 @@
     <Compile Include="Web\Interface\ILoginService.cs" />
     <Compile Include="Web\Interface\ILuckyService.cs" />
     <Compile Include="Web\Interface\IMenuService.cs" />
+    <Compile Include="Web\Interface\IMessageService.cs" />
     <Compile Include="Web\Interface\IPersonService.cs" />
     <Compile Include="Web\Interface\ICountryService.cs" />
     <Compile Include="Web\Interface\IProvinceService.cs" />
@@ -127,6 +128,7 @@
     <Compile Include="Web\LoginService.cs" />
     <Compile Include="Web\LuckyService.cs" />
     <Compile Include="Web\MenuService.cs" />
+    <Compile Include="Web\MessageService.cs" />
     <Compile Include="Web\Model\AccountModel.cs" />
     <Compile Include="Web\Model\CityModel.cs" />
     <Compile Include="Web\Model\CollectModel.cs" />
@@ -143,6 +145,7 @@
     <Compile Include="Web\Model\LuckyResultModel.cs" />
     <Compile Include="Web\Model\MenuModel.cs" />
     <Compile Include="Web\Model\MenuRoleModel.cs" />
+    <Compile Include="Web\Model\MessageModel.cs" />
     <Compile Include="Web\Model\PagerModel.cs" />
     <Compile Include="Web\Model\PersonModel.cs" />
     <Compile Include="Web\Model\ProvinceModel.cs" />
