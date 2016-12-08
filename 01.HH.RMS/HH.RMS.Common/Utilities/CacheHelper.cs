@@ -13,6 +13,7 @@ namespace HH.RMS.Common.Utilities
         /// 获取数据缓存
         /// </summary>
         /// <param name="CacheKey">键</param>
+        private static readonly object obj = new object();
         public static object GetCache(string CacheKey)
         {
             System.Web.Caching.Cache objCache = HttpRuntime.Cache;

@@ -21,9 +21,11 @@ namespace HH.RMS.Consoles
         const int aa =2;
         static void Main(string[] args)
         {
-             
-            System.Console.Write(aa);
-            System.Console.Read();
+            CacheHelper.SetCache("cache", "123");
+            CacheHelper.SetCache("cache", "456");
+            System.Console.Write(CacheHelper.GetCache("cache").ToString());
+            //System.Console.Write(aa);
+            //System.Console.Read();
             //string aa = null;
             //var ss = aa ?? "";
             //System.Console.Write(ss);
@@ -35,7 +37,7 @@ namespace HH.RMS.Consoles
             //return;
             //SendMessage send1 = new SendMessage();
             //SendMessageDefine send1 = new SendMessageDefine();
-            new Recursive();
+            //new Recursive();
 
             System.Console.ReadLine();
         }

@@ -108,6 +108,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -118,6 +119,48 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\95516.js" />
+    <Content Include="Scripts\ad.js" />
+    <Content Include="Scripts\app.js" />
+    <Content Include="Scripts\arttmpl.js" />
+    <Content Include="Scripts\beecloud.js" />
+    <Content Include="Scripts\city.data-3.js" />
+    <Content Include="Scripts\city.data.js" />
+    <Content Include="Scripts\feedback-page.js" />
+    <Content Include="Scripts\feedback.js" />
+    <Content Include="Scripts\mui.dtpicker.js" />
+    <Content Include="Scripts\mui.enterfocus.js" />
+    <Content Include="Scripts\mui.imageViewer.js" />
+    <Content Include="Scripts\mui.indexedlist.js" />
+    <Content Include="Scripts\mui.js" />
+    <Content Include="Scripts\mui.lazyload.img.js" />
+    <Content Include="Scripts\mui.lazyload.js" />
+    <Content Include="Scripts\mui.listpicker.js" />
+    <Content Include="Scripts\mui.locker.js" />
+    <Content Include="Scripts\mui.min.js" />
+    <Content Include="Scripts\mui.picker.all.js" />
+    <Content Include="Scripts\mui.picker.js" />
+    <Content Include="Scripts\mui.picker.min.js" />
+    <Content Include="Scripts\mui.poppicker.js" />
+    <Content Include="Scripts\mui.previewimage.js" />
+    <Content Include="Scripts\mui.pullToRefresh.js" />
+    <Content Include="Scripts\mui.pullToRefresh.material.js" />
+    <Content Include="Scripts\mui.view.js" />
+    <Content Include="Scripts\mui.zoom.js" />
+    <Content Include="Scripts\update.js" />
+    <Content Include="Styles\app.css" />
+    <Content Include="Styles\feedback-page.css" />
+    <Content Include="Styles\feedback.css" />
+    <Content Include="Styles\mui.dtpicker.css" />
+    <Content Include="Styles\mui.imageviewer.css" />
+    <Content Include="Styles\mui.indexedlist.css" />
+    <Content Include="Styles\mui.listpicker.css" />
+    <Content Include="Styles\mui.min.css" />
+    <Content Include="Styles\mui.picker.all.css" />
+    <Content Include="Styles\mui.picker.css" />
+    <Content Include="Styles\mui.picker.min.css" />
+    <Content Include="Styles\mui.poppicker.css" />
+    <Content Include="Styles\style.css" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -129,11 +172,28 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Fonts\mui.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Login\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\_ViewStart.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_Layout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Login\Register.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Login\ForgetPassword.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -55,50 +55,72 @@ namespace HH.RMS.Service.Web
             try
             {
                 AccountModel model = new AccountModel();
-                //using (var db = new ApplicationDbContext())
-                //{
-                //    var q = from a in _accountRepository.Query(db)
-                //            join b in _levelRepository.Query(db) on a.levelId equals b.id into t1
-                //            from tt1 in t1.DefaultIfEmpty()
-                //            where a.id == id
-                //            select new AccountModel
-                //            {
-                //                id = a.id,
-                //                accountName = a.accountName,
-                //                email = a.email,
-                //                score = a.score,
-                //                amount = a.amount,
-                //                status = a.status,
-                //                remark = a.remark,
-                //                personId = a.personId,
-                //                accountType = a.accountType,
-                //                levelId = a.levelId,
-                //                roleBitMap = a.roleBitMap,
-                //                levelName = tt1 == null ? "" : tt1.levelName,
-                //                levelOrder = tt1 == null ? 0 : tt1.levelOrder
-                //            };
-                //    return q.FirstOrDefault();
+                using (var db = new ApplicationDbContext())
+                {
+                    //var q = from a in _accountRepository.Query(db)
+                    //        join b in _levelRepository.Query(db) on a.levelId equals b.id into t1
+                    //        from tt1 in t1.DefaultIfEmpty()
+                    //        where a.id == id
+                    //        select new AccountModel
+                    //        {
+                    //            id = a.id,
+                    //            accountName = a.accountName,
+                    //            email = a.email,
+                    //            score = a.score,
+                    //            amount = a.amount,
+                    //            status = a.status,
+                    //            remark = a.remark,
+                    //            personId = a.personId,
+                    //            accountType = a.accountType,
+                    //            levelId = a.levelId,
+                    //            roleBitMap = a.roleBitMap,
+                    //            levelName = tt1 == null ? "" : tt1.levelName,
+                    //            levelOrder = tt1 == null ? 0 : tt1.levelOrder
+                    //        };
+                    //return q.FirstOrDefault();
 
-                    //var account = _accountRepository.Query(db).Where(m => m.id == 2).FirstOrDefault();
-                    //model.levelId = account.levelId;
-                    //model.accountName = account.accountName;
-                    //if (model.levelId > 0)
-                    //{
-                    //    var level = _levelRepository.Query(db).Where(m => m.id == model.levelId).FirstOrDefault();
-                    //    model.levelName = level.levelName;
-                    //    model.levelOrder = level.levelOrder;
-                    //}
-                    //return model;
+                    var account = _accountRepository.Query(db).Where(m => m.id == 2).FirstOrDefault();
+                    model.levelId = account.levelId;
+                    model.accountName = account.accountName;
+                    model.email = account.email;
+                    model.amount = account.amount;
+                    model.status = account.status;
+                    model.remark = account.remark;
+                    model.accountType = account.accountType;
+                    model.roleBitMap = account.roleBitMap;
+                    //model = AccountModel.ModelMapper<AccountModel>(account);
+                    if (model.levelId > 0)
+                    {
+                        var level = _levelRepository.Query(db).Where(m => m.id == model.levelId).FirstOrDefault();
+                        model.levelName = level.levelName;
+                        model.levelOrder = level.levelOrder;
+                    }
+                    return model;
                     //string sql = "select * from account A left join accountLevel B on A.levelId = B.id  where A.id=2";
                     //var accountEntity = _accountRepository.SqlQuery(db, sql, null).FirstOrDefault();
                     //return AccountModel.ModelMapper<AccountModel>(accountEntity);
 
-                    string sql = "select * from account A left join accountLevel B on A.levelId = B.id  where A.id=2";
-                    using (SqlConnection conn = new SqlConnection(Config.sqlConnStr))
-                    {
-                        conn.Open();
-                        SqlCommand comm = new SqlCommand(sql, conn);
-                        SqlDataAdapter adr = new SqlDataAdapter()
+                    //string sql = "select * from account A left join accountLevel B on A.levelId = B.id  where A.id=2";
+                    //using (SqlConnection conn = new SqlConnection(Config.sqlConnStr))
+                    //{
+                    //    conn.Open();
+                    //    //SqlCommand comm = new SqlCommand(sql, conn);
+                    //    SqlDataAdapter adr = new SqlDataAdapter(sql, conn);
+                    //    DataSet ds = new DataSet();
+                    //    adr.Fill(ds);
+                    //    DataTable dt = ds.Tables[0];
+                    //    foreach (DataRow sdr in dt.Rows)
+                    //    {
+                    //        model.accountName = sdr["accountName"].ToString();
+                    //        model.email = sdr["email"].ToString();
+                    //        model.score = Convert.ToDecimal(sdr["score"]);
+                    //        model.amount = Convert.ToDecimal(sdr["amount"]);
+                    //        model.personId = Convert.ToInt64(sdr["personId"]);
+                    //        model.levelId = Convert.ToInt64(sdr["levelId"]);
+                    //        model.roleBitMap = Convert.ToInt64(sdr["roleBitMap"]);
+                    //        model.levelName = sdr["levelName"].ToString();
+                    //        model.levelOrder = Convert.ToInt32(sdr["levelOrder"]);
+                    //    }
                         //SqlDataReader sdr = comm.ExecuteReader();
                         //while (sdr.Read())
                         //{
@@ -112,9 +134,9 @@ namespace HH.RMS.Service.Web
                         //    model.levelName = sdr["levelName"].ToString();
                         //    model.levelOrder = Convert.ToInt32(sdr["levelOrder"]);
                         //}
-                        return model;
-                    }
-                //}
+                        //return model;
+                    //}
+                }
             }
             catch (Exception ex)
             {
