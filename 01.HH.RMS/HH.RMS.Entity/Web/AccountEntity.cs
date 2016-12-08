@@ -27,6 +27,7 @@ namespace HH.RMS.Entity.Web
         public long levelId { get; set; }
         public long roleBitMap { get; set; }
         public AccountType accountType { get; set; }
+        public PasswordType passwordType { get; set; }
         public AccountStatusType status { get; set; }
 
     }

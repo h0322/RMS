@@ -56,6 +56,9 @@ namespace HH.RMS.Service
             unityManager.RegisterType<ISchedulerService, SchedulerService>();
             unityManager.RegisterType<IJobService, JobService>();
             unityManager.RegisterType<ICollcetService, CollcetService>();
+            unityManager.RegisterType<ILuckyService, LuckyService>();
+            unityManager.RegisterType<IEmailService, EmailService>();
+
             #region wechat
             unityManager.RegisterType<IWechatConfigService, WechatConfigService>();
             unityManager.RegisterType<IResponseMessageService, ResponseMessageService>();

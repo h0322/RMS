@@ -26,6 +26,15 @@ namespace HH.RMS.UnitTest.HH.RMS.Service.Test.Web
             var loginResult = _loginService.UserLogin(loginName, password);
             Assert.AreEqual(loginResult.resultType, ResultType.Success);
         }
+        [TestMethod]
+        public void ForgetPassword()
+        {
+            AccountModel model=new AccountModel();
+            model.accountName = "admin";
+            var result = _loginService.ForgetPassword(model);
+            Assert.AreEqual(result.resultType, ResultType.Success);
+        }
+
 
     }
 }

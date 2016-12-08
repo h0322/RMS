@@ -36,6 +36,16 @@
                 </li>
             </ul>
             <ul>
+                <li style="width:30%">密码状态:</li>
+                <li style="width:60%">
+                    <select id="sel_passwordType" class="easyui-combobox" name="passwordType">
+                        <option value="0" selected>请选择</option>
+                        <option value="1">Normal</option>
+                        <option value="2">Reset</option>
+                    </select>
+                </li>
+            </ul>
+            <ul>
                 <li style="width:30%">角色:</li>
                 <li style="width:60%">
                     @foreach (var item in RoleModel.CurrentCacheList)

@@ -59,10 +59,33 @@ namespace HH.RMS.MVC.Controllers
             }
             return Json(new { msg = ResultType.Fail });
         }
+        //public JsonResult ForgetPassword(string email)
+        //{
+            
+        //}
         public ActionResult Exit()
         {
             _loginService.ExitLogin();
             return Redirect("/Login/Index");
+        }
+        [HttpPost]
+        public JsonResult ForgetPassword(AccountModel model)
+        {
+            var result = _loginService.ForgetPassword(model);
+            return Json(result);
+        }
+        public ViewResult ForgetPassword()
+        {
+            return View();
+        }
+        public ViewResult ResetPassword()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ViewResult ResetPassword(AccountModel model)
+        {
+            return View();
         }
     }
 }

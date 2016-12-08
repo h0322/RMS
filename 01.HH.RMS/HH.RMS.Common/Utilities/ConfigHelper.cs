@@ -91,5 +91,23 @@ namespace HH.RMS.Common.Utilities
 
 			return result;
 		}
+        public static long GetConfigBigInt(string key)
+        {
+            long result = 0;
+            string cfgVal = GetConfigString(key);
+            if (null != cfgVal && string.Empty != cfgVal)
+            {
+                try
+                {
+                    result = long.Parse(cfgVal);
+                }
+                catch (FormatException)
+                {
+                    // Ignore format exceptions.
+                }
+            }
+
+            return result;
+        }
 	}
 }

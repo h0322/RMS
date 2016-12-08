@@ -9,6 +9,8 @@ using HH.RMS.Wechat.Model;
 using HH.RMS.Service.Wechat.Interface;
 using HH.RMS.Service.Wechat;
 using HH.RMS.Service.Wechat.Model;
+using HH.RMS.Service.Web;
+using HH.RMS.Service.Web.Model;
 
 namespace HH.RMS.Console.Wechat
 {
@@ -53,4 +55,5 @@ namespace HH.RMS.Console.Wechat
             base.SendMessage();
         }
     }
+
 }

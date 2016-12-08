@@ -32,12 +32,14 @@ namespace HH.RMS.Service.Web
         private IRepository<RoleEntity> _roleRepository;
         private IRepository<LevelEntity> _levelRepository;
         private IRepository<PersonEntity> _personRepository;
-        public AccountService(IRepository<LevelEntity> levelRepository,IRepository<RoleEntity> roleRepository, IRepository<AccountEntity> accountRepository, IRepository<PersonEntity> personRepository)
+        private IRepository<ResetPasswordLogEntity> _resetPasswordLogRepository;
+        public AccountService(IRepository<ResetPasswordLogEntity> resetPasswordLogRepository,IRepository<LevelEntity> levelRepository,IRepository<RoleEntity> roleRepository, IRepository<AccountEntity> accountRepository, IRepository<PersonEntity> personRepository)
         {
             _roleRepository = roleRepository;
             _accountRepository = accountRepository;
             _personRepository = personRepository;
             _levelRepository = levelRepository;
+            _resetPasswordLogRepository = resetPasswordLogRepository;
             if (AccountModel.CurrentSession != null)
             {
                 _roleRepository.userId = AccountModel.CurrentSession.id;
@@ -55,50 +57,59 @@ namespace HH.RMS.Service.Web
                 AccountModel model = new AccountModel();
                 using (var db = new ApplicationDbContext())
                 {
-                    var q = from a in _accountRepository.Query(db)
-                            join b in _levelRepository.Query(db) on a.levelId equals b.id into t1
-                            from tt1 in t1.DefaultIfEmpty()
-                            where a.id == id
-                            select new AccountModel
-                            {
-                                id = a.id,
-                                accountName = a.accountName,
-                                email = a.email,
-                                score = a.score,
-                                amount = a.amount,
-                                status = a.status,
-                                remark = a.remark,
-                                personId = a.personId,
-                                accountType =a.accountType,
-                                levelId = a.levelId,
-                                roleBitMap = a.roleBitMap,
-                                levelName = tt1 == null ? "" : tt1.levelName,
-                                levelOrder = tt1 == null ? 0 : tt1.levelOrder
-                            };
-                    return q.FirstOrDefault();
+                    //var q = from a in _accountRepository.Query(db)
+                    //        join b in _levelRepository.Query(db) on a.levelId equals b.id into t1
+                    //        from tt1 in t1.DefaultIfEmpty()
+                    //        where a.id == id
+                    //        select new AccountModel
+                    //        {
+                    //            id = a.id,
+                    //            accountName = a.accountName,
+                    //            email = a.email,
+                    //            score = a.score,
+                    //            amount = a.amount,
+                    //            status = a.status,
+                    //            remark = a.remark,
+                    //            personId = a.personId,
+                    //            accountType = a.accountType,
+                    //            levelId = a.levelId,
+                    //            roleBitMap = a.roleBitMap,
+                    //            levelName = tt1 == null ? "" : tt1.levelName,
+                    //            levelOrder = tt1 == null ? 0 : tt1.levelOrder
+                    //        };
+                    //return q.FirstOrDefault();
 
-                    //var account = _accountRepository.Query(db).Where(m => m.id == 2).FirstOrDefault();
-                    //model.levelId = account.levelId;
-                    //model.accountName = account.accountName;
-                    //if (model.levelId > 0)
-                    //{
-                    //    var level = _levelRepository.Query(db).Where(m => m.id == model.levelId).FirstOrDefault();
-                    //    model.levelName = level.levelName;
-                    //    model.levelOrder = level.levelOrder;
-                    //}
-                    //return model;
+                    var account = _accountRepository.Query(db).Where(m => m.id == 2).FirstOrDefault();
+                    model.levelId = account.levelId;
+                    model.accountName = account.accountName;
+                    model.email = account.email;
+                    model.amount = account.amount;
+                    model.status = account.status;
+                    model.remark = account.remark;
+                    model.accountType = account.accountType;
+                    model.roleBitMap = account.roleBitMap;
+                    //model = AccountModel.ModelMapper<AccountModel>(account);
+                    if (model.levelId > 0)
+                    {
+                        var level = _levelRepository.Query(db).Where(m => m.id == model.levelId).FirstOrDefault();
+                        model.levelName = level.levelName;
+                        model.levelOrder = level.levelOrder;
+                    }
+                    return model;
                     //string sql = "select * from account A left join accountLevel B on A.levelId = B.id  where A.id=2";
                     //var accountEntity = _accountRepository.SqlQuery(db, sql, null).FirstOrDefault();
                     //return AccountModel.ModelMapper<AccountModel>(accountEntity);
 
                     //string sql = "select * from account A left join accountLevel B on A.levelId = B.id  where A.id=2";
-                    //AccountModel model = new AccountModel();
                     //using (SqlConnection conn = new SqlConnection(Config.sqlConnStr))
                     //{
                     //    conn.Open();
-                    //    SqlCommand comm = new SqlCommand(sql, conn);
-                    //    SqlDataReader sdr = comm.ExecuteReader();
-                    //    while (sdr.Read())
+                    //    //SqlCommand comm = new SqlCommand(sql, conn);
+                    //    SqlDataAdapter adr = new SqlDataAdapter(sql, conn);
+                    //    DataSet ds = new DataSet();
+                    //    adr.Fill(ds);
+                    //    DataTable dt = ds.Tables[0];
+                    //    foreach (DataRow sdr in dt.Rows)
                     //    {
                     //        model.accountName = sdr["accountName"].ToString();
                     //        model.email = sdr["email"].ToString();
@@ -110,7 +121,20 @@ namespace HH.RMS.Service.Web
                     //        model.levelName = sdr["levelName"].ToString();
                     //        model.levelOrder = Convert.ToInt32(sdr["levelOrder"]);
                     //    }
-                    //    return model;
+                        //SqlDataReader sdr = comm.ExecuteReader();
+                        //while (sdr.Read())
+                        //{
+                        //    model.accountName = sdr["accountName"].ToString();
+                        //    model.email = sdr["email"].ToString();
+                        //    model.score = Convert.ToDecimal(sdr["score"]);
+                        //    model.amount = Convert.ToDecimal(sdr["amount"]);
+                        //    model.personId = Convert.ToInt64(sdr["personId"]);
+                        //    model.levelId = Convert.ToInt64(sdr["levelId"]);
+                        //    model.roleBitMap = Convert.ToInt64(sdr["roleBitMap"]);
+                        //    model.levelName = sdr["levelName"].ToString();
+                        //    model.levelOrder = Convert.ToInt32(sdr["levelOrder"]);
+                        //}
+                        //return model;
                     //}
                 }
             }
@@ -305,6 +329,47 @@ namespace HH.RMS.Service.Web
                 return 0;
             }
  
+        }
+        public ResultType ResetPassword(ResetPasswordModel model)
+        {
+            var entity = ResetPasswordModel.EntityMapper<ResetPasswordLogEntity>(model);
+            try
+            {
+                using (var db = new ApplicationDbContext())
+                {
+                    var logList = _resetPasswordLogRepository.Query(db).Where(m => m.accountId == model.accountId).OrderByDescending(m => m.id).ToList();
+                    if (model.times > logList.Count)
+                    {
+                        model.times = logList.Count;
+                    }
+                    for (int i = 0; i < model.times; i++)
+                    {
+                        if (logList[i].password == model.password)
+                        {
+                            return ResultType.IsExists;
+                        }
+                    }
+                    int result = _accountRepository.Update(db,
+                        m => new AccountEntity() { password = model.password },
+                        m => m.id == model.accountId);
+                    if (result < 1)
+                    {
+                        return ResultType.Fail;
+                    }
+                    result = _resetPasswordLogRepository.Insert(db, entity);
+                    if (result < 1)
+                    {
+                        return ResultType.Fail;
+                    }
+
+                    return ResultType.Success;
+                }
+            }
+            catch (Exception ex)
+            {
+                Config.log.Error("LoginService.ForgetPassword", ex);
+                return ResultType.SystemError;
+            }
         }
 
     }

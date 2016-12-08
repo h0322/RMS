@@ -36,7 +36,6 @@
         }
         $.post(url, data, function (d) {
             loadingBox.hide();
-            console.log(d);
             if (d == "@((int)ResultType.Success)") {
                 alert("保存成功");
                 $("#levelList").datagrid();

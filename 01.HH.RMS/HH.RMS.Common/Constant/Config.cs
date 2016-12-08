@@ -21,9 +21,7 @@ namespace HH.RMS.Common.Constant
         #endregion
 
         #region AppSetting
-        public static readonly string emailSender = ConfigHelper.GetConfigString("EmailSender");
-        public static readonly string emailSenderPwd = ConfigHelper.GetConfigString("EmailSenderPwd");
-        public static readonly string smtpServer = ConfigHelper.GetConfigString("SmtpServer");
+
         public static readonly string serverName = ConfigHelper.GetConfigString("ServerName");
         public static readonly string siteName = ConfigHelper.GetConfigString("SiteName");
         public static readonly string webProxyUrl = ConfigHelper.GetConfigString("WebProxyURL");
