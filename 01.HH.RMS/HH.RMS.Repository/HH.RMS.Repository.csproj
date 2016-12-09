@@ -91,19 +91,6 @@
     <Compile Include="ADONet\SqlServerExtension.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="EntityFramework\ApplicationDbContext.cs" />
-    <Compile Include="EntityFramework\Interface\IRepository.cs" />
-    <Compile Include="EntityFramework\Mapping\AccountMapping.cs" />
-    <Compile Include="EntityFramework\Mapping\LevelMapping.cs" />
-    <Compile Include="EntityFramework\Mapping\RoleMapping.cs" />
-    <Compile Include="EntityFramework\Mapping\JobMapping.cs" />
-    <Compile Include="EntityFramework\Mapping\LogMapping.cs" />
-    <Compile Include="EntityFramework\Mapping\PersonMapping.cs" />
-    <Compile Include="EntityFramework\RepositoryBase.cs" />
-    <Compile Include="EntityFramework\Mapping\SchedulerLogMapping.cs" />
-    <Compile Include="EntityFramework\Mapping\SchedulerMapping.cs" />
-    <Compile Include="EntityFramework\Mapping\MappingTableBase.cs" />
-    <Compile Include="EntityFramework\SqlHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

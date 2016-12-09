@@ -1,8 +1,8 @@
 ﻿using HH.RMS.Common.Constant;
 using HH.RMS.Common.Utilities;
 using HH.RMS.Entity.Web;
-using HH.RMS.Repository.EntityFramework;
-using HH.RMS.Repository.EntityFramework.Interface;
+using HH.RMS.Entity.EntityFramework;
+using HH.RMS.Entity.EntityFramework.Interface;
 using HH.RMS.Service.Web.Interface;
 using HH.RMS.Service.Web.Model;
 using Nelibur.ObjectMapper;

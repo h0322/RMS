@@ -380,7 +380,6 @@ D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.MVC\bin\System.Web.WebPages.Razor.dll
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.MVC\bin\Quartz.dll
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.MVC\bin\Topshelf.dll
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.MVC\bin\Common.Logging.Core.dll
-D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.MVC\bin\HH.RMS.Repository.dll
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.MVC\bin\Common.Logging.dll
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.MVC\bin\EntityFramework.dll
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.MVC\bin\TinyMapper.dll
@@ -409,7 +408,6 @@ D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.MVC\bin\Quartz.pdb
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.MVC\bin\Quartz.xml
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.MVC\bin\Common.Logging.Core.pdb
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.MVC\bin\Common.Logging.Core.xml
-D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.MVC\bin\HH.RMS.Repository.pdb
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.MVC\bin\Common.Logging.pdb
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.MVC\bin\Common.Logging.xml
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.MVC\bin\EntityFramework.xml

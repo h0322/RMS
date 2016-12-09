@@ -1,7 +1,5 @@
-﻿using HH.RMS.Repository.ADONet;
-using HH.RMS.Repository.ADONet.Interface;
-using HH.RMS.Repository.EntityFramework;
-using HH.RMS.Repository.EntityFramework.Interface;
+﻿using HH.RMS.Entity.EntityFramework;
+using HH.RMS.Entity.EntityFramework.Interface;
 using HH.RMS.Common.Unity;
 using HH.RMS.Service.Web.Interface;
 using System;
@@ -35,11 +33,6 @@ namespace HH.RMS.Service
         public virtual void RepositoryRegister()
         {
             unityManager.RegisterType(typeof(IRepository<>), typeof(RepositoryBase<>));
-        }
-        public virtual void ADORepositoryRegister()
-        {
-            unityManager.RegisterType(typeof(IADORepository<>), typeof(ADORepositoryBase<>));
-            //unityManager.RegisterType<IADORepository, ADORepositoryBase>();
         }
         public virtual void ServiceRegister()
         {

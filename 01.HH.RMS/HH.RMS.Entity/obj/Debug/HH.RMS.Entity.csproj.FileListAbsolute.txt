@@ -86,3 +86,10 @@ D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Entity\bin\Debug\Microsoft.Practices.Servi
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Entity\obj\Debug\HH.RMS.Entity.csprojResolveAssemblyReference.cache
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Entity\obj\Debug\HH.RMS.Entity.dll
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Entity\obj\Debug\HH.RMS.Entity.pdb
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Entity\bin\Debug\HH.RMS.Entity.dll.config
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Entity\bin\Debug\EntityFramework.dll
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Entity\bin\Debug\EntityFramework.Extended.dll
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Entity\bin\Debug\EntityFramework.SqlServer.dll
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Entity\bin\Debug\EntityFramework.xml
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Entity\bin\Debug\EntityFramework.Extended.xml
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Entity\bin\Debug\EntityFramework.SqlServer.xml

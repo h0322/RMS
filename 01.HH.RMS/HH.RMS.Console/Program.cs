@@ -21,6 +21,21 @@ namespace HH.RMS.Consoles
         const int aa =2;
         static void Main(string[] args)
         {
+            decimal dd = 1;
+            int result = 0;
+            for (int i = 0; i < 100000; i++)
+            {
+                if (dd > decimal.MaxValue / 4)
+                {
+                    break;
+                }
+                result++;
+                dd = 2 * dd;
+
+            }
+            System.Console.WriteLine(result);
+            System.Console.Read();
+            return;
             CacheHelper.SetCache("cache", "123");
             CacheHelper.SetCache("cache", "456");
             System.Console.Write(CacheHelper.GetCache("cache").ToString());
