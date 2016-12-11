@@ -169,16 +169,5 @@ namespace HH.RMS.Common.Constant
         Fail=1,
         Sending=2
     }
-    public enum VideoStatus
-    {
-        play=1
-    }
-    public enum PlayerType
-    {
-        youku=1,
-        qq=2,
-        leshi=3,
-        pptv=4,
-        sohu=5
-    }
+
 }

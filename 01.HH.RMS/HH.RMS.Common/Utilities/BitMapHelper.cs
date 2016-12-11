@@ -8,16 +8,16 @@ namespace HH.RMS.Common.Utilities
 {
     public class BitMapHelper
     {
-        public static long[] GetAllBitMap()
+        public static decimal[] GetAllBitMap()
         {
-            long[] longArray = new long[62];
-            long n = 1;
+            decimal[] decimalArray = new decimal[90];
+            decimal n = 1;
             int i = 0;
             while(true)
             {
-                if (n>0 && Math.Abs(n) < long.MaxValue && i<=longArray.Length-1)
+                if (n > 0 && Math.Abs(n) < long.MaxValue && i <= decimalArray.Length - 1)
                 {
-                    longArray[i] = n;
+                    decimalArray[i] = n;
                     n = n * 2;
                 }
                 else
@@ -26,7 +26,7 @@ namespace HH.RMS.Common.Utilities
                 }
                 i++;
             }
-            return longArray;
+            return decimalArray;
         }
         public static long GetBitMap(long[] bitMapArray)
         {

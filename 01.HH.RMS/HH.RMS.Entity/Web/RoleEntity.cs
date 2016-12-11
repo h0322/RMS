@@ -15,7 +15,7 @@ namespace HH.RMS.Entity.Web
     {
          [MaxLength(32)]
         public string roleName { get; set; }
-        public long bitMap { get; set; }
+         public long bitMap { get; set; }
         public int roleOrder { get; set; }
     }
 }

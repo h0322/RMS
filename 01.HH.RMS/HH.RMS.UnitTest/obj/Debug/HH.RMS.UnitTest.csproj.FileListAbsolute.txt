@@ -51,7 +51,6 @@ D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\Quartz.dll
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\Topshelf.dll
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\Common.Logging.Core.dll
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\HH.RMS.Entity.dll
-D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\HH.RMS.Repository.dll
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\Common.Logging.dll
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\TinyMapper.dll
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\Microsoft.Practices.ServiceLocation.dll
@@ -69,7 +68,6 @@ D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\Quartz.xml
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\Common.Logging.Core.pdb
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\Common.Logging.Core.xml
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\HH.RMS.Entity.pdb
-D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\HH.RMS.Repository.pdb
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\Common.Logging.pdb
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\Common.Logging.xml
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
@@ -100,7 +98,6 @@ F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\Quartz.dll
 F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\Topshelf.dll
 F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\Common.Logging.Core.dll
 F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\HH.RMS.Entity.dll
-F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\HH.RMS.Repository.dll
 F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\Common.Logging.dll
 F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\TinyMapper.dll
 F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\Microsoft.Practices.ServiceLocation.dll
@@ -116,7 +113,6 @@ F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\Microsoft.Practic
 F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\Quartz.xml
 F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\Common.Logging.Core.xml
 F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\HH.RMS.Entity.pdb
-F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\HH.RMS.Repository.pdb
 F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\Common.Logging.xml
 F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
 F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\Microsoft.Practices.ServiceLocation.xml
