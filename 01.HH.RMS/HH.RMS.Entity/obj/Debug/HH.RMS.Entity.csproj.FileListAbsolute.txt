@@ -100,3 +100,9 @@ F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Entity\bin\Debug\EntityFramework.Sql
 F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Entity\bin\Debug\EntityFramework.xml
 F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Entity\bin\Debug\EntityFramework.Extended.xml
 F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Entity\bin\Debug\EntityFramework.SqlServer.xml
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Entity\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Entity\bin\Debug\NPOI.OOXML.dll
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Entity\bin\Debug\NPOI.dll
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Entity\bin\Debug\NPOI.OpenXmlFormats.dll
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Entity\bin\Debug\NPOI.OpenXml4Net.dll
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Entity\bin\Debug\NPOI.xml

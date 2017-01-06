@@ -30,6 +30,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
       <Private>True</Private>
@@ -55,12 +63,17 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="TinyMapper, Version=2.0.0.40, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\TinyMapper.2.0.8\lib\net45\TinyMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AreaTagService.cs" />
@@ -90,10 +103,6 @@
     <Compile Include="VideoService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\HH.ProjectMovie.Common\HH.ProjectMovie.Common.csproj">
-      <Project>{2b3e2556-b67f-4c9f-91c2-87741ad8fb50}</Project>
-      <Name>HH.ProjectMovie.Common</Name>
-    </ProjectReference>
     <ProjectReference Include="..\HH.RMS.Common\HH.RMS.Common.csproj">
       <Project>{b1aea69d-ca7d-46b2-9d58-067231ec5749}</Project>
       <Name>HH.RMS.Common</Name>
@@ -102,9 +111,9 @@
       <Project>{73b8ac6f-5953-4f02-a10c-13744db73c8f}</Project>
       <Name>HH.RMS.Entity</Name>
     </ProjectReference>
-    <ProjectReference Include="..\HH.RMS.ProjectMovie.Entity\HH.ProjectMovie.Entity.csproj">
-      <Project>{b25c5c05-da86-4fd3-86b6-ecf196031b09}</Project>
-      <Name>HH.ProjectMovie.Entity</Name>
+    <ProjectReference Include="..\HH.RMS.Repository\HH.RMS.Repository.csproj">
+      <Project>{6e3b9805-4a5d-4857-9797-abe850af554e}</Project>
+      <Name>HH.RMS.Repository</Name>
     </ProjectReference>
     <ProjectReference Include="..\HH.RMS.Service\HH.RMS.Service.csproj">
       <Project>{e535a624-40b0-460f-a91b-69384d3f24e3}</Project>
@@ -112,6 +121,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

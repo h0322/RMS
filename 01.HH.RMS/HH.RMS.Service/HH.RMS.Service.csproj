@@ -210,6 +210,10 @@
       <Project>{73b8ac6f-5953-4f02-a10c-13744db73c8f}</Project>
       <Name>HH.RMS.Entity</Name>
     </ProjectReference>
+    <ProjectReference Include="..\HH.RMS.Repository\HH.RMS.Repository.csproj">
+      <Project>{6e3b9805-4a5d-4857-9797-abe850af554e}</Project>
+      <Name>HH.RMS.Repository</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

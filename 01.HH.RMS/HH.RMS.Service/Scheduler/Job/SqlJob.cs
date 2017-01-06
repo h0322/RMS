@@ -1,6 +1,6 @@
 ﻿using HH.RMS.Common.Constant;
 using HH.RMS.Common.Unity;
-using HH.RMS.Entity.EntityFramework;
+using HH.RMS.Repository;
 using HH.RMS.Service.Scheduler.Model;
 using HH.RMS.Service.Web.Interface;
 using Quartz;

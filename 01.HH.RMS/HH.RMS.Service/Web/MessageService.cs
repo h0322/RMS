@@ -1,7 +1,7 @@
 ﻿using HH.RMS.Common.Constant;
 using HH.RMS.Entity.Web;
-using HH.RMS.Entity.EntityFramework;
-using HH.RMS.Entity.EntityFramework.Interface;
+using HH.RMS.Repository;
+using HH.RMS.Repository.Interface;
 using HH.RMS.Service.Web.Interface;
 using HH.RMS.Service.Web.Model;
 using System;

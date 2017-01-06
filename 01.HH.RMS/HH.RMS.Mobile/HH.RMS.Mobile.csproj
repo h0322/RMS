@@ -195,12 +195,6 @@
   <ItemGroup>
     <Content Include="Views\Login\ForgetPassword.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\HH.ProjectMovie.Common\HH.ProjectMovie.Common.csproj">
-      <Project>{2b3e2556-b67f-4c9f-91c2-87741ad8fb50}</Project>
-      <Name>HH.ProjectMovie.Common</Name>
-    </ProjectReference>
-  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

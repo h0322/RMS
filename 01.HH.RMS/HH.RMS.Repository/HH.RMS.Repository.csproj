@@ -82,16 +82,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ADONet\ADORepositoryBase.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="ADONet\Interface\IADORepository.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="ADONet\SqlServerExtension.cs">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="ApplicationDbContext.cs" />
+    <Compile Include="Interface\IRepository.cs" />
+    <Compile Include="Mapping\AccountMapping.cs" />
+    <Compile Include="Mapping\JobMapping.cs" />
+    <Compile Include="Mapping\LevelMapping.cs" />
+    <Compile Include="Mapping\LogMapping.cs" />
+    <Compile Include="Mapping\MappingTableBase.cs" />
+    <Compile Include="Mapping\PersonMapping.cs" />
+    <Compile Include="Mapping\RoleMapping.cs" />
+    <Compile Include="Mapping\SchedulerLogMapping.cs" />
+    <Compile Include="Mapping\SchedulerMapping.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RepositoryBase.cs" />
+    <Compile Include="SqlHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

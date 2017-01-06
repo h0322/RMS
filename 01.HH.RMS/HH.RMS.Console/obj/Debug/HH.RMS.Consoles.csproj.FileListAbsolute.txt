@@ -96,3 +96,11 @@ D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Console\obj\Debug\HH.RMS.Consoles.csprojRe
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Console\obj\Debug\HH.RMS.Consoles.csproj.HH.RMS.Console.exe.config
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Console\obj\Debug\HH.RMS.Console.exe
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Console\obj\Debug\HH.RMS.Console.pdb
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Console\bin\Debug\HH.RMS.Repository.dll
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Console\bin\Debug\HH.RMS.Repository.pdb
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Console\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Console\bin\Debug\NPOI.OOXML.dll
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Console\bin\Debug\NPOI.dll
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Console\bin\Debug\NPOI.OpenXmlFormats.dll
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Console\bin\Debug\NPOI.OpenXml4Net.dll
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Console\bin\Debug\NPOI.xml

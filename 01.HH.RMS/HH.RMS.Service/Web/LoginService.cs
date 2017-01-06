@@ -2,8 +2,8 @@
 using HH.RMS.Common.Utilities;
 using HH.RMS.Entity.Web;
 using HH.RMS.Service.Web.Model;
-using HH.RMS.Entity.EntityFramework;
-using HH.RMS.Entity.EntityFramework.Interface;
+using HH.RMS.Repository;
+using HH.RMS.Repository.Interface;
 using HH.RMS.Service.Web.Interface;
 using System;
 using System.Collections.Generic;

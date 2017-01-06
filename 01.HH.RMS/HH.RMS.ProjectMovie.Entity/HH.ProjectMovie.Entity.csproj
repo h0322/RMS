@@ -55,9 +55,6 @@
     <Compile Include="AreaTagEntity.cs" />
     <Compile Include="FilmManEntity.cs" />
     <Compile Include="FilmManImageEntity.cs" />
-    <Compile Include="EntityFramework\Interface\IMovieRepository.cs" />
-    <Compile Include="EntityFramework\MovieDbContext.cs" />
-    <Compile Include="EntityFramework\MovieRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VideoActorEntity.cs" />
     <Compile Include="VideoEntity.cs" />
@@ -66,10 +63,6 @@
     <Compile Include="VideoTagEntity.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\HH.ProjectMovie.Common\HH.ProjectMovie.Common.csproj">
-      <Project>{2b3e2556-b67f-4c9f-91c2-87741ad8fb50}</Project>
-      <Name>HH.ProjectMovie.Common</Name>
-    </ProjectReference>
     <ProjectReference Include="..\HH.RMS.Common\HH.RMS.Common.csproj">
       <Project>{b1aea69d-ca7d-46b2-9d58-067231ec5749}</Project>
       <Name>HH.RMS.Common</Name>
@@ -80,7 +73,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="EntityFramework\Mapping\" />
+    <Folder Include="EntityFramework\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
