@@ -1,11 +1,11 @@
 ﻿
 using HH.RMS.Common.Constant;
 using HH.RMS.Entity.Web;
-using HH.RMS.Service.Web.Model;
+using HH.RMS.IService.Web.Model;
 using HH.RMS.MVC.Models;
 using HH.RMS.Repository;
 using HH.RMS.Repository.Interface;
-using HH.RMS.Service.Web.Interface;
+using HH.RMS.IService.Web;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -17,7 +17,6 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using System.Linq.Expressions;
 using Nelibur.ObjectMapper;
-using HH.RMS.Service.Model;
 
 
 namespace HH.RMS.Service.Web

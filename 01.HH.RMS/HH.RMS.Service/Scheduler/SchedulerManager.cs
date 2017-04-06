@@ -1,6 +1,6 @@
 ﻿using HH.RMS.Common.Constant;
 using HH.RMS.Entity.Web;
-using HH.RMS.Service.Web.Interface;
+using HH.RMS.IService.Web;
 using HH.RMS.Common.Unity;
 using Quartz;
 using System;
@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using Quartz.Impl;
 using HH.RMS.Entity.Scheduler;
 using Topshelf;
+using HH.RMS.IService.Scheduler;
 
 namespace HH.RMS.Scheduler
 {

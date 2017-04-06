@@ -12,9 +12,13 @@ namespace HH.RMS.Console.DesignPattern
         private Singleton()
         { 
         }
-        public Singleton instance
+        public static Singleton instance
         {
             get { return _instance; }
+        }
+        public void TestMethod()
+        {
+            return;
         }
     }
     public sealed class Singleton2
@@ -38,6 +42,23 @@ namespace HH.RMS.Console.DesignPattern
                 }
                 return _instance;
             }
+        }
+    }
+
+
+
+    public class Singleton6
+    {
+        private Singleton6() { }
+
+        private static class SingletonInstance
+        {
+            public static Singleton6 Instance = new Singleton6();
+        }
+
+        public static Singleton6 Instance()
+        {
+            return SingletonInstance.Instance;
         }
     }
 }

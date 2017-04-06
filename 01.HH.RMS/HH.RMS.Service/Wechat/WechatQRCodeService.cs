@@ -1,7 +1,7 @@
 ﻿using HH.RMS.Common.Constant;
 using HH.RMS.Common.Utilities;
-using HH.RMS.Service.Wechat.Interface;
-using HH.RMS.Service.Wechat.Model;
+using HH.RMS.IService.Wechat;
+using HH.RMS.IService.Wechat.Model;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;

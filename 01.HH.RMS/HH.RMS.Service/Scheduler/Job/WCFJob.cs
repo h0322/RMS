@@ -1,14 +1,14 @@
 ﻿using HH.RMS.Common.Constant;
 using HH.RMS.Common.Unity;
-using HH.RMS.Service.Scheduler.Model;
-using HH.RMS.Service.Web.Interface;
+using HH.RMS.IService.Scheduler;
+using HH.RMS.IService.Scheduler.Model;
+using HH.RMS.IService.Web;
 using Quartz;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
-using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 

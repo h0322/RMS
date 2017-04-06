@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>log4.net.Layout.JsonLayout</id>
+    <version>1.0.1</version>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <authors>khoanguyen</authors>
+    <owners>khoanguyen</owners>
+    <licenseUrl>https://github.com/kh-nguyen/log4net.Layout.JsonLayout/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/kh-nguyen/log4net.Layout.JsonLayout</projectUrl>
+    <description>log4.net.Layout.JsonLayout Class Library</description>
+    <dependencies>
+      <group targetFramework=".NETFramework4.5.1">
+        <dependency id="Newtonsoft.Json" version="8.0.2" />
+        <dependency id="log4net" version="2.0.5" />
+      </group>
+    </dependencies>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="mscorlib" targetFramework=".NETFramework4.5.1" />
+      <frameworkAssembly assemblyName="System" targetFramework=".NETFramework4.5.1" />
+      <frameworkAssembly assemblyName="System.Core" targetFramework=".NETFramework4.5.1" />
+      <frameworkAssembly assemblyName="Microsoft.CSharp" targetFramework=".NETFramework4.5.1" />
+    </frameworkAssemblies>
+  </metadata>
+</package>

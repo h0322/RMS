@@ -23,7 +23,6 @@ namespace HH.RMS.Job
         {
 
             LogRegister();
-            new UnityService(UnityManager.instance);
 
             HostFactory.Run(x => 
             {

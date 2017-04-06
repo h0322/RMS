@@ -1,9 +1,9 @@
 ﻿using HH.RMS.Common.Constant;
-using HH.RMS.Service.Web.Model;
+using HH.RMS.IService.Web.Model;
 using HH.RMS.Common.Utilities;
 using HH.RMS.Entity.Web;
 using HH.RMS.MVC.Models;
-using HH.RMS.Service.Web.Interface;
+using HH.RMS.IService.Web;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +27,6 @@ namespace HH.RMS.MVC.Controllers
             _personService = personService;
             _roleService = roleService;
         }
-        
         public ActionResult Index()
         {
             ViewBag.personId = 0;

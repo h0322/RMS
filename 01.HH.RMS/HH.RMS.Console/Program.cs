@@ -1,6 +1,7 @@
 ﻿using HH.RMS.Common.Utilities;
 using HH.RMS.Console.Algorithm;
 using HH.RMS.Console.DesignPattern;
+using HH.RMS.Console.Distributed;
 using HH.RMS.Console.Wechat;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -18,9 +19,23 @@ namespace HH.RMS.Consoles
 {
     class Program
     {
-        const int aa =2;
+
         static void Main(string[] args)
         {
+            string aaaa = null;
+            string bbbb = aaaa + "abc";
+            System.Console.Write(bbbb);
+            System.Console.Read();
+            return;
+            var random = new Random();
+            int sssss = random.Next(0, 2);
+            System.Console.Write(sssss);
+            System.Console.Read();
+            Redis redis = new Redis();
+            return;
+            //ResposibilityMain main = new ResposibilityMain();
+            //System.Console.Read();
+            //return;
             decimal dd = 1;
             int result = 0;
             for (int i = 0; i < 100000; i++)
