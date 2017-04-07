@@ -75,7 +75,6 @@
     <Compile Include="Web\LuckyResultEntity.cs" />
     <Compile Include="Web\MenuEntity.cs" />
     <Compile Include="Web\MenuRoleEntity.cs" />
-    <Compile Include="Web\PersonEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Web\LuckyPrizeEntity.cs" />
     <Compile Include="Web\ProvinceEntity.cs" />

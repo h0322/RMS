@@ -25,7 +25,6 @@ namespace HH.RMS.Repository
         {
             modelBuilder.Configurations.Add(new AccountMapping());
             modelBuilder.Configurations.Add(new LevelMapping());
-            modelBuilder.Configurations.Add(new PersonMapping());
             modelBuilder.Configurations.Add(new LogMapping());
             modelBuilder.Configurations.Add(new SchedulerMapping());
             modelBuilder.Configurations.Add(new JobMapping());

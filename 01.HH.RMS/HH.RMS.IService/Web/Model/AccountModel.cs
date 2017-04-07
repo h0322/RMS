@@ -51,22 +51,19 @@ namespace HH.RMS.IService.Web.Model
         public string remark { get; set; }
         public DateTime createTime { get; set; }
         public long createBy { get; set; }
-        #region Level
-        [Required(ErrorMessage = "等级为必选项")]
-        public long levelId {get;set;}
-        public string levelName { get; set; }
-        public int levelOrder { get; set; }
-        #endregion
-        #region Person
-        public long personId{get;set;}
-        public string birthday{get;set;}
+        public DateTime birthday{get;set;}
         public long cityId{get;set;}
         public long countryId{get;set;}
         public long provinceId{get;set;}
         public string name{get;set;}
         public string nickName{get;set;}
+        public string mobile { get; set; }
         public SexType sex{get;set;}
-        #endregion
+        public long levelId { get; set; }
+        public string address { get; set; }
+        public long parentAccountId { get; set; }
+        public long updateBy { get; set; }
+        public DateTime updateTime { get; set; }
         public override string ToString()
         {
             return JsonConvert.SerializeObject(this);

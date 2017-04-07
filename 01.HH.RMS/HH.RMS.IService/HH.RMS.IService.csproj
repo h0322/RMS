@@ -73,7 +73,6 @@
     <Compile Include="Web\ILuckyService.cs" />
     <Compile Include="Web\IMenuService.cs" />
     <Compile Include="Web\IMessageService.cs" />
-    <Compile Include="Web\IPersonService.cs" />
     <Compile Include="Web\IProvinceService.cs" />
     <Compile Include="Web\IRoleService.cs" />
     <Compile Include="Web\IVoteService.cs" />
@@ -96,7 +95,6 @@
     <Compile Include="Web\Model\MessageModel.cs" />
     <Compile Include="Web\Model\PagerModel.cs" />
     <Compile Include="Web\Model\PasswordModel.cs" />
-    <Compile Include="Web\Model\PersonModel.cs" />
     <Compile Include="Web\Model\ProvinceModel.cs" />
     <Compile Include="Web\Model\RoleModel.cs" />
     <Compile Include="Web\Model\SelectModel.cs" />

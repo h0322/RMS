@@ -16,7 +16,7 @@ namespace HH.RMS.IService.Web
          ResultType InsertAccount(AccountModel model);
          GridModel QueryAccountToGridByRole(PagerModel pager = null);
          AccountModel QueryAccountById(long id);
-         ResultType UpdateAccount(AccountModel model);
+         ResultType UpdateAccountById(AccountModel model);
          ResultType DeleteAccountById(long id);
          ResultType DeleteAccountMassById(long[] ids);
          int CountAccount();

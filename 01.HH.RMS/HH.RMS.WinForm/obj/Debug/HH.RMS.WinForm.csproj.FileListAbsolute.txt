@@ -44,3 +44,4 @@ D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.WinForm\obj\Debug\HH.RMS.WinForm.Propertie
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.WinForm\obj\Debug\HH.RMS.WinForm.csproj.GenerateResource.Cache
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.WinForm\obj\Debug\HH.RMS.WinForm.exe
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.WinForm\obj\Debug\HH.RMS.WinForm.pdb
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.WinForm\obj\Debug\HH.RMS.WinForm.csprojResolveAssemblyReference.cache

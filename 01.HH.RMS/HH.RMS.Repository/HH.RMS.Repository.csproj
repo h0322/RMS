@@ -96,7 +96,6 @@
     <Compile Include="Mapping\LevelMapping.cs" />
     <Compile Include="Mapping\LogMapping.cs" />
     <Compile Include="Mapping\MappingTableBase.cs" />
-    <Compile Include="Mapping\PersonMapping.cs" />
     <Compile Include="Mapping\RoleMapping.cs" />
     <Compile Include="Mapping\SchedulerLogMapping.cs" />
     <Compile Include="Mapping\SchedulerMapping.cs" />
