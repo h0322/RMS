@@ -251,44 +251,5 @@ namespace HH.RMS.Service.Web
                 return ResultType.SystemError;
             }
         }
-
-
-        public List<AccountModel> QueryAccountPageList(int pageSize,int pageIndex)
-        {
-            try
-            {
-                using (var db = new ApplicationDbContext())
-                {
-                    return _accountRepository.Query(db).Take(pageSize).Skip(pageSize * (pageIndex - 1)).Select(m => new AccountModel()
-                    {
-                        accountType = m.accountType,
-                        address = m.address,
-                        birthday = m.birthday,
-                        cityId = m.cityId,
-                        countryId = m.countryId,
-                        email = m.email,
-                        mobile = m.mobile,
-                        name = m.name,
-                        parentAccountId = m.parentAccountId,
-                        passwordType = m.passwordType,
-                        nickName = m.nickName,
-                        sex = m.sex,
-                        provinceId = m.provinceId,
-                        remark = m.remark,
-                        amount = m.amount,
-                        score = m.score,
-                        levelId = m.levelId,
-                        status = m.status,
-                        roleBitMap = m.roleBitMap,
-                        createBy = m.createBy,
-                        createTime = m.createTime,
-                    }).ToList();
-                }
-            }
-            catch (Exception ex)
-            {
-                return null;
-            }
-        }
     }
 }

@@ -62,6 +62,7 @@
     <Compile Include="Scheduler\JobParameterEntity.cs" />
     <Compile Include="Web\AccountEntity.cs" />
     <Compile Include="Web\CityEntity.cs" />
+    <Compile Include="Web\ConfigEntity.cs" />
     <Compile Include="Web\MessaageEntity.cs" />
     <Compile Include="Web\CountryEntity.cs" />
     <Compile Include="EntityBase.cs" />

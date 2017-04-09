@@ -37,5 +37,46 @@ namespace HH.RMS.Service.Web
                 return null;
             }
         }
+        public ResultType InsertCountry(CountryModel model)
+        {
+            try
+            {
+                using (var db = new ApplicationDbContext())
+                {
+                    var entity = TinyMapper.Map<CountryEntity>(model);
+                    _countryRepository.Insert(db, entity);
+                }
+                return ResultType.Success;
+            }
+            catch (Exception ex)
+            {
+                Config.log.Error("CountryService.InsertCountry", ex);
+                return ResultType.SystemError;
+            }
+        }
+        public ResultType UpdateCountry(CountryModel model)
+        {
+            try
+            {
+                using (var db = new ApplicationDbContext())
+                {
+                    _countryRepository.Update(db, m => new CountryEntity()
+                    {
+                        code = model.code,
+                        name = model.name,
+                        order = model.order,
+                        remark = model.remark,
+                        updateBy = AccountModel.CurrentSession.id,
+                        updateTime = DateTime.Now
+                    }, m => m.id == model.id);
+                }
+                return ResultType.Success;
+            }
+            catch (Exception ex)
+            {
+                Config.log.Error("CountryService.UpdateCountry", ex);
+                return ResultType.SystemError;
+            }
+        }
     }
 }

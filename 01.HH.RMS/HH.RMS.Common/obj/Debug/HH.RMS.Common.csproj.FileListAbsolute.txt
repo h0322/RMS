@@ -142,3 +142,9 @@ D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Common\bin\Debug\NPOI.xml
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Common\obj\Debug\HH.RMS.Common.dll
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Common\obj\Debug\HH.RMS.Common.pdb
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Common\bin\Debug\HH.RMS.Common.pdb
+F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Common\bin\Debug\ICSharpCode.SharpZipLib.dll
+F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Common\bin\Debug\NPOI.dll
+F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Common\bin\Debug\NPOI.OOXML.dll
+F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Common\bin\Debug\NPOI.OpenXml4Net.dll
+F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Common\bin\Debug\NPOI.OpenXmlFormats.dll
+F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Common\bin\Debug\NPOI.xml

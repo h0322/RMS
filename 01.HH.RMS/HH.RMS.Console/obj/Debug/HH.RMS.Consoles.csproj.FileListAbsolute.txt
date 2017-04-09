@@ -108,3 +108,15 @@ D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Console\bin\Debug\Microsoft.Practices.Serv
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Console\bin\Debug\EntityFramework.Extended.xml
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Console\obj\Debug\HH.RMS.Console.exe
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Console\obj\Debug\HH.RMS.Console.pdb
+F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Console\bin\Debug\HH.RMS.IService.dll
+F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Console\bin\Debug\StackExchange.Redis.dll
+F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Console\bin\Debug\ICSharpCode.SharpZipLib.dll
+F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Console\bin\Debug\NPOI.OOXML.dll
+F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Console\bin\Debug\NPOI.dll
+F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Console\bin\Debug\HH.RMS.Repository.dll
+F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Console\bin\Debug\NPOI.OpenXmlFormats.dll
+F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Console\bin\Debug\NPOI.OpenXml4Net.dll
+F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Console\bin\Debug\HH.RMS.IService.pdb
+F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Console\bin\Debug\StackExchange.Redis.xml
+F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Console\bin\Debug\NPOI.xml
+F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Console\bin\Debug\HH.RMS.Repository.pdb

@@ -12,5 +12,6 @@ namespace HH.RMS.IService.Web.Model
         public string code { get; set; }
         public string name { get; set; }
         public int order { get; set; }
+        public string remark { get; set; }
     }
 }

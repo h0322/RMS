@@ -14,7 +14,6 @@ namespace HH.RMS.IService.Web
     public interface IAccountService
     {
          ResultType InsertAccount(AccountModel model);
-         GridModel QueryAccountToGridByRole(PagerModel pager = null);
          AccountModel QueryAccountById(long id);
          ResultType UpdateAccountById(AccountModel model);
          ResultType DeleteAccountById(long id);

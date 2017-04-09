@@ -200,3 +200,13 @@ D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\EntityFramework.Extended
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\obj\Debug\HH.RMS.Service.dll
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\obj\Debug\HH.RMS.Service.pdb
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\HH.RMS.Common.pdb
+F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\HH.RMS.IService.dll
+F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\HH.RMS.Repository.dll
+F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\ICSharpCode.SharpZipLib.dll
+F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\NPOI.OOXML.dll
+F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\NPOI.dll
+F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\NPOI.OpenXmlFormats.dll
+F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\NPOI.OpenXml4Net.dll
+F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\HH.RMS.IService.pdb
+F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\HH.RMS.Repository.pdb
+F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\NPOI.xml

@@ -172,3 +172,9 @@ D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Repository\obj\Debug\HH.RMS.Repository.csp
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Repository\obj\Debug\HH.RMS.Repository.dll
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Repository\obj\Debug\HH.RMS.Repository.pdb
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Repository\bin\Debug\HH.RMS.Common.pdb
+F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Repository\bin\Debug\ICSharpCode.SharpZipLib.dll
+F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Repository\bin\Debug\NPOI.OOXML.dll
+F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Repository\bin\Debug\NPOI.dll
+F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Repository\bin\Debug\NPOI.OpenXmlFormats.dll
+F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Repository\bin\Debug\NPOI.OpenXml4Net.dll
+F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Repository\bin\Debug\NPOI.xml
