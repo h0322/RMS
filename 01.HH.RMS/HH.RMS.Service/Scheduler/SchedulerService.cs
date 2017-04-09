@@ -1,18 +1,18 @@
 ﻿using HH.RMS.Common.Constant;
 using HH.RMS.Entity.Web;
-using HH.RMS.Service.Web.Model;
-using HH.RMS.Entity.EntityFramework;
-using HH.RMS.Entity.EntityFramework.Interface;
-using HH.RMS.Service.Web.Interface;
+using HH.RMS.IService.Web.Model;
+using HH.RMS.Repository;
+using HH.RMS.Repository.Interface;
+using HH.RMS.IService.Web;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using HH.RMS.Service.Model;
 using HH.RMS.Entity.Scheduler;
-using HH.RMS.Service.Scheduler.Model;
+using HH.RMS.IService.Scheduler.Model;
 using System.Linq.Expressions;
+using HH.RMS.IService.Scheduler;
 
 namespace HH.RMS.Service.Web
 {

@@ -1,10 +1,9 @@
 ﻿using HH.RMS.Common.Constant;
 using HH.RMS.Entity.Scheduler;
-using HH.RMS.Entity.EntityFramework;
-using HH.RMS.Entity.EntityFramework.Interface;
-using HH.RMS.Service.Model;
-using HH.RMS.Service.Scheduler.Model;
-using HH.RMS.Service.Web.Interface;
+using HH.RMS.IService.Scheduler;
+using HH.RMS.IService.Scheduler.Model;
+using HH.RMS.Repository;
+using HH.RMS.Repository.Interface;
 using Nelibur.ObjectMapper;
 using System;
 using System.Collections.Generic;

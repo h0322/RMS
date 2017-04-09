@@ -1,10 +1,11 @@
 ﻿using HH.ProjectMovie.Entity;
-using HH.ProjectMovie.Entity.EntityFramework;
+using HH.ProjectMovie.Repository;
+using HH.ProjectMovie.Repository.Interface;
 using HH.ProjectMovie.Service.Interface;
 using HH.ProjectMovie.Service.Model;
 using HH.RMS.Common.Constant;
 using HH.RMS.Common.Utilities;
-using HH.RMS.Entity.EntityFramework.Interface;
+using HH.RMS.Repository.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;

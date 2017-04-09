@@ -1,15 +1,15 @@
 ﻿using HH.RMS.Common.Constant;
-using HH.RMS.Service.Web.Model;
+using HH.RMS.IService.Web.Model;
 using HH.RMS.Service.Web;
-using HH.RMS.Service.Web.Interface;
+using HH.RMS.IService.Web;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using HH.RMS.Service.Model;
 using HH.RMS.Service;
 using HH.RMS.Common.Utilities;
+using HH.RMS.Common.Model;
 
 namespace HH.RMS.MVC.Controllers
 {
@@ -30,6 +30,7 @@ namespace HH.RMS.MVC.Controllers
             _roleService = roleService;
 
         }
+        [Authorize]
         public ActionResult Index()
         {
             return View();

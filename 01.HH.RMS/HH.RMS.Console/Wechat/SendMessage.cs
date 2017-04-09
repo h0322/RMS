@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 using HH.RMS.Wechat;
 using HH.RMS.Wechat.Message;
 using HH.RMS.Wechat.Model;
-using HH.RMS.Service.Wechat.Interface;
 using HH.RMS.Service.Wechat;
-using HH.RMS.Service.Wechat.Model;
+
 using HH.RMS.Service.Web;
-using HH.RMS.Service.Web.Model;
+using HH.RMS.IService.Wechat;
+using HH.RMS.IService.Wechat.Model;
+
 
 namespace HH.RMS.Console.Wechat
 {

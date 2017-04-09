@@ -1,7 +1,6 @@
 ﻿using HH.RMS.Common.Constant;
 using HH.RMS.Common.Utilities;
-using HH.RMS.Service.Model;
-using HH.RMS.Service.Wechat.Model;
+using HH.RMS.IService.Wechat.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +8,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using HH.RMS.Wechat.Model;
-using HH.RMS.Service.Wechat.Interface;
+using HH.RMS.IService.Wechat;
+using HH.RMS.Common.Model;
 
 namespace HH.RMS.Service.Wechat
 {

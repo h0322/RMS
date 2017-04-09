@@ -1,5 +1,5 @@
 ﻿using HH.RMS.Common.Constant;
-using HH.RMS.Entity.EntityFramework.Interface;
+using HH.RMS.Repository.Interface;
 using HH.ProjectMovie.Entity;
 using System;
 using System.Collections.Generic;
@@ -11,7 +11,8 @@ using HH.ProjectMovie.Common;
 using HH.RMS.Common.Utilities;
 using Newtonsoft.Json;
 using HH.ProjectMovie.Service.Model;
-using HH.ProjectMovie.Entity.EntityFramework;
+using HH.ProjectMovie.Repository;
+using HH.ProjectMovie.Repository.Interface;
 
 namespace HH.ProjectMovie.Service
 {

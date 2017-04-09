@@ -1,10 +1,10 @@
 ﻿using HH.RMS.Common.Constant;
 using HH.RMS.Common.Utilities;
 using HH.RMS.Entity.Wechat;
-using HH.RMS.Entity.EntityFramework;
-using HH.RMS.Entity.EntityFramework.Interface;
-using HH.RMS.Service.Wechat.Interface;
-using HH.RMS.Service.Wechat.Model;
+using HH.RMS.Repository;
+using HH.RMS.Repository.Interface;
+using HH.RMS.IService.Wechat;
+using HH.RMS.IService.Wechat.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;

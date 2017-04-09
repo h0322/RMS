@@ -150,6 +150,7 @@ F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\Topshelf.dll
 F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\Common.Logging.xml
 F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\Common.Logging.Core.xml
 F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\Quartz.xml
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\obj\Debug\HH.RMS.Service.csprojResolveAssemblyReference.cache
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\HH.RMS.Service.dll.config
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\HH.RMS.Service.dll
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\HH.RMS.Service.pdb
@@ -159,6 +160,8 @@ D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\EntityFramework.dll
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\EntityFramework.SqlServer.dll
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\HH.RMS.Common.dll
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\HH.RMS.Entity.dll
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\HH.RMS.IService.dll
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\HH.RMS.Repository.dll
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\log4net.dll
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\Microsoft.Practices.ServiceLocation.dll
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\Microsoft.Practices.Unity.Configuration.dll
@@ -168,9 +171,15 @@ D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\Newtonsoft.Json.dll
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\Quartz.dll
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\TinyMapper.dll
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\Topshelf.dll
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\NPOI.OOXML.dll
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\NPOI.dll
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\EntityFramework.Extended.dll
-D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\HH.RMS.Common.pdb
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\NPOI.OpenXmlFormats.dll
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\NPOI.OpenXml4Net.dll
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\HH.RMS.Entity.pdb
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\HH.RMS.IService.pdb
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\HH.RMS.Repository.pdb
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\Common.Logging.pdb
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\Common.Logging.xml
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\Common.Logging.Core.pdb
@@ -186,7 +195,8 @@ D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\Microsoft.Practices.Unit
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\Newtonsoft.Json.xml
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\Quartz.pdb
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\Quartz.xml
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\NPOI.xml
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\EntityFramework.Extended.xml
-D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\obj\Debug\HH.RMS.Service.csprojResolveAssemblyReference.cache
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\obj\Debug\HH.RMS.Service.dll
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\obj\Debug\HH.RMS.Service.pdb
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\HH.RMS.Common.pdb

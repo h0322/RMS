@@ -1,4 +1,4 @@
-﻿using HH.RMS.Service.Wechat.Model;
+﻿using HH.RMS.IService.Wechat.Model;
 using HH.RMS.Wechat.Model;
 using System;
 using System.Collections.Generic;

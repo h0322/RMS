@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{427CB8A4-EC1F-4363-9B56-BCC957ED9D02}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HH.RMS.IService</RootNamespace>
+    <AssemblyName>HH.RMS.IService</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NuGet.VisualStudio, Version=4.0.0.2323, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\NuGet.VisualStudio.4.0.0\lib\net45\NuGet.VisualStudio.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="TinyMapper, Version=2.0.0.40, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\TinyMapper.2.0.8\lib\net45\TinyMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scheduler\IJobService.cs" />
+    <Compile Include="Scheduler\ISchedulerService.cs" />
+    <Compile Include="Scheduler\Model\JobLogModel.cs" />
+    <Compile Include="Scheduler\Model\JobModel.cs" />
+    <Compile Include="Scheduler\Model\JobParameterModel.cs" />
+    <Compile Include="Scheduler\Model\SchedulerModel.cs" />
+    <Compile Include="Web\IAccountService.cs" />
+    <Compile Include="Web\ICityService.cs" />
+    <Compile Include="Web\ICollcetService.cs" />
+    <Compile Include="Web\ICountryService.cs" />
+    <Compile Include="Web\IEmailService.cs" />
+    <Compile Include="Web\ILevelService.cs" />
+    <Compile Include="Web\ILoginService.cs" />
+    <Compile Include="Web\ILuckyService.cs" />
+    <Compile Include="Web\IMenuService.cs" />
+    <Compile Include="Web\IMessageService.cs" />
+    <Compile Include="Web\IProvinceService.cs" />
+    <Compile Include="Web\IRoleService.cs" />
+    <Compile Include="Web\IVoteService.cs" />
+    <Compile Include="Web\Model\AccountModel.cs" />
+    <Compile Include="Web\Model\CityModel.cs" />
+    <Compile Include="Web\Model\CollectModel.cs" />
+    <Compile Include="Web\Model\CommandModel.cs" />
+    <Compile Include="Web\Model\ConditionBuilderModel.cs" />
+    <Compile Include="Web\Model\CountryModel.cs" />
+    <Compile Include="Web\Model\EmailLogModel.cs" />
+    <Compile Include="Web\Model\EmailModel.cs" />
+    <Compile Include="Web\Model\LevelModel.cs" />
+    <Compile Include="Web\Model\LoginModel.cs" />
+    <Compile Include="Web\Model\LuckyDrawModel.cs" />
+    <Compile Include="Web\Model\LuckyLogModel.cs" />
+    <Compile Include="Web\Model\LuckyPrizeModel.cs" />
+    <Compile Include="Web\Model\LuckyResultModel.cs" />
+    <Compile Include="Web\Model\MenuModel.cs" />
+    <Compile Include="Web\Model\MenuRoleModel.cs" />
+    <Compile Include="Web\Model\MessageModel.cs" />
+    <Compile Include="Web\Model\PagerModel.cs" />
+    <Compile Include="Web\Model\PasswordModel.cs" />
+    <Compile Include="Web\Model\ProvinceModel.cs" />
+    <Compile Include="Web\Model\RoleModel.cs" />
+    <Compile Include="Web\Model\SelectModel.cs" />
+    <Compile Include="Web\Model\SortConditionModel.cs" />
+    <Compile Include="Web\Model\UserModel.cs" />
+    <Compile Include="Web\Model\VoteBoxModel.cs" />
+    <Compile Include="Web\Model\VoteLogModel.cs" />
+    <Compile Include="Web\Model\VoteModel.cs" />
+    <Compile Include="Wechat\IResponseMessageService.cs" />
+    <Compile Include="Wechat\IWechatConfigService.cs" />
+    <Compile Include="Wechat\IWechatJsSdkService.cs" />
+    <Compile Include="Wechat\IWechatOAuthService.cs" />
+    <Compile Include="Wechat\IWechatQRCodeService.cs" />
+    <Compile Include="Wechat\IWechatReceiveService.cs" />
+    <Compile Include="Wechat\IWechatRequestService.cs" />
+    <Compile Include="Wechat\IWechatUserService.cs" />
+    <Compile Include="Wechat\Model\AccessTokenModel.cs" />
+    <Compile Include="Wechat\Model\WechatCardModel.cs" />
+    <Compile Include="Wechat\Model\WechatConfigModel.cs" />
+    <Compile Include="Wechat\Model\WechatJsSdkModel.cs" />
+    <Compile Include="Wechat\Model\WechatMsgCustomModel.cs" />
+    <Compile Include="Wechat\Model\WechatMsgMassModel.cs" />
+    <Compile Include="Wechat\Model\WechatMsgTemplateModel.cs" />
+    <Compile Include="Wechat\Model\WechatOAuthModel.cs" />
+    <Compile Include="Wechat\Model\WechatReceiveModel.cs" />
+    <Compile Include="Wechat\Model\WechatRequestModel.cs" />
+    <Compile Include="Wechat\Model\WechatResponseModel.cs" />
+    <Compile Include="Wechat\Model\WechatResponseMsgModel.cs" />
+    <Compile Include="Wechat\Model\WechatStoreModel.cs" />
+    <Compile Include="Wechat\Model\WechatUserModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Web\Model\packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\HH.RMS.Common\HH.RMS.Common.csproj">
+      <Project>{b1aea69d-ca7d-46b2-9d58-067231ec5749}</Project>
+      <Name>HH.RMS.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

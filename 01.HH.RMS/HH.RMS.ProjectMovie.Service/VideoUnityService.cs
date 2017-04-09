@@ -1,5 +1,5 @@
-﻿using HH.RMS.Entity.EntityFramework;
-using HH.RMS.Entity.EntityFramework.Interface;
+﻿using HH.RMS.Repository;
+using HH.RMS.Repository.Interface;
 using HH.RMS.Common.Unity;
 using HH.RMS.Service.Web.Interface;
 using System;
@@ -12,7 +12,8 @@ using HH.RMS.Service.Wechat.Interface;
 using HH.RMS.Service.Wechat;
 using HH.ProjectMovie.Service;
 using HH.ProjectMovie.Service.Interface;
-using HH.ProjectMovie.Entity.EntityFramework;
+using HH.ProjectMovie.Repository;
+using HH.ProjectMovie.Repository.Interface;
 
 namespace HH.RMS.Service
 {

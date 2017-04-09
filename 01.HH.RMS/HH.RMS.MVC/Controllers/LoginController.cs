@@ -1,9 +1,9 @@
 ﻿using HH.RMS.Common.Constant;
 using HH.RMS.Common.Utilities;
-using HH.RMS.Service.Web.Model;
+using HH.RMS.IService.Web.Model;
 using HH.RMS.MVC.Models;
 using HH.RMS.Service.Web;
-using HH.RMS.Service.Web.Interface;
+using HH.RMS.IService.Web;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +11,9 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
-using HH.RMS.Service.Model;
 using HH.RMS.Service;
 using System.Threading;
+using HH.RMS.Common.Model;
 
 namespace HH.RMS.MVC.Controllers
 {
@@ -28,8 +28,10 @@ namespace HH.RMS.MVC.Controllers
         }
         public ActionResult Index(string redirectUrl)
         {
+
             LoginModel model = new LoginModel();
             model.redirectUrl = redirectUrl;
+         
             return View(model);
         }
 
@@ -37,6 +39,7 @@ namespace HH.RMS.MVC.Controllers
         [ValidateAntiForgeryToken]
         public JsonResult Index(LoginModel model)
         {
+
             model.password = SecurityHelper.Hash(model.password);
             ResultModel<AccountModel> result = _loginService.UserLogin(model.accountName, model.password);
             if (result.resultType == ResultType.Success)

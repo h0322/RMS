@@ -120,3 +120,11 @@ F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\EntityFramework.E
 F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\obj\Debug\HH.RMS.UnitTest.csprojResolveAssemblyReference.cache
 F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\obj\Debug\HH.RMS.UnitTest.dll
 F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\obj\Debug\HH.RMS.UnitTest.pdb
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\HH.RMS.Repository.dll
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\HH.RMS.Repository.pdb
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\NPOI.OOXML.dll
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\NPOI.dll
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\NPOI.OpenXmlFormats.dll
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\NPOI.OpenXml4Net.dll
+D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.UnitTest\bin\Debug\NPOI.xml

@@ -17,11 +17,20 @@ namespace HH.RMS.Entity.Web
         public string accountName { get; set; }
         [MaxLength(32)]
         public string password { get; set; }
-        public long personId { get; set; }
-        //[ForeignKey("personId")]
-        //public virtual PersonEntity person { get; set; }
+        [MaxLength(50)]
+        public string nickName { get; set; }
+        public string name { get; set; }
         [MaxLength(50)]
         public string email { get; set; }
+        [MaxLength(20)]
+        public string mobile { get; set; }
+        public DateTime birthday { get; set; }
+        public long countryId { get; set; }
+        public long provinceId { get; set; }
+        public long cityId { get; set; }
+        [MaxLength(100)]
+        public string address { get; set; }
+        public SexType sex { get; set; }
         public decimal amount { get; set; }
         public decimal score { get; set; }
         public long levelId { get; set; }
@@ -29,6 +38,7 @@ namespace HH.RMS.Entity.Web
         public AccountType accountType { get; set; }
         public PasswordType passwordType { get; set; }
         public AccountStatusType status { get; set; }
+        public long parentAccountId { get; set; }
 
     }
 }

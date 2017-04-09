@@ -1,8 +1,8 @@
 ﻿using HH.RMS.Common.Constant;
 using HH.RMS.Service;
 using HH.RMS.Service.Web;
-using HH.RMS.Service.Web.Interface;
-using HH.RMS.Service.Web.Model;
+using HH.RMS.IService.Web;
+using HH.RMS.IService.Web.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
