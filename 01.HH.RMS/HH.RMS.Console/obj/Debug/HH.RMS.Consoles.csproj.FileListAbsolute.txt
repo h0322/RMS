@@ -58,7 +58,6 @@ F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Console\bin\Debug\Quartz.xml
 F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Console\bin\Debug\Common.Logging.Core.xml
 F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Console\bin\Debug\Common.Logging.xml
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Console\obj\Debug\HH.RMS.Consoles.csprojResolveAssemblyReference.cache
-D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Console\obj\Debug\HH.RMS.Consoles.csproj.HH.RMS.Console.exe.config
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Console\bin\Debug\HH.RMS.Console.exe.config
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Console\bin\Debug\HH.RMS.Console.exe
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Console\bin\Debug\HH.RMS.Console.pdb

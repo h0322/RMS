@@ -15,7 +15,7 @@ using HH.RMS.Entity.Location;
 using HH.RMS.IService.Model.Location;
 using HH.RMS.IService.Location;
 
-namespace HH.RMS.Service
+namespace HH.RMS.Service.Location
 {
     public class CityService :  ICityService
     {

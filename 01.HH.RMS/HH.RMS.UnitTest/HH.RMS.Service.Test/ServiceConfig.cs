@@ -6,6 +6,7 @@ using HH.RMS.IService.Wechat;
 using HH.RMS.Repository;
 using HH.RMS.Repository.Interface;
 using HH.RMS.Service;
+using HH.RMS.Service.Location;
 using HH.RMS.Service.Wechat;
 using System;
 using System.Collections.Generic;
