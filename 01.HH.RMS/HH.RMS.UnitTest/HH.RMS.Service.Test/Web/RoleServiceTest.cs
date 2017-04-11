@@ -1,9 +1,8 @@
 ﻿using HH.RMS.Common.Constant;
 using HH.RMS.Common.Unity;
 using HH.RMS.Common.Utilities;
-using HH.RMS.Service.Model;
-using HH.RMS.Service.Web.Interface;
-using HH.RMS.Service.Web.Model;
+using HH.RMS.IService;
+using HH.RMS.IService.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;

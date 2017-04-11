@@ -46,6 +46,22 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.RegistrationByConvention, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.VisualStudio.QualityTools.LoadTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
     <Reference Include="Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -55,6 +71,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -69,12 +86,12 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="HH.RMS.Service.Test\ServiceConfig.cs" />
     <Compile Include="HH.RMS.Service.Test\TestServiceBase.cs" />
     <Compile Include="HH.RMS.Service.Test\Web\LevelServiceTest.cs" />
     <Compile Include="HH.RMS.Service.Test\Web\LoginServiceTest.cs" />
     <Compile Include="HH.RMS.Service.Test\Web\AccountServiceTest.cs" />
     <Compile Include="HH.RMS.Service.Test\Web\MenuServiceTest.cs" />
-    <Compile Include="HH.RMS.Service.Test\Web\PersonServiceTest.cs" />
     <Compile Include="HH.RMS.Service.Test\Web\RoleServiceTest.cs" />
     <Compile Include="HH.RMS.Service.Test\Web\CollcetServiceTest.cs" />
     <Compile Include="HH.RMS.Service.Test\Web\EmailServiceTest.cs" />
@@ -91,6 +108,18 @@
     <ProjectReference Include="..\HH.RMS.Common\HH.RMS.Common.csproj">
       <Project>{b1aea69d-ca7d-46b2-9d58-067231ec5749}</Project>
       <Name>HH.RMS.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HH.RMS.Entity\HH.RMS.Entity.csproj">
+      <Project>{73b8ac6f-5953-4f02-a10c-13744db73c8f}</Project>
+      <Name>HH.RMS.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HH.RMS.IService\HH.RMS.IService.csproj">
+      <Project>{427cb8a4-ec1f-4363-9b56-bcc957ed9d02}</Project>
+      <Name>HH.RMS.IService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HH.RMS.Repository\HH.RMS.Repository.csproj">
+      <Project>{6e3b9805-4a5d-4857-9797-abe850af554e}</Project>
+      <Name>HH.RMS.Repository</Name>
     </ProjectReference>
     <ProjectReference Include="..\HH.RMS.Service\HH.RMS.Service.csproj">
       <Project>{e535a624-40b0-460f-a91b-69384d3f24e3}</Project>

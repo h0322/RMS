@@ -56,6 +56,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IAddressService.cs" />
+    <Compile Include="IConfigService.cs" />
+    <Compile Include="Model\AddressModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scheduler\IJobService.cs" />
     <Compile Include="Scheduler\ISchedulerService.cs" />
@@ -63,46 +66,46 @@
     <Compile Include="Scheduler\Model\JobModel.cs" />
     <Compile Include="Scheduler\Model\JobParameterModel.cs" />
     <Compile Include="Scheduler\Model\SchedulerModel.cs" />
-    <Compile Include="Web\IAccountService.cs" />
-    <Compile Include="Web\ICityService.cs" />
-    <Compile Include="Web\ICollcetService.cs" />
-    <Compile Include="Web\ICountryService.cs" />
-    <Compile Include="Web\IEmailService.cs" />
-    <Compile Include="Web\ILevelService.cs" />
-    <Compile Include="Web\ILoginService.cs" />
-    <Compile Include="Web\ILuckyService.cs" />
-    <Compile Include="Web\IMenuService.cs" />
-    <Compile Include="Web\IMessageService.cs" />
-    <Compile Include="Web\IProvinceService.cs" />
-    <Compile Include="Web\IRoleService.cs" />
-    <Compile Include="Web\IVoteService.cs" />
-    <Compile Include="Web\Model\AccountModel.cs" />
-    <Compile Include="Web\Model\CityModel.cs" />
-    <Compile Include="Web\Model\CollectModel.cs" />
-    <Compile Include="Web\Model\CommandModel.cs" />
-    <Compile Include="Web\Model\ConditionBuilderModel.cs" />
-    <Compile Include="Web\Model\CountryModel.cs" />
-    <Compile Include="Web\Model\EmailLogModel.cs" />
-    <Compile Include="Web\Model\EmailModel.cs" />
-    <Compile Include="Web\Model\LevelModel.cs" />
-    <Compile Include="Web\Model\LoginModel.cs" />
-    <Compile Include="Web\Model\LuckyDrawModel.cs" />
-    <Compile Include="Web\Model\LuckyLogModel.cs" />
-    <Compile Include="Web\Model\LuckyPrizeModel.cs" />
-    <Compile Include="Web\Model\LuckyResultModel.cs" />
-    <Compile Include="Web\Model\MenuModel.cs" />
-    <Compile Include="Web\Model\MenuRoleModel.cs" />
-    <Compile Include="Web\Model\MessageModel.cs" />
-    <Compile Include="Web\Model\PagerModel.cs" />
-    <Compile Include="Web\Model\PasswordModel.cs" />
-    <Compile Include="Web\Model\ProvinceModel.cs" />
-    <Compile Include="Web\Model\RoleModel.cs" />
-    <Compile Include="Web\Model\SelectModel.cs" />
-    <Compile Include="Web\Model\SortConditionModel.cs" />
-    <Compile Include="Web\Model\UserModel.cs" />
-    <Compile Include="Web\Model\VoteBoxModel.cs" />
-    <Compile Include="Web\Model\VoteLogModel.cs" />
-    <Compile Include="Web\Model\VoteModel.cs" />
+    <Compile Include="IAccountService.cs" />
+    <Compile Include="Location\ICityService.cs" />
+    <Compile Include="ICollcetService.cs" />
+    <Compile Include="Location\ICountryService.cs" />
+    <Compile Include="IEmailService.cs" />
+    <Compile Include="ILevelService.cs" />
+    <Compile Include="ILoginService.cs" />
+    <Compile Include="ILuckyService.cs" />
+    <Compile Include="IMenuService.cs" />
+    <Compile Include="IMessageService.cs" />
+    <Compile Include="Location\IProvinceService.cs" />
+    <Compile Include="IRoleService.cs" />
+    <Compile Include="IVoteService.cs" />
+    <Compile Include="Model\AccountModel.cs" />
+    <Compile Include="Location\Model\CityModel.cs" />
+    <Compile Include="Model\CollectModel.cs" />
+    <Compile Include="Model\CommandModel.cs" />
+    <Compile Include="Model\ConditionBuilderModel.cs" />
+    <Compile Include="Location\Model\CountryModel.cs" />
+    <Compile Include="Model\EmailLogModel.cs" />
+    <Compile Include="Model\EmailModel.cs" />
+    <Compile Include="Model\LevelModel.cs" />
+    <Compile Include="Model\LoginModel.cs" />
+    <Compile Include="Model\LuckyDrawModel.cs" />
+    <Compile Include="Model\LuckyLogModel.cs" />
+    <Compile Include="Model\LuckyPrizeModel.cs" />
+    <Compile Include="Model\LuckyResultModel.cs" />
+    <Compile Include="Model\MenuModel.cs" />
+    <Compile Include="Model\MenuRoleModel.cs" />
+    <Compile Include="Model\MessageModel.cs" />
+    <Compile Include="Model\PagerModel.cs" />
+    <Compile Include="Model\PasswordModel.cs" />
+    <Compile Include="Location\Model\ProvinceModel.cs" />
+    <Compile Include="Model\RoleModel.cs" />
+    <Compile Include="Model\SelectModel.cs" />
+    <Compile Include="Model\SortConditionModel.cs" />
+    <Compile Include="Model\UserModel.cs" />
+    <Compile Include="Model\VoteBoxModel.cs" />
+    <Compile Include="Model\VoteLogModel.cs" />
+    <Compile Include="Model\VoteModel.cs" />
     <Compile Include="Wechat\IResponseMessageService.cs" />
     <Compile Include="Wechat\IWechatConfigService.cs" />
     <Compile Include="Wechat\IWechatJsSdkService.cs" />
@@ -128,7 +131,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="Web\Model\packages.config" />
+    <None Include="Model\packages.config" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

@@ -1,7 +1,8 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using HH.RMS.Service.Wechat.Interface;
+
 using HH.RMS.Common.Unity;
+using HH.RMS.IService.Wechat;
 
 namespace HH.RMS.UnitTest.HH.RMS.Service.Test.Wechat
 {

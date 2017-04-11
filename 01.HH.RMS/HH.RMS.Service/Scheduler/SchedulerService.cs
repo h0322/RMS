@@ -1,9 +1,9 @@
 ﻿using HH.RMS.Common.Constant;
-using HH.RMS.Entity.Web;
-using HH.RMS.IService.Web.Model;
+using HH.RMS.Entity;
+using HH.RMS.IService.Model;
 using HH.RMS.Repository;
 using HH.RMS.Repository.Interface;
-using HH.RMS.IService.Web;
+using HH.RMS.IService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +14,7 @@ using HH.RMS.IService.Scheduler.Model;
 using System.Linq.Expressions;
 using HH.RMS.IService.Scheduler;
 
-namespace HH.RMS.Service.Web
+namespace HH.RMS.Service
 {
     public class SchedulerService : ISchedulerService
     {

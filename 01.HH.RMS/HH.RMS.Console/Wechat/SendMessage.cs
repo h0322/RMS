@@ -7,8 +7,6 @@ using HH.RMS.Wechat;
 using HH.RMS.Wechat.Message;
 using HH.RMS.Wechat.Model;
 using HH.RMS.Service.Wechat;
-
-using HH.RMS.Service.Web;
 using HH.RMS.IService.Wechat;
 using HH.RMS.IService.Wechat.Model;
 

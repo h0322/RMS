@@ -11,7 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HH.RMS.Service.Web
+namespace HH.RMS.Service
 {
     public class JobService :  IJobService
     {

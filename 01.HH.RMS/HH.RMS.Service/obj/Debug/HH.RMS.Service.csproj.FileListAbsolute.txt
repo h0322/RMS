@@ -151,7 +151,6 @@ F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\Common.Logging.xml
 F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\Common.Logging.Core.xml
 F:\Henry\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\Quartz.xml
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\obj\Debug\HH.RMS.Service.csprojResolveAssemblyReference.cache
-D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\HH.RMS.Service.dll.config
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\HH.RMS.Service.dll
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\HH.RMS.Service.pdb
 D:\My Program\HH.RMS\01.HH.RMS\HH.RMS.Service\bin\Debug\Common.Logging.Core.dll

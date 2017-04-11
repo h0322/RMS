@@ -1,12 +1,14 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using HH.RMS.Service.Web.Interface;
+
 using HH.RMS.Common.Unity;
-using HH.RMS.Service.Web.Model;
+
 using HH.RMS.Common.Constant;
 using System.Web;
-using HH.RMS.Service.Model;
+
 using HH.RMS.Common.Utilities;
+using HH.RMS.IService;
+using HH.RMS.IService.Model;
 
 namespace HH.RMS.UnitTest.HH.RMS.Service.Test.Web
 {

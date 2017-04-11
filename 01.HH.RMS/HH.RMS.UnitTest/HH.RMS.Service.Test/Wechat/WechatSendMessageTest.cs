@@ -1,12 +1,14 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using HH.RMS.Service.Wechat.Model;
+
 using HH.RMS.Common.Utilities;
 using HH.RMS.Common.Constant;
 using HH.RMS.Service.Wechat;
 using HH.RMS.Common.Unity;
-using HH.RMS.Service.Wechat.Interface;
+
 using HH.RMS.Wechat.Model;
+using HH.RMS.IService.Wechat;
+using HH.RMS.IService.Wechat.Model;
 
 namespace HH.RMS.UnitTest.HH.RMS.Service.Test.Wechat
 {

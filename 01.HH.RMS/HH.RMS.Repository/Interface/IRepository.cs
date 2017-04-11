@@ -1,6 +1,6 @@
 ﻿using HH.RMS.Common.Constant;
 using HH.RMS.Entity;
-using HH.RMS.Entity.Web;
+using HH.RMS.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,6 +1,6 @@
 ﻿using HH.RMS.Common.Constant;
 using HH.RMS.Entity.Scheduler;
-using HH.RMS.Entity.Web;
+using HH.RMS.Entity;
 using HH.RMS.Entity.Wechat;
 using HH.RMS.Repository.Mapping;
 using System;
@@ -11,6 +11,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using HH.RMS.Entity.Location;
 
 namespace HH.RMS.Repository
 {

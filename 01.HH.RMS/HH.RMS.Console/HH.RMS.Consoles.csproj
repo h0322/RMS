@@ -84,9 +84,17 @@
       <Project>{b1aea69d-ca7d-46b2-9d58-067231ec5749}</Project>
       <Name>HH.RMS.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\HH.RMS.Entity\HH.RMS.Entity.csproj">
+      <Project>{73b8ac6f-5953-4f02-a10c-13744db73c8f}</Project>
+      <Name>HH.RMS.Entity</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HH.RMS.IService\HH.RMS.IService.csproj">
       <Project>{427cb8a4-ec1f-4363-9b56-bcc957ed9d02}</Project>
       <Name>HH.RMS.IService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HH.RMS.Repository\HH.RMS.Repository.csproj">
+      <Project>{6e3b9805-4a5d-4857-9797-abe850af554e}</Project>
+      <Name>HH.RMS.Repository</Name>
     </ProjectReference>
     <ProjectReference Include="..\HH.RMS.Service\HH.RMS.Service.csproj">
       <Project>{e535a624-40b0-460f-a91b-69384d3f24e3}</Project>

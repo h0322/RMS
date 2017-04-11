@@ -2,7 +2,7 @@
 using HH.RMS.Common.Unity;
 using HH.RMS.Repository;
 using HH.RMS.IService.Scheduler.Model;
-using HH.RMS.IService.Web;
+using HH.RMS.IService;
 using Quartz;
 using System;
 using System.Collections.Generic;
